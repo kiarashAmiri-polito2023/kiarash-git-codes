@@ -1,16 +1,16 @@
-#!/usr/bin/env python3
 # ==============================================================================
 # Author: Kiarash Amiri
 # Email: S322803@studenti.polito.it
 # GitHub: https://github.com/kiarashAmiri-polito2023
 #
 # Workflow Description:
-# - Connects to the local SLAM of the robot (MiR API) and Motive software (NatNet) simultaneously.
-# - Identifies the robot's specific Rigid Body via user confirmation.
+# - Connects to the local SLAM of the robot (MiR API) and Motive software (NatNet).
+# - Features a robust polling loop to guarantee Motive Rigid Body detection.
+# - Auto-detects Rigid Bodies containing 'mir' or 'robot' with a simple y/n confirmation.
 # - Guides the user through a 6-point spatial calibration process.
 # - Monitors the robot's state via API (Waits for 'Ready' state + 2s settling time).
-# - Features an auto-retry logic: if data is corrupted or out of sight, it retries the current step.
-# - Computes the Affine Transformation Matrix using OpenCV and saves it for future scripts.
+# - Features an auto-retry logic: if data is corrupted or out of sight, it retries.
+# - Computes the Affine Transformation Matrix using OpenCV and saves it.
 # ==============================================================================
 
 import time
@@ -32,7 +32,7 @@ MIR_API_URL = f"http://{MIR_IP}/api/v2.0.0/status"
 MIR_HEADERS = {"Accept-Language": "en_US", "Content-Type": "application/json"}
 
 CALIBRATION_POINTS = 6
-SETTLING_TIME_SEC = 2.0  # 2 seconds physical stabilization time
+SETTLING_TIME_SEC = 2.0  
 
 class AutoCalibrator:
     def __init__(self):
@@ -57,11 +57,9 @@ class AutoCalibrator:
         if new_id in self.rb_names:
             name = self.rb_names[new_id]
             if position is not None and not np.isnan(position[0]):
-                # Convert to mm. OptiTrack's Up-Axis affects which indices represent the 2D floor.
-                # Assuming Y-up in Motive: X = pos[0], Z = pos[2]. Adjust if Z-up.
                 self.latest_motive_pos[name] = (position[0] * 1000.0, position[2] * 1000.0)
             else:
-                self.latest_motive_pos[name] = None # Lost tracking
+                self.latest_motive_pos[name] = None
 
     # --- MiR API Helper ---
     def get_mir_status(self):
@@ -79,7 +77,7 @@ class AutoCalibrator:
         print("  MiR - OptiTrack Auto-Calibration Tool Initialized  ")
         print("=====================================================\n")
 
-        # 1. Connect to NatNet
+        # 1. Connect to NatNet via Local Loopback
         self.natnet.set_client_address('127.0.0.1')
         self.natnet.set_server_address('127.0.0.1')
         self.natnet.set_use_multicast(True)
@@ -87,26 +85,50 @@ class AutoCalibrator:
         self.natnet.rigid_body_listener = self._on_rigid_body
         
         threading.Thread(target=self.natnet.run, daemon=True).start()
-        time.sleep(2) 
         
-        # 2. Handshake: Identify Robot
+        print("Requesting Rigid Body list from Motive server...")
+        
+        wait_time = 0
+        while not self.rb_names and wait_time < 10:
+            time.sleep(1)
+            wait_time += 1
+            print(f"Waiting for Motive data... ({wait_time}/10)")
+            try:
+                self.natnet.send_request(self.natnet.command_socket, 5, "", self.natnet.server_address, self.natnet.command_port)
+            except AttributeError:
+                pass 
+        
+        # 2. Handshake: Identify Robot (Auto-detect logic)
         if not self.rb_names:
-            print("[CRITICAL] No Rigid Bodies found in Motive. Ensure streaming is ON.")
+            print("\n[CRITICAL] No Rigid Bodies found in Motive after 10 seconds.")
+            print("Ensure streaming is ON and Local Interface is set to 127.0.0.1 in Motive.")
             return
 
-        print("Available Rigid Bodies in Motive:")
+        print("\nScanning for MiR robot in Motive's Rigid Bodies...")
+        target_name = None
+        
         for r_id, r_name in self.rb_names.items():
-            print(f" - {r_name}")
-            
-        target = input("\nEnter the exact name of the Robot's Rigid Body: ").strip()
-        if target not in self.rb_names.values():
-            print(f"[ERROR] '{target}' not found in the list. Exiting.")
+            lower_name = r_name.lower()
+            if 'mir' in lower_name or 'robot' in lower_name:
+                target_name = r_name
+                break
+                
+        if target_name:
+            confirm = input(f"\n? Target robot detected as '{target_name}'. Is this correct? (y/n): ").strip().lower()
+            if confirm == 'y':
+                self.target_rb_name = target_name
+                print(f"\n[SUCCESS] Locked onto Rigid Body: '{self.target_rb_name}'.")
+            else:
+                print("\n[INFO] Calibration aborted by user. Please check Motive Rigid Body names.")
+                return
+        else:
+            print("\n[ERROR] Could not automatically find any Rigid Body containing 'mir' or 'robot'.")
+            print("Available Rigid Bodies are:")
+            for r_id, r_name in self.rb_names.items():
+                print(f" - {r_name}")
             return
-            
-        self.target_rb_name = target
-        print(f"\n[SUCCESS] Locked onto Rigid Body: '{self.target_rb_name}'.")
 
-        # 3. The Interactive Calibration Loop (with Retry Logic)
+        # 3. The Interactive Calibration Loop
         current_point = 1
         
         while current_point <= CALIBRATION_POINTS:
@@ -126,24 +148,20 @@ class AutoCalibrator:
                 state_text = status.get("state_text", "")
                 
                 if state_text == "Ready":
-                    print(f"Robot state is 'Ready'. Applying {SETTLING_TIME_SEC} seconds settling time for physical stabilization...")
+                    print(f"Robot state is 'Ready'. Applying {SETTLING_TIME_SEC}s settling time...")
                     time.sleep(SETTLING_TIME_SEC)
                     
-                    # Double-check state after settling
                     final_status = self.get_mir_status()
                     if final_status and final_status.get("state_text") == "Ready":
                         
-                        # --- Error Checking & Retry Logic ---
                         motive_pos = self.latest_motive_pos.get(self.target_rb_name)
                         
                         if motive_pos is None:
                             print(f"\n[ERROR] Motive lost track of '{self.target_rb_name}'!")
-                            print("The robot might be in a blind spot or markers are occluded.")
-                            print(f"--> RETRYING STEP {current_point}. Please fix tracking and try again.")
-                            monitoring = False # Break inner loop, restart this point
+                            print("--> RETRYING STEP. Please fix tracking and try again.")
+                            monitoring = False 
                             continue
                             
-                        # If everything is perfectly valid:
                         mir_x = final_status["position"]["x"] * 1000.0
                         mir_y = final_status["position"]["y"] * 1000.0
                         
@@ -154,11 +172,11 @@ class AutoCalibrator:
                         print(f"   MiR (mm):    X: {mir_x:.1f}, Y: {mir_y:.1f}")
                         print(f"   Motive (mm): X: {motive_pos[0]:.1f}, Y: {motive_pos[1]:.1f}")
                         
-                        current_point += 1 # Move to the next point
-                        monitoring = False # Break inner loop successfully
+                        current_point += 1 
+                        monitoring = False 
                         
                     else:
-                        print("[INFO] Robot state changed from 'Ready' during settling time. Resuming monitoring...")
+                        print("[INFO] Robot state changed during settling time. Resuming monitoring...")
                 
                 time.sleep(0.5)
 
@@ -169,7 +187,6 @@ class AutoCalibrator:
         mir_array = np.array(self.mir_points, dtype=np.float32)
         motive_array = np.array(self.motive_points, dtype=np.float32)
         
-        # Estimate Affine Transform (Translation, Rotation, Scale)
         matrix, inliers = cv2.estimateAffinePartial2D(mir_array, motive_array)
         
         if matrix is not None:
@@ -179,7 +196,6 @@ class AutoCalibrator:
             np.save("mir_to_motive_matrix.npy", matrix)
             print("\nMatrix saved to 'mir_to_motive_matrix.npy'.")
             
-            # Reprojection Error Evaluation
             transformed_mir = cv2.transform(np.array([mir_array]), matrix)[0]
             errors = np.linalg.norm(motive_array - transformed_mir, axis=1)
             mean_error = np.mean(errors)
