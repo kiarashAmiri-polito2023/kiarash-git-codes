@@ -1,0 +1,918 @@
+
+Multirigidbodytracker · PY
+#!/usr/bin/env python3
+"""
+MultiRigidBodyTracker.py
+ 
+Python port of MultiRigidBodyTracker.m (MATLAB/NatNet multi-Rigid-Body
+tracker for OptiTrack Motive), preserving the same analysis pipeline:
+Kinematics, Relative Motion / Safety, Tracking Quality, Static-body
+detection, Latency, Figures, and a Dashboard -- saved into a MocapSession
+.mat file with the same nested structure as the MATLAB version.
+ 
+===========================================================================
+REQUIRED: OptiTrack's official Python NatNet SDK client
+===========================================================================
+This script does NOT include NatNetClient.py -- that is vendor code you
+must download yourself from OptiTrack (Developer Tools -> NatNet SDK),
+matching the NatNet/Motive version you actually run. Place NatNetClient.py
+(and its companion files, typically DataDescriptions.py and MoCapData.py)
+in the same folder as this script.
+ 
+Exact attribute/method names for reading Rigid Body ID<->Name descriptions
+have changed slightly across NatNet SDK versions over the years. The
+build_rigid_body_map() method below is written against the most common
+recent (NatNet 4.x) sample structure, but is clearly marked below with a
+comment showing exactly what to check/adjust in YOUR downloaded
+NatNetClient.py if it raises an AttributeError -- the same debugging
+approach that found the real bugs in the MATLAB natnet.m wrapper earlier
+in this project. If it errors, paste the exact error here and we'll fix
+that one spot together, the same way.
+ 
+===========================================================================
+Dependencies (pip install):
+    pip install numpy scipy matplotlib
+===========================================================================
+"""
+ 
+import os
+import sys
+import time
+import threading
+from datetime import datetime
+ 
+import numpy as np
+import scipy.io as sio
+import importlib.util
+ 
+import matplotlib
+if importlib.util.find_spec('tkinter') is not None:
+    matplotlib.use('TkAgg')  # interactive backend needed for the live STOP button
+else:
+    print('WARNING: tkinter is not installed, so the interactive TkAgg backend '
+          'is unavailable. Live plotting and the STOP button will not work. '
+          'On Windows, tkinter normally ships with the standard python.org '
+          'installer by default -- if you see this warning there, your Python '
+          'install is missing it and should be reinstalled with that option '
+          'enabled (or, on conda, run: conda install tk). Figure/dashboard '
+          'generation after a session still works fine with any backend.')
+import matplotlib.pyplot as plt
+import matplotlib.animation
+from matplotlib.widgets import Button
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401  (required for 3D projection)
+ 
+try:
+    from NatNetClient import NatNetClient
+except ImportError:
+    print("ERROR: NatNetClient.py was not found next to this script.")
+    print("Download OptiTrack's official NatNet SDK (Developer Tools ->")
+    print("NatNet SDK) and place NatNetClient.py in this same folder.")
+    sys.exit(1)
+ 
+ 
+# ============================================================
+# Configuration (same values as the MATLAB version)
+# ============================================================
+DANGER_THRESHOLD_MM = 100.0
+WARNING_THRESHOLD_MM = 500.0
+MIN_APPROACH_SPEED_MMPS = 20.0
+STATIC_POSITION_RANGE_MM = 5.0
+STATIC_EULER_RANGE_DEG = 2.0
+ 
+ 
+# ============================================================
+# Math helpers
+# ============================================================
+ 
+def quaternion_to_euler(qx, qy, qz, qw):
+    """Same conversion as the MATLAB version (ZYX / aerospace convention)."""
+    sinr_cosp = 2 * (qw * qx + qy * qz)
+    cosr_cosp = 1 - 2 * (qx * qx + qy * qy)
+    roll = np.arctan2(sinr_cosp, cosr_cosp)
+ 
+    sinp = 2 * (qw * qy - qz * qx)
+    if abs(sinp) >= 1:
+        pitch = np.copysign(np.pi / 2, sinp)
+    else:
+        pitch = np.arcsin(sinp)
+ 
+    siny_cosp = 2 * (qw * qz + qx * qy)
+    cosy_cosp = 1 - 2 * (qy * qy + qz * qz)
+    yaw = np.arctan2(siny_cosp, cosy_cosp)
+ 
+    return np.degrees(roll), np.degrees(pitch), np.degrees(yaw)
+ 
+ 
+def wrap_angle_180(a):
+    return np.mod(np.asarray(a) + 180.0, 360.0) - 180.0
+ 
+ 
+def make_valid_name(name):
+    """Loose equivalent of MATLAB's matlab.lang.makeValidName -- keeps
+    Python dict keys simple and predictable."""
+    valid = "".join(ch if (ch.isalnum() or ch == '_') else '_' for ch in name)
+    if valid and valid[0].isdigit():
+        valid = "_" + valid
+    return valid or "_unnamed"
+ 
+ 
+# ============================================================
+# Per-body raw data buffer (Python lists grow fine on their own --
+# no pre-allocation/doubling trick needed like in MATLAB)
+# ============================================================
+ 
+class RigidBodyBuffer:
+    def __init__(self):
+        self.time = []
+        self.position = []
+        self.quaternion = []
+        self.euler = []
+ 
+    def append_row(self, t, position_mm, quat, euler):
+        self.time.append(t)
+        self.position.append(position_mm)
+        self.quaternion.append(quat)
+        self.euler.append(euler)
+ 
+    def append_nan_row(self, t):
+        self.time.append(t)
+        self.position.append([np.nan, np.nan, np.nan])
+        self.quaternion.append([np.nan, np.nan, np.nan, np.nan])
+        self.euler.append([np.nan, np.nan, np.nan])
+ 
+    def trim(self):
+        return {
+            'Position': np.array(self.position, dtype=float).reshape(-1, 3),
+            'Quaternion': np.array(self.quaternion, dtype=float).reshape(-1, 4),
+            'Euler': np.array(self.euler, dtype=float).reshape(-1, 3),
+            'Time': np.array(self.time, dtype=float).reshape(-1, 1),
+        }
+ 
+ 
+# ============================================================
+# Robot identification -- matches ONLY "robot" in the name,
+# "base" alone does not qualify (same rule as the MATLAB version)
+# ============================================================
+ 
+def identify_robot_body(names):
+    matches = [n for n in names if 'robot' in n.lower()]
+    if len(matches) == 1:
+        return matches[0]
+    elif len(matches) > 1:
+        print(f'WARNING: Multiple Rigid Bodies matched "robot" ({matches}). '
+              f'Using the first: {matches[0]}')
+        return matches[0]
+    return None
+ 
+ 
+# ============================================================
+# Kinematics
+# ============================================================
+ 
+def compute_kinematics(original_data):
+    kinematics = {}
+    for name, body in original_data.items():
+        t = body['Time'].flatten()
+        pos = body['Position']
+        eul = body['Euler']
+        n = len(t)
+ 
+        vel = np.full_like(pos, np.nan)
+        acc = np.full_like(pos, np.nan)
+        ang_vel = np.full_like(eul, np.nan)
+ 
+        if n >= 2:
+            dt = np.diff(t)
+            dt[dt <= 0] = np.nan
+            vel[1:, :] = np.diff(pos, axis=0) / dt[:, None]
+            ang_vel[1:, :] = np.diff(eul, axis=0) / dt[:, None]
+        if n >= 3:
+            dt2 = np.diff(t[1:])
+            dt2[dt2 <= 0] = np.nan
+            acc[2:, :] = np.diff(vel[1:, :], axis=0) / dt2[:, None]
+ 
+        kinematics[name] = {
+            'Velocity': vel,
+            'Acceleration': acc,
+            'AngularVelocity': ang_vel,
+        }
+    return kinematics
+ 
+ 
+# ============================================================
+# Relative motion / safety
+# ============================================================
+ 
+def compute_relative_motion(original_data, kinematics, robot_name,
+                             danger_mm, warn_mm, min_approach_speed):
+    result = {'HumanNames': []}
+    if robot_name is None or robot_name not in original_data:
+        return result
+ 
+    robot_pos = original_data[robot_name]['Position']
+    robot_euler = original_data[robot_name]['Euler']
+    robot_vel = kinematics[robot_name]['Velocity']
+ 
+    human_names = [n for n in original_data.keys() if n != robot_name]
+    n_frames = robot_pos.shape[0]
+    n_human = len(human_names)
+ 
+    distance_matrix = np.full((n_frames, n_human), np.nan)
+    robot_approach = np.zeros((n_frames, n_human), dtype=bool)
+    human_approach = np.zeros((n_frames, n_human), dtype=bool)
+ 
+    for h, hn in enumerate(human_names):
+        human_pos = original_data[hn]['Position']
+        human_vel = kinematics[hn]['Velocity']
+        if human_pos.shape[0] != n_frames:
+            continue  # should not happen given NaN-fill alignment, but guard anyway
+ 
+        delta = human_pos - robot_pos           # robot -> human
+        dist = np.sqrt(np.sum(delta ** 2, axis=1))
+        distance_matrix[:, h] = dist
+ 
+        with np.errstate(invalid='ignore', divide='ignore'):
+            dir_unit = delta / dist[:, None]
+ 
+        world_bearing = np.degrees(np.arctan2(delta[:, 1], delta[:, 0]))
+        relative_bearing = wrap_angle_180(world_bearing - robot_euler[:, 2])
+ 
+        robot_toward_speed = np.sum(robot_vel * dir_unit, axis=1)
+        human_toward_speed = np.sum(human_vel * (-dir_unit), axis=1)
+ 
+        robot_approach[:, h] = robot_toward_speed > min_approach_speed
+        human_approach[:, h] = human_toward_speed > min_approach_speed
+ 
+        result[hn] = {'Distance': dist, 'Direction': relative_bearing}
+ 
+    min_dist = np.full(n_frames, np.nan)
+    min_idx = np.full(n_frames, -1, dtype=int)
+    valid_rows = ~np.all(np.isnan(distance_matrix), axis=1)
+    min_dist[valid_rows] = np.nanmin(distance_matrix[valid_rows, :], axis=1)
+    min_idx[valid_rows] = np.nanargmin(distance_matrix[valid_rows, :], axis=1)
+ 
+    safety_level = np.zeros(n_frames)
+    safety_level[min_dist <= warn_mm] = 1
+    safety_level[min_dist <= danger_mm] = 2
+    safety_level[np.isnan(min_dist)] = np.nan
+ 
+    min_dist_source = [''] * n_frames
+    for f in range(n_frames):
+        if min_idx[f] >= 0:
+            min_dist_source[f] = human_names[min_idx[f]]
+ 
+    result['MinDistance'] = min_dist
+    result['MinDistanceSource'] = min_dist_source
+    result['SafetyLevel'] = safety_level
+    result['RobotApproaching'] = robot_approach
+    result['HumanApproaching'] = human_approach
+    result['HumanNames'] = human_names
+    result['Thresholds'] = {
+        'DangerMM': danger_mm, 'WarningMM': warn_mm,
+        'MinApproachSpeed_mmps': min_approach_speed,
+    }
+    return result
+ 
+ 
+# ============================================================
+# Tracking quality
+# ============================================================
+ 
+def find_gap_runs(is_tracked, t):
+    runs = []
+    n = len(is_tracked)
+    i = 0
+    while i < n:
+        if not is_tracked[i]:
+            j = i
+            while j < n and not is_tracked[j]:
+                j += 1
+            last_idx = min(j, n - 1)
+            runs.append({'start_idx': i, 'end_idx': j - 1,
+                         'duration': t[last_idx] - t[i]})
+            i = j
+        else:
+            i += 1
+    return runs
+ 
+ 
+def compute_tracking_quality(original_data):
+    quality = {}
+    for name, body in original_data.items():
+        is_tracked = ~np.any(np.isnan(body['Position']), axis=1)
+        t = body['Time'].flatten()
+        gap_runs = find_gap_runs(is_tracked, t)
+        quality[name] = {
+            'IsTracked': is_tracked,
+            'GapCount': len(gap_runs),
+            'MaxGapDuration': max((g['duration'] for g in gap_runs), default=0.0),
+        }
+    return quality
+ 
+ 
+# ============================================================
+# Static body detection (note-only -- raw data is never removed)
+# ============================================================
+ 
+def detect_static_bodies(original_data, pos_range_mm, euler_range_deg):
+    static_bodies = {}
+    for name, body in original_data.items():
+        valid_rows = ~np.any(np.isnan(body['Position']), axis=1)
+        if not np.any(valid_rows):
+            static_bodies[name] = {
+                'Classification': 'NeverTracked',
+                'Note': ('This Rigid Body was selected but was never successfully '
+                         'tracked during this session (no valid data recorded).'),
+                'ReferencePosition': np.full(3, np.nan),
+                'ReferenceQuaternion': np.full(4, np.nan),
+            }
+            continue
+ 
+        pos_range = (np.max(body['Position'][valid_rows], axis=0) -
+                     np.min(body['Position'][valid_rows], axis=0))
+        eul_range = (np.max(body['Euler'][valid_rows], axis=0) -
+                     np.min(body['Euler'][valid_rows], axis=0))
+ 
+        if np.all(pos_range <= pos_range_mm) and np.all(eul_range <= euler_range_deg):
+            first_valid = int(np.argmax(valid_rows))
+            static_bodies[name] = {
+                'Classification': 'Static',
+                'Note': ('This Rigid Body was tracked but showed no meaningful '
+                         'movement during this session (static/reference object).'),
+                'ReferencePosition': body['Position'][first_valid],
+                'ReferenceQuaternion': body['Quaternion'][first_valid],
+            }
+        # Dynamic bodies get no entry here -- full data stays in OriginalData.
+    return static_bodies
+ 
+ 
+# ============================================================
+# Latency
+# ============================================================
+ 
+def compute_latency_stats(loop_timestamps):
+    loop_timestamps = np.asarray(loop_timestamps, dtype=float)
+    if len(loop_timestamps) < 2:
+        return {'InterFrameDt': np.array([]), 'MeanDt': np.nan,
+                'MaxDt': np.nan, 'StdDt': np.nan}
+    dt = np.diff(loop_timestamps)
+    return {'InterFrameDt': dt, 'MeanDt': float(np.mean(dt)),
+            'MaxDt': float(np.max(dt)), 'StdDt': float(np.std(dt))}
+ 
+ 
+# ============================================================
+# Figures (static, saved as .png -- MATLAB's .fig format has no direct
+# Python equivalent, so .png is the saved artifact here)
+# ============================================================
+ 
+def generate_figures(original_data, relative_motion, robot_name, output_folder):
+    figures = {}
+    names = list(original_data.keys())
+    colors = plt.cm.tab10(np.linspace(0, 1, max(len(names), 1)))
+ 
+    for i, name in enumerate(names):
+        body = original_data[name]
+        c = colors[i]
+        display_name = name.replace('_', ' ')
+ 
+        # Position
+        fig, ax = plt.subplots()
+        ax.plot(body['Time'], body['Position'][:, 0], 'r', label='X')
+        ax.plot(body['Time'], body['Position'][:, 1], 'g', label='Y')
+        ax.plot(body['Time'], body['Position'][:, 2], 'b', label='Z')
+        ax.set_xlabel('Time (s)'); ax.set_ylabel('Position (mm)')
+        ax.set_title(f'{display_name} - Position'); ax.legend(); ax.grid(True)
+        p1 = os.path.join(output_folder, f'{name}_Position.png')
+        fig.savefig(p1); plt.close(fig)
+        figures.setdefault(name, {})['PositionPlot_path'] = p1
+ 
+        # Orientation
+        fig, ax = plt.subplots()
+        ax.plot(body['Time'], body['Euler'][:, 0], 'r', label='Roll')
+        ax.plot(body['Time'], body['Euler'][:, 1], 'g', label='Pitch')
+        ax.plot(body['Time'], body['Euler'][:, 2], 'b', label='Yaw')
+        ax.set_xlabel('Time (s)'); ax.set_ylabel('Angle (deg)')
+        ax.set_title(f'{display_name} - Orientation'); ax.legend(); ax.grid(True)
+        p2 = os.path.join(output_folder, f'{name}_Orientation.png')
+        fig.savefig(p2); plt.close(fig)
+        figures[name]['OrientationPlot_path'] = p2
+ 
+        # Individual 3D trajectory
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        valid = ~np.any(np.isnan(body['Position']), axis=1)
+        pos = body['Position'][valid]
+        ax.plot(pos[:, 0], pos[:, 1], pos[:, 2], color=c, label=display_name)
+        if len(pos) > 0:
+            ax.scatter(*pos[0], color='g', s=80, label='Start')
+            ax.scatter(*pos[-1], color='r', marker='x', s=80, label='End')
+        ax.set_xlabel('X (mm)'); ax.set_ylabel('Y (mm)'); ax.set_zlabel('Z (mm)')
+        ax.set_title(f'{display_name} - 3D Trajectory'); ax.legend()
+        p3 = os.path.join(output_folder, f'{name}_Trajectory3D.png')
+        fig.savefig(p3); plt.close(fig)
+        figures[name]['Trajectory3D_path'] = p3
+ 
+    # Combined 3D trajectory with danger-approach markers
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    for i, name in enumerate(names):
+        body = original_data[name]
+        c = colors[i]
+        valid = ~np.any(np.isnan(body['Position']), axis=1)
+        pos = body['Position'][valid]
+        ax.plot(pos[:, 0], pos[:, 1], pos[:, 2], color=c, linewidth=1.5,
+                label=name.replace('_', ' '))
+        if len(pos) > 0:
+            ax.scatter(*pos[0], color=c, edgecolor='k', s=70)
+            ax.scatter(*pos[-1], color=c, marker='x', s=80)
+ 
+            n_segs = len(pos) - 1
+            if n_segs >= 1:
+                n_arrows = min(25, n_segs)
+                sample_idx = np.linspace(0, n_segs - 1, n_arrows).astype(int)
+                for s in sample_idx:
+                    ax.quiver(pos[s, 0], pos[s, 1], pos[s, 2],
+                              pos[s + 1, 0] - pos[s, 0],
+                              pos[s + 1, 1] - pos[s, 1],
+                              pos[s + 1, 2] - pos[s, 2],
+                              color=c, length=1.0, normalize=False)
+ 
+    if robot_name is not None and 'SafetyLevel' in relative_motion and robot_name in original_data:
+        robot_pos = original_data[robot_name]['Position']
+        safety = relative_motion['SafetyLevel']
+        danger_idx = np.where(safety == 2)[0]
+        for f in danger_idx:
+            source_name = relative_motion['MinDistanceSource'][f]
+            if not source_name:
+                continue
+            h_idx = relative_motion['HumanNames'].index(source_name) \
+                if source_name in relative_motion['HumanNames'] else None
+            if h_idx is None:
+                continue
+            if relative_motion['RobotApproaching'][f, h_idx]:
+                ax.scatter(*robot_pos[f], marker='o', s=60,
+                           edgecolor=(1, 0.5, 0), facecolor='none', linewidth=1.5)
+            if relative_motion['HumanApproaching'][f, h_idx]:
+                human_pos = original_data[source_name]['Position']
+                ax.scatter(*human_pos[f], marker='^', s=60,
+                           edgecolor=(0.6, 0, 0.8), facecolor='none', linewidth=1.5)
+ 
+    ax.set_xlabel('X (mm)'); ax.set_ylabel('Y (mm)'); ax.set_zlabel('Z (mm)')
+    ax.set_title('Combined 3D Trajectory (o=start, x=end | orange o = robot '
+                 'approaching human, purple ^ = human approaching robot, at Danger frames)')
+    ax.legend()
+    pc = os.path.join(output_folder, 'CombinedTrajectory3D.png')
+    fig.savefig(pc); plt.close(fig)
+    figures['CombinedTrajectory3D_path'] = pc
+    return figures
+ 
+ 
+def generate_dashboard(original_data, kinematics, relative_motion,
+                        tracking_quality, robot_name, output_folder):
+    names = list(original_data.keys())
+    n = len(names)
+    colors = plt.cm.tab10(np.linspace(0, 1, max(n, 1)))
+    has_robot = (robot_name is not None and 'SafetyLevel' in relative_motion
+                 and robot_name in original_data)
+ 
+    n_rows = n + 3  # per-body position row + combined3D + kinematics + (safety) + trackingquality
+    fig = plt.figure(figsize=(16, 10))
+    fig.suptitle('Mocap Session Dashboard')
+ 
+    n_cols = 1
+    total_tiles = n + 1 + 1 + (2 if has_robot else 0) + 1
+    n_cols_grid = 3
+    n_rows_grid = int(np.ceil(total_tiles / n_cols_grid))
+ 
+    tile_i = 1
+ 
+    for i, name in enumerate(names):
+        body = original_data[name]
+        ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i); tile_i += 1
+        ax.plot(body['Time'], body['Position'])
+        ax.legend(['X', 'Y', 'Z']); ax.set_xlabel('Time (s)'); ax.set_ylabel('mm')
+        ax.set_title(f'{name} Position'); ax.grid(True)
+ 
+    # Combined 3D (subsampled thumbnail for speed on large datasets)
+    ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i, projection='3d'); tile_i += 1
+    for i, name in enumerate(names):
+        body = original_data[name]
+        valid = ~np.any(np.isnan(body['Position']), axis=1)
+        pos = body['Position'][valid]
+        if len(pos) > 3000:
+            idx = np.linspace(0, len(pos) - 1, 3000).astype(int)
+            pos = pos[idx]
+        ax.plot(pos[:, 0], pos[:, 1], pos[:, 2], color=colors[i], linewidth=1.2)
+    ax.set_title('Combined 3D (all bodies)'); ax.legend(names)
+ 
+    # Kinematics: speed magnitude, all bodies overlaid
+    ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i); tile_i += 1
+    for i, name in enumerate(names):
+        v = kinematics[name]['Velocity']
+        speed = np.sqrt(np.sum(v ** 2, axis=1))
+        ax.plot(original_data[name]['Time'], speed, color=colors[i])
+    ax.set_xlabel('Time (s)'); ax.set_ylabel('Speed (mm/s)')
+    ax.set_title('Kinematics: Speed (all bodies)'); ax.legend(names); ax.grid(True)
+ 
+    if has_robot:
+        ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i); tile_i += 1
+        ax.plot(original_data[robot_name]['Time'], relative_motion['MinDistance'])
+        ax.axhline(relative_motion['Thresholds']['WarningMM'], linestyle='--', label='Warning')
+        ax.axhline(relative_motion['Thresholds']['DangerMM'], linestyle='--', label='Danger')
+        ax.set_xlabel('Time (s)'); ax.set_ylabel('Min distance to robot (mm)')
+        ax.set_title('Relative Motion: Min Distance'); ax.legend(); ax.grid(True)
+ 
+        ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i); tile_i += 1
+        ax.step(original_data[robot_name]['Time'], relative_motion['SafetyLevel'])
+        ax.set_yticks([0, 1, 2]); ax.set_yticklabels(['Safe', 'Warning', 'Danger'])
+        ax.set_xlabel('Time (s)'); ax.set_title('Safety Level over Time'); ax.grid(True)
+ 
+    # Tracking quality summary
+    ax = fig.add_subplot(n_rows_grid, n_cols_grid, tile_i); tile_i += 1
+    gap_counts = [tracking_quality[n_]['GapCount'] for n_ in names]
+    max_gaps = [tracking_quality[n_]['MaxGapDuration'] for n_ in names]
+    ax.bar(range(n), gap_counts)
+    ax2 = ax.twinx()
+    ax2.plot(range(n), max_gaps, '-o', color='orange')
+    ax.set_xticks(range(n)); ax.set_xticklabels(names, rotation=30, ha='right')
+    ax.set_ylabel('Gap Count'); ax2.set_ylabel('Max Gap Duration (s)')
+    ax.set_title('Tracking Quality')
+ 
+    fig.tight_layout()
+    dashboard_path = os.path.join(output_folder, 'Dashboard.png')
+    fig.savefig(dashboard_path)
+    return dashboard_path, fig  # keep fig open so it's visible on screen
+ 
+ 
+# ============================================================
+# Main tracker application
+# ============================================================
+ 
+class MultiRigidBodyTracker:
+    def __init__(self):
+        self.output_folder = f"MocapSession_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        os.makedirs(self.output_folder, exist_ok=True)
+ 
+        self.id_to_name = {}
+        self.rb_names = []
+        self.selected_names = []
+        self.buffers = {}          # {valid_name: RigidBodyBuffer}
+        self.loop_timestamps = []
+        self.start_time = None
+        self.lock = threading.Lock()
+        self.stop_requested = False
+        self.natnet_client = None
+ 
+        # Live-plot handles
+        self.fig = None
+        self.lines_3d = {}          # {valid_name: Line3D} individual panels
+        self.combined_lines_3d = {}  # {valid_name: Line3D} combined panel
+ 
+        # Callback-driven frame bookkeeping (see class docstring note below)
+        self._pending_seen = set()
+        self._pending_t = None
+ 
+    # ---------------- NatNet setup ----------------
+ 
+    def connect_to_natnet(self):
+        print('Creating NatNet client object')
+        client = NatNetClient()
+        client.set_client_address('127.0.0.1')
+        client.set_server_address('127.0.0.1')
+        client.set_use_multicast(True)
+ 
+        client.new_frame_listener = self._on_new_frame
+        client.rigid_body_listener = self._on_rigid_body
+ 
+        is_running = client.run('d')
+        if not is_running:
+            raise RuntimeError(
+                'Client failed to connect. Make sure Motive is running, '
+                'Broadcast Frame Data is enabled, and IP addresses are correct.'
+            )
+        time.sleep(1)  # let the first frame/description arrive
+        print('Connected to Motive.')
+        self.natnet_client = client
+ 
+    def build_rigid_body_map(self):
+        """
+        NOTE ON SDK VERSION DIFFERENCES:
+        This assumes your NatNetClient.py exposes get_data_descriptions()
+        returning a list where each Rigid Body description item has
+        `.rigid_body_id` and `.rb_name` attributes -- the common structure
+        in recent (NatNet 4.x) official Python samples. If this raises an
+        AttributeError, open YOUR NatNetClient.py, search for the
+        RigidBodyDescription class definition, and adjust the two
+        attribute names below to match what you actually find there --
+        paste the exact error here and we'll fix this one spot together.
+        """
+        descriptions = self.natnet_client.get_data_descriptions()
+        self.id_to_name = {}
+        self.rb_names = []
+        for desc in descriptions:
+            if hasattr(desc, 'rigid_body_id') and hasattr(desc, 'rb_name'):
+                self.id_to_name[desc.rigid_body_id] = desc.rb_name
+                self.rb_names.append(desc.rb_name)
+ 
+        if not self.rb_names:
+            raise RuntimeError(
+                'No Rigid Bodies found in Motive. Create at least one Rigid '
+                'Body asset and make sure it is visible before running this script.'
+            )
+ 
+    def select_rigid_bodies_to_record(self):
+        print('\n--- Select which Rigid Bodies to record ---')
+        print('(Anything you answer "no" to will NOT be logged or plotted.)\n')
+        selected = []
+        for name in self.rb_names:
+            answer = input(f'Record "{name}"? (yes/no): ').strip()
+            if answer and answer[0].lower() == 'y':
+                selected.append(name)
+        print('\nWill be recorded and plotted:', ', '.join(selected) if selected else '(none)')
+        print('--------------------------------------------\n')
+        self.selected_names = selected
+ 
+    # ---------------- NatNet callbacks (run on the network thread) ----------------
+ 
+    def _on_new_frame(self, frame_number=None, *args, **kwargs):
+        """Fires once per frame, BEFORE that frame's rigid body callbacks.
+        Used as the frame boundary: close out the PREVIOUS frame (NaN-fill
+        anything not seen), then start bookkeeping for this new one."""
+        t = time.time() - self.start_time if self.start_time else 0.0
+ 
+        with self.lock:
+            if self._pending_t is not None:
+                for name in self.selected_names:
+                    fn = make_valid_name(name)
+                    if name not in self._pending_seen:
+                        self.buffers[fn].append_nan_row(self._pending_t)
+                self.loop_timestamps.append(self._pending_t)
+ 
+            self._pending_seen = set()
+            self._pending_t = t
+ 
+    def _on_rigid_body(self, new_id, position, rotation):
+        """position = (x, y, z) in meters; rotation = (qx, qy, qz, qw)."""
+        if new_id not in self.id_to_name:
+            return
+        name = self.id_to_name[new_id]
+        if name not in self.selected_names:
+            return
+ 
+        qx, qy, qz, qw = rotation
+        roll, pitch, yaw = quaternion_to_euler(qx, qy, qz, qw)
+        position_mm = [position[0] * 1000.0, position[1] * 1000.0, position[2] * 1000.0]
+        quat = [qx, qy, qz, qw]
+ 
+        fn = make_valid_name(name)
+        with self.lock:
+            self._pending_seen.add(name)
+            self.buffers[fn].append_row(self._pending_t, position_mm, quat, [roll, pitch, yaw])
+            self._update_live_plot(fn, position_mm)
+ 
+    def _update_live_plot(self, fn, position_mm):
+        # Cheap append -- actual redraw happens on a timer in the main
+        # thread (see _redraw), not here on the network thread.
+        self._live_buffer.setdefault(fn, []).append(position_mm)
+ 
+    # ---------------- Live plotting (runs on the MAIN thread) ----------------
+ 
+    def initialize_plots(self):
+        self._live_buffer = {name: [] for name in
+                              [make_valid_name(n) for n in self.selected_names]}
+        n = len(self.selected_names)
+        if n == 0:
+            self.fig = plt.figure()
+            plt.text(0.5, 0.5, 'No Rigid Bodies selected for plotting.',
+                     ha='center', va='center')
+            return
+ 
+        colors = plt.cm.tab10(np.linspace(0, 1, n))
+        self.fig = plt.figure(figsize=(4 * (n + 1), 4))
+ 
+        for i, name in enumerate(self.selected_names):
+            fn = make_valid_name(name)
+            ax = self.fig.add_subplot(1, n + 1, i + 1, projection='3d')
+            ax.set_title(f'{name} - 3D (live)')
+            ax.set_xlabel('X (mm)'); ax.set_ylabel('Y (mm)'); ax.set_zlabel('Z (mm)')
+            (line,) = ax.plot([], [], [], color=colors[i], linewidth=1.2)
+            self.lines_3d[fn] = line
+ 
+        ax_combined = self.fig.add_subplot(1, n + 1, n + 1, projection='3d')
+        ax_combined.set_title('Combined 3D (live)')
+        ax_combined.set_xlabel('X (mm)'); ax_combined.set_ylabel('Y (mm)'); ax_combined.set_zlabel('Z (mm)')
+        for i, name in enumerate(self.selected_names):
+            fn = make_valid_name(name)
+            (line,) = ax_combined.plot([], [], [], color=colors[i], linewidth=1.2, label=name)
+            self.combined_lines_3d[fn] = line
+        ax_combined.legend()
+ 
+        # STOP button
+        ax_button = self.fig.add_axes([0.40, 0.01, 0.20, 0.06])
+        self.stop_button = Button(ax_button, 'STOP & SAVE', color=(0.85, 0.2, 0.2),
+                                   hovercolor=(0.95, 0.3, 0.3))
+        self.stop_button.label.set_color('white')
+        self.stop_button.label.set_fontweight('bold')
+        self.stop_button.on_clicked(self._on_stop_clicked)
+ 
+    def _on_stop_clicked(self, event):
+        self.stop_requested = True
+ 
+    def _redraw(self, _frame=None):
+        with self.lock:
+            for fn, pts in self._live_buffer.items():
+                if not pts:
+                    continue
+                arr = np.array(pts)
+                if fn in self.lines_3d:
+                    self.lines_3d[fn].set_data(arr[:, 0], arr[:, 1])
+                    self.lines_3d[fn].set_3d_properties(arr[:, 2])
+                    ax = self.lines_3d[fn].axes
+                    ax.set_xlim(arr[:, 0].min() - 10, arr[:, 0].max() + 10)
+                    ax.set_ylim(arr[:, 1].min() - 10, arr[:, 1].max() + 10)
+                    ax.set_zlim(arr[:, 2].min() - 10, arr[:, 2].max() + 10)
+                if fn in self.combined_lines_3d:
+                    self.combined_lines_3d[fn].set_data(arr[:, 0], arr[:, 1])
+                    self.combined_lines_3d[fn].set_3d_properties(arr[:, 2])
+        return []
+ 
+    # ---------------- Run / finalize ----------------
+ 
+    def run(self):
+        print('Multi-Rigid-Body NatNet Tracker - Start')
+        print('=========================================================')
+ 
+        self.connect_to_natnet()
+        self.build_rigid_body_map()
+        print(f'Detected {len(self.rb_names)} Rigid Body/Bodies from Motive:')
+        for name in self.rb_names:
+            print(f'   - {name}')
+ 
+        self.select_rigid_bodies_to_record()
+        if not self.selected_names:
+            print('No Rigid Bodies selected -- nothing to record. Exiting.')
+            return
+ 
+        for name in self.selected_names:
+            self.buffers[make_valid_name(name)] = RigidBodyBuffer()
+ 
+        self.initialize_plots()
+        self.start_time = time.time()
+ 
+        print('\nStreaming... click the STOP & SAVE button in the figure (or close')
+        print('the window) to stop and save.\n')
+ 
+        ani = matplotlib.animation.FuncAnimation(self.fig, self._redraw, interval=100,
+                                                  cache_frame_data=False)
+ 
+        # A repeating timer checks for the STOP button / window closure.
+        # matplotlib Timer objects repeat automatically at `interval` once
+        # started, until stop() is called -- no manual rescheduling needed.
+        stop_timer = self.fig.canvas.new_timer(interval=200)
+        stop_timer.add_callback(self._check_stop, stop_timer)
+        stop_timer.start()
+ 
+        plt.show()  # blocks until the figure is closed (normally or via STOP)
+ 
+        self.finalize_and_save()
+ 
+    def _check_stop(self, stop_timer):
+        if self.stop_requested or not plt.fignum_exists(self.fig.number):
+            stop_timer.stop()
+            plt.close(self.fig)
+ 
+    def finalize_and_save(self):
+        print('=========================================================')
+        print('Figure closed - disconnecting and running post-processing.')
+        try:
+            self.natnet_client.shutdown()
+        except Exception:
+            pass
+ 
+        # Close out the last pending frame
+        with self.lock:
+            if self._pending_t is not None:
+                for name in self.selected_names:
+                    fn = make_valid_name(name)
+                    if name not in self._pending_seen:
+                        self.buffers[fn].append_nan_row(self._pending_t)
+                self.loop_timestamps.append(self._pending_t)
+ 
+        if not self.selected_names or not self.loop_timestamps:
+            print('No frames were captured -- skipping analysis and save.')
+            return
+ 
+        original_data = {name: self.buffers[make_valid_name(name)].trim()
+                          for name in self.selected_names}
+        # Re-key with valid names (consistent with MATLAB fieldnames)
+        original_data = {make_valid_name(name): original_data[name] for name in self.selected_names}
+ 
+        mocap_session = {'OriginalData': original_data}
+        file_name = os.path.join(
+            self.output_folder,
+            f"MocapSession_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mat"
+        )
+        try:
+            sio.savemat(file_name, {'MocapSession': mocap_session})
+            print('[SUCCESS] STAGE 1: Raw data saved to .mat file.')
+        except Exception as e:
+            print(f'CRITICAL: Failed to save initial raw .mat file: {e}')
+ 
+        robot_name = None
+        kinematics = {}
+        tracking_quality = {}
+        relative_motion = {}
+        try:
+            robot_name = identify_robot_body(list(original_data.keys()))
+            if robot_name is None:
+                print('[INFO] No Rigid Body with "robot" in its name was selected.')
+            else:
+                print(f'[INFO] Robot body identified as: {robot_name}')
+ 
+            kinematics = compute_kinematics(original_data)
+            relative_motion = compute_relative_motion(
+                original_data, kinematics, robot_name,
+                DANGER_THRESHOLD_MM, WARNING_THRESHOLD_MM, MIN_APPROACH_SPEED_MMPS)
+            tracking_quality = compute_tracking_quality(original_data)
+            static_bodies = detect_static_bodies(
+                original_data, STATIC_POSITION_RANGE_MM, STATIC_EULER_RANGE_DEG)
+            latency = compute_latency_stats(self.loop_timestamps)
+ 
+            metadata = {
+                'Date': datetime.now().isoformat(),
+                'TaskName': '',
+                'RobotBodyName': robot_name or '',
+                'StaticBodies': static_bodies,
+                'SafetyThresholds': {
+                    'DangerMM': DANGER_THRESHOLD_MM,
+                    'WarningMM': WARNING_THRESHOLD_MM,
+                    'MinApproachSpeed_mmps': MIN_APPROACH_SPEED_MMPS,
+                },
+            }
+ 
+            mocap_session['Analysis'] = {
+                'Kinematics': kinematics,
+                'RelativeMotion': relative_motion,
+                'TrackingQuality': tracking_quality,
+                'Latency': latency,
+                'Metadata': metadata,
+                'Figures': {},
+            }
+            sio.savemat(file_name, {'MocapSession': mocap_session})
+            print('[SUCCESS] STAGE 2: Analysis data updated in .mat file.')
+        except Exception as e:
+            print(f'Analysis phase failed, but raw data is still safe! Error: {e}')
+ 
+        print('Generating figures...')
+        figures = {}
+        try:
+            figures = generate_figures(original_data, relative_motion, robot_name, self.output_folder)
+        except Exception as e:
+            print(f'Failed to generate individual figures: {e}')
+ 
+        print('Generating dashboard (will open automatically)...')
+        try:
+            dashboard_path, dashboard_fig = generate_dashboard(
+                original_data, kinematics, relative_motion, tracking_quality,
+                robot_name, self.output_folder)
+            figures['Dashboard_path'] = dashboard_path
+            plt.show()  # keep the dashboard open on screen
+        except Exception as e:
+            print(f'Failed to generate dashboard: {e}')
+ 
+        try:
+            if 'Analysis' in mocap_session:
+                mocap_session['Analysis']['Figures'] = figures
+            else:
+                mocap_session['Analysis'] = {'Figures': figures}
+            sio.savemat(file_name, {'MocapSession': mocap_session})
+            print('[SUCCESS] STAGE 3: Final details saved.')
+        except Exception as e:
+            print(f'Failed to update .mat file with figure paths: {e}')
+ 
+        print(f'Session complete! Output folder: {self.output_folder}')
+        self.mocap_session = mocap_session  # accessible if run with `python -i`
+ 
+ 
+if __name__ == '__main__':
+    tracker = MultiRigidBodyTracker()
+    tracker.run()
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
