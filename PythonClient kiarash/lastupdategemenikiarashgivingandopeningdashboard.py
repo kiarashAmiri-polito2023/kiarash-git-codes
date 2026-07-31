@@ -494,3 +494,7 @@ class MultiRigidBodyTracker:
 if __name__ == '__main__':
     tracker = MultiRigidBodyTracker()
     tracker.run()
+    ojpoj
+    pjppo
+    lp;po
+    
