@@ -275,3 +275,13 @@ matrix = np.load("mir_to_motive_matrix.npy")
 # Print the matrix contents (چاپ محتویات ماتریس)
 print("Transformation Matrix (ماتریس تبدیل):")
 print(matrix)
+import sys
+print(sys.executable)
+# Load the saved transformation matrix file (بارگذاری فایل ماتریس تبدیل ذخیره‌شده)
+import numpy as np
+matrix = np.load("mir_to_motive_matrix.npy")
+
+
+# Print the matrix contents (چاپ محتویات ماتریس)
+print("Transformation Matrix (ماتریس تبدیل):")
+print(matrix)
