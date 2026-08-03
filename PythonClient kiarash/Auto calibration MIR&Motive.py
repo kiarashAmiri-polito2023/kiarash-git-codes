@@ -265,3 +265,13 @@ if __name__ == '__main__':
         
     calibrator = AutoCalibrator(user_mir_ip)
     calibrator.run()
+import numpy as np
+
+
+# Load the saved transformation matrix file (بارگذاری فایل ماتریس تبدیل ذخیره‌شده)
+matrix = np.load("mir_to_motive_matrix.npy")
+
+
+# Print the matrix contents (چاپ محتویات ماتریس)
+print("Transformation Matrix (ماتریس تبدیل):")
+print(matrix)
