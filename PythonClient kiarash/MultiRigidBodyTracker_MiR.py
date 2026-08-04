@@ -837,3 +837,8 @@ if __name__ == '__main__':
     mir_ip_input = input('Enter the MiR robot IP address (leave blank to skip MiR integration): ').strip()
     tracker = MultiRigidBodyTracker(mir_ip=mir_ip_input if mir_ip_input else None)
     tracker.run()
+import pickle
+
+with open('MocapSession.pkl', 'rb') as f:
+    data = pickle.load(f)
+    print(data.keys())
