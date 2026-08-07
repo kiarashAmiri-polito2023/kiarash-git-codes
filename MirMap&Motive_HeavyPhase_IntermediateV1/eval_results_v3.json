@@ -1,0 +1,842 @@
+{
+  "mae_v": 0.06004347826086955,
+  "mae_w": 0.07989855072463768,
+  "z_bl": [
+    0.15821739130434787,
+    0.09105797101449274
+  ],
+  "m_bl": [
+    0.15401101449275362,
+    0.10805918313570492
+  ],
+  "p": [
+    {
+      "gt": [
+        0.366,
+        -0.043
+      ],
+      "pred": [
+        0.407,
+        -0.049
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.445,
+        -0.259
+      ],
+      "pred": [
+        0.407,
+        -0.399
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.125,
+        0.011
+      ],
+      "pred": [
+        0.107,
+        -0.038
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.003,
+        0.022
+      ],
+      "pred": [
+        0.107,
+        0.057
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, 0.06 rad/s) for safety margin.\n</thought>\n<action>\n[0"
+    },
+    {
+      "gt": [
+        0.403,
+        -0.097
+      ],
+      "pred": [
+        0.407,
+        -0.159
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.001,
+        -0.007
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.424,
+        -0.436
+      ],
+      "pred": [
+        0.48,
+        -0.148
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.002,
+        -0.131
+      ],
+      "pred": [
+        0.16,
+        -0.045
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.355,
+        0.051
+      ],
+      "pred": [
+        0.16,
+        -0.045
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.178,
+        0.154
+      ],
+      "pred": [
+        0.114,
+        -0.038
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.335,
+        -0.091
+      ],
+      "pred": [
+        0.407,
+        -0.416
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.108,
+        -0.009
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.01 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.537,
+        -0.262
+      ],
+      "pred": [
+        0.407,
+        -0.208
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.005,
+        0.008
+      ],
+      "pred": [
+        0.107,
+        -0.038
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.205,
+        0.177
+      ],
+      "pred": [
+        0.407,
+        -0.159
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.006,
+        0.272
+      ],
+      "pred": [
+        0.107,
+        -0.038
+      ],
+      "cls": "ROTATIONAL_MANEUVER",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.079,
+        -0.008
+      ],
+      "pred": [
+        0.16,
+        -0.049
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.41,
+        -0.504
+      ],
+      "pred": [
+        0.114,
+        -0.49
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.49 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.247,
+        -0.053
+      ],
+      "pred": [
+        0.114,
+        0.038
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, 0.04 rad/s) for safety margin.\n</thought>\n<action>\n[0"
+    },
+    {
+      "gt": [
+        0.116,
+        -0.03
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.028,
+        -0.065
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.001,
+        -0.01
+      ],
+      "pred": [
+        0.107,
+        -0.009
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.01 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.161,
+        0.375
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.171,
+        0.04
+      ],
+      "pred": [
+        0.16,
+        0.0
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.274,
+        0.004
+      ],
+      "pred": [
+        0.314,
+        -0.048
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.121,
+        0.052
+      ],
+      "pred": [
+        0.114,
+        -0.038
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.366,
+        -0.12
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.341,
+        -0.069
+      ],
+      "pred": [
+        0.407,
+        -0.156
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.001,
+        0.005
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.141,
+        0.077
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.212,
+        0.025
+      ],
+      "pred": [
+        0.307,
+        -0.049
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.345,
+        -0.084
+      ],
+      "pred": [
+        0.407,
+        -0.109
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.12,
+        0.121
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.363,
+        -0.363
+      ],
+      "pred": [
+        0.407,
+        -0.415
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.372,
+        -0.159
+      ],
+      "pred": [
+        0.407,
+        -0.159
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.189,
+        -0.134
+      ],
+      "pred": [
+        0.114,
+        -0.037
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.197,
+        -0.013
+      ],
+      "pred": [
+        0.33,
+        -0.048
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.454,
+        -0.258
+      ],
+      "pred": [
+        0.407,
+        -0.208
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.107,
+        -0.009
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.01 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.005,
+        -0.108
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.48,
+        -0.122
+      ],
+      "pred": [
+        0.407,
+        -0.414
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.385,
+        -0.135
+      ],
+      "pred": [
+        0.407,
+        -0.159
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.002,
+        -0.247
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Heading adjustment required. Static obstacles detected in peripheral field. Executing in-place rotational alignment at -0.25 rad/s to orient toward goal waypoint while maintain"
+    },
+    {
+      "gt": [
+        0.412,
+        -0.06
+      ],
+      "pred": [
+        0.114,
+        -0.038
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.002,
+        -0.286
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "ROTATIONAL_MANEUVER",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.189,
+        -0.131
+      ],
+      "pred": [
+        0.407,
+        -0.148
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.417,
+        -0.166
+      ],
+      "pred": [
+        0.407,
+        -0.158
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.707,
+        0.001
+      ],
+      "pred": [
+        0.45,
+        -0.158
+      ],
+      "cls": "FORWARD_CRUISING",
+      "raw": "<thought>\nBEV analysis: Occupancy grid and LiDAR indicate a clear navigation corridor ahead. 25 static obstacles (chairs/tables) are positioned outside the 1.2m orange safety envelope. Operator is at "
+    },
+    {
+      "gt": [
+        0.13,
+        0.232
+      ],
+      "pred": [
+        0.114,
+        -0.038
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    },
+    {
+      "gt": [
+        0.0,
+        0.0
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "IDLE_STATIONARY",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.005,
+        -0.401
+      ],
+      "pred": [
+        0.0,
+        0.0
+      ],
+      "cls": "ROTATIONAL_MANEUVER",
+      "raw": "<thought>\nBEV analysis: Zero motion command active or station hold. Surrounding 25 semantic obstacles and operator tracked. Holding stationary stance [0.0, 0.0].\n</thought>\n<action>\n[0.000, 0.000]\n</a"
+    },
+    {
+      "gt": [
+        0.086,
+        -0.051
+      ],
+      "pred": [
+        0.114,
+        -0.038
+      ],
+      "cls": "LOW_SPEED_NAVIGATION",
+      "raw": "<thought>\nBEV analysis: Approaching work cell boundaries or proximity to human operator/stations. Maintaining low-speed cautious motion (0.11 m/s, -0.04 rad/s) for safety margin.\n</thought>\n<action>\n["
+    }
+  ]
+}

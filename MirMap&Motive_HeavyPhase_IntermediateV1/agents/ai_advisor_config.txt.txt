@@ -1,0 +1,70 @@
+# ═══════════════════════════════════════════════════════════════
+# AI Advisor Configuration
+# ═══════════════════════════════════════════════════════════════
+
+[api]
+# OpenRouter API Key - Get from arena.ai/api
+# Leave blank until you have the key
+openrouter_api_key = PLACEHOLDER
+
+# Primary model for initial recommendations
+primary_model = deepseek/deepseek-r1-0528:free
+
+# Reviewer model for self-critique (Layer 2)
+reviewer_model = anthropic/claude-3.5-sonnet
+
+# Quick model for verification
+quick_model = google/gemini-2-flash-exp
+
+[git]
+# Local Git repository path
+repo_path = D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1
+
+# Maximum number of backups to keep
+backup_count = 10
+
+# Auto-commit after changes? (should be false - manual confirmation only)
+auto_commit = false
+
+# Prefix for commit messages
+commit_prefix = AI:
+
+[behavior]
+# Language for output: en (English) or fa (Farsi)
+# Code and reports: English
+# Terminal prompts: Farsi (for now, will be separated later)
+language = en
+
+# Enable 3-layer analysis (takes longer but more accurate)
+enable_three_layer = true
+
+# Timeout for API calls (seconds)
+api_timeout_seconds = 120
+
+[safety]
+# Never modify these files (orchestrator + SDK)
+protected_files = [
+    "launch_session.py",
+    "NatNetClient.py",
+    "DataDescriptions.py",
+    "MoCapData.py"
+]
+
+# Can create new files?
+allow_new_files = true
+
+# Can modify existing agents?
+allow_agent_modifications = true
+
+# Require double-confirm for launch_session.py changes? (not applicable - protected)
+double_confirm_core = true
+
+[logging]
+# Log all AI operations?
+log_ai_operations = true
+
+# Log API responses?
+log_api_responses = true
+
+# Log failed API calls?
+log_api_errors = true

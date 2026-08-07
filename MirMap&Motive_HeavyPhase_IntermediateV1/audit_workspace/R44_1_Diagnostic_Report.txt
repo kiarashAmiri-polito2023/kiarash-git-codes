@@ -1,0 +1,31 @@
+﻿=== R44.1 DIAGNOSTIC REPORT: 2026-09-22 17:33:40 ===
+
+--- [1] GPU TELEMETRY ---
+GPU Info: NVIDIA GeForce RTX 5090, 591.86, 36, 19.20 W, 575.00 W, 0 %, 32607 MiB, 18513 MiB
+
+--- [2] SYSTEM CRASH / SHUTDOWN FORENSICS (BUG-DA) ---
+  - Date: 09/22/2026 16:31:42 | Level: Critical | Message: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  - Date: 09/22/2026 16:24:52 | Level: Critical | Message: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  - Date: 09/14/2026 15:37:04 | Level: Critical | Message: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  - Date: 07/15/2026 18:02:43 | Level: Critical | Message: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  - Date: 07/10/2026 15:14:38 | Level: Critical | Message: The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  - EventID: 1001 | Date: 09/22/2026 16:31:51 | Description: The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000116 (0xffffd681d865f010, 0xfffff803aae1fff0, 0xffffffffc000009a, 0x0000000000000004). A dump was saved in: C:\Windows\Minidump\092226-12265-01.dmp. Report Id: 620d3bfe-0955-436f-9949-648312ac33b6.
+  - EventID: 6008 | Date: 09/22/2026 16:31:51 | Description: The previous system shutdown at 16:25:02 on ‎22/‎09/‎2026 was unexpected.
+  - EventID: 1001 | Date: 09/22/2026 16:25:01 | Description: The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000116 (0xffffd48c502d3010, 0xfffff8047790fff0, 0xffffffffc000009a, 0x0000000000000004). A dump was saved in: C:\Windows\Minidump\092226-12687-01.dmp. Report Id: 031ef5f1-6782-457a-a596-a3da3574863c.
+  - EventID: 6008 | Date: 09/22/2026 16:25:02 | Description: The previous system shutdown at 15:47:47 on ‎22/‎09/‎2026 was unexpected.
+  - EventID: 1074 | Date: 09/16/2026 01:06:48 | Description: The process C:\Windows\servicing\TrustedInstaller.exe (WSR95090A) has initiated the Riavvia of computer WSR95090A on behalf of user NT AUTHORITY\SYSTEM for the following reason: Sistema operativo: aggiornamento (pianificato)  Reason Code: 0x80020003  Shut-down Type: Riavvia  Comment: 
+  - EventID: 1074 | Date: 09/16/2026 01:06:05 | Description: The process C:\Windows\servicing\TrustedInstaller.exe (WSR95090A) has initiated the Riavvia of computer WSR95090A on behalf of user NT AUTHORITY\SYSTEM for the following reason: Sistema operativo: aggiornamento (pianificato)  Reason Code: 0x80020003  Shut-down Type: Riavvia  Comment: 
+
+--- [3] ASEAE RUN ARTIFACTS FORENSICS (BUG-DB) ---
+Total ASEAE JSON Artifacts: 
+
+--- [4] LM STUDIO LOCAL SERVER STATUS ---
+LM Studio Server: ACTIVE
+  - Loaded Model ID: qwen3.6-27b
+  - Loaded Model ID: deepseek-r1-distill-qwen-32b
+  - Loaded Model ID: gpt-oss-20b
+  - Loaded Model ID: qwen3-30b-a3b-thinking-2507
+  - Loaded Model ID: qwen3.5-4b
+  - Loaded Model ID: google/gemma-4-26b-a4b
+  - Loaded Model ID: qwen/qwen3-vl-30b
+  - Loaded Model ID: text-embedding-nomic-embed-text-v1.5

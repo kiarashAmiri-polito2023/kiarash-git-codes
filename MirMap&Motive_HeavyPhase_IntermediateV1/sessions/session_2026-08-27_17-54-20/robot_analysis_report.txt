@@ -1,0 +1,15 @@
+
+============================================================
+ ROBOT COMMAND & ACTION ANALYSIS
+============================================================
+
+--- ACTUAL MOVEMENT (from /odom) ---
+  Avg actual speed     : 0.111 m/s
+  Max actual speed     : 0.560 m/s
+
+--- SAFETY EVENTS ---
+  Total events         : 0
+  Sudden stops         : 0
+  Manual overrides     : 0
+
+============================================================

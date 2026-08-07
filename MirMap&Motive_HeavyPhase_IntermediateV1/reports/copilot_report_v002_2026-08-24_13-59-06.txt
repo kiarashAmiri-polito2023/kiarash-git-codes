@@ -1,0 +1,69 @@
+======================================================================
+ CO-PILOT REPORT — version 002
+ Generated (UTC): 2026-08-24T11:59:09.717342+00:00
+ Session reviewed: session_2026-08-24_13-57-33
+======================================================================
+
+--- 1. FLAGGED ISSUES (review these first) ---
+  No issues detected. Everything checked out clean.
+
+--- 2. DETAILED INFO (health checks) ---
+
+  ## SLAM Health ##
+    robot_states count: 611
+    obstacle_scans count: 1550
+    robot_states timestamp gaps: mean=0.100s, max=0.199s
+    Robot total displacement: 4.00m
+
+  ## Motive Health ##
+    rigid bodies recorded: ['kia MIR100 002', 'kia hat 002', 'kiarash_leftwrist', 'kiarash_RightWrist']
+      'kia MIR100 002': 1043 samples, 100.0% tracked
+      'kia hat 002': 1043 samples, 100.0% tracked
+      'kiarash_leftwrist': 1043 samples, 100.0% tracked
+      'kiarash_RightWrist': 1043 samples, 100.0% tracked
+
+  ## Fusion Quality ##
+    motive_samples_matched: 2982
+    motive_samples_skipped_time_gap: 147
+    motive_samples_skipped_untracked: 0
+    motive_samples_skipped_zero_placeholder: 0
+    slam_points_included: 711622
+    slam_points_near_zero_suspicious: 0
+    total_fused_observations: 714604
+
+  ## Calibration Sanity ##
+    Calibration timestamp: 2026-08-18T14:21:40.497894+00:00
+    Calibration mean_error_mm: 36.5752159355189
+    Calibration validation verdict: PASS
+    Calibration age: 5 days
+
+  ## Persistent Knowledge ##
+    Total known objects: 3
+    Total sessions processed: 2
+      [obj obj_0000] pos=(30.60, 20.24) | seen=2993x | class=moving | confidence=0.00
+      [obj obj_0001] pos=(30.07, 20.37) | seen=1999x | class=human_marker | confidence=0.10
+      [obj obj_0002] pos=(32.02, 19.17) | seen=1005x | class=human_marker | confidence=0.10
+
+--- 3. KNOWLEDGE ENGINE — CUMULATIVE BRAIN REPORT ---
+  (Everything the system has learned across ALL sessions)
+
+  Sessions Analyzed: 1
+  Objects Tracked: 3
+
+--- 4. THIS SESSION'S NEW DISCOVERIES ---
+  Knowledge engine did not run for this session.
+
+--- 5. SAFETY ANALYSIS (this session) ---
+  No safety events in this session. All clear.
+
+--- 6. UNRESOLVED QUESTIONS (need your input) ---
+  No pending questions.
+
+--- 7. RECOMMENDED NEXT STEPS ---
+  → Run more sessions (2/5 minimum for reliable classification)
+
+======================================================================
+ END OF REPORT
+ This report includes the FULL cumulative brain snapshot.
+ Paste it into your AI assistant for review.
+======================================================================

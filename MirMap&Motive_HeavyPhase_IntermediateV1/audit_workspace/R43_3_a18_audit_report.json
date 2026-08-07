@@ -1,0 +1,20 @@
+﻿{
+    "parse_ok":  false,
+    "timestamp":  "2026-09-22 14:57:40",
+    "goal":  "G30",
+    "model_id":  "qwen3.6-27b",
+    "bugco_detected":  false,
+    "findings":  [
+
+                 ],
+    "latency_sec":  54.25,
+    "session_folders_real":  7,
+    "dataset_samples_real":  688,
+    "input_file":  "agents/A18_deep_agent_verifier.py",
+    "finding_count":  0,
+    "max_tokens":  3500,
+    "input_md5":  "f44ddd719b1f62d695e16b464a15d48e",
+    "input_lines":  338,
+    "round":  "R43.3",
+    "prompt_version":  "audit_v1.0"
+}

@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-08-27T16:48:51.562649",
+  "session": "session_2026-08-26_20-28-17",
+  "modalities": {
+    "motive": true,
+    "slam": false,
+    "robot_cmd": false,
+    "robot_odom": false,
+    "video": false,
+    "cross_modal": false,
+    "entity": false,
+    "safety": false
+  },
+  "assessment": {
+    "score": 20,
+    "grade": "F",
+    "paper_ready": false,
+    "issues": [
+      "CRITICAL: No robot commands",
+      "CRITICAL: No video",
+      "MINOR: No SLAM data",
+      "WARNING: No safety events",
+      "MINOR: No cross-modal alignment"
+    ],
+    "strengths": [
+      "Motive data present"
+    ]
+  },
+  "videos": [],
+  "agents_count": 28,
+  "sessions_count": 6,
+  "sub_agents": {
+    "video_quality_agent.py": {
+      "status": "SKIPPED (No videos)"
+    },
+    "run_session_analysis.py": {
+      "status": "OK"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "R": {
+    "lmstudio": {
+      "ok": false,
+      "err": "query_lmstudio() missing 1 required positional argument: 'prompt'"
+    },
+    "gemini": {
+      "ok": false,
+      "err": "query_gemini() missing 2 required positional arguments: 'prompt' and 'api_key'"
+    },
+    "nemotron": {
+      "ok": false,
+      "err": "query_openrouter() missing 2 required positional arguments: 'prompt' and 'api_ke"
+    },
+    "e2e": {
+      "ok": false,
+      "err": "analyze_agent() missing 3 required positional arguments: 'content', 'g_key', and 'or_key'"
+    }
+  },
+  "verdict": "BUG-AR OPEN",
+  "ts": "2026-09-03T20:18:58.067698"
+}

@@ -1,0 +1,38 @@
+============================================================
+ LABEL REGISTRY SUMMARY
+ Schema : label_registry_v1
+ Updated: 2026-08-27T15:57:41.662893+00:00
+ Total  : 4 labels
+============================================================
+
+  [pending] kia hat 002  (human)
+    ID       : LBL-3A26364F3B6C
+    Position : [np.float64(31.164856524737807), np.float64(20.247059835471692)]
+    Motive   : ['kia hat 002']
+    SLAM     : []
+    Sources  : ['motive']
+    Obs      : 0
+
+  [pending] kiarash quality control  (unknown)
+    ID       : LBL-CD7C23FFB4D5
+    Position : [np.float64(32.07492776337492), np.float64(20.195021160720906)]
+    Motive   : ['kiarash quality control']
+    SLAM     : []
+    Sources  : ['motive']
+    Obs      : 0
+
+  [pending] kiarash_RightWrist  (human)
+    ID       : LBL-4FF84930029D
+    Position : [np.float64(31.511462864316265), np.float64(20.251671123362158)]
+    Motive   : ['kiarash_RightWrist']
+    SLAM     : []
+    Sources  : ['motive']
+    Obs      : 0
+
+  [pending] kiarash_leftwrist  (human)
+    ID       : LBL-5396227F0B1D
+    Position : [np.float64(30.759747716023536), np.float64(20.403320459585345)]
+    Motive   : ['kiarash_leftwrist']
+    SLAM     : []
+    Sources  : ['motive']
+    Obs      : 0

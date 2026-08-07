@@ -1,0 +1,228 @@
+﻿"""
+PROJECT SNAPSHOT v6.1 - Fixed PKL detection + motive sessions video scan
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli
+"""
+import json, pickle, os
+from datetime import datetime
+from pathlib import Path
+
+WORKSPACE = Path(__file__).resolve().parent.parent
+AGENTS_DIR = WORKSPACE / "agents"
+SESSIONS_DIR = WORKSPACE / "sessions"
+MOTIVE_SESSIONS = WORKSPACE / "motive sessions"
+DATA_DIR = WORKSPACE / "data"
+MEMORY_DIR = WORKSPACE / "memory"
+ARCHIVE_DIR = WORKSPACE / "archive"
+REPORT_MD = WORKSPACE / "MASTER_REPORT.md"
+REPORT_JSON = WORKSPACE / "MASTER_REPORT.json"
+
+BIG_TECH = {
+    "RT-2 (DeepMind)": {"mod":"RGB+Actions","freq":"1-3Hz","mocap":"No","kg":"No"},
+    "OpenVLA (Stanford)": {"mod":"RGB+Actions","freq":"5-10Hz","mocap":"No","kg":"No"},
+    "Octo (Berkeley)": {"mod":"RGB+Actions+Goal","freq":"10Hz","mocap":"No","kg":"No"},
+    "This Thesis (PoliTo)": {"mod":"RGB 2K+MoCap 120Hz+SLAM+Cmds+KG","freq":"10-20Hz","mocap":"Yes","kg":"Yes"},
+}
+
+class SnapshotV6:
+    def __init__(self):
+        self.ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+        self.prior = self._load_prior()
+
+    def _load_prior(self):
+        if REPORT_JSON.exists():
+            try: return json.load(open(REPORT_JSON, encoding="utf-8"))
+            except: pass
+        return None
+
+    def audit_agents(self):
+        active = {}
+        if AGENTS_DIR.exists():
+            for f in AGENTS_DIR.glob("*.py"):
+                try:
+                    lines = len(open(f, encoding="utf-8", errors="ignore").readlines())
+                    active[f.name] = {"lines": lines, "kb": round(f.stat().st_size/1024,2)}
+                except: pass
+        archived = len(list(ARCHIVE_DIR.glob("*.py"))) if ARCHIVE_DIR.exists() else 0
+        return {"active_count": len(active), "archived_count": archived, "active": active}
+
+    def audit_memory(self):
+        mem = {"json": {}, "pkl": {}, "total_entities": 0}
+        for d in [MEMORY_DIR, WORKSPACE/"knowledge", WORKSPACE/"persistent_knowledge"]:
+            if not d or not d.exists(): continue
+            for jf in d.glob("*.json"):
+                if "MASTER" in jf.name: continue
+                try:
+                    data = json.load(open(jf, encoding="utf-8", errors="ignore"))
+                    cnt = len(data) if isinstance(data, (list,dict)) else 0
+                    mem["json"][jf.name] = {"records": cnt, "kb": round(jf.stat().st_size/1024,2)}
+                    mem["total_entities"] += cnt
+                except: pass
+            for pf in d.glob("*.pkl"):
+                try:
+                    obj = pickle.load(open(pf, "rb"))
+                    cnt = len(obj) if isinstance(obj, (list,dict,set)) else "N/A"
+                    mem["pkl"][pf.name] = {"entries": cnt, "kb": round(pf.stat().st_size/1024,2)}
+                except Exception as e:
+                    mem["pkl"][pf.name] = {"warn": str(e)[:60]}
+        return mem
+
+    def audit_sessions(self):
+        sessions, actions = {}, {}
+        if not SESSIONS_DIR.exists(): return sessions, actions
+
+        for sd in sorted(SESSIONS_DIR.iterdir()):
+            if not sd.is_dir() or not sd.name.startswith("session_"): continue
+            name = sd.name
+
+            # FIX v6.1: Scan .pkl files (not just .csv)
+            has_mocap   = (sd / "motive_data.pkl").exists()
+            has_slam    = (sd / "slam_data.pkl").exists()
+            has_cmd     = (sd / "mir_command_data.pkl").exists()
+            has_fusion  = (sd / "fused_data.pkl").exists() and (sd / "fused_data.pkl").stat().st_size > 1000
+
+            # FIX v6.1: Check video/ subfolder AND motive sessions/ folder
+            vid_sub = list((sd / "video").glob("*")) if (sd / "video").exists() else []
+            vid_motive = list(MOTIVE_SESSIONS.glob(f"{name}*")) if MOTIVE_SESSIONS.exists() else []
+            has_video = len(vid_sub) > 0 or len(vid_motive) > 0
+            vid_count = len(vid_sub) + len(vid_motive)
+
+            score = int(sum([has_mocap, has_slam, has_cmd, has_video, has_fusion]) / 5 * 100)
+
+            # Action density from mir_command_data.pkl
+            total_cmd, nonzero = 0, 0
+            cmd_file = sd / "mir_command_data.pkl"
+            if cmd_file.exists():
+                try:
+                    cmd_data = pickle.load(open(cmd_file, "rb"))
+                    if isinstance(cmd_data, list):
+                        total_cmd = len(cmd_data)
+                        for entry in cmd_data:
+                            if isinstance(entry, dict):
+                                lx = abs(entry.get("linear_x", 0) or 0)
+                                az = abs(entry.get("angular_z", 0) or 0)
+                                if lx > 0.001 or az > 0.001: nonzero += 1
+                            elif isinstance(entry, (list, tuple)) and len(entry) >= 2:
+                                if abs(entry[0]) > 0.001 or abs(entry[1]) > 0.001: nonzero += 1
+                    elif isinstance(cmd_data, dict):
+                        for k, v in cmd_data.items():
+                            total_cmd += 1
+                            if isinstance(v, (list,tuple)) and len(v) >= 2:
+                                if abs(v[0]) > 0.001 or abs(v[1]) > 0.001: nonzero += 1
+                except: pass
+            density = round(nonzero / total_cmd * 100, 1) if total_cmd > 0 else 0.0
+
+            sessions[name] = {
+                "mocap": has_mocap, "slam": has_slam, "cmd": has_cmd,
+                "video": has_video, "fusion": has_fusion,
+                "vid_count": vid_count, "score": score
+            }
+            actions[name] = {"total": total_cmd, "nonzero": nonzero, "density": density}
+
+        return sessions, actions
+
+    def compute_changes(self, agents, sessions, mem):
+        if not self.prior: return {"status": "BASELINE_SET", "deltas": ["First v6.1 run - baseline established"]}
+        deltas = []
+        pa = self.prior.get("agent_registry", {}).get("active", {})
+        ps = self.prior.get("sessions_analysis", {})
+        for a, m in agents.get("active", {}).items():
+            if a not in pa: deltas.append(f"NEW AGENT: {a} ({m.get('lines',0)} lines)")
+            elif pa[a].get("lines") != m.get("lines"):
+                d = m.get("lines",0) - pa[a].get("lines",0)
+                deltas.append(f"MODIFIED: {a} ({d:+d} lines)")
+        for a in pa:
+            if a not in agents.get("active",{}): deltas.append(f"REMOVED: {a}")
+        for s in sessions:
+            if s not in ps: deltas.append(f"NEW SESSION: {s} (score {sessions[s]['score']}%)")
+        ce = mem.get("total_entities", 0)
+        pe = self.prior.get("memory_health", {}).get("total_entities", 0)
+        if ce != pe: deltas.append(f"MEMORY: entities {pe} -> {ce}")
+        return {"status": "CHANGES_DETECTED" if deltas else "NO_CHANGES", "deltas": deltas}
+
+    def auto_tick_roadmap(self, sessions, actions):
+        has_vla = any(a["total"] > 50 for a in actions.values())
+        has_narrator = (AGENTS_DIR / "video_narrator.py").exists()
+        has_bev = (AGENTS_DIR / "slam_to_bev.py").exists()
+        has_builder = (AGENTS_DIR / "vla_dataset_builder.py").exists()
+        full_sessions = sum(1 for s in sessions.values() if s["score"] >= 80)
+        return [
+            {"phase": "Phase 1: Foundation & Bug Fixes", "desc": "Roslibpy fix, MirCommandLogger wiring, agent cleanup", "done": True},
+            {"phase": "Phase 2: Full VLA Session Recording", "desc": f"Motive+SLAM+Cmds+Video ({full_sessions} full sessions)", "done": has_vla},
+            {"phase": "Phase 3: Video Narrator + SLAM-BEV", "desc": "Frame-level timeline + top-down projection", "done": has_narrator and has_bev},
+            {"phase": "Phase 4: VLA Dataset Builder + CVAT", "desc": "QwenVLA parquet format + annotation", "done": has_builder},
+            {"phase": "Phase 5: QwenVLA Fine-Tuning + Paper", "desc": "Model training + thesis manuscript", "done": False},
+        ]
+
+    def gen_prompt(self, readiness, roadmap, changes):
+        nxt = next((r for r in roadmap if not r["done"]), roadmap[-1])
+        d = "\n".join(f"  - {x}" for x in changes.get("deltas", []))
+        return (
+            f"# AI HANDOFF PROMPT (Auto-Generated)\n"
+            f"Operator: Kiarash Amiri (s322803@studenti.polito.it)\n"
+            f"Supervisor: Prof. Dario Antonelli (Politecnico di Torino)\n"
+            f"Paper Readiness: {readiness['score']}/100 ({readiness['grade']})\n"
+            f"Recent Changes:\n{d}\n"
+            f"Next Target: {nxt['phase']} - {nxt['desc']}\n"
+            f"Immediate Action: Build video_narrator.py for frame-level analysis."
+        )
+
+    def run(self):
+        print(f"[{self.ts}] Snapshot v6.1 running...")
+        agents = self.audit_agents()
+        mem = self.audit_memory()
+        sessions, actions = self.audit_sessions()
+        changes = self.compute_changes(agents, sessions, mem)
+        roadmap = self.auto_tick_roadmap(sessions, actions)
+
+        n = len(sessions)
+        if n > 0:
+            avg = sum(s["score"] for s in sessions.values()) / n
+            sc_mod = sum(s["score"] for s in sessions.values()) / n / 100 * 30
+            sc_act = sum(1 for a in actions.values() if a["total"]>0) / n * 25
+            sc_moc = sum(1 for s in sessions.values() if s["mocap"]) / n * 20
+            sc_fus = sum(1 for s in sessions.values() if s["fusion"]) / n * 15
+            sc_vid = sum(1 for s in sessions.values() if s["video"]) / n * 10
+            score = round(sc_mod + sc_act + sc_moc + sc_fus + sc_vid, 1)
+        else:
+            score = 0
+        grade = "A" if score>=85 else "B" if score>=70 else "C" if score>=50 else "D" if score>=35 else "F"
+        readiness = {"score": score, "grade": grade}
+        prompt = self.gen_prompt(readiness, roadmap, changes)
+
+        state = {
+            "version": "6.1", "generated": self.ts,
+            "agent_registry": agents, "memory_health": mem,
+            "sessions_analysis": sessions, "action_density": actions,
+            "change_tracker": changes, "roadmap": roadmap,
+            "paper_readiness": readiness, "ai_prompt": prompt
+        }
+        with open(REPORT_JSON, "w", encoding="utf-8") as f: json.dump(state, f, indent=2)
+
+        # Markdown
+        md = [f"# MASTER REPORT v6.1", f"**Generated:** {self.ts}\n"]
+        md.append(f"## 1. Paper Readiness: {score}/100 ({grade})\n")
+        md.append("## 2. Change Tracker")
+        for d in changes.get("deltas",[]): md.append(f"- {d}")
+        md.append("\n## 3. Session Audit & Action Density")
+        md.append("| Session | MoCap | SLAM | Cmds | Video | Fusion | Actions | Density | Score |")
+        md.append("|---|---|---|---|---|---|---|---|---|")
+        for sn, sd in sessions.items():
+            a = actions.get(sn, {})
+            md.append(f"| {sn} | {'Y' if sd['mocap'] else 'N'} | {'Y' if sd['slam'] else 'N'} | {'Y' if sd['cmd'] else 'N'} | {'Y' if sd['video'] else 'N'} | {'Y' if sd['fusion'] else 'N'} | {a.get('total',0)} | {a.get('density',0)}% | **{sd['score']}%** |")
+        md.append("\n## 4. Big Tech Comparison")
+        md.append("| System | Modalities | Freq | MoCap GT | KG |")
+        md.append("|---|---|---|---|---|")
+        for name, s in BIG_TECH.items():
+            md.append(f"| {name} | {s['mod']} | {s['freq']} | {s['mocap']} | {s['kg']} |")
+        md.append("\n## 5. Roadmap (Auto-Ticked)")
+        for r in roadmap: md.append(f"- [{'x' if r['done'] else ' '}] **{r['phase']}**: {r['desc']}")
+        md.append(f"\n## 6. AI Handoff Prompt\n```\n{prompt}\n```")
+        with open(REPORT_MD, "w", encoding="utf-8") as f: f.write("\n".join(md))
+
+        print(f"[OK] v6.1 done | Readiness: {score}/100 ({grade}) | Sessions: {n}")
+        for sn, sd in sessions.items():
+            a = actions.get(sn,{})
+            print(f"  {sn}: score={sd['score']}% | cmds={a.get('total',0)} | density={a.get('density',0)}%")
+
+if __name__ == "__main__":
+    SnapshotV6().run()

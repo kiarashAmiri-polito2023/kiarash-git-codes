@@ -1,0 +1,14 @@
+============================================================
+ MIR ROBOT COMMAND LOG
+============================================================
+Start: 2026-08-27T15:54:20.292671+00:00
+End  : 2026-08-27T15:55:45.600261+00:00
+
+STATS:
+  cmd_vel_count: 0
+  odom_count: 3437
+  joystick_count: 0
+  safety_stops_detected: 0
+  manual_overrides_detected: 0
+  rest_polls_success: 0
+  rest_polls_failed: 42

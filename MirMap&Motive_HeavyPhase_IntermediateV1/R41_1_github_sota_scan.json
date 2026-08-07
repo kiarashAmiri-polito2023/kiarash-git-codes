@@ -1,0 +1,416 @@
+{
+  "repos": [
+    {
+      "repo": "google-deepmind/rt-x",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "octo-models/octo",
+      "ok": true,
+      "stars": 1760,
+      "lang": "Python",
+      "topics": [],
+      "desc": "Octo is a transformer-based robot policy trained on a diverse mix of 800k robot ",
+      "updated": "2026-09-03",
+      "root_files": 84,
+      "dims": [
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_training",
+        "has_pretrained",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 11
+    },
+    {
+      "repo": "OpenVLA/openvla",
+      "ok": true,
+      "stars": 6942,
+      "lang": "Python",
+      "topics": [],
+      "desc": "OpenVLA: An open-source vision-language-action model for robotic manipulation.",
+      "updated": "2026-09-03",
+      "root_files": 138,
+      "dims": [
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_training",
+        "has_vla",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 8
+    },
+    {
+      "repo": "Physical-Intelligence/pi0",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "lerobot/lerobot",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "ros-planning/navigation2",
+      "ok": true,
+      "stars": 4657,
+      "lang": "C++",
+      "topics": [
+        "navigation",
+        "robotics",
+        "ros2"
+      ],
+      "desc": "ROS 2 Navigation Framework and System",
+      "updated": "2026-09-03",
+      "root_files": 2178,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_navigation",
+        "has_config_yaml"
+      ],
+      "dim_count": 9
+    },
+    {
+      "repo": "cartographer-project/cartographer",
+      "ok": true,
+      "stars": 7953,
+      "lang": "C++",
+      "topics": [
+        "localization",
+        "mapping",
+        "robotics",
+        "self-driving",
+        "slam"
+      ],
+      "desc": "Cartographer is a system that provides real-time simultaneous localization and m",
+      "updated": "2026-09-02",
+      "root_files": 694,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_docs",
+        "has_config",
+        "has_license",
+        "has_readme",
+        "has_training",
+        "has_config_yaml"
+      ],
+      "dim_count": 8
+    },
+    {
+      "repo": "facebookresearch/habitat-lab",
+      "ok": true,
+      "stars": 3118,
+      "lang": "Python",
+      "topics": [
+        "ai",
+        "computer-vision",
+        "deep-learning",
+        "deep-reinforcement-learning",
+        "python"
+      ],
+      "desc": "A modular high-level library to train embodied AI agents across a variety of tas",
+      "updated": "2026-09-03",
+      "root_files": 889,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_training",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 11
+    },
+    {
+      "repo": "NVIDIA/IsaacGymEnvs",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "ARISE-Initiative/robosuite",
+      "ok": true,
+      "stars": 2590,
+      "lang": "Python",
+      "topics": [
+        "physics-simulation",
+        "reinforcement-learning",
+        "robot-learning",
+        "robot-manipulation",
+        "robotics"
+      ],
+      "desc": "robosuite: A Modular Simulation Framework and Benchmark for Robot Learning",
+      "updated": "2026-09-03",
+      "root_files": 1537,
+      "dims": [
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 9
+    },
+    {
+      "repo": "google-deepmind/mujoco",
+      "ok": true,
+      "stars": 14909,
+      "lang": "C++",
+      "topics": [
+        "mujoco",
+        "physics",
+        "robotics"
+      ],
+      "desc": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+      "updated": "2026-09-03",
+      "root_files": 2439,
+      "dims": [
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_safety",
+        "has_config_yaml"
+      ],
+      "dim_count": 9
+    },
+    {
+      "repo": "ros2/ros2",
+      "ok": true,
+      "stars": 5991,
+      "lang": null,
+      "topics": [],
+      "desc": "The Robot Operating System, is a meta operating system for robots.",
+      "updated": "2026-09-03",
+      "root_files": 18,
+      "dims": [
+        "has_ci",
+        "has_config",
+        "has_readme",
+        "has_config_yaml"
+      ],
+      "dim_count": 4
+    },
+    {
+      "repo": "SteveMacenski/slam_toolbox",
+      "ok": true,
+      "stars": 2612,
+      "lang": "C++",
+      "topics": [],
+      "desc": "Slam Toolbox for lifelong mapping and localization in potentially massive maps w",
+      "updated": "2026-09-02",
+      "root_files": 142,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_license",
+        "has_readme",
+        "has_ros",
+        "has_navigation",
+        "has_config_yaml"
+      ],
+      "dim_count": 10
+    },
+    {
+      "repo": "MIT-SPARK/Kimera-VIO",
+      "ok": true,
+      "stars": 1912,
+      "lang": "C++",
+      "topics": [
+        "cpu",
+        "euroc-dataset",
+        "localization",
+        "mapping",
+        "real-time"
+      ],
+      "desc": "Visual Inertial Odometry with SLAM capabilities and 3D Mesh generation.",
+      "updated": "2026-09-02",
+      "root_files": 892,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_readme",
+        "has_training",
+        "has_safety",
+        "has_navigation",
+        "has_config_yaml"
+      ],
+      "dim_count": 11
+    },
+    {
+      "repo": "ethz-asl/rovioli",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "facebookresearch/detr",
+      "ok": true,
+      "stars": 15354,
+      "lang": "Python",
+      "topics": [],
+      "desc": "End-to-End Object Detection with Transformers",
+      "updated": "2026-09-01",
+      "root_files": 51,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_models",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 9
+    },
+    {
+      "repo": "ultralytics/ultralytics",
+      "ok": true,
+      "stars": 61250,
+      "lang": "Python",
+      "topics": [
+        "computer-vision",
+        "deep-learning",
+        "image-classification",
+        "instance-segmentation",
+        "machine-learning"
+      ],
+      "desc": "Ultralytics YOLO26, YOLO11, YOLOv8 \u2014 object detection, instance segmentation, se",
+      "updated": "2026-09-03",
+      "root_files": 1170,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_safety",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 11
+    },
+    {
+      "repo": "nvidia-isaac-ros/isaac_ros_visual_slam",
+      "ok": true,
+      "stars": 1454,
+      "lang": "C++",
+      "topics": [
+        "gpu",
+        "jetson",
+        "localization",
+        "perception",
+        "robotics"
+      ],
+      "desc": "Visual SLAM/odometry package based on NVIDIA-accelerated cuVSLAM",
+      "updated": "2026-09-03",
+      "root_files": 99,
+      "dims": [
+        "has_config",
+        "has_license",
+        "has_readme",
+        "has_navigation",
+        "has_config_yaml"
+      ],
+      "dim_count": 5
+    },
+    {
+      "repo": "robotics-united/robot-safety",
+      "ok": false,
+      "err": "HTTP Error 404: Not Found"
+    },
+    {
+      "repo": "huggingface/transformers",
+      "ok": true,
+      "stars": 164745,
+      "lang": "Python",
+      "topics": [
+        "audio",
+        "deep-learning",
+        "deepseek",
+        "gemma",
+        "glm"
+      ],
+      "desc": "\ud83e\udd17 Transformers: the model-definition framework for state-of-the-art machine lear",
+      "updated": "2026-09-03",
+      "root_files": 7736,
+      "dims": [
+        "has_docker",
+        "has_ci",
+        "has_tests",
+        "has_docs",
+        "has_config",
+        "has_requirements",
+        "has_license",
+        "has_readme",
+        "has_training",
+        "has_eval",
+        "has_safety",
+        "has_pretrained",
+        "has_config_yaml",
+        "has_python"
+      ],
+      "dim_count": 14
+    }
+  ],
+  "dims": [
+    "has_ci",
+    "has_config",
+    "has_config_yaml",
+    "has_docker",
+    "has_docs",
+    "has_eval",
+    "has_license",
+    "has_models",
+    "has_navigation",
+    "has_pretrained",
+    "has_python",
+    "has_readme",
+    "has_requirements",
+    "has_ros",
+    "has_safety",
+    "has_tests",
+    "has_training",
+    "has_vla"
+  ],
+  "ts": "2026-09-03T20:31:57.485066"
+}

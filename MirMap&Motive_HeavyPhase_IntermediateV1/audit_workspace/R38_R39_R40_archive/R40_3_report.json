@@ -1,0 +1,21 @@
+{
+  "pre": "0f903341ae7cd670d88dc45a2ad789e5",
+  "post": "f44ddd719b1f62d695e16b464a15d48e",
+  "compile": "PASS",
+  "import": "PASS",
+  "changes": [
+    "BU:+retry_func",
+    "BU:wrap_gemini+openrouter"
+  ],
+  "funcs": [
+    "Counter",
+    "analyze_agent",
+    "extract_json",
+    "main",
+    "query_gemini",
+    "query_lmstudio",
+    "query_openrouter",
+    "warmup_lmstudio",
+    "with_retry"
+  ]
+}

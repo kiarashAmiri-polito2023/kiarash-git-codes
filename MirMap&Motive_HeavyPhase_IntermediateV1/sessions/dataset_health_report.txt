@@ -1,0 +1,70 @@
+======================================================================
+ DATASET HEALTH & SESSION WORTHINESS REPORT
+ Generated: 2026-08-26T18:33:05.870396+00:00
+======================================================================
+
+Total Sessions Analyzed: 6
+Paper-Ready Sessions: 0 / 6
+Average Worthiness Score: 44.3 / 100
+Target for ICRA/IROS: 10 sessions with score >= 65
+Gap: 10 more quality sessions needed
+
+----------------------------------------------------------------------
+ SESSION BREAKDOWN & EVALUATION
+----------------------------------------------------------------------
+
+[C] session_2026-08-24_13-16-03 -> Score: 50/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [############........] 15/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [....................] 0/10
+    novelty     : [####################] 10/10
+    [!] No robot command data (/cmd_vel, /odom empty)
+
+[C] session_2026-08-24_13-57-33 -> Score: 50/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [############........] 15/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [....................] 0/10
+    novelty     : [####################] 10/10
+    [!] No robot command data (/cmd_vel, /odom empty)
+
+[D] session_2026-08-25_17-32-01 -> Score: 49/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [########............] 10/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [####################] 10/10
+    novelty     : [########............] 4/10
+    [!] No robot command data (/cmd_vel, /odom empty)
+
+[D] session_2026-08-25_17-43-02 -> Score: 49/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [########............] 10/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [####################] 10/10
+    novelty     : [########............] 4/10
+    [!] No robot command data (/cmd_vel, /odom empty)
+
+[D] session_2026-08-25_20-14-09 -> Score: 34/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [####................] 5/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [....................] 0/10
+    novelty     : [########............] 4/10
+    [!] Fusion exists but SLAM missing (LIDAR disconnected)
+    [!] No robot command data (/cmd_vel, /odom empty)
+
+[D] session_2026-08-26_20-28-17 -> Score: 34/100 (UNQUALIFIED (RE-RECORD NEEDED))
+    modality    : [####................] 5/25
+    quality     : [##########..........] 10/20
+    behavior    : [....................] 0/20
+    safety      : [####################] 15/15
+    cross_modal : [....................] 0/10
+    novelty     : [########............] 4/10
+    [!] Fusion exists but SLAM missing (LIDAR disconnected)
+    [!] No robot command data (/cmd_vel, /odom empty)

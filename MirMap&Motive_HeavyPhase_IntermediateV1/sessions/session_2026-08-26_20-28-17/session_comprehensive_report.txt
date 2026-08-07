@@ -1,0 +1,178 @@
+================================================================================
+ SESSION COMPREHENSIVE REPORT
+================================================================================
+Session: session_2026-08-26_20-28-17
+Generated at (UTC): 2026-08-27T14:48:49.203258+00:00
+================================================================================
+
+--- SPATIAL_TEMPORAL_FUSION OUTPUT ---
+Spatial-Temporal Fusion Summary (v2)
+========================================
+Fused at (UTC) : 2026-08-26T18:29:38.159166+00:00
+Common frame   : mir_meters
+Safety critical: <0.1m
+Safety warning : <0.3m
+
+WARNINGS:
+  - slam_data.pkl not found.
+
+Stats:
+
+
+--- KNOWLEDGE_ENGINE OUTPUT ---
+============================================================
+ KNOWLEDGE ENGINE - Cumulative Brain Report
+ Sessions: 6
+ Updated : 2026-08-26T18:30:16.839492+00:00
+============================================================
+
+--- OBJECT KNOWLEDGE ---
+
+  [kia hat 002]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 4
+    Obs      : 3707
+    Position : (30.50, 19.98) m
+    Speed    : 0.279 m/s
+    Height   : 1.79m
+    Min dist : 0.4633759802037769
+    Crit time: 0.0s
+    Encounters: F=876 S=1520 R=1311
+
+  [kiarash_leftwrist]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 3
+    Obs      : 2897
+    Position : (30.06, 20.39) m
+    Speed    : 0.114 m/s
+    Height   : 0.99m
+    Min dist : 0.007549789392044617
+    Crit time: 3.7s
+    Encounters: F=717 S=1330 R=850
+
+  [kiarash_RightWrist]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 4
+    Obs      : 3679
+    Position : (32.16, 18.88) m
+    Speed    : 0.157 m/s
+    Height   : 0.96m
+    Min dist : 0.24341124704332842
+    Crit time: 2.2s
+    Encounters: F=1284 S=1630 R=765
+
+--- SAFETY ---
+  Critical total : 96
+  Warning total  : 157
+  Closest ever   : 0.0cm
+
+--- LIDAR LEARNING ---
+  Labeled patterns : 863
+  Label transfers  : 863
+
+--- SPATIAL KNOWLEDGE ---
+  Human zones  : 8
+  Risk zones   : 0
+
+--- ANOMALIES (12) ---
+  [high] 'kia hat 002' sudden movement (jerk=32.6)
+  [high] 'kiarash_leftwrist' sudden movement (jerk=27.7)
+  [high] 'kiarash_RightWrist' sudden movement (jerk=23.7)
+  [high] 'kia hat 002' sudden movement (jerk=35.5)
+  [high] 'kiarash_RightWrist' sudden movement (jerk=21.5)
+
+--- INSIGHTS (last 15 of 31) ---
+  - [session_2026-08-24_13-57-33] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=25.4)
+  - [session_2026-08-24_13-57-33] ANOMALY [critical]: 'kiarash_leftwrist' INSIDE robot footprint
+  - [session_2026-08-24_13-57-33] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=15.3)
+  - [session_2026-08-24_13-57-33] ANOMALY [critical]: 'kiarash_RightWrist' INSIDE robot footprint
+  - [session_2026-08-25_17-32-01] RECLASSIFIED 'kiarash_leftwrist': 'human_marker' -> 'confirmed_human'
+  - [session_2026-08-25_17-32-01] SAFETY: 1 WARNING events
+  - [session_2026-08-25_17-32-01] LIDAR: 116 label transfers
+  - [session_2026-08-25_17-32-01] LIDAR: 29421 unlabeled clusters
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=32.6)
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_leftwrist' sudden movement (jerk=27.7)
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=23.7)
+  - [session_2026-08-25_17-43-02] LIDAR: 203 label transfers
+  - [session_2026-08-25_17-43-02] LIDAR: 29722 unlabeled clusters
+  - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=35.5)
+  - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=21.5)
+
+--- QUESTIONS (0) ---
+
+============================================================
+
+SAFE MODE: Merge candidate pending review. See pending_merge_candidate_summary.txt
+
+
+
+
+============================================================
+ QUALITY GATE FLAGS
+============================================================
+Generated at (UTC): 2026-08-27T14:48:51.459498+00:00
+Learning Progress Score: 0.0/100.0
+  (Higher = this session contributed more to learning)
+
+Flags raised: 1
+
+  1. [WARNING] No Motive objects detected in this session. This may indicate Motive was not running, or all objects were filtered out.
+     Suggested action: Verify Motive was recording during this session. Check if all objects were untracked or zero-placeholder.
+
+
+
+======================================================================
+ MERGE REVIEW PACKAGE
+======================================================================
+This section is designed to be copied and sent to AI for analysis.
+The AI will advise whether to merge this session into permanent memory.
+
+--- SESSION METADATA ---
+Session name      : session_2026-08-26_20-28-17
+Analysis time (UTC): 2026-08-27T14:48:51.459498+00:00
+Root path        : D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1
+
+--- LEARNING PROGRESS SCORE ---
+Score: 0.0/100.0
+Interpretation:
+  80-100: Excellent — this session added significant new knowledge
+  50-79 : Good — some new knowledge, but mostly confirmation
+  20-49 : Fair — minimal new knowledge, mostly redundant
+   0-19 : Poor — no new knowledge, may be duplicate or low-quality
+
+--- IMPACT PREVIEW (BEFORE / AFTER MERGE) ---
+Total sessions       :    6  ->  6
+Total known objects  :    3  ->  3
+Total safety events  :  253  ->  253
+Total anomalies      :   12  ->  12
+Total critical events:   96  ->  96
+Total warning events :  157  ->  157
+
+--- WHAT MERGE WOULD ADD ---
++ 0 new object(s)
++ 0 safety event(s)
++ 0 critical event(s)
++ 0 warning event(s)
++ 0 anomaly(ies)
++ 0 insight(s)
+
+--- QUALITY GATE FLAGS ---
+Flags raised: 1
+1. [WARNING] No Motive objects detected in this session. This may indicate Motive was not running, or all objects were filtered out.
+   Suggested action: Verify Motive was recording during this session. Check if all objects were untracked or zero-placeholder.
+
+--- AI ADVISOR PROMPT ---
+Based on the above information, should this session be merged into permanent memory?
+Answer with a clear 'yes' or 'no', followed by your reasoning.
+If you recommend 'no', suggest what should be fixed before merging.
+If you see any red flags in the quality gate section, highlight them.
+
+--- NEXT STEPS ---
+1. Review this package carefully
+2. (Optional) Send the entire MERGE REVIEW PACKAGE section to AI for analysis
+3. Run: python agents/apply_merge.py "<session_path>"
+4. Answer yes/no when prompted
+======================================================================

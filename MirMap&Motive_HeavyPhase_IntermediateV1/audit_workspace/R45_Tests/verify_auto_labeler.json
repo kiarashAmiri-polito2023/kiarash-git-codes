@@ -1,0 +1,1 @@
+﻿{"agent":"auto_labeler","fixes_verified":{"try_finally":false,"gdino_real":true,"xml_correct":true,"hitl_sidecar":false},"remaining_issues":["Code snippet is truncated and lacks video capture/release logic","Missing try/finally block for cap.release()","No HITL JSON sidecar export implementation found","XML generation function cuts off mid-line"],"verdict":"FAIL"}

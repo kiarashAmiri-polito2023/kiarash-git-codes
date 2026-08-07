@@ -1,0 +1,12 @@
+﻿{
+    "md5":  "f44ddd719b1f62d695e16b464a15d48e",
+    "latency_sec":  59.75,
+    "round":  "R43.4",
+    "summary_fa":  null,
+    "finish_reason":  "length",
+    "findings":  null,
+    "agent":  "A18_deep_agent_verifier.py",
+    "timestamp":  "2026-09-22 15:02:32",
+    "findings_count":  0,
+    "verdict":  null
+}

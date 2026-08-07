@@ -1,0 +1,32 @@
+﻿{
+  "test": "realtime_performance",
+  "agent": "scene_object_detector",
+  "verdict": "FAIL",
+  "confidence": 0.95,
+  "estimated_hz": "<8",
+  "bottlenecks": [
+    "synchronous_blocking_inference",
+    "disk_io_cache_operations",
+    "full_frame_md5_hashing",
+    "json_serialization_deserialization"
+  ],
+  "gpu_utilized": true,
+  "issues": [
+    {
+      "severity": "critical",
+      "description": "Synchronous model.predict() call blocks the main execution thread, directly competing with the 100ms budget required for 10Hz operation."
+    },
+    {
+      "severity": "critical",
+      "description": "Disk I/O for cache validation and JSON read/write introduces unpredictable latency spikes that violate hard real-time constraints on mobile robot compute."
+    },
+    {
+      "severity": "warning",
+      "description": "Computing MD5 hash on full frame bytes via frame_bgr.tobytes() adds significant CPU overhead per cycle, increasing inference latency."
+    },
+    {
+      "severity": "warning",
+      "description": "No batch processing or asynchronous inference pipeline implemented; GPU throughput is underutilized due to single-frame synchronous execution."
+    }
+  ]
+}

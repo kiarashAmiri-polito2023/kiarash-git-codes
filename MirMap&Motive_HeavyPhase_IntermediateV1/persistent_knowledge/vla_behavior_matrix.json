@@ -1,0 +1,233 @@
+{
+  "session_2026-08-24_13-16-03": {
+    "has_video": false,
+    "scenarios_performed": [
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-24_13-57-33": {
+    "has_video": false,
+    "scenarios_performed": [
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-25_17-32-01": {
+    "has_video": false,
+    "scenarios_performed": [
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-25_17-43-02": {
+    "has_video": true,
+    "scenarios_performed": [
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-25_20-14-09": {
+    "has_video": true,
+    "scenarios_performed": [
+      "HUMAN_APPROACH",
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-26_20-28-17": {
+    "has_video": true,
+    "scenarios_performed": [
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_2026-08-27_17-54-20": {
+    "has_video": true,
+    "scenarios_performed": [
+      "IDLE_STATIONARY",
+      "SAFETY_ZONE_BREACH"
+    ],
+    "scenarios_not_performed": [
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  },
+  "session_worthiness.json": {
+    "has_video": false,
+    "scenarios_performed": [],
+    "scenarios_not_performed": [
+      "IDLE_STATIONARY",
+      "FORWARD_CRUISING",
+      "ROTATIONAL_MANEUVER",
+      "LOW_SPEED_NAVIGATION",
+      "REVERSE_MOTION",
+      "HUMAN_APPROACH",
+      "HUMAN_RETREAT",
+      "HUMAN_BLOCKING",
+      "CLOSE_PASS_LEFT",
+      "CLOSE_PASS_RIGHT",
+      "COLLABORATIVE_FOLLOWING",
+      "SAFETY_ZONE_BREACH",
+      "SUDDEN_BRAKE",
+      "EMERGENCY_STOP",
+      "OBSTACLE_STATIC_AVOID",
+      "OBSTACLE_DYNAMIC_AVOID",
+      "GESTURE_STOP",
+      "POINTING_TARGET",
+      "HANDOVER_REQUEST",
+      "PAYLOAD_PICKUP",
+      "PAYLOAD_DROPOFF",
+      "MULTI_HUMAN_TRAFFIC"
+    ]
+  }
+}

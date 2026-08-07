@@ -1,0 +1,25 @@
+{
+  "session": "session_2026-08-27_17-54-20",
+  "status": "PROCESSED",
+  "grid_shape": [
+    1056,
+    1988
+  ],
+  "total_robot_poses": 621,
+  "total_scans": 1575,
+  "tracked_entities": [
+    "kia MIR100 002",
+    "kiarash quality control",
+    "kia kitting station with markers",
+    "kia hat 002",
+    "kiarash_leftwrist",
+    "kiarash_RightWrist"
+  ],
+  "spatial_bounds": {
+    "min_x_m": 27.824,
+    "max_x_m": 32.346,
+    "min_y_m": 17.016,
+    "max_y_m": 21.268,
+    "trajectory_length_m": 9.48
+  }
+}

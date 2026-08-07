@@ -1,0 +1,181 @@
+{
+  "Q1_existence_first": {
+    "question": "Does A18 exist with expected MD5?",
+    "a18_exists": true,
+    "a18_size": 10862,
+    "a18_md5_actual": "c6d4a87ca25d76c8afa3ac9e72aa9591",
+    "a18_md5_expected": "c6d4a87ca25d76c8afa3ac9e72aa9591",
+    "a18_md5_match": true,
+    "verdict": "PASS"
+  },
+  "Q2_a18_dependents": {
+    "question": "Which agents depend on A18?",
+    "dependent_count": 1,
+    "dependents": [
+      {
+        "agent": "project_snapshot.py",
+        "hit_count": 1,
+        "samples": [
+          {
+            "line": 8,
+            "keyword": "A18",
+            "text": "+ v10 NEW (A15/A18 integration, 10-pass AI audit orchestration)"
+          }
+        ]
+      }
+    ],
+    "verdict": "INFO"
+  },
+  "Q3_qwen35_references": {
+    "question": "Which agents reference qwen3.5-9b?",
+    "ref_count": 0,
+    "references": [],
+    "verdict": "INFO"
+  },
+  "Q4_orchestrator_call": {
+    "question": "Is A18 called by launch_session.py orchestrator?",
+    "launch_exists": true,
+    "a18_hits_in_launch": 0,
+    "samples": [],
+    "verdict": "INFO"
+  },
+  "Q5_a18_anatomy": {
+    "question": "A18 anatomy for surgery planning",
+    "total_lines": 255,
+    "total_chars": 10862,
+    "function_count": 5,
+    "functions": [
+      [
+        23,
+        "def extract_json(text):"
+      ],
+      [
+        50,
+        "def query_openrouter(model_name, prompt, api_key, retries=2):"
+      ],
+      [
+        84,
+        "def query_gemini(model_name, prompt, api_key, use_json_mode=False, retries=2):"
+      ],
+      [
+        116,
+        "def analyze_agent(name, content, g_key, or_key):"
+      ],
+      [
+        191,
+        "def main():"
+      ]
+    ],
+    "class_count": 0,
+    "classes": [],
+    "import_count": 9,
+    "imports": [
+      [
+        1,
+        "import os"
+      ],
+      [
+        2,
+        "import sys"
+      ],
+      [
+        3,
+        "import json"
+      ],
+      [
+        4,
+        "import time"
+      ],
+      [
+        5,
+        "import ssl"
+      ],
+      [
+        6,
+        "import urllib.request"
+      ],
+      [
+        7,
+        "import urllib.error"
+      ],
+      [
+        8,
+        "import re"
+      ],
+      [
+        9,
+        "from collections import Counter"
+      ]
+    ],
+    "has_system_prompt_var": true,
+    "json_loads_count": 6,
+    "has_find_brace": false,
+    "has_rfind_brace": false,
+    "has_regex_extract": true,
+    "has_thinking_keyword": false,
+    "has_lmstudio_ref": false,
+    "raw_open_count": 0,
+    "verdict": "INFO"
+  },
+  "Q6_backup_integrity": {
+    "question": "Is latest A18 backup available and readable?",
+    "backup_dir_exists": true,
+    "backup_count": 9,
+    "latest_backups": [
+      {
+        "name": "A18_20260902_192135_pre_r36_9_4surgery.py",
+        "size": 10863,
+        "mtime": "2026-09-02T17:48:40.227432",
+        "md5": "43895bfb925a23a6fda99ae999b9d2ee"
+      },
+      {
+        "name": "A18_20260902_164030_pre_r35_10b_fallback.py",
+        "size": 9798,
+        "mtime": "2026-09-02T16:40:30.505133",
+        "md5": "1c90248df4cf7a5ed5ccad6b7f1858b1"
+      },
+      {
+        "name": "A18_20260902_174840_pre_r35_10c_line_patch.py",
+        "size": 10104,
+        "mtime": "2026-09-02T16:40:30.505133",
+        "md5": "81e054dd665f96f709a67864ff0f3607"
+      },
+      {
+        "name": "A18_20260902_153433_pre_r35_10_targeted_patch.py",
+        "size": 9797,
+        "mtime": "2026-09-02T15:13:52.951299",
+        "md5": "67e80f1e66ec2c519c8f631dbe862164"
+      },
+      {
+        "name": "A18_20260902_151352_pre_r35_8_patch.py",
+        "size": 10221,
+        "mtime": "2026-09-02T15:06:36.496047",
+        "md5": "0e489fed49238fd07a1a9d05c98d7edf"
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "Q7_systemic_impact": {
+    "question": "Systemic Impact Gate — is surgery safe?",
+    "a18_direct_dependents": 1,
+    "orchestrator_dependency": 0,
+    "shared_model_agents": 0,
+    "impact_level": "LOW",
+    "surgery_safe": true,
+    "verdict": "PASS"
+  },
+  "_SUMMARY": {
+    "timestamp": "2026-09-03T19:10:41.080225",
+    "total_questions": 7,
+    "verdicts": {
+      "Q1_existence_first": "PASS",
+      "Q2_a18_dependents": "INFO",
+      "Q3_qwen35_references": "INFO",
+      "Q4_orchestrator_call": "INFO",
+      "Q5_a18_anatomy": "INFO",
+      "Q6_backup_integrity": "PASS",
+      "Q7_systemic_impact": "PASS"
+    },
+    "critical_flags": []
+  }
+}

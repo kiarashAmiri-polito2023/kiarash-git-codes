@@ -1,0 +1,2 @@
+
+- **20260902_133104 (R32.3 BOM Cleanup)**: BOM stripped | MD5: `940f219921af72c6ef10e5936f38649f` -> `711c665f84b1dbb9f94e51378f039840` | AST: PASS | Compile: PASS

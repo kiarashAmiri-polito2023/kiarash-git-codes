@@ -1,0 +1,46 @@
+# Heavy model files - too large for git
+models/**/*.bin
+models/**/*.safetensors
+models/**/*.pt
+models/**/*.pth
+models/**/epoch_*/*
+!models/**/README.md
+!models/**/config.json
+!models/**/tokenizer_config.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data files
+*.mat
+*.pkl
+*.pickle
+data/**/*.npy
+data/**/*.h5
+data/**/*.parquet
+
+# Virtual environments
+env/
+venv/
+openvla/
+
+# Temporary/workspace
+workspace/
+*.tmp
+.DS_Store
+
+# Logs
+logs/*.log
+github_curation_vault/
+
+# Video files (too large for git)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.wmv
+*.flv
+"motive sessions/"

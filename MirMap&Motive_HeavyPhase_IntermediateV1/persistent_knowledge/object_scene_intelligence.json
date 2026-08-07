@@ -1,0 +1,54 @@
+{
+  "agent": "scene_object_detector",
+  "version": "1.0",
+  "model": "yolov8s",
+  "timestamp": "2026-08-28 15:49:32",
+  "sessions": {
+    "session_2026-08-25_17-43-02": {
+      "cams": 2,
+      "classes": {
+        "chair": 326,
+        "mouse": 3,
+        "person": 183,
+        "bottle": 4,
+        "dining table": 9,
+        "laptop": 4,
+        "cup": 1
+      }
+    },
+    "session_2026-08-25_20-14-09": {
+      "cams": 2,
+      "classes": {
+        "chair": 294,
+        "person": 223,
+        "bottle": 1,
+        "dining table": 2,
+        "suitcase": 1,
+        "laptop": 1,
+        "cup": 2
+      }
+    },
+    "session_2026-08-26_20-28-17": {
+      "cams": 2,
+      "classes": {
+        "chair": 556,
+        "person": 178,
+        "laptop": 4,
+        "handbag": 1,
+        "tv": 31,
+        "dining table": 11,
+        "suitcase": 1
+      }
+    },
+    "session_2026-08-27_17-54-20": {
+      "cams": 2,
+      "classes": {
+        "chair": 514,
+        "laptop": 15,
+        "person": 186,
+        "tv": 2,
+        "suitcase": 2
+      }
+    }
+  }
+}

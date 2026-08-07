@@ -1,0 +1,12 @@
+Motive Session Summary
+==============================
+Robot: kia MIR100 002
+Bodies: ['kia MIR100 002', 'kiarash quality control', 'kia kitting station with markers', 'kia hat 002', 'kiarash_leftwrist', 'kiarash_RightWrist']
+Total polls: 1041
+Auto-stopped: True
+  kia MIR100 002: 1041 samples, 1041 tracked
+  kiarash quality control: 1041 samples, 1041 tracked
+  kia kitting station with markers: 1041 samples, 1041 tracked
+  kia hat 002: 1041 samples, 1041 tracked
+  kiarash_leftwrist: 1041 samples, 1041 tracked
+  kiarash_RightWrist: 1041 samples, 1041 tracked

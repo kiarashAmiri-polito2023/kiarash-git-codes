@@ -1,0 +1,2344 @@
+{
+  "timestamp": "2026-09-22T19:22:15.630604",
+  "primary_model": "qwen3.6-27b",
+  "escalation_model": "qwen3-30b-a3b-thinking-2507",
+  "total_agents": 41,
+  "pass": 8,
+  "fail": 17,
+  "uncertain": 6,
+  "results": [
+    {
+      "agent": "A15_referee_ai_loop",
+      "file": "A15_referee_ai_loop.py",
+      "final_verdict": "FAIL",
+      "confidence": 62.3,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 54.3,
+          "finish": "stop",
+          "details": {
+            "agent": "A15_referee_ai_loop",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Unstructured API response parsing in call_ai() and generate_dynamic_focus(): Direct dictionary indexing (resp.json()['choices'][0]...) on HTTP 200 responses will raise KeyError/IndexError if OpenRouter returns a valid but structurally different payload or error wrapper, causing immediate script termination.",
+              "load_key() lacks existence/permission checks: Will crash with FileNotFoundError or PermissionError at startup if .secrets/openrouter.key is missing or unreadable, halting the entire audit pipeline before initialization.",
+              "Bare except: clauses in encode_image_b64(), scan_agent_code(), and API loops suppress specific exceptions (including KeyboardInterrupt/SystemExit) and obscure root causes during debugging."
+            ],
+            "warnings": [
+              "Hardcoded Windows absolute paths (D:\\kiarash\\...) reduce portability and will fail on Linux/macOS CI/CD environments.",
+              "PIL Image objects in encode_image_b64() are not explicitly closed, relying on garbage collection which can lead to file descriptor exhaustion under heavy load.",
+              "Repeated requests.get/post calls without a persistent Session object cause redundant TCP/TLS handshakes and increase latency."
+            ],
+            "recommendations": [
+              "Wrap all API JSON parsing in try/except blocks or use .get() with safe defaults to handle schema variations gracefully.",
+              "Add file existence checks and graceful fallbacks in load_key(), or raise a custom configuration error with clear instructions.",
+              "Implement exponential backoff/retry logic (e.g., using tenacity or requests.adapters.HTTPAdapter) for network calls to handle transient rate limits or timeouts.",
+              "Replace bare except: with specific exception types (Exception, IOError, json.JSONDecodeError) and log full tracebacks during development.",
+              "Parameterize project paths via environment variables or CLI arguments to support cross-platform deployment."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 33.6,
+          "finish": "stop",
+          "details": {
+            "agent": "A15_referee_ai_loop",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              {
+                "description": "Infinite loop in main loop due to missing break condition in persona iteration",
+                "location": "main() function, line 280",
+                "severity": "critical"
+              },
+              {
+                "description": "Unbounded memory usage in cumulative findings accumulation",
+                "location": "main() function, line 280",
+                "severity": "critical"
+              },
+              {
+                "description": "Uncaught exception in scan_agent_code() can crash the entire process",
+                "location": "scan_agent_code() function, line 148",
+                "severity": "critical"
+              },
+              {
+                "description": "Missing file handle closure in read_safe() function",
+                "location": "read_safe() function, line 104",
+                "severity": "critical"
+              },
+              {
+                "description": "Unbounded recursion in generate_dynamic_focus() due to lack of depth control",
+                "location": "generate_dynamic_focus() function, line 210",
+                "severity": "critical"
+              }
+            ],
+            "warnings": [
+              {
+                "description": "Hardcoded API key path in KEY_FILE variable",
+                "location": "global scope, line 24",
+                "severity": "warning"
+              },
+              {
+                "description": "Unvalidated user input in API calls (no input sanitization)",
+                "location": "call_ai() function, line 240",
+                "severity": "warning"
+              },
+              {
+                "description": "No rate limiting on API calls to OpenRouter",
+                "location": "discover_free_models() function, line 70",
+                "severity": "warning"
+              },
+              {
+                "description": "Unbounded file size in read_safe() function",
+                "location": "read_safe() function, line 104",
+                "severity": "warning"
+              },
+              {
+                "description": "Potential race condition in file access in scan_agent_code()",
+                "location": "scan_agent_code() function, line 148",
+                "severity": "warning"
+              }
+            ],
+            "recommendations": [
+              "Add try-except blocks around all file operations to prevent crashes",
+              "Implement proper error handling for network calls with retry logic",
+              "Add memory limits to cumulative findings accumulation",
+              "Use context managers for all file operations to ensure proper closure",
+              "Implement rate limiting for API calls to prevent throttling",
+              "Add input validation for all user-provided data",
+              "Use environment variables instead of hardcoded paths for secrets",
+              "Add proper logging instead of print statements for debugging",
+              "Implement a maximum recursion depth limit for dynamic focus generation",
+              "Add a timeout mechanism for the main loop to prevent infinite execution"
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 124.2,
+          "finish": "length",
+          "details": {
+            "raw": ""
+          }
+        }
+      ]
+    },
+    {
+      "agent": "A16_agent_deep_analyzer",
+      "file": "A16_agent_deep_analyzer.py",
+      "final_verdict": "FAIL",
+      "confidence": 88.3,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 47.2,
+          "finish": "stop",
+          "details": {
+            "agent": "A16_agent_deep_analyzer",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Missing timeout parameters on all API client calls can cause indefinite hangs during network stalls or provider outages.",
+              "os.path.getsize(py_file) is outside the try-except block in scan_agent_files, risking an unhandled FileNotFoundError if files are deleted/moved during iteration.",
+              "Hardcoded model identifiers (claude-sonnet-4-20250514, gemini-2.5-pro) likely do not exist in production APIs, causing immediate validation errors and crashes."
+            ],
+            "warnings": [
+              "pickle.load() used on session data files poses arbitrary code execution risks if data sources are compromised or corrupted.",
+              "Broad except Exception blocks mask specific API failures (rate limits, auth errors), hindering debugging and recovery.",
+              "Direct concatenation of raw file contents into LLM prompts creates a prompt injection vulnerability.",
+              "check_api_availability() is called on every query_all_models invocation, causing redundant logging and unnecessary overhead."
+            ],
+            "recommendations": [
+              "Add explicit timeout=30 (or appropriate value) to all API client.create() calls.",
+              "Replace pickle serialization with safe formats like JSON or Apache Parquet for session data storage and loading.",
+              "Implement exponential backoff/retry logic for network/API failures instead of silently returning None.",
+              "Sanitize or escape file contents before injecting into LLM prompts, or use structured message blocks to prevent prompt injection.",
+              "Move os.path.getsize() inside the try block or wrap it in a specific FileNotFoundError handler."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 30.9,
+          "finish": "stop",
+          "details": {
+            "agent": "A16_agent_deep_analyzer",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Missing API key validation: API keys are not validated for format or length beyond basic presence check, increasing risk of malformed API calls.",
+              "Insecure API key handling: API keys are loaded from environment variables but not masked in logs or error messages, potentially exposing secrets.",
+              "Unbounded file I/O: The script reads all `.py` files in `agents/` without size limits, which could lead to memory exhaustion on large projects.",
+              "Uncontrolled recursion risk: The `scan_agent_files` function reads entire files into memory and processes them line-by-line without bounds, risking OOM on large files.",
+              "Missing file handle closure: The `open()` calls in `scan_agent_files` and `analyze_session_quality` do not use context managers, risking file descriptor leaks.",
+              "Inconsistent error handling: Some functions return `None` on failure, while others raise exceptions, leading to inconsistent error propagation.",
+              "Potential infinite loop: The `query_all_models` function iterates over a fixed list of models but does not validate response time or rate limits, which could cause long hangs.",
+              "Missing rate limiting: No rate limiting or backoff logic for API calls, risking throttling or service disruption."
+            ],
+            "warnings": [
+              "Hardcoded model names in `query_all_models` make it difficult to extend or modify without code changes.",
+              "No timeout set for API calls, which could cause indefinite hangs on network issues.",
+              "The script assumes all agents are Python files without validating file integrity or encoding.",
+              "The `analyze_session_quality` function assumes `slam_data.pkl` and `mocap_data.pkl` are pickled objects without validating their structure.",
+              "The `build_analysis_prompt` function is truncated, suggesting incomplete implementation and potential injection risks.",
+              "No input validation for `session_dir` or `agents_dir`, which could lead to path traversal or invalid directory access."
+            ],
+            "recommendations": [
+              "Use context managers (`with open(...) as f`) for all file operations to prevent resource leaks.",
+              "Add input validation for directory paths to prevent path traversal attacks.",
+              "Implement rate limiting and exponential backoff for all API calls.",
+              "Mask or sanitize API keys in logs and error messages to prevent secret exposure.",
+              "Add file size limits and early termination for large files in `scan_agent_files`.",
+              "Use `pathlib.Path` instead of `os.path` for better cross-platform path handling.",
+              "Validate API key format (e.g., length, prefix) before use.",
+              "Add timeouts to all API calls using `requests` or equivalent libraries.",
+              "Implement a fallback strategy for failed API calls (e.g., retry, skip, or log).",
+              "Complete the `build_analysis_prompt` function and validate its content to prevent injection.",
+              "Add logging for file and directory access to improve auditability."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 120.1,
+          "finish": "stop",
+          "details": {
+            "agent": "A16_agent_deep_analyzer",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Using pickle.load on user-controlled session data (slam_data.pkl/mocap_data.pkl) without validation, enabling remote code execution via malicious payloads"
+            ],
+            "warnings": [
+              "Agents directory path passed to scan_agent_files is unvalidated, allowing potential path traversal attacks",
+              "API key logging includes example values that could aid attackers in identifying environment variable patterns"
+            ],
+            "recommendations": [
+              "Replace pickle serialization with JSON or safe alternatives for session data storage and loading",
+              "Validate agents_dir paths using os.path.abspath() and ensure it's within project root before scanning",
+              "Remove hardcoded API key examples from error logs to prevent information leakage",
+              "Add explicit file type checks (e.g., .pkl extension) when processing session files"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "A18_deep_agent_verifier",
+      "file": "A18_deep_agent_verifier.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 59.0,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 92,
+          "elapsed": 36.2,
+          "finish": "stop",
+          "details": {
+            "agent": "A18_deep_agent_verifier",
+            "verdict": "PASS",
+            "confidence": 92,
+            "critical_bugs": [],
+            "warnings": [
+              "Broad exception handling in query_lmstudio catches all Exceptions, which may mask unexpected programming errors or malformed LLM response structures.",
+              "No circuit breaker or global timeout for LM Studio connectivity; prolonged server unresponsiveness will block the entire audit pipeline indefinitely.",
+              "Direct injection of raw file contents into the LLM prompt creates a prompt-injection attack surface if any audited Python files contain malicious strings."
+            ],
+            "recommendations": [
+              "Replace print statements with Python's logging module to enable log level filtering, structured output, and easier CI/CD integration.",
+              "Implement a per-agent timeout or maximum wait threshold to prevent indefinite blocking on slow or unresponsive LLM endpoints.",
+              "Sanitize or escape file contents before embedding them in the prompt, or use system-level prompt isolation techniques to mitigate injection risks.",
+              "Add a lightweight static analysis fallback (e.g., using the ast module) for cases where LM Studio is unavailable or returns insufficient quorum."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 26.4,
+          "finish": "stop",
+          "details": {
+            "agent": "A18_deep_agent_verifier",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "In `extract_json`, the regex `re.sub(r\"<think>.*?</think>\", \"\", text, flags=re.DOTALL | re.IGNORECASE)` is malformed and will cause a `re.error` during compilation due to unbalanced quotes and invalid escape sequences.",
+              "The `query_lmstudio` function uses `urllib.request.urlopen` without a context manager, which can lead to socket leaks if the request fails before the response is read.",
+              "The `warmup_lmstudio` function does not handle exceptions properly and may block indefinitely if the server is unreachable.",
+              "The `main` function opens files without checking if they are readable, which can cause `PermissionError` or `FileNotFoundError` at runtime."
+            ],
+            "warnings": [
+              "The `extract_json` function has multiple fallbacks that may return `None` without clear error logging, leading to silent failures in JSON parsing.",
+              "The `query_lmstudio` function retries on `HTTPError` and general exceptions but does not distinguish between recoverable and non-recoverable errors.",
+              "The `MAX_CONTENT_CHARS` limit is applied to the source code but not to the prompt sent to the LLM, which may exceed the model's context window.",
+              "The `os.path.dirname(os.path.abspath(__file__))` assumes the script is run from the correct directory, which may fail in deployment environments.",
+              "The `with open(..., encoding=\"utf-8-sig\")` may fail on non-UTF-8 files or files with incorrect BOMs, leading to `UnicodeDecodeError`."
+            ],
+            "recommendations": [
+              "Fix the malformed regex in `extract_json` by escaping quotes and ensuring proper syntax.",
+              "Use `with` context managers for all network requests in `query_lmstudio` to ensure socket cleanup.",
+              "Add timeout handling and retry limits in `warmup_lmstudio` to prevent indefinite blocking.",
+              "Validate file access before opening in `main` using `os.access` or `try-except` blocks.",
+              "Add logging instead of `print` statements for better traceability in production.",
+              "Validate the `content` length before sending to the LLM to avoid exceeding context limits."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 128.1,
+          "finish": "length",
+          "details": {
+            "raw": ""
+          }
+        }
+      ]
+    },
+    {
+      "agent": "apply_merge",
+      "file": "apply_merge.py",
+      "final_verdict": "PASS",
+      "confidence": 60.0,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 45.7,
+          "finish": "stop",
+          "details": {
+            "agent": "apply_merge",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "Potential KeyError on new_memory['total_sessions_analyzed'] and new_memory['object_tracks'] if knowledge_engine returns an unexpected structure.",
+              "Path traversal risk: CLI arguments for session_path and root are used directly without canonicalization or validation against a trusted base directory."
+            ],
+            "recommendations": [
+              "Use os.path.realpath() to resolve symlinks and prevent path traversal attacks on root and session paths.",
+              "Replace direct dictionary access (new_memory['key']) with .get('key', default) or validate the returned structure from knowledge_engine before printing stats.",
+              "Consider adding a file lock around the merge operation to prevent race conditions if multiple instances are accidentally triggered concurrently."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "PASS",
+          "confidence": 95,
+          "elapsed": 22.2,
+          "finish": "stop",
+          "details": {
+            "agent": "apply_merge",
+            "verdict": "PASS",
+            "confidence": 95,
+            "critical_bugs": [],
+            "warnings": [
+              "The `create_backup` function uses `shutil.copy2` without checking if the source file is readable, which could lead to silent failures if permissions are insufficient.",
+              "The `list_all_backups` function does not handle potential exceptions when reading `backup_info.txt`, which could cause the function to fail silently.",
+              "The `apply_merge` function imports `knowledge_engine` at runtime, which may lead to runtime import errors if the module is not available in the current environment."
+            ],
+            "recommendations": [
+              "Add explicit error handling for file operations in `create_backup` and `list_all_backups` to ensure robustness.",
+              "Consider adding a check to verify that the `knowledge_engine` module is available before attempting to import it.",
+              "Ensure that the `backup_info.txt` file is properly formatted and that the `backup_info.txt` file is not corrupted, as this could affect the readability of backup metadata."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 168.2,
+          "finish": "length",
+          "details": {
+            "raw": ""
+          }
+        }
+      ]
+    },
+    {
+      "agent": "auto_labeler",
+      "file": "auto_labeler.py",
+      "final_verdict": "FAIL",
+      "confidence": 90.7,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 92,
+          "elapsed": 36.8,
+          "finish": "stop",
+          "details": {
+            "agent": "auto_labeler",
+            "verdict": "PASS",
+            "confidence": 92,
+            "critical_bugs": [],
+            "warnings": [
+              "Unused 'threshold' parameter in run_grounding_dino() function signature",
+              "Accumulating all annotations in memory ('all_ann') risks OutOfMemoryError for long videos or high sample rates",
+              "Silent returns on dependency/video errors prevent proper pipeline error propagation"
+            ],
+            "recommendations": [
+              "Wrap video processing loop and cap.release() in a try...finally block to guarantee resource cleanup if XML generation fails",
+              "Implement streaming/incremental XML writing or periodic flushing to reduce RAM footprint for long recordings",
+              "Add sys.exit(1) when cv2 is missing or video capture fails to ensure non-zero exit codes for orchestration systems",
+              "Validate that width and height retrieved from cap.get() are greater than zero before proceeding",
+              "Replace fragile prompts.replace('.', ' . ') with robust prompt parsing/tokenization logic"
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 24.9,
+          "finish": "stop",
+          "details": {
+            "agent": "auto_labeler",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "The `run_grounding_dino` function is a placeholder and does not actually run inference. It returns an empty list regardless of input, making the labeling functionality non-functional.",
+              "The `auto_label_video` function does not handle exceptions from `cv2.VideoCapture` beyond the initial check, and may crash if the video file is corrupted or inaccessible.",
+              "The `create_cvat_xml` function uses `minidom.parseString` which can be memory-intensive for large datasets and may cause performance issues or crashes with many annotations."
+            ],
+            "warnings": [
+              "The script does not handle the case where the `groundingdino` module is not installed properly, leading to silent failure in detection.",
+              "The script uses `cv2.VideoCapture` without checking for potential memory leaks or resource exhaustion during long video processing.",
+              "The script writes to a file without checking if the directory for `output_path` exists, which could lead to a `FileNotFoundError`.",
+              "The script does not validate the `prompts` input, which could lead to malformed or invalid inference requests if the format is incorrect.",
+              "The script uses `os.path.basename(video_path)` to extract the video name, which may not be reliable if the path contains special characters or is malformed."
+            ],
+            "recommendations": [
+              "Implement proper error handling for the `groundingdino` inference function, including loading model weights and handling missing dependencies.",
+              "Add validation for the `output_path` directory to ensure it exists or create it if necessary.",
+              "Use context managers or explicit cleanup for video capture resources to prevent resource leaks.",
+              "Add input validation for `prompts` to ensure they are properly formatted for the model.",
+              "Consider using a more efficient XML serialization method to avoid memory issues with large datasets.",
+              "Add logging instead of print statements for better traceability and debugging."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 103.3,
+          "finish": "stop",
+          "details": {
+            "agent": "auto_labeler",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Uncaught exceptions during groundingdino inference may crash program (no exception handling beyond ImportError)"
+            ],
+            "warnings": [
+              "String replacement in prompts ('.' to ' . ') may cause incorrect model input and mislabeling"
+            ],
+            "recommendations": [
+              "Add comprehensive try-except around run_grounding_dino call to handle all exceptions",
+              "Validate prompt format before processing instead of relying on string replacement",
+              "Implement fallback mechanism for missing model weights (e.g., check file existence)"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "bev_image_renderer",
+      "file": "bev_image_renderer.py",
+      "final_verdict": "FAIL",
+      "confidence": 62.3,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 42.9,
+          "finish": "stop",
+          "details": {
+            "agent": "bev_image_renderer",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Unhandled IndexError/TypeError in SLAM grid rendering loop: map_meta width/height are used as loop bounds, but if the actual slam_grid array shape differs (common in incremental SLAM), accessing slam_grid[gy, gx] will crash.",
+              "Missing exception handling for pickle.load() and json.load(): corrupted session files or unexpected data structures will raise UnpicklingError/JSONDecodeError and terminate the pipeline without recovery."
+            ],
+            "warnings": [
+              "Hardcoded absolute Windows path (ROOT_DIR) breaks cross-platform compatibility, CI/CD integration, and deployment on Linux-based robot controllers.",
+              "Unused imports: numpy and ImageFont increase dependency footprint unnecessarily.",
+              "PIL ImageDraw.text() signature is deprecated in Pillow >=10.0; missing anchor/bbox parameters may cause TypeError on updated environments.",
+              "Magic number '344' for frame limit lacks configuration or documentation, making dataset scaling difficult."
+            ],
+            "recommendations": [
+              "Replace pickle serialization with safer, schema-validated formats (JSON, HDF5, Parquet, or ROS bag) to eliminate arbitrary code execution risks and improve data integrity.",
+              "Wrap all file I/O and deserialization calls in try/except blocks with structured logging and graceful session skipping on failure.",
+              "Add runtime shape validation before rendering: assert slam_grid.shape == (h_px, w_px) or dynamically compute bounds from the actual array shape.",
+              "Externalize ROOT_DIR, session filters, and frame limits to a config.yaml or environment variables for maintainability and reproducibility.",
+              "Remove unused imports and pin Pillow version in requirements.txt to prevent breaking changes during dependency updates."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 50.0,
+          "finish": "stop",
+          "details": {
+            "agent": "bev_image_renderer",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              {
+                "type": "runtime_bug",
+                "description": "In `render_semantic_bev_frame`, `draw.rectangle` and `draw.ellipse` may produce invalid coordinates if `s` or `box_r` are negative, leading to PIL errors or crashes."
+              },
+              {
+                "type": "runtime_bug",
+                "description": "In `process_session`, `robot_states[i]` may raise `IndexError` if `len(robot_states)` is less than `i`, though it's guarded by `min(len(robot_states), 344)`. However, `robot_states[i]` is accessed without checking `i < len(robot_states)` in the loop."
+              },
+              {
+                "type": "runtime_bug",
+                "description": "In `process_session`, `hat_samples[i]`, `rwrist_samples[i]`, and `lwrist_samples[i]` may raise `IndexError` if the lists are shorter than `i`, even though `i < len(hat_samples)` is checked. This is not safe due to potential race conditions or data corruption."
+              },
+              {
+                "type": "runtime_bug",
+                "description": "In `process_session`, `len(obstacle_scans)` may be less than `i`, leading to `obstacle_scans[i]` raising `IndexError`."
+              },
+              {
+                "type": "security_issue",
+                "description": "Hardcoded absolute path `ROOT_DIR = r\"D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\"` exposes sensitive file system structure and may cause portability issues."
+              },
+              {
+                "type": "security_issue",
+                "description": "The script loads and processes untrusted data from `.pkl` and `.json` files without validation, which could lead to code execution via malicious pickle payloads."
+              },
+              {
+                "type": "resource_leak",
+                "description": "The script opens multiple files (`.pkl`, `.json`) without explicit `close()` calls, relying on garbage collection. While `with` statements are used, the `Image` object is not explicitly closed after saving."
+              },
+              {
+                "type": "resource_leak",
+                "description": "The script creates a large number of `Image` objects in a loop without explicit disposal, which may lead to memory leaks over time."
+              }
+            ],
+            "warnings": [
+              {
+                "type": "missing_error_handling",
+                "description": "Network/API calls are not present, but file I/O operations (e.g., `open`, `pickle.load`) lack robust error handling (e.g., `IOError`, `EOFError`, `pickle.UnpicklingError`)."
+              },
+              {
+                "type": "missing_error_handling",
+                "description": "The script does not handle exceptions during image rendering, which could cause silent failures or crashes."
+              },
+              {
+                "type": "thread_safety",
+                "description": "The script is not thread-safe; concurrent access to shared data structures (e.g., `semantic_objs`) could lead to race conditions."
+              },
+              {
+                "type": "thread_safety",
+                "description": "The script uses global variables (`ROOT_DIR`, `CANVAS_SIZE`, etc.) that could be modified by multiple threads, leading to inconsistent behavior."
+              },
+              {
+                "type": "security_issue",
+                "description": "The script uses `os.path.join` with user-controlled input (`sname`), which could be exploited for path traversal if `sname` is not sanitized."
+              }
+            ],
+            "recommendations": [
+              "Replace hardcoded paths with environment variables or configuration files for portability and security.",
+              "Add comprehensive error handling around file I/O and image rendering operations.",
+              "Explicitly close all file handles and image objects after use.",
+              "Validate and sanitize all input data, especially from `.pkl` and `.json` files.",
+              "Use `try-except` blocks to handle potential exceptions during file loading and image rendering.",
+              "Ensure thread safety by using locks or immutable data structures when accessing shared resources.",
+              "Add bounds checking for all list accesses to prevent `IndexError` exceptions.",
+              "Consider using `contextlib.closing` or `with` statements for all file and image operations."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "?",
+          "confidence": 0,
+          "elapsed": 180.0,
+          "finish": "error",
+          "details": {
+            "error": "timed out"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "co_pilot_agent",
+      "file": "co_pilot_agent.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 35.0,
+          "finish": "stop",
+          "details": {
+            "agent": "co_pilot_agent",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Unhandled exceptions in multiple health-check functions due to direct dictionary key access (e.g., s[\"timestamp_utc\"], last[\"x\"]) and pickle.load() calls without try/except blocks. Corrupted, partially written, or schema-drifted .pkl files will cause immediate runtime crashes.",
+              "Assumes strict internal data structures for robot_states, rigid_bodies, fusion stats, and calibration data. Missing keys, type mismatches (e.g., string instead of float), or unexpected nesting will raise KeyError/TypeError during post-session analysis."
+            ],
+            "warnings": [
+              "Extensive use of pickle.load() on .pkl files poses a security risk; pickle deserialization can execute arbitrary code if file integrity is compromised or if generated by untrusted upstream processes.",
+              "sys.path.append() modifies the global module search path at runtime, which can lead to import shadowing and conflicts in larger robot software stacks.",
+              "Source code is truncated at the end; complete audit coverage cannot be guaranteed without the full implementation."
+            ],
+            "recommendations": [
+              "Wrap all pickle.load() calls and dictionary accesses in try/except blocks with graceful fallbacks, default values, or structured logging to prevent agent crashes.",
+              "Implement explicit data validation (e.g., using pydantic models or schema versioning) before processing serialized robot state and memory files.",
+              "Replace pickle with safer, self-describing serialization formats like JSON, MessagePack, or HDF5 for persistent knowledge and session data.",
+              "Add comprehensive error handling and logging throughout the pipeline so the agent degrades gracefully (e.g., skips corrupted sections) rather than terminating unexpectedly."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 85.8,
+          "finish": "stop",
+          "details": {
+            "agent": "co_pilot_agent",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Uncaught pickle.UnpicklingError in multiple functions (check_slam_health, check_motive_health, etc.) may crash agent when loading corrupted data files"
+            ],
+            "warnings": [],
+            "recommendations": [
+              "Wrap all pickle.load operations in try-except blocks to handle corrupt data gracefully",
+              "Add error logging for failed data loads instead of crashing",
+              "Implement file integrity checks before attempting pickle deserialization"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "cross_modal_aligner",
+      "file": "cross_modal_aligner.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 49.8,
+          "finish": "stop",
+          "details": {
+            "agent": "cross_modal_aligner",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "interp1d and np.searchsorted require strictly increasing x-values; unsorted SLAM/MoCap timestamps (common in robotics due to network jitter) will trigger a ValueError crash.",
+              "Indexing [[0, -1]] on empty mocap_timestamps or slam_timestamps arrays causes an IndexError during the logging/sync quality calculation step."
+            ],
+            "warnings": [
+              "scipy.interpolate.interp1d is deprecated in recent SciPy versions and may emit runtime warnings or break in future releases.",
+              "Wrapper function match_slam_to_mocap uses .get() with empty list defaults, bypassing shape assertions and risking silent downstream failures."
+            ],
+            "recommendations": [
+              "Pre-sort timestamps and realign poses using np.argsort before interpolation to guarantee monotonicity.",
+              "Add early-exit guards for zero-length inputs (e.g., if len(mocap_timestamps) == 0: return np.empty((0, 3))) to prevent indexing crashes.",
+              "Replace interp1d with scipy.interpolate.PchipInterpolator or BarycentricInterpolator for modern compatibility and smoother angle handling.",
+              "Enforce strict type/shape validation in the wrapper instead of silent fallbacks, raising explicit exceptions on malformed dict inputs."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 120.0,
+          "finish": "error",
+          "details": {
+            "error": "timed out"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "cvat_converter",
+      "file": "cvat_converter.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 31.6,
+          "finish": "stop",
+          "details": {
+            "agent": "cvat_converter",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Unhandled exceptions from ET.parse() and file I/O will crash the agent if the input XML is missing, malformed, or inaccessible.",
+              "Type casting (int/float) on XML attributes lacks error handling; non-numeric or unexpected values trigger uncaught ValueError/TypeError."
+            ],
+            "warnings": [
+              "Division by zero fallback returns 0 for normalized coordinates, which may silently corrupt downstream perception/navigation modules.",
+              "Uses print() statements instead of structured logging, hindering production debugging and monitoring.",
+              "No validation of CLI arguments (e.g., fps range, file existence, path traversal prevention)."
+            ],
+            "recommendations": [
+              "Wrap XML parsing and file operations in try/except blocks with appropriate error codes or graceful fallbacks.",
+              "Validate all CLI inputs before processing (check file existence, ensure fps > 0, sanitize/restrict paths to allowed directories).",
+              "Replace print() with Python's logging module for configurable verbosity and structured output.",
+              "Add data validation/sanitization for parsed annotations to prevent malformed JSONL generation."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 120.0,
+          "finish": "error",
+          "details": {
+            "error": "timed out"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "DataDescriptions",
+      "file": "DataDescriptions.py",
+      "final_verdict": "FAIL",
+      "confidence": 88.3,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 40.7,
+          "finish": "stop",
+          "details": {
+            "agent": "DataDescriptions",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "Mutable default arguments (pos=[0.0,0.0,0.0]) in RBMarker and RigidBodyDescription can cause shared state corruption if mutated directly.",
+              "Direct type comparison using type(new_data) == ClassName is fragile and fails with inheritance; use isinstance().",
+              "Code snippet appears truncated at the end (self.channel_dat...), which would cause a SyntaxError if executed as-is."
+            ],
+            "recommendations": [
+              "Replace mutable default arguments with None and initialize lists inside __init__.",
+              "Use isinstance() for all type checks to support polymorphism and safer data routing.",
+              "Add input validation and bounds checking to setter methods to prevent index errors or type mismatches during robot operation.",
+              "Implement structured logging instead of print statements for integration into the MiR100 telemetry pipeline."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 30.6,
+          "finish": "stop",
+          "details": {
+            "agent": "DataDescriptions",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "The code is truncated at the end of the `DeviceDescription` class, which may result in a syntax error or incomplete functionality.",
+              "The `get_as_string` method in the `DeviceDescription` class has a typo: `self.channel_dat` is not defined and will cause a NameError."
+            ],
+            "warnings": [
+              "The code uses `copy.copy` and `copy.deepcopy` without ensuring that the objects being copied are serializable or safe to copy, which could lead to unexpected behavior.",
+              "The `get_as_string` method in `MarkerSetDescription` and other classes uses `get_as_string` on a string, which is redundant and could be simplified.",
+              "The `test_hash2` function returns a list of integers (`K_FAIL`, `K_PASS`, `K_SKIP`) but does not handle the case where the test is skipped properly.",
+              "The `get_data_sub_packet_type` function returns a string based on the type of `new_data`, but it does not handle the case where `new_data` is not one of the expected types, potentially leading to incorrect output.",
+              "The `get_as_string` function assumes that the input is either a string or a bytes object, but it does not handle other types, which could lead to a TypeError."
+            ],
+            "recommendations": [
+              "Complete the truncated code in the `DeviceDescription` class to avoid syntax errors.",
+              "Fix the typo in the `get_as_string` method of the `DeviceDescription` class by correcting `self.channel_dat` to `self.channel_data_type`.",
+              "Ensure that all objects being copied with `copy.copy` and `copy.deepcopy` are safe to copy and that the copy operations are necessary.",
+              "Refactor the `get_as_string` method to avoid redundant calls to `get_as_string` on strings.",
+              "Improve the error handling in the `test_hash2` function to properly handle the case where the test is skipped.",
+              "Enhance the `get_data_sub_packet_type` function to handle unexpected types gracefully, possibly by returning a default message or raising an exception.",
+              "Add type checking and error handling in the `get_as_string` function to handle inputs that are not strings or bytes."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 104.5,
+          "finish": "stop",
+          "details": {
+            "agent": "DataDescriptions",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Syntax error in DeviceDescription.get_as_string: missing closing parenthesis and string termination (truncated code)"
+            ],
+            "warnings": [],
+            "recommendations": [
+              "Fix syntax error by completing the string expression in DeviceDescription.get_as_string to include self.channel_data_type and proper closing parentheses"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "entity_registry",
+      "file": "entity_registry.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 48.7,
+          "finish": "stop",
+          "details": {
+            "agent": "entity_registry",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Unhandled KeyError in rebuild_from_deep_memory: direct access to deep_memory['object_tracks'] without verifying key existence will crash if the deep memory file lacks this field.",
+              "Missing error handling around pickle.load(f) for deep_learning_memory.pkl; corrupted or truncated files will cause unhandled UnpicklingError/EOFError crashes during rebuild.",
+              "Insecure deserialization: Using pickle to load persistent data exposes the system to arbitrary code execution if the .pkl file is tampered with, corrupted, or sourced from an untrusted pipeline."
+            ],
+            "warnings": [
+              "Broad 'except Exception:' in _load() masks specific I/O errors (e.g., permission denied, disk full), hindering diagnostics and recovery.",
+              "Linear O(N) iteration in get_entity_by_motive_marker and get_entity_by_slam_cluster will degrade performance as the registry scales beyond hundreds of entities."
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or a secure serialization format (e.g., msgpack, protobuf) to eliminate deserialization vulnerabilities.",
+              "Wrap all file I/O and deserialization operations in try/except blocks with specific exception handling and graceful fallback mechanisms.",
+              "Implement reverse lookup dictionaries (marker->entity_id, cluster->entity_id) for O(1) retrieval instead of full registry scans.",
+              "Validate and sanitize root_path input to ensure it resolves to an expected directory structure before file operations."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 120.0,
+          "finish": "error",
+          "details": {
+            "error": "timed out"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "knowledge_engine",
+      "file": "knowledge_engine.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 90,
+          "elapsed": 51.5,
+          "finish": "stop",
+          "details": {
+            "agent": "knowledge_engine",
+            "verdict": "FAIL",
+            "confidence": 90,
+            "critical_bugs": [
+              "SyntaxError/Incomplete execution: The code is truncated mid-expression inside extract_session_features(), which will cause an immediate crash if executed.",
+              "Type mismatch risk: Timestamp arithmetic (observations[i]['timestamp_utc'] - observations[i-1]['timestamp_utc']) assumes numeric floats, but utc_now_iso() returns ISO strings. Mixing formats in sensor data pipelines will raise TypeError.",
+              "Arbitrary code execution via pickle.load(): Deserializing .pkl files without validation or allow-listing allows attackers to execute arbitrary Python code if a malicious file is placed in the persistent_knowledge directory."
+            ],
+            "warnings": [
+              "Logic error in max_approach_speed_mps: Uses np.min() on approach speeds, which returns the most negative value (fastest retreat) instead of maximum approach speed.",
+              "Index desynchronization risk: Using 'continue' to skip high-speed glitches inside the observation loop may cause misalignment between position arrays and derived metrics if not carefully bounded.",
+              "Unsanitized root_path: os.path.join() does not validate or restrict root_path, potentially allowing path traversal if the parameter originates from external/untrusted sources."
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or msgpack for persistent storage to eliminate deserialization vulnerabilities. If pickle must be used, implement strict schema validation before load().",
+              "Standardize timestamp handling: Convert all timestamps to numeric Unix epoch floats at ingestion time before performing arithmetic operations.",
+              "Complete the truncated safety_events.append() block and add comprehensive unit tests for extract_session_features().",
+              "Fix approach speed calculation by using np.max(np.abs(approach_speeds)) or filtering positive values only.",
+              "Implement path canonicalization (os.path.realpath) and whitelist validation for root_path to prevent directory traversal."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 120.0,
+          "finish": "error",
+          "details": {
+            "error": "timed out"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "label_registry",
+      "file": "label_registry.py",
+      "final_verdict": "UNCERTAIN",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 90,
+          "elapsed": 55.2,
+          "finish": "stop",
+          "details": {
+            "agent": "label_registry",
+            "verdict": "FAIL",
+            "confidence": 90,
+            "critical_bugs": [
+              "Position averaging logic in update_label resets historical mean when new_observations=0 (default), because n = max(0, 1) = 1. This breaks persistent position tracking over time.",
+              "Pickle deserialization in _load() lacks validation or safe unpickling guards, creating an arbitrary code execution risk if the registry file is corrupted or tampered with."
+            ],
+            "warnings": [
+              "Broad except Exception block in _load() swallows specific errors (e.g., EOFError, UnpicklingError), making it difficult to diagnose data corruption.",
+              "No file locking or concurrency controls; simultaneous access from multiple robot processes could cause race conditions during read/write cycles.",
+              "Running average calculation assumes total_observations accurately tracks position updates, which may drift if observation counts differ from actual position measurements."
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or a lightweight database (e.g., SQLite) to eliminate security risks, improve data integrity, and enable cross-language compatibility.",
+              "Fix update_label to only recalculate mean_position_m when new_observations > 0, or maintain a dedicated position_update_count field separate from general observations.",
+              "Validate root_path using os.path.abspath() and restrict traversal outside the intended workspace directory to prevent unintended path access.",
+              "Implement explicit schema version checking during _load() with migration logic to gracefully handle future format changes."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 19.3,
+          "finish": "error",
+          "details": {
+            "error": "HTTP Error 400: Bad Request"
+          }
+        }
+      ]
+    },
+    {
+      "agent": "label_registry_auto",
+      "file": "label_registry_auto.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "UNCERTAIN",
+          "confidence": 0,
+          "elapsed": 3.7,
+          "finish": "error",
+          "details": {
+            "error": "HTTP Error 400: Bad Request"
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 22.9,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "launch_session",
+      "file": "launch_session.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 54.0,
+          "finish": "stop",
+          "details": {
+            "agent": "launch_session",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Duplicate unreachable 'except Exception' block in try_connect() causes inconsistent error handling and masks potential connection failures.",
+              "Shared mutable state (self.map_db, self.robot_pose, self.prev_state) accessed from ROS callback threads without threading locks, leading to race conditions, data corruption, or runtime crashes."
+            ],
+            "warnings": [
+              "Hardcoded robot IP ('192.168.12.20') and ROS port in source code; should be externalized via environment variables or config files.",
+              "roslibpy client connection is not explicitly terminated/closed on exit, risking lingering network connections or zombie processes.",
+              "Code is truncated at subscribe_and_run(); full pipeline loop, thread lifecycle management, and graceful shutdown logic cannot be fully verified."
+            ],
+            "recommendations": [
+              "Remove the duplicate 'except Exception' block in try_connect() to ensure proper error propagation and consistent logging.",
+              "Implement threading.Lock() for all shared state variables accessed across ROS callback threads and the main execution thread.",
+              "Add a cleanup method or context manager to explicitly call self.client.terminate() (or equivalent) when the session ends, crashes, or receives SIGINT.",
+              "Externalize ROBOT_IP and ROS_PORT using os.environ.get() with fallback defaults to improve deployment flexibility and security posture."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 25.6,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "mir_command_logger",
+      "file": "mir_command_logger.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 49.6,
+          "finish": "stop",
+          "details": {
+            "agent": "mir_command_logger",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Silent exception swallowing in all ROS callbacks (except Exception: pass) masks message parsing errors and causes silent data loss without any indication to the operator.",
+              "Unbounded list growth for cmd_vel_log, odom_log, joystick_log, etc. will lead to OutOfMemory crashes during extended logging sessions typical in robotics deployments."
+            ],
+            "warnings": [
+              "REST API polling uses HTTP instead of HTTPS, transmitting credentials and robot state in cleartext over the network.",
+              "CLI-provided session_path is not sanitized or validated, creating a path traversal risk if untrusted input is supplied.",
+              "Pickle serialization is used for log storage; it is non-human-readable, version-sensitive, and generally discouraged for data interchange in ML pipelines."
+            ],
+            "recommendations": [
+              "Replace bare except blocks with proper logging (e.g., import logging; logger.exception('Callback failed')) to preserve debugging capability without crashing the thread.",
+              "Implement a circular buffer or max-entry limit per log list to bound memory usage during long runs.",
+              "Sanitize session_path using os.path.abspath() and validate it resides within an expected base directory before writing files.",
+              "Migrate REST polling to HTTPS if the MiR100 supports it, or ensure network isolation for cleartext Basic Auth.",
+              "Switch persistent storage format to JSON Lines (JSONL) or CSV for better interoperability and VLA training pipeline compatibility."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 21.5,
+          "finish": "stop",
+          "details": {
+            "agent": "mir_command_logger",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "ROS client connection not properly closed due to incorrect method call 'terminate' (should be 'close') causing socket resource leak",
+              "REST API uses HTTP instead of HTTPS for authentication, transmitting credentials in plaintext"
+            ],
+            "warnings": [],
+            "recommendations": [
+              "Replace 'self.client.terminate()' with 'self.client.close()' in the stop() method to properly close ROS connections",
+              "Use HTTPS scheme (https://) for REST API URLs and validate that robot IP supports TLS/SSL",
+              "Add configuration option to enforce HTTPS when authentication is provided"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "MoCapData",
+      "file": "MoCapData.py",
+      "final_verdict": "FAIL",
+      "confidence": 59.0,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 49.7,
+          "finish": "stop",
+          "details": {
+            "agent": "MoCapData",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "RigidBody.get_as_string() defines default argument tab_str=0 (integer). When called with defaults, get_tab_str() attempts string concatenation ('' + 0), causing an immediate TypeError crash.",
+              "test_hash2() calls test_object.get_as_string() without verifying the method exists or catching AttributeError/TypeError. Passing incompatible objects will cause unhandled runtime exceptions."
+            ],
+            "warnings": [
+              "Plain Python lists are used for marker, rigid body, and skeleton data buffers. In a multi-threaded MoCap pipeline (typical for 120Hz+ UDP streams), concurrent append operations without locks will cause race conditions and list corruption.",
+              "Excessive use of copy.deepcopy() on every frame addition introduces significant CPU overhead and memory fragmentation at high update rates, potentially causing dropped frames or latency spikes on the MiR100.",
+              "Type checking relies on str(type(obj)) comparisons instead of isinstance(), which is fragile and breaks with subclasses or custom types."
+            ],
+            "recommendations": [
+              "Change RigidBody.get_as_string(self, tab_str=0, level=0) to tab_str='  ' to match other class signatures and prevent TypeError.",
+              "Implement thread-safe data handling using threading.Lock around list mutations, or adopt a producer-consumer pattern with queue.Queue for frame buffering between the NatNet callback thread and robot control loop.",
+              "Add try/except blocks around external method calls (e.g., test_object.get_as_string()) and network/NatNet client initialization to gracefully handle connection drops or malformed packets.",
+              "Replace str(type()) checks with isinstance() for robust type validation, and consider using dataclasses or TypedDicts to reduce boilerplate and improve serialization performance."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 24.7,
+          "finish": "stop",
+          "details": {
+            "agent": "MoCapData",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Infinite loop in `get_as_string` due to missing `level` parameter in `get_tab_str` call",
+              "Truncated code in `ForcePlateChannelData.get_as_string` causes syntax error",
+              "Uninitialized variable `fr` in `ForcePlateChannelData.get_as_string` leads to runtime crash"
+            ],
+            "warnings": [
+              "Missing error handling for network/API calls in the code",
+              "No resource cleanup for network sockets or connections",
+              "Potential security issue: hardcoded license text and lack of input validation",
+              "Thread/process safety issues: no synchronization for shared data structures",
+              "Missing error handling in `test_hash2` for `test_object` type checks"
+            ],
+            "recommendations": [
+              "Fix syntax error in `ForcePlateChannelData.get_as_string` by completing the truncated line",
+              "Add proper error handling for network and file operations",
+              "Implement resource cleanup for network connections and sockets",
+              "Use context managers for file and socket operations to prevent leaks",
+              "Add thread-safe locking mechanisms for shared data structures",
+              "Validate all inputs to prevent injection or path traversal attacks",
+              "Ensure all functions properly handle `None` values and edge cases"
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 160.6,
+          "finish": "length",
+          "details": {
+            "raw": ""
+          }
+        }
+      ]
+    },
+    {
+      "agent": "motive_connector",
+      "file": "motive_connector.py",
+      "final_verdict": "PASS",
+      "confidence": 85,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 60.2,
+          "finish": "stop",
+          "details": {
+            "agent": "motive_connector",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "Module-level sys.exit(1) on ImportError will terminate the entire host process if this module is imported by other scripts or services.",
+              "Callback methods (_on_rigid_body, _on_model_definitions, _on_new_frame) lack try/except blocks. An unhandled exception in these callbacks could crash the NatNet SDK's background threads and silently halt data streaming.",
+              "If client.run() returns False in connect(), the local 'client' instance is abandoned without explicit cleanup, potentially leaking SDK-managed threads or sockets depending on implementation."
+            ],
+            "recommendations": [
+              "Replace sys.exit(1) with a custom ImportError or RuntimeError to allow graceful handling by calling code.",
+              "Wrap all callback bodies in try/except blocks and log errors instead of allowing thread crashes.",
+              "Add cleanup logic (e.g., client.shutdown() or explicit deletion) in the connect() failure path to prevent resource leaks.",
+              "Parameterize network addresses via configuration files or environment variables rather than hardcoding '127.0.0.1' for production deployment flexibility."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "NatNetClient",
+      "file": "NatNetClient.py",
+      "final_verdict": "FAIL",
+      "confidence": 88.3,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 42.2,
+          "finish": "stop",
+          "details": {
+            "agent": "NatNetClient",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Unchecked data bounds in all __unpack_* methods will raise struct.error or ValueError when receiving truncated or corrupted UDP packets, causing immediate thread crashes.",
+              "No exception handling around binary parsing and network I/O; a single malformed packet will terminate the data/command processing loop without recovery."
+            ],
+            "warnings": [
+              "Sockets are instantiated but never explicitly closed in the visible code, leading to file descriptor/resource leaks on restart or abnormal shutdown.",
+              "Thread lifecycle management relies on time.sleep for synchronization instead of proper primitives (threading.Event/Lock), risking zombie threads and unsafe shutdown sequences.",
+              "Shared mutable state (__is_locked, listeners, sockets) is read/written across threads without mutex protection, creating race conditions during runtime configuration changes."
+            ],
+            "recommendations": [
+              "Add strict length validation before slicing data in __unpack_* methods, and wrap parsing logic in try-except blocks to gracefully log and skip corrupted packets.",
+              "Implement a dedicated shutdown/cleanup method that explicitly closes sockets (socket.close()) and joins threads using threading.Event for cooperative termination.",
+              "Protect shared state modifications with threading.Lock or RLock, particularly around set_* methods and listener assignments, to prevent race conditions.",
+              "Externalize hardcoded IP addresses, ports, and multicast settings via configuration files or environment variables to support dynamic deployment and network isolation requirements."
+            ]
+          }
+        },
+        {
+          "model": "qwen/qwen3-vl-30b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 26.7,
+          "finish": "stop",
+          "details": {
+            "agent": "NatNetClient",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Infinite loop in `__create_data_socket` due to unhandled socket binding failure",
+              "Uninitialized `self.data_socket` in `__create_data_socket` may cause `AttributeError`",
+              "Unreachable code in `__unpack_force_plate_data` due to truncated function",
+              "Uninitialized `self.command_socket` in `__create_command_socket` may cause `AttributeError`",
+              "Uninitialized `self.data_thread` and `self.command_thread` may cause `AttributeError` in `stop_threads`"
+            ],
+            "warnings": [
+              "Uninitialized `self.data_thread` and `self.command_thread` may cause `AttributeError` in `stop_threads`",
+              "Uninitialized `self.data_socket` in `__create_data_socket` may cause `AttributeError`",
+              "Uninitialized `self.command_socket` in `__create_command_socket` may cause `AttributeError`",
+              "Unreachable code in `__unpack_force_plate_data` due to truncated function",
+              "Uninitialized `self.data_socket` in `__create_data_socket` may cause `AttributeError`",
+              "Uninitialized `self.command_socket` in `__create_command_socket` may cause `AttributeError`"
+            ],
+            "recommendations": [
+              "Initialize all socket and thread attributes in `__init__`",
+              "Add error handling for socket binding failures",
+              "Ensure all functions are properly closed and not truncated",
+              "Add proper cleanup in `stop_threads`",
+              "Validate socket creation before use"
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 134.4,
+          "finish": "stop",
+          "details": {
+            "agent": "NatNetClient",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Syntax error in __unpack_force_plate_data: incomplete line ending with 'force_p' (truncated code causes immediate crash)",
+              "Uncaught socket creation failure: bind errors return None, later used without null check causing AttributeError"
+            ],
+            "warnings": [
+              "Resource leak: sockets not closed on destruction/disconnection",
+              "Thread safety issue: listeners accessed from threads without locking",
+              "Missing error handling for network operations (e.g., send_command returns -1 but no fallback)"
+            ],
+            "recommendations": [
+              "Fix syntax error in __unpack_force_plate_data by completing the function body",
+              "Add null checks before using self.command_socket/self.data_socket",
+              "Implement close() method to explicitly shut down sockets and threads",
+              "Use threading.Lock for shared state like listeners",
+              "Add retry logic for network operations with timeout handling"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "offline_processor",
+      "file": "offline_processor.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 43.3,
+          "finish": "stop",
+          "details": {
+            "agent": "offline_processor",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "subprocess.run calls lack a timeout parameter, which can cause the entire pipeline to hang indefinitely if a stage script deadlocks or waits for input.",
+              "Pipeline execution continues regardless of stage failures; run_stage returns a boolean success flag that is never checked, risking downstream stages processing incomplete or corrupted data.",
+              "Interactive input() calls will raise unhandled EOFError when stdin is closed or piped, causing abrupt crashes in automated/CI environments."
+            ],
+            "warnings": [
+              "Modifying sys.path at runtime can cause import shadowing and conflicts with standard Python packaging practices.",
+              "Subprocess stdout and stderr are not captured or logged, making it difficult to diagnose why a stage failed.",
+              "Fallback calibration path uses os.path.dirname(root), which may resolve to an unexpected parent directory depending on how the project is mounted or invoked."
+            ],
+            "recommendations": [
+              "Add timeout=300 (or appropriate duration) to all subprocess.run calls and handle subprocess.TimeoutExpired explicitly.",
+              "Replace interactive input() prompts with argparse CLI arguments to enable non-interactive execution, scheduling, and CI/CD integration.",
+              "Implement the logging module instead of print(), and capture subprocess output using capture_output=True, text=True for audit trails.",
+              "Add conditional checks after run_stage calls to halt or gracefully skip downstream stages if critical upstream steps fail.",
+              "Remove sys.path.insert(0, THIS_DIR); refactor into a proper Python package structure or use PYTHONPATH/environment variables."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 22.9,
+          "finish": "stop",
+          "details": {
+            "agent": "offline_processor",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Path traversal vulnerability via symlink attack in session directory handling"
+            ],
+            "warnings": [
+              "Pipeline continues processing after stage failure (no early termination)",
+              "Calibration file resolution may fail silently if both paths are invalid"
+            ],
+            "recommendations": [
+              "Add path validation to ensure session_path is within project root before processing",
+              "Implement immediate pipeline termination on any stage failure",
+              "Verify calibration file existence after resolution and exit with clear error message"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "project_snapshot",
+      "file": "project_snapshot.py",
+      "final_verdict": "FAIL",
+      "confidence": 100,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 67.5,
+          "finish": "stop",
+          "details": {
+            "agent": "project_snapshot",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Silent exception swallowing via bare 'except: pass' across multiple audit functions masks I/O errors and data corruption, potentially generating false-positive audit reports without raising alerts or crashing gracefully.",
+              "No infinite loops detected, but unhandled type mismatches in pickle deserialization could cause runtime crashes if session/knowledge files are corrupted or malformed."
+            ],
+            "warnings": [
+              "Resource Leak: Multiple file handles opened with 'open()' are never closed in audit_persistent_knowledge(), deep_vla_audit(), audit_multimodal_dataset(), and audit_model().",
+              "Security Risk: Use of pickle.load() on .pkl files poses arbitrary code execution vulnerability if session/knowledge data is tampered with or sourced from untrusted environments.",
+              "Code Quality: Over-reliance on broad exception handling suppresses stack traces, making debugging and monitoring of the audit pipeline difficult."
+            ],
+            "recommendations": [
+              "Replace all raw open() calls with context managers (with open(...) as f:) to guarantee file handle closure.",
+              "Migrate from pickle to safer serialization formats like JSON or MessagePack for persistent knowledge and session data. If pickle must be used, implement strict hash verification before deserialization.",
+              "Replace bare 'except: pass' blocks with specific exception handling (e.g., except IOError/JSONDecodeError as e:) and integrate logging to track audit failures transparently.",
+              "Add input validation and schema checks for all loaded data structures before processing to prevent silent type mismatches or key errors."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 100,
+          "elapsed": 21.2,
+          "finish": "stop",
+          "details": {
+            "agent": "project_snapshot",
+            "verdict": "FAIL",
+            "confidence": 100,
+            "critical_bugs": [
+              "NameError due to undefined variable 'BACK' in audit_backup function (line 382)"
+            ],
+            "warnings": [
+              "Silent exception handling in audit_agents (ignores errors during agent file processing)"
+            ],
+            "recommendations": [
+              "Define missing variable 'BACK' or correct path reference in audit_backup",
+              "Replace silent exception handling with logging in critical functions like audit_agents"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "quality_gate",
+      "file": "quality_gate.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 49.5,
+          "finish": "stop",
+          "details": {
+            "agent": "quality_gate",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Code is truncated mid-line in _calculate_learning_progress ('new_'), causing a guaranteed SyntaxError on execution.",
+              "Unsafe dictionary access using bracket notation (e.g., obs['object_name'], e['zone']) without .get() or try/except will raise KeyError if session data structure deviates from expectations, crashing the agent."
+            ],
+            "warnings": [
+              "sys.path.insert(0, SCRIPT_DIR) modifies global interpreter state and can cause import conflicts or shadowing in larger projects.",
+              "The 'pickle' module is imported but never used; unused imports increase namespace clutter and potential attack surface if accidentally invoked elsewhere.",
+              "Statistical outlier detection assumes Poisson distribution (using sqrt(avg) for sigma), which may produce inaccurate thresholds for low-count historical data."
+            ],
+            "recommendations": [
+              "Replace all direct dictionary key accesses with .get() or add explicit input validation/schema checking before processing session results.",
+              "Remove the unused 'pickle' import and refactor imports to use standard Python packaging (e.g., relative imports) instead of sys.path manipulation.",
+              "Complete the truncated _calculate_learning_progress function and ensure all mathematical operations handle edge cases (e.g., zero variance, empty lists).",
+              "Add comprehensive try/except blocks around data processing loops to prevent single malformed records from halting the entire quality gate analysis."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 17.9,
+          "finish": "stop",
+          "details": {
+            "agent": "quality_gate",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Syntax error in _calculate_learning_progress due to truncated code (incomplete variable assignment 'new_...[TRUNCATED]')"
+            ],
+            "warnings": [],
+            "recommendations": [
+              "Complete the implementation of _calculate_learning_progress and ensure valid syntax before deployment",
+              "Add unit tests for all flagging functions including edge cases like empty data structures"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "qwen_dataset_formatter",
+      "file": "qwen_dataset_formatter.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 53.5,
+          "finish": "stop",
+          "details": {
+            "agent": "qwen_dataset_formatter",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Unhandled ValueError/TypeError in float() conversion for 'speed' and 'angular_velocity' if pickle data contains non-numeric types, None values, or unexpected structures.",
+              "Silent fallback to zero velocity when robot_states list is shorter than png_files list may corrupt ground truth alignment without raising an error or warning."
+            ],
+            "warnings": [
+              "Use of pickle.load() poses arbitrary code execution risk if slam_data.pkl originates from untrusted sources, third-party tools, or becomes corrupted.",
+              "Hardcoded Windows absolute path (ROOT_DIR) breaks cross-platform compatibility and prevents seamless CI/CD or remote server deployment.",
+              "Unused import 'math' detected."
+            ],
+            "recommendations": [
+              "Wrap float() conversions in try-except blocks with fallback to 0.0 and log warnings for malformed SLAM entries to prevent pipeline crashes.",
+              "Replace pickle with a safer, schema-validated serialization format like JSON, HDF5, or Apache Parquet for robot state data.",
+              "Add explicit validation to ensure len(robot_states) matches len(png_files), or raise an informative RuntimeError instead of silently defaulting to zero velocity.",
+              "Parameterize ROOT_DIR and session date filters via CLI arguments (argparse) or environment variables to improve reusability."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 24.4,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "robot_data_analyzer",
+      "file": "robot_data_analyzer.py",
+      "final_verdict": "PASS",
+      "confidence": 95,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 95,
+          "elapsed": 53.8,
+          "finish": "stop",
+          "details": {
+            "agent": "robot_data_analyzer",
+            "verdict": "PASS",
+            "confidence": 95,
+            "critical_bugs": [],
+            "warnings": [
+              "Use of `assert` for input validation can be silently disabled when Python runs with the `-O` (optimize) flag.",
+              "Variable `v_euclidean` is computed in Step 3 but never referenced or logged (dead code).",
+              "The module-level logger has no handler or formatter attached; logs will only appear if the calling environment configures logging."
+            ],
+            "recommendations": [
+              "Replace `assert` statements with explicit `if ... raise ValueError(...)` checks to guarantee input validation in all execution modes.",
+              "Remove `v_euclidean` computation or integrate it into the diagnostic logging block to eliminate unused variable warnings and reduce unnecessary CPU cycles.",
+              "Add a conditional `logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(name)s:%(message)s')` at module initialization if this script may be executed standalone."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "run_session_analysis",
+      "file": "run_session_analysis.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 35.5,
+          "finish": "stop",
+          "details": {
+            "agent": "run_session_analysis",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Unsafe pickle deserialization in generate_merge_review_package(): pickle.load() on pending_merge_candidate.pkl can execute arbitrary code during deserialization if the file is tampered with or originates from an untrusted source. This violates secure coding standards for robotics/agent systems."
+            ],
+            "warnings": [
+              "Broad exception handling in run_quality_gate() catches all exceptions, potentially masking critical runtime errors and returning silent defaults (None, 0.0) without proper logging.",
+              "CLI arguments session_path and calibration_path are not validated or resolved against path traversal patterns (e.g., '../'). Untrusted input could lead to unauthorized file reads/writes outside the intended workspace.",
+              "subprocess.run() calls lack a timeout parameter. If spatial_temporal_fusion.py or knowledge_engine.py deadlock, this orchestrator will hang indefinitely."
+            ],
+            "recommendations": [
+              "Replace pickle with a safe serialization format like JSON, MessagePack, or Protocol Buffers for pending_merge_candidate.pkl and fused_data.pkl.",
+              "Validate and canonicalize all input paths using os.path.realpath() or pathlib.Path.resolve() to ensure they reside within expected directories before processing.",
+              "Refactor run_quality_gate() to catch specific exceptions (e.g., ImportError, ValueError) and log detailed traceback information instead of silently failing.",
+              "Add a timeout parameter (e.g., timeout=120) to all subprocess.run() calls to prevent indefinite hangs during agent execution.",
+              "Remove dynamic sys.path.insert(0, SCRIPT_DIR) and use proper package installation or relative imports to avoid module shadowing in larger deployments."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 22.2,
+          "finish": "stop",
+          "details": {
+            "agent": "run_session_analysis",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Candidate file missing or corrupted causes unhandled pickle exception in generate_merge_review_package",
+              "Session path not validated leads to arbitrary file write via path traversal"
+            ],
+            "warnings": [],
+            "recommendations": [
+              "Validate session_path is within DEFAULT_ROOT using os.path.commonpath() before processing",
+              "Add try-except for pickle.UnpicklingError in generate_merge_review_package when loading candidate file",
+              "Use absolute paths with safe base directory checks to prevent path traversal"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "scene_object_detector",
+      "file": "scene_object_detector.py",
+      "final_verdict": "PASS",
+      "confidence": 85,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 53.9,
+          "finish": "stop",
+          "details": {
+            "agent": "scene_object_detector",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "Unbounded disk cache growth without eviction or size limits risks rapid disk exhaustion in continuous operation",
+              "Hardcoded confidence threshold (0.45) passed to cache functions reduces flexibility and may cause stale cache hits if inference parameters change",
+              "MD5 hashing of full frame bytes is computationally expensive for high-resolution video streams and may introduce latency"
+            ],
+            "recommendations": [
+              "Implement an LRU or max-file-count policy for CACHE_DIR to prevent unbounded disk usage",
+              "Replace MD5 with a perceptual hash (e.g., pHash) or xxhash for faster, resolution-invariant cache keys",
+              "Add defensive bounds checking: use results.names.get(int(cls_id), 'unknown') instead of direct indexing to prevent IndexError on unexpected class IDs",
+              "Parameterize conf_threshold in detect_objects_safe() to align inference and cache validation dynamically rather than hardcoding 0.45"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "semantic_slam_fusion",
+      "file": "semantic_slam_fusion.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 90,
+          "elapsed": 46.0,
+          "finish": "stop",
+          "details": {
+            "agent": "semantic_slam_fusion",
+            "verdict": "FAIL",
+            "confidence": 90,
+            "critical_bugs": [
+              "Unhandled KeyError/TypeError: Direct dictionary access (obj['class'], obj['center']) on YOLO JSON data lacks defensive checks. Malformed or missing keys will crash the fusion pipeline during runtime.",
+              "Unsafe Deserialization (Security): pickle.load() is used to deserialize slam_data.pkl. Pickle execution of arbitrary code during deserialization poses a critical security risk if files are tampered with, corrupted, or sourced from untrusted pipelines."
+            ],
+            "warnings": [
+              "Hardcoded absolute Windows path (ROOT) breaks portability and will fail on standard Linux/ROS2 environments used for MiR100 deployment.",
+              "Implicit camera resolution assumption: Hardcoded 2048x1088 normalization factors may cause spatial projection drift if actual camera feeds differ, with no validation or error logging."
+            ],
+            "recommendations": [
+              "Replace pickle serialization with JSON, msgpack, or HDF5 for map metadata to eliminate arbitrary code execution risks.",
+              "Implement defensive JSON parsing using .get() methods and explicit key validation before accessing nested YOLO detection structures.",
+              "Externalize configuration (ROOT path, camera resolutions, clustering thresholds) into a YAML/JSON config file or ROS parameters for production deployment."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 18.9,
+          "finish": "stop",
+          "details": {
+            "agent": "semantic_slam_fusion",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Non-numeric center coordinates (cx, cy) in YOLO data cause TypeError during division in map_pixels_to_slam"
+            ],
+            "warnings": [
+              "Hardcoded camera resolution (2048x1088) may not match actual camera if used with different cameras",
+              "Class filtering is case-sensitive; might miss objects like 'TV' instead of 'tv'"
+            ],
+            "recommendations": [
+              "Validate cx/cy are numeric before division in map_pixels_to_slam (e.g., try/except or type check)",
+              "Make camera resolution configurable via metadata instead of hardcoded values",
+              "Normalize class names to lowercase for case-insensitive filtering"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "session_manager",
+      "file": "session_manager.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 52.8,
+          "finish": "stop",
+          "details": {
+            "agent": "session_manager",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Unhandled exceptions in update_knowledge_from_session() and inspect_project() when deserializing .pkl files; corrupted or malformed session/calibration data will crash the agent without graceful degradation.",
+              "Potential KeyError/AttributeError during knowledge merging due to schema drift: loaded objects may lack keys like position_variance_m2, sources_seen, or have incompatible types (e.g., list instead of set), causing crashes on .add() or arithmetic operations."
+            ],
+            "warnings": [
+              "Insecure deserialization via pickle.load(); if session directories are exposed to external inputs or untrusted data, malicious payloads could execute arbitrary code.",
+              "No input validation for root_path and session_path parameters; relative paths or symlinks could lead to unexpected file system traversal or permission errors."
+            ],
+            "recommendations": [
+              "Wrap all pickle.load() calls in try-except blocks catching specific exceptions (pickle.UnpicklingError, EOFError, KeyError) and implement safe fallbacks or logging.",
+              "Normalize data structures after loading: e.g., obj['sources_seen'] = set(obj.get('sources_seen', [])) to prevent type mismatches.",
+              "Replace pickle with a safer serialization format like JSON or MessagePack for persistent knowledge, as the schema contains only primitive types and nested dicts/lists.",
+              "Add lightweight schema validation (e.g., using pydantic or explicit key checks) when loading external .pkl files to ensure compatibility before processing."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 25.4,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "session_worthiness_analyzer",
+      "file": "session_worthiness_analyzer.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 45.0,
+          "finish": "stop",
+          "details": {
+            "agent": "session_worthiness_analyzer",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Use of pickle.load() on session data introduces arbitrary code execution risk if .pkl files are tampered with or sourced from untrusted environments.",
+              "Unhandled OSError/PermissionError in os.listdir() and file reads could crash the entire analysis pipeline if directory permissions change or paths become invalid during execution."
+            ],
+            "warnings": [
+              "Broad except Exception: clauses suppress specific error details, hindering debugging and masking underlying I/O failures.",
+              "Time-of-Check-Time-of-Use (TOCTOU) race conditions exist between os.path.exists() checks and subsequent file operations.",
+              "Redundant reading of knowledge_engine_report.txt in multiple sections without caching increases I/O overhead."
+            ],
+            "recommendations": [
+              "Replace pickle with a safer serialization format like JSON, MessagePack, or HDF5. If pickle is mandatory, implement cryptographic signature verification before deserialization.",
+              "Wrap filesystem operations in targeted exception handlers (OSError, PermissionError) to gracefully skip problematic sessions and continue processing others.",
+              "Cache file contents after initial read to eliminate redundant disk I/O and mitigate TOCTOU issues.",
+              "Validate session directory names against a strict whitelist regex to prevent symlink-based path traversal attacks."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 25.0,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "slam_auto_namer",
+      "file": "slam_auto_namer.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 60.7,
+          "finish": "stop",
+          "details": {
+            "agent": "slam_auto_namer",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Uncaught exceptions possible from pickle.load() if fused_data.pkl is corrupted, truncated, or contains unexpected schema versions",
+              "Potential KeyError/IndexError when accessing registry.entities[entity_id]['canonical_name'] and position coordinates p[0]/p[1] without explicit bounds/key validation"
+            ],
+            "warnings": [
+              "pickle deserialization of session data poses arbitrary code execution risk if fused_data.pkl originates from untrusted or tampered sources",
+              "sys.path.insert(0, ...) permanently mutates global interpreter state, which can cause import shadowing and conflicts in long-running robot control loops",
+              "CLI arguments session_path and root_path lack validation/sanitization, risking unintended file reads/writes outside expected workspace directories"
+            ],
+            "recommendations": [
+              "Replace pickle with a safer serialization format like JSON, MessagePack, or HDF5 for both reading fused data and writing match reports",
+              "Wrap pickle.load() and all dictionary/list indexing operations in try/except blocks with structured logging and graceful degradation",
+              "Validate and resolve CLI paths using pathlib.Path.resolve(), then verify they reside within a predefined safe base directory before I/O operations",
+              "Remove sys.path manipulation; use proper Python packaging, virtual environments, or importlib.util.spec_from_file_location for dynamic imports"
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 23.8,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "slam_map_annotator",
+      "file": "slam_map_annotator.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 49.8,
+          "finish": "stop",
+          "details": {
+            "agent": "slam_map_annotator",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "pickle.load() used on session files without safety checks; pickle deserialization can execute arbitrary code if data is tampered with or untrusted.",
+              "File handles opened via open(slam_file, 'rb') and open(motive_file, 'rb') are never closed, causing resource leaks (file descriptor exhaustion) in production loops."
+            ],
+            "warnings": [
+              "Broad 'except Exception as e' suppresses specific error types, making debugging and monitoring difficult.",
+              "No type checking on deserialized data; calling .get() will raise AttributeError if pickle payload is not a dict.",
+              "sys.argv input lacks path sanitization, allowing directory traversal (e.g., '../') which could read/write outside intended session directories."
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or Protocol Buffers for data interchange to eliminate deserialization vulnerabilities.",
+              "Wrap all file operations in 'with open(...) as f:' context managers to guarantee resource cleanup.",
+              "Validate and resolve session_dir against a known safe base path using Path.resolve() and .is_relative_to().",
+              "Implement structured logging instead of silent exception catching, and handle specific exceptions explicitly."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 24.0,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "slam_to_bev",
+      "file": "slam_to_bev.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 54.0,
+          "finish": "stop",
+          "details": {
+            "agent": "slam_to_bev",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [],
+            "warnings": [
+              "Resource leak: File handle opened for pickle.load() is never explicitly closed.",
+              "Security risk: pickle.load() can execute arbitrary code if the .pkl file is malicious or corrupted.",
+              "Memory inefficiency: Accumulating all BEV tokens in a list before writing may cause OOM on long robot sessions."
+            ],
+            "recommendations": [
+              "Use context manager for deserialization: with open(slam_file, 'rb') as f: slam_data = pickle.load(f)",
+              "Consider using safer serialization formats (e.g., JSON, msgpack) or validate pickle source integrity before loading.",
+              "Stream JSONL output directly inside the loop to reduce peak memory usage.",
+              "Add input validation for session_dir to prevent path traversal and handle missing directories gracefully."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 24.2,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "spatial_temporal_fusion",
+      "file": "spatial_temporal_fusion.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 85,
+          "elapsed": 54.1,
+          "finish": "stop",
+          "details": {
+            "agent": "spatial_temporal_fusion",
+            "verdict": "FAIL",
+            "confidence": 85,
+            "critical_bugs": [
+              "Unhandled KeyError/TypeError risk: Code assumes strict dictionary structures from pickle files (e.g., sample['x_mm'], robot_state['yaw']). Missing keys or unexpected data types will crash the agent at runtime.",
+              "Timestamp arithmetic vulnerability: gap = abs(state['timestamp_utc'] - target_timestamp_utc) assumes numeric/datetime objects. If timestamps are stored as ISO strings, this raises TypeError and halts execution."
+            ],
+            "warnings": [
+              "Pickle deserialization security risk: pickle.load() executes arbitrary code during unpickling. If session/calibration files originate from untrusted sources or shared network drives, this poses a critical vulnerability.",
+              "O(N) timestamp matching: find_nearest_robot_state performs a linear search per Motive sample. May cause latency spikes or missed deadlines with large SLAM logs."
+            ],
+            "recommendations": [
+              "Add defensive try/except blocks and explicit key validation (e.g., dict.get() with safe defaults or pydantic/schema validation) around all pickle data access.",
+              "Enforce timestamp type consistency by converting to float epoch seconds or datetime objects immediately upon loading.",
+              "Replace pickle with safer, schema-enforced serialization formats like JSON, msgpack, or HDF5 for robot telemetry and calibration data.",
+              "Validate and sanitize session_path inputs using os.path.abspath() and allowlists to prevent path traversal if the function is exposed via an API."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 25.4,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "training_curriculum_advisor",
+      "file": "training_curriculum_advisor.py",
+      "final_verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 37.0,
+          "finish": "stop",
+          "details": {
+            "agent": "training_curriculum_advisor",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Unhandled json.JSONDecodeError will crash execution if vla_behavior_matrix.json is malformed, empty, or contains invalid JSON syntax",
+              "Hardcoded Windows absolute path (D:\\kiarash\\...) causes immediate failure on Linux/ROS environments standard for MiR100 deployment and breaks portability"
+            ],
+            "warnings": [
+              "No type validation for matrix values; assumes all entries are dictionaries, risking AttributeError if JSON schema changes",
+              "Hardcoded target scenario count (22) makes coverage calculation brittle and non-scalable as the curriculum expands",
+              "Coverage percentage calculation lacks bounds checking; could exceed 100% or produce misleading metrics if covered set grows beyond expected scope"
+            ],
+            "recommendations": [
+              "Replace hardcoded ROOT with environment variables, argparse, or a centralized config file to support cross-platform robot deployment",
+              "Wrap json.load() in try/except block to catch JSONDecodeError and ValueError, returning a structured error message instead of crashing",
+              "Add isinstance(data, dict) validation before calling .get() on matrix values to prevent runtime type errors",
+              "Externalize magic numbers like 22 into configuration parameters or derive them dynamically from the behavior matrix schema",
+              "Consider adding logging instead of print statements for better integration with ROS/system monitoring tools"
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PARSE_FAIL",
+          "confidence": 0,
+          "elapsed": 24.0,
+          "finish": "length",
+          "details": null
+        }
+      ]
+    },
+    {
+      "agent": "video_event_extractor",
+      "file": "video_event_extractor.py",
+      "final_verdict": "PASS",
+      "confidence": 90,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 90,
+          "elapsed": 55.0,
+          "finish": "stop",
+          "details": {
+            "agent": "video_event_extractor",
+            "verdict": "PASS",
+            "confidence": 90,
+            "critical_bugs": [],
+            "warnings": [
+              "Hardcoded absolute Windows path limits portability and complicates deployment on Linux-based robot systems.",
+              "Session-to-video matching relies on substring containment which may cause false positives with similar session names (e.g., 'session_1' matches 'session_10').",
+              "Missing existence check for SESSIONS_DIR before globbing could raise OSError on older Python versions if the directory is missing."
+            ],
+            "recommendations": [
+              "Externalize directory paths via environment variables or a configuration file to support cross-platform deployment and CI/CD pipelines.",
+              "Use regex or strict prefix matching for session-video association to prevent incorrect grouping.",
+              "Wrap cv2.VideoCapture and frame processing in try-except blocks to gracefully skip corrupted videos without halting the batch process.",
+              "Replace print() statements with Python's logging module for better integration with robot fleet management and remote debugging systems."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "video_learning_agent",
+      "file": "video_learning_agent.py",
+      "final_verdict": "PASS",
+      "confidence": 85,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 43.9,
+          "finish": "stop",
+          "details": {
+            "agent": "video_learning_agent",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "cv2.VideoCapture lacks try/finally or context manager; unexpected exceptions during frame reading could leak OS video handles.",
+              "pickle.load() used for MoCap data poses arbitrary code execution risk if file integrity is compromised or sourced from untrusted pipelines.",
+              "Hardcoded absolute Windows path (ROOT_DIR) reduces portability and will fail in cross-platform deployments or CI/CD environments.",
+              "datetime.utcnow() is deprecated in Python 3.12+; may trigger deprecation warnings in newer runtime environments.",
+              "Rigid camera naming logic assumes exactly two filename patterns, which may mislabel additional cameras or cause key collisions."
+            ],
+            "recommendations": [
+              "Wrap cv2.VideoCapture operations in a try/finally block to guarantee cap.release() is called even if an exception occurs mid-processing.",
+              "Replace pickle with JSON, msgpack, or a validated schema-based format for MoCap data to eliminate deserialization security risks.",
+              "Externalize directory paths using environment variables or a configuration file (e.g., .env, YAML) instead of hardcoding absolute paths.",
+              "Add explicit type validation for analyze_mocap_dynamics return values; currently, error dicts are stored as spatial metrics without clear downstream handling.",
+              "Consider streaming/chunked processing or memory-mapped files if MoCap datasets exceed available RAM on the MiR100 edge hardware."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "video_narrator",
+      "file": "video_narrator.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 48.8,
+          "finish": "stop",
+          "details": {
+            "agent": "video_narrator",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [],
+            "warnings": [
+              "Resource leak: open(cmd_file, 'rb') is never closed. In long-running or batch processing scenarios, this will exhaust file descriptors.",
+              "Security vulnerability: pickle.load() deserializes untrusted/CLI-specified data, exposing the system to arbitrary code execution if input files are tampered with.",
+              "Path traversal risk: sys.argv[1] is passed directly to Path() without validation against a trusted base directory, allowing potential read/write outside intended session folders.",
+              "Broad exception handling: except Exception as e masks underlying data structure mismatches (e.g., missing keys in odom_log) and hinders debugging."
+            ],
+            "recommendations": [
+              "Use context managers for all file I/O: with open(cmd_file, 'rb') as f: cmd_data = pickle.load(f)",
+              "Replace pickle with safer serialization formats like JSON, msgpack, or HDF5 for robot telemetry and command logs.",
+              "Implement path validation to ensure session_dir resolves within a predefined safe base directory before processing.",
+              "Refine exception handling to catch specific errors (KeyError, TypeError, ValueError) and log full tracebacks instead of swallowing them.",
+              "Remove unused imports: numpy as np, os."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 21.5,
+          "finish": "stop",
+          "details": {
+            "agent": "video_narrator",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Non-numeric values in odom data (e.g., string instead of float) cause TypeError during abs() operation, crashing the script",
+              "Path traversal vulnerability via command-line argument: session_dir can be manipulated to access arbitrary files"
+            ],
+            "warnings": [
+              "Unclosed file handle for cmd_file (using open() without context manager)"
+            ],
+            "recommendations": [
+              "Validate numeric fields in odom data using isinstance() before operations",
+              "Sanitize session_dir with os.path.normpath and verify it's within a safe base directory",
+              "Replace pickle.load() with safer serialization (e.g., JSON) for command data storage"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "video_quality_agent",
+      "file": "video_quality_agent.py",
+      "final_verdict": "PASS",
+      "confidence": 85,
+      "escalated": false,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "PASS",
+          "confidence": 85,
+          "elapsed": 60.1,
+          "finish": "stop",
+          "details": {
+            "agent": "video_quality_agent",
+            "verdict": "PASS",
+            "confidence": 85,
+            "critical_bugs": [],
+            "warnings": [
+              "cv2.CAP_PROP_FRAME_COUNT is notoriously unreliable for many compressed video codecs; may return -1 or inaccurate counts, leading to incorrect duration/bitrate metrics and sampling indices.",
+              "Output directory (out_dir) existence is not validated before cv2.imwrite calls; will raise cv2.error if the path does not exist.",
+              "CSV frame counting logic uses manual string splitting and hard-coded header skipping, which is fragile against varying CSV structures or encoding issues."
+            ],
+            "recommendations": [
+              "Add os.makedirs(out_dir, exist_ok=True) at the beginning of analyze_video to prevent file write failures.",
+              "Implement a fallback for frame counting (e.g., using subprocess with ffprobe or iterative reading if high accuracy is required).",
+              "Replace manual CSV parsing with Python's csv module and handle potential malformed rows gracefully.",
+              "Externalize quality thresholds (MIN_FPS, MAX_MOTION_BLUR_PCT, etc.) to a YAML/JSON config file for easier tuning across different robot deployments."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "vla_dataset_builder",
+      "file": "vla_dataset_builder.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 52.6,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_dataset_builder",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "os.makedirs(os.path.dirname(output_file), exist_ok=True) raises FileNotFoundError when output_file lacks a directory component (e.g., 'dataset.json'), because os.path.dirname returns an empty string.",
+              "pickle.load() is used to deserialize slam_data.pkl without integrity checks or sandboxing, creating a critical Arbitrary Code Execution (ACE) vulnerability if the file originates from untrusted or external sources."
+            ],
+            "warnings": [
+              "sys.path.insert(0, ...) modifies the global module search path on every function invocation, risking import resolution conflicts and namespace pollution in long-running or multi-process environments.",
+              "Fallback kinematics generation assumes a constant forward velocity (0.25 m/s) and zero angular velocity, which may introduce systematic bias into the VLA training dataset if slam_data is frequently missing or malformed.",
+              "Behavior classification thresholds (0.05, 0.15, 0.30) are hardcoded and lack environment-specific configurability, potentially mislabeling maneuvers across different MiR100 configurations."
+            ],
+            "recommendations": [
+              "Guard directory creation with a path check: dir_path = os.path.dirname(output_file); if dir_path: os.makedirs(dir_path, exist_ok=True).",
+              "Replace pickle with safe, schema-validated serialization formats such as JSON, HDF5, or Apache Parquet for kinematics data exchange.",
+              "Remove dynamic sys.path manipulation; resolve robot_data_analyzer dependencies via standard Python packaging (pyproject.toml/setup.py) or relative imports.",
+              "Implement strict path validation and canonicalization for session_dir and output_file to prevent unintended directory traversal or file overwrites."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 19.3,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_dataset_builder",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Use of pickle.load on untrusted file 'slam_data.pkl' without validation, enabling arbitrary code execution if attacker controls session directory"
+            ],
+            "warnings": [
+              "Modifying sys.path at runtime to load from current directory (risk of malicious module injection)"
+            ],
+            "recommendations": [
+              "Replace pickle with safe serialization (e.g., JSON) for slam_data.pkl",
+              "Remove dynamic sys.path modification; use standard Python imports or package structure",
+              "Add file integrity checks before loading slam_data.pkl"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "vla_scenario_validator",
+      "file": "vla_scenario_validator.py",
+      "final_verdict": "PASS",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 90,
+          "elapsed": 58.2,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_scenario_validator",
+            "verdict": "FAIL",
+            "confidence": 90,
+            "critical_bugs": [
+              "Unvalidated pickle deserialization poses a critical Remote Code Execution (RCE) vulnerability if .pkl files are tampered with or sourced from untrusted environments.",
+              "List comprehensions assume all telemetry entries are dict-like objects; non-dict elements will trigger AttributeError crashes during .get() calls."
+            ],
+            "warnings": [
+              "Broad 'except Exception: pass' silently swallows file I/O errors, corruption, and malformed data, hindering diagnostics.",
+              "slam_f is defined and checked for existence but never utilized in the analysis logic (dead code).",
+              "zip(r_samples, h_samples) silently truncates to the shorter list, potentially missing critical proximity events if sample counts mismatch.",
+              "Hardcoded Windows absolute path (ROOT) breaks cross-platform compatibility and deployment flexibility."
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or a schema-validated format (e.g., msgpack/protobuf) for safe telemetry serialization.",
+              "Add explicit type validation (isinstance(item, dict)) before accessing .get() on log entries to prevent runtime crashes.",
+              "Implement specific exception handling (pickle.UnpicklingError, IOError) with logging instead of silent suppression.",
+              "Externalize configuration paths via environment variables or CLI arguments for production readiness."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "PASS",
+          "confidence": 95,
+          "elapsed": 23.4,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_scenario_validator",
+            "verdict": "PASS",
+            "confidence": 95,
+            "critical_bugs": [],
+            "warnings": [
+              "Use of pickle for deserialization without validation; potential security risk if files are untrusted"
+            ],
+            "recommendations": [
+              "Replace pickle with JSON or safe serialization format for telemetry data storage"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "agent": "vla_supervisor_agent",
+      "file": "vla_supervisor_agent.py",
+      "final_verdict": "FAIL",
+      "confidence": 95,
+      "escalated": true,
+      "votes": [
+        {
+          "model": "qwen3.6-27b",
+          "verdict": "FAIL",
+          "confidence": 92,
+          "elapsed": 48.8,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_supervisor_agent",
+            "verdict": "FAIL",
+            "confidence": 92,
+            "critical_bugs": [
+              "Hardcoded Windows absolute path (D:\\...) will cause immediate failure on standard MiR100 Linux/ROS deployments.",
+              "Potential ZeroDivisionError if ALL_SCENARIOS is empty during coverage percentage calculation."
+            ],
+            "warnings": [
+              "Silent exception swallowing in video JSON loading masks parsing errors and may lead to incorrect multi-modal confidence scoring.",
+              "No error handling around analyze_session_physics(s_dir) call; a corrupted session directory could crash the entire supervisor loop.",
+              "sys.exit(1) on import failure prevents graceful degradation or integration with robot middleware."
+            ],
+            "recommendations": [
+              "Replace hardcoded ROOT with environment variables (e.g., os.environ.get('MIR_ROOT')) or a configuration file for cross-platform compatibility.",
+              "Add a guard clause: if len(ALL_SCENARIOS) == 0: handle gracefully before division.",
+              "Wrap analyze_session_physics and JSON loading in try/except blocks with proper logging to ensure fault tolerance across sessions.",
+              "Implement the standard logging module instead of print statements for production robot supervision."
+            ]
+          }
+        },
+        {
+          "model": "qwen3-30b-a3b-thinking-2507",
+          "verdict": "FAIL",
+          "confidence": 95,
+          "elapsed": 14.6,
+          "finish": "stop",
+          "details": {
+            "agent": "vla_supervisor_agent",
+            "verdict": "FAIL",
+            "confidence": 95,
+            "critical_bugs": [
+              "Uncaught exception from analyze_session_physics() call may cause program crash (no error handling)",
+              "Missing keys in phys_evidence dictionary will cause KeyError during execution"
+            ],
+            "warnings": [
+              "Hardcoded absolute path to development directory (D:\\kiarash\\...) breaks portability and security best practices"
+            ],
+            "recommendations": [
+              "Add try-except block around analyze_session_physics() call with meaningful error logging",
+              "Validate required keys in phys_evidence before access (e.g., 'confidence', 'detected')",
+              "Replace hardcoded paths with environment variables or configuration file",
+              "Implement schema validation for physics evidence data structure"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

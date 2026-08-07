@@ -1,0 +1,25 @@
+============================================================
+ ENTITY REGISTRY
+============================================================
+Total: 2
+
+[PENDING] ENT-F4D3E1BDA2
+  Name  : person_kiarash
+  Type  : human
+  Class : human
+  Dynamic: True
+  Motive markers: ['kiarash_leftwrist', 'kiarash_RightWrist']
+  SLAM clusters : []
+  Video bboxes  : 0
+  Sessions      : ['session_2026-08-24_13-16-03', 'session_2026-08-24_13-57-33', 'session_2026-08-25_17-32-01', 'session_2026-08-25_17-43-02']
+
+[PENDING] ENT-1E1C6F4DF7
+  Name  : kia hat 002
+  Type  : human
+  Class : human
+  Dynamic: True
+  Motive markers: ['kia hat 002']
+  SLAM clusters : []
+  Video bboxes  : 0
+  Sessions      : ['session_2026-08-24_13-16-03', 'session_2026-08-24_13-57-33', 'session_2026-08-25_17-32-01', 'session_2026-08-25_17-43-02']
+

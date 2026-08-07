@@ -1,0 +1,22 @@
+{
+  "session_2026-08-27_17-54-20-Camera 1 (M69428).avi": {
+    "filename": "session_2026-08-27_17-54-20-Camera 1 (M69428).avi",
+    "fps": 30.0,
+    "total_frames": 1801,
+    "duration_s": 60.03,
+    "resolution": "2048x1088",
+    "avg_motion_energy": 0.695,
+    "peak_motion_energy": 4.989,
+    "active_motion_ratio": 0.06
+  },
+  "session_2026-08-27_17-54-20-Camera 7 (M69432).avi": {
+    "filename": "session_2026-08-27_17-54-20-Camera 7 (M69432).avi",
+    "fps": 30.0,
+    "total_frames": 1801,
+    "duration_s": 60.03,
+    "resolution": "2048x1088",
+    "avg_motion_energy": 0.608,
+    "peak_motion_energy": 1.102,
+    "active_motion_ratio": 0.0
+  }
+}

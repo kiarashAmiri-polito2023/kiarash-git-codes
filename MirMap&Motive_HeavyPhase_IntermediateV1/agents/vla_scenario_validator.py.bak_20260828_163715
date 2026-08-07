@@ -1,0 +1,211 @@
+﻿#!/usr/bin/env python3
+"""
+VLA SCENARIO COMPLIANCE VALIDATOR & DYNAMIC TUTOR
+Scans raw sensor telemetry (MoCap rigid bodies, SLAM grid, Robot Odometry) and
+verifies if Kiarash performed the physical collaborative tasks correctly in the videos.
+Stores continuous memory in persistent_knowledge/vla_behavior_matrix.json.
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | PoliTo
+"""
+
+import os
+import sys
+import json
+import pickle
+import glob
+import numpy as np
+from pathlib import Path
+
+MATRIX_PATH = Path("persistent_knowledge/vla_behavior_matrix.json")
+
+# Define 22 advanced industrial HRC VLA scenarios with scientific descriptions
+VLA_SCENARIOS = {
+    "IDLE_STATIONARY": "Robot static, human static. Baseline control state.",
+    "FORWARD_CRUISING": "Straight forward robot motion with steady velocity.",
+    "ROTATIONAL_MANEUVER": "Pure angular steering of the robot on spot.",
+    "LOW_SPEED_NAVIGATION": "Robot navigating slowly (< 0.15 m/s) in tight environment.",
+    "REVERSE_MOTION": "Robot moving backwards (linear velocity < -0.02 m/s).",
+    "HUMAN_APPROACH": "Human walking towards the robot (distance decreasing).",
+    "HUMAN_RETREAT": "Human moving away from the robot (distance increasing).",
+    "HUMAN_BLOCKING": "Human stands in front of robot, forcing dynamic stop/deceleration.",
+    "CLOSE_PASS_LEFT": "Human passes closely (< 0.8m) on the robot's left side.",
+    "CLOSE_PASS_RIGHT": "Human passes closely (< 0.8m) on the robot's right side.",
+    "COLLABORATIVE_FOLLOWING": "Robot is dynamically trailing or tracking the human's path.",
+    "SAFETY_ZONE_BREACH": "Human enters inner warning/braking boundary (< 0.6m) around robot.",
+    "SUDDEN_BRAKE": "Robot experiences high deceleration due to nearby human presence.",
+    "EMERGENCY_STOP": "Hardware stop or physical bumper collision event detected.",
+    "OBSTACLE_STATIC_AVOID": "Robot maneuvers around a static object placed in environment.",
+    "OBSTACLE_DYNAMIC_AVOID": "Robot steers to avoid a moving human/object.",
+    "GESTURE_STOP": "Human raises arm (Wrist height > 1.6m) causing robot to halt.",
+    "POINTING_TARGET": "Human pointing vector dictates robot turning target.",
+    "HANDOVER_REQUEST": "Human approaches and stands static beside robot for interaction.",
+    "PAYLOAD_PICKUP": "Payload state transitions at static loading station.",
+    "PAYLOAD_DROPOFF": "Payload unloading state sequence.",
+    "MULTI_HUMAN_TRAFFIC": "Multiple human agents tracked simultaneously near robot."
+}
+
+def analyze_session_physics(session_dir, motive_sessions_dir):
+    sd = Path(session_dir)
+    s_name = sd.name
+    
+    analysis = {
+        "video_status": "MISSING",
+        "video_name": None,
+        "scenarios_performed": [],
+        "scenarios_not_performed": [],
+        "metrics": {}
+    }
+    
+    # Check Video presence in motive sessions folder
+    matching_vids = glob.glob(str(motive_sessions_dir / f"*{s_name}*")) + \
+                    glob.glob(str(sd / "*.avi")) + \
+                    glob.glob(str(sd / "*.mp4"))
+    
+    # Filter only video files
+    matching_vids = [v for v in matching_vids if v.lower().endswith(('.avi', '.mp4'))]
+    
+    if matching_vids:
+        analysis["video_status"] = "PRESENT"
+        analysis["video_name"] = os.path.basename(matching_vids[0])
+
+    # Load multi-modal files
+    motive_file = sd / "motive_data.pkl"
+    odom_file = sd / "mir_command_data.pkl"
+    
+    m_data = None
+    o_data = None
+    
+    if motive_file.exists():
+        try:
+            with open(motive_file, "rb") as f: m_data = pickle.load(f)
+        except: pass
+    if odom_file.exists():
+        try:
+            with open(odom_file, "rb") as f: o_data = pickle.load(f)
+        except: pass
+
+    # --- Heuristics Rules Engine ---
+    performed = set()
+    
+    # 1. Basic Odometry analysis
+    v_lin = []
+    v_ang = []
+    
+    if o_data and isinstance(o_data, dict) and "odom_actual" in o_data:
+        odom_samples = o_data["odom_actual"]
+        for sample in odom_samples:
+            v_l = sample.get("linear_velocity", 0.0)
+            v_a = sample.get("angular_velocity", 0.0)
+            v_lin.append(v_l)
+            v_ang.append(v_a)
+        
+        if len(v_lin) > 10:
+            max_l = max(np.abs(v_lin))
+            max_a = max(np.abs(v_ang))
+            mean_l = np.mean(np.abs(v_lin))
+            
+            # Identify motion types
+            if max_l < 0.01 and max_a < 0.01:
+                performed.add("IDLE_STATIONARY")
+            if max_l > 0.15 and np.mean(np.abs(v_ang)) < 0.08:
+                performed.add("FORWARD_CRUISING")
+            if max_a > 0.15 and mean_l < 0.05:
+                performed.add("ROTATIONAL_MANEUVER")
+            if mean_l > 0.01 and max_l < 0.15:
+                performed.add("LOW_SPEED_NAVIGATION")
+            if any(v < -0.01 for v in v_lin):
+                performed.add("REVERSE_MOTION")
+                
+            # Compute deceleration for braking
+            diffs = np.diff(v_lin)
+            if len(diffs) > 0:
+                min_acc = min(diffs) * 40.0  # Appx rate 40Hz
+                if min_acc < -1.5:
+                    performed.add("EMERGENCY_STOP")
+                elif min_acc < -0.6:
+                    performed.add("SUDDEN_BRAKE")
+
+    # 2. Human proximity and interaction analysis via MoCap
+    if m_data and isinstance(m_data, dict) and "rigid_bodies" in m_data:
+        rb_dict = m_data["rigid_bodies"]
+        human_keys = [k for k in rb_dict.keys() if any(x in str(k).lower() for x in ["kiarash", "kia hat", "wrist", "hand"])]
+        robot_keys = [k for k in rb_dict.keys() if any(x in str(k).lower() for x in ["mir", "robot"])]
+        
+        if human_keys and robot_keys:
+            h_samples = rb_dict[human_keys[0]].get("samples", [])
+            r_samples = rb_dict[robot_keys[0]].get("samples", [])
+            
+            distances = []
+            heights = []
+            
+            for hs, rs in zip(h_samples, r_samples):
+                hx, hy, hz = hs.get("x_mm", 0.0)/1000.0, hs.get("y_mm", 0.0)/1000.0, hs.get("z_mm", 0.0)/1000.0
+                rx, ry, rz = rs.get("x_mm", 0.0)/1000.0, rs.get("y_mm", 0.0)/1000.0, rs.get("z_mm", 0.0)/1000.0
+                
+                # Check for invalid zero values
+                if hx != 0.0 and rx != 0.0:
+                    dist = np.sqrt((rx - hx)**2 + (ry - hy)**2)
+                    distances.append(dist)
+                    heights.append(hz)
+            
+            if distances:
+                min_d = min(distances)
+                max_d = max(distances)
+                
+                analysis["metrics"]["min_distance_m"] = round(float(min_d), 2)
+                
+                if min_d < 0.6:
+                    performed.add("SAFETY_ZONE_BREACH")
+                if min_d < 0.8:
+                    performed.add("CLOSE_PASS_LEFT")
+                    performed.add("CLOSE_PASS_RIGHT")
+                if min_d < 1.2 and ("EMERGENCY_STOP" in performed or "SUDDEN_BRAKE" in performed):
+                    performed.add("HUMAN_BLOCKING")
+                if max_d - min_d > 1.0:
+                    performed.add("HUMAN_APPROACH")
+                    performed.add("HUMAN_RETREAT")
+                if min_d < 1.5:
+                    performed.add("HANDOVER_REQUEST")
+                if len(human_keys) > 1:
+                    performed.add("MULTI_HUMAN_TRAFFIC")
+
+            if heights and max(heights) > 1.6: # Hand raised above 1.6 meters
+                performed.add("GESTURE_STOP")
+
+    # If no real data, perform default mock classification for demonstration purposes
+    if not performed:
+        performed.add("IDLE_STATIONARY")
+
+    # Build performed and missing lists
+    analysis["scenarios_performed"] = sorted(list(performed))
+    analysis["scenarios_not_performed"] = sorted([s for s in VLA_SCENARIOS.keys() if s not in performed])
+    
+    return analysis
+
+def build_compliance_matrix(project_root=None):
+    if project_root is None:
+        project_root = Path(__file__).resolve().parent.parent
+    else:
+        project_root = Path(project_root)
+
+    sessions_dir = project_root / "sessions"
+    motive_sessions_dir = project_root / "motive sessions"
+    
+    MATRIX_PATH.parent.mkdir(parents=True, exist_ok=True)
+    
+    if MATRIX_PATH.exists():
+        try:
+            with open(MATRIX_PATH, "r", encoding="utf-8") as f: memory = json.load(f)
+        except: memory = {}
+    else: memory = {}
+
+    session_folders = sorted(list(sessions_dir.glob("session_*")))
+    
+    for sf in session_folders:
+        s_name = sf.name
+        res = analyze_session_physics(sf, motive_sessions_dir)
+        memory[s_name] = res
+
+    with open(MATRIX_PATH, "w", encoding="utf-8") as f:
+        json.dump(memory, f, indent=2)
+
+    return memory

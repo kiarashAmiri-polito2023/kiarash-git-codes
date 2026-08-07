@@ -1,0 +1,42 @@
+======================================================================
+CRASH POST-MORTEM LOG
+======================================================================
+
+Session: session_2026-08-24_13-57-33
+Generated: 2026-08-24T11:59:09.717877+00:00
+Total errors: 2
+
+━━━ ERROR 1 ━━━
+Timestamp: 2026-08-24T11:59:02.894333+00:00
+Stage: knowledge_engine
+Type: NameError
+Message: name 'np' is not defined
+Elapsed: 89.69s
+
+Traceback:
+Traceback (most recent call last):
+  File "d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\agents\lunch_session.py", line 788, in run_full_pipeline
+    report = knowledge_engine.analyze_session(
+  File "d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\agents\knowledge_engine.py", line 288, in analyze_session
+    return analyze_session_safe(root_path, session_path)
+  File "d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\agents\knowledge_engine.py", line 267, in analyze_session_safe
+    session_results = extract_session_features(fused_data)
+  File "d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\agents\knowledge_engine.py", line 201, in extract_session_features
+    positions = np.array([o["position_mir_frame_m"] for o in observations])
+NameError: name 'np' is not defined
+
+
+━━━ ERROR 2 ━━━
+Timestamp: 2026-08-24T11:59:03.205178+00:00
+Stage: rebuild_memory
+Type: AttributeError
+Message: module 'knowledge_engine' has no attribute 'rebuild_all_sessions'
+Elapsed: 90.00s
+
+Traceback:
+Traceback (most recent call last):
+  File "d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\agents\lunch_session.py", line 807, in run_full_pipeline
+    knowledge_engine.rebuild_all_sessions(root_path)
+AttributeError: module 'knowledge_engine' has no attribute 'rebuild_all_sessions'
+
+

@@ -1,0 +1,2690 @@
+{
+  "timestamp": "2026-09-02 13:22:28",
+  "candidates": [
+    {
+      "name": "master_report.md",
+      "category": "DUP_REPORT",
+      "default_action": "DELETE",
+      "dims": {
+        "A1_ref_count": 13,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 432,
+            "ctx": "\"MASTER_REPORT.md_vs_master_report.md\": {"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 454,
+            "ctx": "\"ctx\": \"for up, lo in [(\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\"),(\\\"MASTER_REPORT.json\\\",\\\"master_"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 459,
+            "ctx": "\"ctx\": \"for tgt in [\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\",\\\"MASTER_REPORT.json\\\",\\\"master_report"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 702,
+            "ctx": "\"refs_master_report.md\": ["
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 706,
+            "ctx": "\"ctx\": \"for up, lo in [(\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\"),(\\\"MASTER_REPORT.json\\\",\\\"master_"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 155,
+        "A7_duplicates": [
+          "MASTER_REPORT.md"
+        ],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 5,
+        "C1_effort_estimate_hours": 3.1,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 7889,
+      "md5": "5ee63c64d277bde9d372a4be0d941aaa",
+      "lines": 155,
+      "mtime": "2026-09-01 20:43",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "master_report.json",
+      "category": "DUP_REPORT",
+      "default_action": "DELETE",
+      "dims": {
+        "A1_ref_count": 13,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 441,
+            "ctx": "\"MASTER_REPORT.json_vs_master_report.json\": {"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 454,
+            "ctx": "\"ctx\": \"for up, lo in [(\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\"),(\\\"MASTER_REPORT.json\\\",\\\"master_"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 459,
+            "ctx": "\"ctx\": \"for tgt in [\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\",\\\"MASTER_REPORT.json\\\",\\\"master_report"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 706,
+            "ctx": "\"ctx\": \"for up, lo in [(\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\"),(\\\"MASTER_REPORT.json\\\",\\\"master_"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 711,
+            "ctx": "\"ctx\": \"for tgt in [\\\"MASTER_REPORT.md\\\",\\\"master_report.md\\\",\\\"MASTER_REPORT.json\\\",\\\"master_report"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 103,
+        "A7_duplicates": [
+          "MASTER_REPORT.json"
+        ],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 2.1,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2467,
+      "md5": "ee1a2d29800fa6ce974cd962fbe4cadc",
+      "lines": 103,
+      "mtime": "2026-09-01 20:43",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "diag_r32_v2.py",
+      "category": "DIAG_TEMP",
+      "default_action": "DELETE",
+      "dims": {
+        "EXISTS": false
+      }
+    },
+    {
+      "name": "diag_round12.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1158,
+            "ctx": "\"name\": \"diag_round12.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1317,
+            "ctx": "\"diag_round12.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "re",
+          "os"
+        ],
+        "A6_lines": 51,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 2,
+        "C1_effort_estimate_hours": 1.0,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1950,
+      "md5": "4d5236311b1b85f18812f8987fa7fee4",
+      "lines": 51,
+      "mtime": "2026-09-01 19:07",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "diag_round13.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1162,
+            "ctx": "\"name\": \"diag_round13.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1318,
+            "ctx": "\"diag_round13.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "os"
+        ],
+        "A6_lines": 34,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 0.7,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1076,
+      "md5": "b78a9523eb1866cccec161787f811cf2",
+      "lines": 34,
+      "mtime": "2026-09-01 19:08",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "diag_round13b.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1166,
+            "ctx": "\"name\": \"diag_round13b.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1319,
+            "ctx": "\"diag_round13b.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "os",
+          "io"
+        ],
+        "A6_lines": 45,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 0.9,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1513,
+      "md5": "0de326fbda46cccfec909b9cee13ff3d",
+      "lines": 45,
+      "mtime": "2026-09-01 19:09",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "diag_round14.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1170,
+            "ctx": "\"name\": \"diag_round14.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1320,
+            "ctx": "\"diag_round14.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "os",
+          "io"
+        ],
+        "A6_lines": 27,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 0.5,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 768,
+      "md5": "7606f94da80fdcfc9a685920bb37353b",
+      "lines": 27,
+      "mtime": "2026-09-01 19:12",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - old diag script",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "diag_round15.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1174,
+            "ctx": "\"name\": \"diag_round15.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1321,
+            "ctx": "\"diag_round15.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "io",
+          "os",
+          "subprocess",
+          "requests"
+        ],
+        "A6_lines": 59,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 1.2,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2048,
+      "md5": "1c2c80ba1af737e4a75a5c135cb2a937",
+      "lines": 59,
+      "mtime": "2026-09-01 19:14",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - old diag script",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "diag_round16.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 3,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 472,
+            "ctx": "\"file\": \"diag_round16.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1178,
+            "ctx": "\"name\": \"diag_round16.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1322,
+            "ctx": "\"diag_round16.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "io",
+          "re",
+          "os",
+          "ast"
+        ],
+        "A6_lines": 56,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 1.1,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2474,
+      "md5": "9f13d1b8b5b9543efc7e0782d574f35b",
+      "lines": 56,
+      "mtime": "2026-09-01 19:30",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "apply_hotfix.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1150,
+            "ctx": "\"name\": \"apply_hotfix.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1315,
+            "ctx": "\"apply_hotfix.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "datetime",
+          "sys",
+          "io",
+          "shutil",
+          "agents.A18_deep_agent_verifier",
+          "os",
+          "subprocess"
+        ],
+        "A6_lines": 79,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 1.6,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3229,
+      "md5": "9cf769ee3f2412c66a63a6d2f9e1b3c0",
+      "lines": 79,
+      "mtime": "2026-09-01 19:21",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "env_probe.py",
+      "category": "DIAG_TEMP",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1182,
+            "ctx": "\"name\": \"env_probe.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1323,
+            "ctx": "\"env_probe.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "os",
+          "pathlib",
+          "torch"
+        ],
+        "A6_lines": 49,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 1.0,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1410,
+      "md5": "752de2c481608edbea9f1b3eaa8773aa",
+      "lines": 49,
+      "mtime": "2026-08-28 18:28",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - old diag script",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "test_alignment_v2.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1258,
+            "ctx": "\"name\": \"test_alignment_v2.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1340,
+            "ctx": "\"test_alignment_v2.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "transformers",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 58,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 2,
+        "C1_effort_estimate_hours": 1.2,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2416,
+      "md5": "89da7241312d130eed82f09fcf67379a",
+      "lines": 58,
+      "mtime": "2026-08-28 19:05",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "test_bug_fixes.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1262,
+            "ctx": "\"name\": \"test_bug_fixes.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1341,
+            "ctx": "\"test_bug_fixes.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "cross_modal_aligner",
+          "sys",
+          "robot_data_analyzer",
+          "numpy"
+        ],
+        "A6_lines": 103,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 2.1,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3667,
+      "md5": "1f4f727ac1599e27e0d845145b6dbf82",
+      "lines": 103,
+      "mtime": "2026-08-31 18:46",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "test_forward_pass.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1266,
+            "ctx": "\"name\": \"test_forward_pass.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1342,
+            "ctx": "\"test_forward_pass.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "transformers",
+          "os",
+          "torch",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 98,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 2.0,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3462,
+      "md5": "a212055847f4fa50a9c87deec9960ab6",
+      "lines": 98,
+      "mtime": "2026-08-28 18:31",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "test_label_masking.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1270,
+            "ctx": "\"name\": \"test_label_masking.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1343,
+            "ctx": "\"test_label_masking.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "transformers",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 75,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 2,
+        "C1_effort_estimate_hours": 1.5,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3431,
+      "md5": "a78b31496acd143dff63ea822054e4bf",
+      "lines": 75,
+      "mtime": "2026-08-28 18:51",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "test_style_v5.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1274,
+            "ctx": "\"name\": \"test_style_v5.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1344,
+            "ctx": "\"test_style_v5.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "matplotlib",
+          "os",
+          "json",
+          "matplotlib.font_manager",
+          "matplotlib.pyplot"
+        ],
+        "A6_lines": 49,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 3,
+        "C1_effort_estimate_hours": 1.0,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1880,
+      "md5": "2cf22ea802df8333b39f4a355da0259d",
+      "lines": 49,
+      "mtime": "2026-08-31 14:30",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "test_vla_readiness.py",
+      "category": "TEST",
+      "default_action": "MOVE_tests",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1278,
+            "ctx": "\"name\": \"test_vla_readiness.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1345,
+            "ctx": "\"test_vla_readiness.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "transformers",
+          "torch",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 81,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 1.6,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2716,
+      "md5": "d2d4f9a98c7ee46e3410fb4ef345eee7",
+      "lines": 81,
+      "mtime": "2026-08-28 18:29",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_and_eval_vla.py",
+      "category": "TRAIN",
+      "default_action": "MOVE_tools_training",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1282,
+            "ctx": "\"name\": \"train_and_eval_vla.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1346,
+            "ctx": "\"train_and_eval_vla.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "peft",
+          "re",
+          "os",
+          "transformers",
+          "json",
+          "torch",
+          "PIL",
+          "pathlib",
+          "torch.utils.data"
+        ],
+        "A6_lines": 240,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 4.8,
+        "C7_bugfix": false,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 9725,
+      "md5": "e5263718d66cd595bee189d4d409dd06",
+      "lines": 240,
+      "mtime": "2026-08-28 18:35",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_qwen_vla.py",
+      "category": "TRAIN",
+      "default_action": "MOVE_tools_training",
+      "dims": {
+        "A1_ref_count": 9,
+        "A1_refs_sample": [
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 154,
+            "ctx": "\"- Next Action: Kiarash records Session 8 (Interactive Proxemics: 60-90s) OR runs train_qwen_vla.py."
+          },
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 334,
+            "ctx": "\"- Next Action: Kiarash records Session 8 (Interactive Proxemics: 60-90s) OR runs train_qwen_vla.py."
+          },
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 1404,
+            "ctx": "- Next Action: Kiarash records Session 8 (Interactive Proxemics: 60-90s) OR runs train_qwen_vla.py."
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1286,
+            "ctx": "\"name\": \"train_qwen_vla.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1347,
+            "ctx": "\"train_qwen_vla.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "peft",
+          "transformers",
+          "os",
+          "json",
+          "torch",
+          "PIL",
+          "pathlib",
+          "torch.utils.data",
+          "argparse"
+        ],
+        "A6_lines": 125,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 2.5,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 5271,
+      "md5": "33af68f9fa4563b72dbd86bbae00e455",
+      "lines": 125,
+      "mtime": "2026-08-28 18:23",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "train_v21_masked.py",
+      "category": "TRAIN",
+      "default_action": "MOVE_tools_training",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1294,
+            "ctx": "\"name\": \"train_v21_masked.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1349,
+            "ctx": "\"train_v21_masked.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "time",
+          "re",
+          "os",
+          "transformers",
+          "json",
+          "torch",
+          "PIL"
+        ],
+        "A6_lines": 333,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": true,
+        "B10_prompt": true,
+        "B_research_score": 7,
+        "C1_effort_estimate_hours": 6.7,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 15221,
+      "md5": "86d552732550ac00248f6bf049112432",
+      "lines": 333,
+      "mtime": "2026-08-28 19:08",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_v2_masked.py",
+      "category": "TRAIN",
+      "default_action": "MOVE_tools_training",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1302,
+            "ctx": "\"name\": \"train_v2_masked.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1351,
+            "ctx": "\"train_v2_masked.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "time",
+          "re",
+          "os",
+          "transformers",
+          "json",
+          "torch",
+          "PIL"
+        ],
+        "A6_lines": 308,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": true,
+        "B10_prompt": true,
+        "B_research_score": 7,
+        "C1_effort_estimate_hours": 6.2,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 14009,
+      "md5": "ab3c157564275e417f7728f9e3261f09",
+      "lines": 308,
+      "mtime": "2026-08-28 19:01",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_v3_fixed.py",
+      "category": "TRAIN",
+      "default_action": "MOVE_tools_training",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1306,
+            "ctx": "\"name\": \"train_v3_fixed.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1352,
+            "ctx": "\"train_v3_fixed.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "time",
+          "re",
+          "os",
+          "transformers",
+          "json",
+          "torch",
+          "PIL"
+        ],
+        "A6_lines": 236,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": true,
+        "B10_prompt": true,
+        "B_research_score": 7,
+        "C1_effort_estimate_hours": 4.7,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 12874,
+      "md5": "2d954489ee51716f0baa1bbae73c8825",
+      "lines": 236,
+      "mtime": "2026-08-28 19:27",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_v21_error.log",
+      "category": "TRAIN_LOG",
+      "default_action": "MOVE_logs",
+      "dims": {
+        "A1_ref_count": 3,
+        "A1_refs_sample": [
+          {
+            "file": "train_v21_masked.py",
+            "line": 331,
+            "ctx": "with open(\"train_v21_error.log\", \"w\", encoding=\"utf-8\") as f:"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1290,
+            "ctx": "\"name\": \"train_v21_error.log\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1348,
+            "ctx": "\"train_v21_error.log\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 48,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 1.0,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 4093,
+      "md5": "f2d8b8c41109b63b403fe5fc03c01cbf",
+      "lines": 48,
+      "mtime": "2026-08-28 19:09",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "train_v2_error.log",
+      "category": "TRAIN_LOG",
+      "default_action": "MOVE_logs",
+      "dims": {
+        "A1_ref_count": 3,
+        "A1_refs_sample": [
+          {
+            "file": "train_v2_masked.py",
+            "line": 306,
+            "ctx": "with open(\"train_v2_error.log\", \"w\", encoding=\"utf-8\") as f:"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1298,
+            "ctx": "\"name\": \"train_v2_error.log\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1350,
+            "ctx": "\"train_v2_error.log\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 34,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 0.7,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2869,
+      "md5": "5abdf5420b08194b46b7ca4e41e552ac",
+      "lines": 34,
+      "mtime": "2026-08-28 19:01",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "eval_smoke_test.py",
+      "category": "EVAL",
+      "default_action": "MOVE_tools",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1190,
+            "ctx": "\"name\": \"eval_smoke_test.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1325,
+            "ctx": "\"eval_smoke_test.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "traceback",
+          "peft",
+          "time",
+          "re",
+          "transformers",
+          "json",
+          "torch",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 104,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 2.1,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": true,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3874,
+      "md5": "e64c942fff01a31b826516cdbb980168",
+      "lines": 104,
+      "mtime": "2026-08-28 18:47",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "evaluate_qwen_vla.py",
+      "category": "EVAL",
+      "default_action": "MOVE_tools",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1194,
+            "ctx": "\"name\": \"evaluate_qwen_vla.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1326,
+            "ctx": "\"evaluate_qwen_vla.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "peft",
+          "re",
+          "os",
+          "transformers",
+          "torch",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 74,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 1.5,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 3149,
+      "md5": "c10a3e8b1d6de6487a8246489b95e92d",
+      "lines": 74,
+      "mtime": "2026-08-28 18:23",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "eval_results_v3.json",
+      "category": "EVAL_DATA",
+      "default_action": "MOVE_audit_workspace",
+      "dims": {
+        "A1_ref_count": 135,
+        "A1_refs_sample": [
+          {
+            "file": "export_visuals_v2.py",
+            "line": 154,
+            "ctx": "eval_json = project_root / \"eval_results_v3.json\""
+          },
+          {
+            "file": "export_visuals_v2.py",
+            "line": 165,
+            "ctx": "summary_lines.append(\"VLA MODEL BENCHMARK (from eval_results_v3.json):\")"
+          },
+          {
+            "file": "export_visuals_v2.py",
+            "line": 170,
+            "ctx": "shutil.copy(eval_json, run_folder / \"eval_results_v3.json\")"
+          },
+          {
+            "file": "export_visuals_v2.py",
+            "line": 172,
+            "ctx": "summary_lines.append(\"  [Full eval_results_v3.json also copied to this folder]\")"
+          },
+          {
+            "file": "FINAL_REFEREE_VERDICT.md",
+            "line": 448,
+            "ctx": "- Session audit: `session_2026-08-27_17-54-20` has 344 BEV frames, 100% score, yet YOLO person/chair"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 842,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 3,
+        "C1_effort_estimate_hours": 16.8,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 26574,
+      "md5": "6ef267d574f4aa9765bcf38dabfadb21",
+      "lines": 842,
+      "mtime": "2026-08-28 19:51",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "inspect_and_verify_dataset.py",
+      "category": "EVAL",
+      "default_action": "MOVE_tools",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1230,
+            "ctx": "\"name\": \"inspect_and_verify_dataset.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1335,
+            "ctx": "\"inspect_and_verify_dataset.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "shutil",
+          "os",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 50,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 1.0,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 1813,
+      "md5": "014c42979b280cf39581d896a19010e4",
+      "lines": 50,
+      "mtime": "2026-08-28 18:23",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "MOVE_tools",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "probe_eval_schema.py",
+      "category": "EVAL",
+      "default_action": "MOVE_tools",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1242,
+            "ctx": "\"name\": \"probe_eval_schema.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1336,
+            "ctx": "\"probe_eval_schema.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "sys",
+          "os",
+          "glob",
+          "json"
+        ],
+        "A6_lines": 76,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": true,
+        "B10_prompt": false,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 1.5,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 2889,
+      "md5": "616d2e39727884cc5cff70dd8da6b86d",
+      "lines": 76,
+      "mtime": "2026-08-31 14:28",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "probe_pkl_structure.py",
+      "category": "EVAL",
+      "default_action": "MOVE_tools",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1246,
+            "ctx": "\"name\": \"probe_pkl_structure.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1337,
+            "ctx": "\"probe_pkl_structure.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "pickle",
+          "sys",
+          "os",
+          "glob"
+        ],
+        "A6_lines": 19,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 1,
+        "C1_effort_estimate_hours": 0.4,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 891,
+      "md5": "4466c331b387097117c2cb2ddff3a9db",
+      "lines": 19,
+      "mtime": "2026-08-28 20:26",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "generate_publication_report_v5.py",
+      "category": "REPORT_GEN",
+      "default_action": "MOVE_tools_reports",
+      "dims": {
+        "A1_ref_count": 132,
+        "A1_refs_sample": [
+          {
+            "file": "execute_surgery.py",
+            "line": 240,
+            "ctx": "yolo_results.json -> generate_publication_report_v5.py -> Qwen-VL fine-tuning"
+          },
+          {
+            "file": "FINAL_REFEREE_VERDICT.md",
+            "line": 152,
+            "ctx": "**EVIDENCE:** BUG-C marked \"[OK] FIXED (robot_data_analyzer.py) [16 code matches]\". 16 code matches "
+          },
+          {
+            "file": "FINAL_REFEREE_VERDICT.md",
+            "line": 168,
+            "ctx": "**FIX:** Robust kinematics computation with dt floor and physical clamping (as shown in `generate_pu"
+          },
+          {
+            "file": "FINAL_REFEREE_VERDICT.md",
+            "line": 374,
+            "ctx": "BUG-C: \"max velocity = 9.13 m/s (MiR100 max is 1.5!) (calculation bug)\". Fixed (robot_data_analyzer."
+          },
+          {
+            "file": "FINAL_REFEREE_VERDICT.md",
+            "line": 422,
+            "ctx": "For example, for BUG-C, the master report says FIXED (robot_data_analyzer.py) [16 code matches]. And"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "pickle",
+          "datetime",
+          "sys",
+          "robot_data_analyzer",
+          "glob",
+          "numpy",
+          "os",
+          "json"
+        ],
+        "A6_lines": 139,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": false,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 2.8,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 5985,
+      "md5": "437279161bc8ac1f9d7a3d9f9f98c662",
+      "lines": 139,
+      "mtime": "2026-08-31 20:18",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "generate_publication_report_v5.py.bak",
+      "category": "REPORT_GEN_BAK",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1218,
+            "ctx": "\"name\": \"generate_publication_report_v5.py.bak\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1332,
+            "ctx": "\"generate_publication_report_v5.py.bak\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 779,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": true,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": true,
+        "B10_prompt": false,
+        "B_research_score": 7,
+        "C1_effort_estimate_hours": 15.6,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 38171,
+      "md5": "c67f65f65e812d7be740ea7ae29a7018",
+      "lines": 779,
+      "mtime": "2026-08-31 19:19",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "generate_visual_dashboard.py",
+      "category": "REPORT_GEN",
+      "default_action": "MOVE_tools_reports",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1222,
+            "ctx": "\"name\": \"generate_visual_dashboard.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1333,
+            "ctx": "\"generate_visual_dashboard.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "pickle",
+          "matplotlib",
+          "sys",
+          "datetime",
+          "glob",
+          "numpy",
+          "os",
+          "json",
+          "matplotlib.pyplot",
+          "cv2"
+        ],
+        "A6_lines": 290,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": true,
+        "B10_prompt": false,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 5.8,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 14512,
+      "md5": "4f65232a5a2ab275a75e08b4c47a3130",
+      "lines": 290,
+      "mtime": "2026-08-28 20:21",
+      "atime": "2026-09-02 13:22",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "generate_visual_dashboard_v4.py",
+      "category": "REPORT_GEN",
+      "default_action": "MOVE_tools_reports",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1226,
+            "ctx": "\"name\": \"generate_visual_dashboard_v4.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1334,
+            "ctx": "\"generate_visual_dashboard_v4.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "pickle",
+          "matplotlib",
+          "sys",
+          "datetime",
+          "collections",
+          "glob",
+          "traceback",
+          "shutil",
+          "numpy",
+          "os"
+        ],
+        "A6_lines": 436,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": true,
+        "B10_prompt": false,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 8.7,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 20987,
+      "md5": "5bcb600c2283f32be8a1dcdfaa982814",
+      "lines": 436,
+      "mtime": "2026-08-28 20:35",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "export_visuals_v2.py",
+      "category": "REPORT_GEN",
+      "default_action": "MOVE_tools_reports",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1202,
+            "ctx": "\"name\": \"export_visuals_v2.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1328,
+            "ctx": "\"export_visuals_v2.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "pickle",
+          "datetime",
+          "sys",
+          "matplotlib",
+          "shutil",
+          "numpy",
+          "os",
+          "json",
+          "PIL",
+          "pathlib"
+        ],
+        "A6_lines": 192,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": true,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": true,
+        "B10_prompt": false,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 3.8,
+        "C7_bugfix": true,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 8561,
+      "md5": "ddd8d0c07485ccacf348b0e82342f2ec",
+      "lines": 192,
+      "mtime": "2026-08-28 20:11",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "ARCHIVE - moderate research value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "execute_surgery.py",
+      "category": "SURGERY",
+      "default_action": "ARCHIVE",
+      "dims": {
+        "A1_ref_count": 3,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 477,
+            "ctx": "\"file\": \"execute_surgery.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1198,
+            "ctx": "\"name\": \"execute_surgery.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1327,
+            "ctx": "\"execute_surgery.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [
+          "datetime",
+          "sys",
+          "io",
+          "shutil",
+          "time",
+          "re",
+          "os",
+          "agents.A18_deep_agent_verifier",
+          "subprocess",
+          "json"
+        ],
+        "A6_lines": 654,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 4,
+        "C1_effort_estimate_hours": 13.1,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 27601,
+      "md5": "f25125357838429b4ec374de849cc1bc",
+      "lines": 654,
+      "mtime": "2026-09-01 19:17",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "ARCHIVE - some refs + some value",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "FINAL_REFEREE_VERDICT.md",
+      "category": "REPORT_LEGACY",
+      "default_action": "MOVE_docs_history",
+      "dims": {
+        "A1_ref_count": 11,
+        "A1_refs_sample": [
+          {
+            "file": "diag_round15.py",
+            "line": 8,
+            "ctx": "print(\"[1/3] STRUCTURAL: FINAL_REFEREE_VERDICT.md (A15 output)\")"
+          },
+          {
+            "file": "diag_round15.py",
+            "line": 10,
+            "ctx": "frv = os.path.join(root, \"FINAL_REFEREE_VERDICT.md\")"
+          },
+          {
+            "file": "execute_surgery.py",
+            "line": 600,
+            "ctx": "final = os.path.join(run_dir, \"FINAL_REFEREE_VERDICT.md\")"
+          },
+          {
+            "file": "execute_surgery.py",
+            "line": 602,
+            "ctx": "root_copy = os.path.join(PROJECT, \"FINAL_REFEREE_VERDICT.md\")"
+          },
+          {
+            "file": "agents\\A15_referee_ai_loop.py",
+            "line": 393,
+            "ctx": "final = os.path.join(run_dir, \"FINAL_REFEREE_VERDICT.md\")"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 1557,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 6,
+        "C1_effort_estimate_hours": 31.1,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 98552,
+      "md5": "d10ce50f37452256b5253c312dcf3bcb",
+      "lines": 1557,
+      "mtime": "2026-09-01 15:57",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "FULL_DIAGNOSTIC_AUDIT.md",
+      "category": "REPORT_LEGACY",
+      "default_action": "MOVE_docs_history",
+      "dims": {
+        "A1_ref_count": 13,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 482,
+            "ctx": "\"file\": \"FULL_DIAGNOSTIC_AUDIT.md\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 487,
+            "ctx": "\"file\": \"FULL_DIAGNOSTIC_AUDIT.md\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 492,
+            "ctx": "\"file\": \"FULL_DIAGNOSTIC_AUDIT.md\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 497,
+            "ctx": "\"file\": \"FULL_DIAGNOSTIC_AUDIT.md\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 502,
+            "ctx": "\"file\": \"FULL_DIAGNOSTIC_AUDIT.md\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 1691,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": true,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": true,
+        "B5_ablation": false,
+        "B6_session_data": true,
+        "B7_labels": true,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": true,
+        "B_research_score": 5,
+        "C1_effort_estimate_hours": 33.8,
+        "C7_bugfix": true,
+        "C8_architecture": true,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 65560,
+      "md5": "7295ba7149470bf744239ccfd5abcdf7",
+      "lines": 1691,
+      "mtime": "2026-09-01 14:50",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "RUN_VIDEO_QA.bat",
+      "category": "SCRIPT_LEGACY",
+      "default_action": "TEST_FIRST",
+      "dims": {
+        "A1_ref_count": 12,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1250,
+            "ctx": "\"name\": \"RUN_VIDEO_QA.bat\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1338,
+            "ctx": "\"RUN_VIDEO_QA.bat\","
+          },
+          {
+            "file": "project_history\\latest_state.json",
+            "line": 4962,
+            "ctx": "\"content\": \"# \ud83d\udccb \u0633\u0646\u062f \u062c\u0627\u0645\u0639 \u0628\u06a9\u0627\u067e \u067e\u0631\u0648\u0698\u0647 \u2014 MiR + Motive \u2192 QwenVLA\\n\\n**\u062a\u0627\u0631\u06cc\u062e \u062a\u0647\u06cc\u0647:** \u06f2\u06f5 \u0627\u0648\u062a \u06f2\u06f0\u06f2\u06f6\\n**\u062a\u0647\u06cc\u0647\u200c"
+          },
+          {
+            "file": "project_history\\MASTER_BACKUP_2026-08-25.md",
+            "line": 84,
+            "ctx": "**\u0644\u0627\u0646\u0686\u0631:** `RUN_VIDEO_QA.bat` (\u062f\u0627\u0628\u0644 \u06a9\u0644\u06cc\u06a9)"
+          },
+          {
+            "file": "project_history\\snapshots\\snapshot_2026-08-25_16-52-16_909565.json",
+            "line": 4316,
+            "ctx": "\"content\": \"# \ud83d\udccb \u0633\u0646\u062f \u062c\u0627\u0645\u0639 \u0628\u06a9\u0627\u067e \u067e\u0631\u0648\u0698\u0647 \u2014 MiR + Motive \u2192 QwenVLA\\n\\n**\u062a\u0627\u0631\u06cc\u062e \u062a\u0647\u06cc\u0647:** \u06f2\u06f5 \u0627\u0648\u062a \u06f2\u06f0\u06f2\u06f6\\n**\u062a\u0647\u06cc\u0647\u200c"
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 5,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 0.1,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 169,
+      "md5": "27a313b043622b61ed2a85d220d7390b",
+      "lines": 5,
+      "mtime": "2026-08-25 17:50",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "TEST_FIRST",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "RUN_VISUAL_REPORT.bat",
+      "category": "SCRIPT_LEGACY",
+      "default_action": "TEST_FIRST",
+      "dims": {
+        "A1_ref_count": 2,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1254,
+            "ctx": "\"name\": \"RUN_VISUAL_REPORT.bat\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1339,
+            "ctx": "\"RUN_VISUAL_REPORT.bat\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 6,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 0.1,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 151,
+      "md5": "b9f210167c5aa2cbeb78aadd254a46d0",
+      "lines": 6,
+      "mtime": "2026-08-31 19:10",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "TEST_FIRST",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "yolov8s.pt",
+      "category": "MODEL_WEIGHT",
+      "default_action": "MOVE_models",
+      "dims": {
+        "A1_ref_count": 13,
+        "A1_refs_sample": [
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 131,
+            "ctx": "\"- **YOLOv8 Industrial Scanner:** ACTIVE (`yolov8s.pt` with 18 industrial classes)\","
+          },
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 311,
+            "ctx": "\"- **YOLOv8 Industrial Scanner:** ACTIVE (`yolov8s.pt` with 18 industrial classes)\","
+          },
+          {
+            "file": "FULL_DIAGNOSTIC_AUDIT.md",
+            "line": 1381,
+            "ctx": "- **YOLOv8 Industrial Scanner:** ACTIVE (`yolov8s.pt` with 18 industrial classes)"
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1310,
+            "ctx": "\"name\": \"yolov8s.pt\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1353,
+            "ctx": "\"yolov8s.pt\""
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A6_lines": 1490390,
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": true,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": true,
+        "B8_model": true,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 3,
+        "C1_effort_estimate_hours": 29807.8,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": true,
+        "D5_dry_run_first": true
+      },
+      "is_dir": false,
+      "size": 22588772,
+      "md5": "0a1d5d0619d5a24848a267ec1e3a3118",
+      "lines": 1490390,
+      "mtime": "2026-08-28 17:41",
+      "atime": "2026-09-02 13:23",
+      "FINAL_VERDICT": "KEEP - high refs + research value",
+      "CONFIDENCE": "high"
+    },
+    {
+      "name": "backup_before_fix_20260831_184640",
+      "category": "LEGACY_DIR",
+      "default_action": "MOVE_archive",
+      "dims": {
+        "A1_ref_count": 13,
+        "A1_refs_sample": [
+          {
+            "file": "agents\\project_snapshot.py",
+            "line": 36,
+            "ctx": "BACKUP_DIR = WS / \"backup_before_fix_20260831_184640\""
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 662,
+            "ctx": "\"file\": \"backup_before_fix_20260831_184640\\\\A15_referee_ai_loop.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 667,
+            "ctx": "\"file\": \"backup_before_fix_20260831_184640\\\\project_snapshot.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 672,
+            "ctx": "\"file\": \"backup_before_fix_20260831_184640\\\\project_snapshot.py\","
+          },
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 796,
+            "ctx": "\"file\": \"backup_before_fix_20260831_184640\\\\project_snapshot.py\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "HIGH_IMPACT_IF_REMOVED",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 49.0,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": false,
+        "D5_dry_run_first": true
+      },
+      "is_dir": true,
+      "item_count": 98,
+      "total_size": 1311562,
+      "mtime": "2026-08-31 18:46",
+      "FINAL_VERDICT": "MOVE_archive",
+      "CONFIDENCE": "medium"
+    },
+    {
+      "name": "backups_20260825_161101",
+      "category": "LEGACY_DIR",
+      "default_action": "MOVE_archive",
+      "dims": {
+        "A1_ref_count": 1,
+        "A1_refs_sample": [
+          {
+            "file": "audit_workspace\\r32_preflight_v2.json",
+            "line": 1100,
+            "ctx": "\"name\": \"backups_20260825_161101\","
+          }
+        ],
+        "A2_imported_by": [],
+        "A3_reverse_deps": [],
+        "A7_duplicates": [],
+        "A8_in_git": "N/A",
+        "A9_in_dossier": "manual_check_needed",
+        "A10_impact": "MEDIUM_IMPACT",
+        "B1_experimental_data": false,
+        "B2_eval_results": false,
+        "B3_reproducibility": false,
+        "B4_metrics": false,
+        "B5_ablation": false,
+        "B6_session_data": false,
+        "B7_labels": false,
+        "B8_model": false,
+        "B9_baseline": false,
+        "B10_prompt": false,
+        "B_research_score": 0,
+        "C1_effort_estimate_hours": 0.5,
+        "C7_bugfix": false,
+        "C8_architecture": false,
+        "C10_tests": false,
+        "D1_backup_needed": true,
+        "D2_md5_captured": false,
+        "D5_dry_run_first": true
+      },
+      "is_dir": true,
+      "item_count": 1,
+      "total_size": 31921,
+      "mtime": "2026-08-25 16:11",
+      "FINAL_VERDICT": "MOVE_archive",
+      "CONFIDENCE": "medium"
+    }
+  ],
+  "actions": {
+    "DELETE": [],
+    "ARCHIVE": [
+      "diag_round12.py",
+      "diag_round13.py",
+      "diag_round13b.py",
+      "diag_round14.py",
+      "diag_round15.py",
+      "diag_round16.py",
+      "apply_hotfix.py",
+      "env_probe.py",
+      "test_alignment_v2.py",
+      "test_bug_fixes.py",
+      "test_forward_pass.py",
+      "test_label_masking.py",
+      "test_style_v5.py",
+      "test_vla_readiness.py",
+      "train_and_eval_vla.py",
+      "train_v21_masked.py",
+      "train_v2_masked.py",
+      "train_v3_fixed.py",
+      "train_v21_error.log",
+      "train_v2_error.log",
+      "eval_smoke_test.py",
+      "evaluate_qwen_vla.py",
+      "probe_eval_schema.py",
+      "probe_pkl_structure.py",
+      "generate_publication_report_v5.py.bak",
+      "generate_visual_dashboard.py",
+      "generate_visual_dashboard_v4.py",
+      "export_visuals_v2.py",
+      "execute_surgery.py"
+    ],
+    "KEEP": [
+      "master_report.md",
+      "master_report.json",
+      "train_qwen_vla.py",
+      "eval_results_v3.json",
+      "generate_publication_report_v5.py",
+      "FINAL_REFEREE_VERDICT.md",
+      "FULL_DIAGNOSTIC_AUDIT.md",
+      "yolov8s.pt"
+    ],
+    "MOVE_tests": [],
+    "MOVE_tools": [
+      "inspect_and_verify_dataset.py"
+    ],
+    "MOVE_tools_training": [],
+    "MOVE_tools_reports": [],
+    "MOVE_logs": [],
+    "MOVE_audit_workspace": [],
+    "MOVE_models": [],
+    "MOVE_docs_history": [],
+    "MOVE_archive": [
+      "backup_before_fix_20260831_184640",
+      "backups_20260825_161101"
+    ],
+    "TEST_FIRST": [
+      "RUN_VIDEO_QA.bat",
+      "RUN_VISUAL_REPORT.bat"
+    ],
+    "OTHER": []
+  }
+}

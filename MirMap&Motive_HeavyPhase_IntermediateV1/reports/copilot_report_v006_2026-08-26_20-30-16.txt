@@ -1,0 +1,153 @@
+======================================================================
+ CO-PILOT REPORT — version 006
+ Generated (UTC): 2026-08-26T18:30:17.019974+00:00
+ Session reviewed: session_2026-08-26_20-28-17
+======================================================================
+
+--- 1. FLAGGED ISSUES (review these first) ---
+  [SLAM Health] slam_data.pkl not found for this session.
+  [Motive Health] Rigid body 'kia kitting station with markers' has 1044 zero-placeholder samples (>10%) — possible tracking issue.
+  [Motive Health] Rigid body 'kia hat 002' has 213 zero-placeholder samples (>10%) — possible tracking issue.
+  [Motive Health] Rigid body 'kiarash_leftwrist' has 266 zero-placeholder samples (>10%) — possible tracking issue.
+  [Motive Health] Rigid body 'kiarash_RightWrist' has 259 zero-placeholder samples (>10%) — possible tracking issue.
+  [Fusion Quality] Fusion warning: slam_data.pkl not found.
+
+--- 2. DETAILED INFO (health checks) ---
+
+  ## SLAM Health ##
+
+  ## Motive Health ##
+    rigid bodies recorded: ['kia MIR100 002', 'kiarash quality control', 'kia kitting station with markers', 'kia hat 002', 'kiarash_leftwrist', 'kiarash_RightWrist']
+      'kia MIR100 002': 1044 samples, 100.0% tracked
+      'kiarash quality control': 1044 samples, 100.0% tracked
+      'kia kitting station with markers': 1044 samples, 100.0% tracked
+      'kia kitting station with markers': 1044 zero-placeholder samples
+      'kia hat 002': 1044 samples, 100.0% tracked
+      'kia hat 002': 213 zero-placeholder samples
+      'kiarash_leftwrist': 1044 samples, 100.0% tracked
+      'kiarash_leftwrist': 266 zero-placeholder samples
+      'kiarash_RightWrist': 1044 samples, 100.0% tracked
+      'kiarash_RightWrist': 259 zero-placeholder samples
+
+  ## Fusion Quality ##
+
+  ## Calibration Sanity ##
+    Calibration timestamp: 2026-08-18T14:21:40.497894+00:00
+    Calibration mean_error_mm: 36.5752159355189
+    Calibration validation verdict: PASS
+    Calibration age: 8 days
+
+  ## Persistent Knowledge ##
+    Total known objects: 3
+    Total sessions processed: 4
+      [obj obj_0000] pos=(30.82, 20.25) | seen=7748x | class=moving | confidence=0.00
+      [obj obj_0001] pos=(30.07, 20.37) | seen=1999x | class=human_marker | confidence=0.10
+      [obj obj_0002] pos=(32.02, 19.17) | seen=1005x | class=human_marker | confidence=0.10
+
+--- 3. KNOWLEDGE ENGINE — CUMULATIVE BRAIN REPORT ---
+  (Everything the system has learned across ALL sessions)
+
+  ============================================================
+   KNOWLEDGE ENGINE - Cumulative Brain Report
+   Sessions: 6
+   Updated : 2026-08-26T18:30:16.839492+00:00
+  ============================================================
+  
+  --- OBJECT KNOWLEDGE ---
+  
+    [kia hat 002]
+      Class    : confirmed_human
+      Conf     : 1.00
+      Sessions : 4
+      Obs      : 3707
+      Position : (30.50, 19.98) m
+      Speed    : 0.279 m/s
+      Height   : 1.79m
+      Min dist : 0.4633759802037769
+      Crit time: 0.0s
+      Encounters: F=876 S=1520 R=1311
+  
+    [kiarash_leftwrist]
+      Class    : confirmed_human
+      Conf     : 1.00
+      Sessions : 3
+      Obs      : 2897
+      Position : (30.06, 20.39) m
+      Speed    : 0.114 m/s
+      Height   : 0.99m
+      Min dist : 0.007549789392044617
+      Crit time: 3.7s
+      Encounters: F=717 S=1330 R=850
+  
+    [kiarash_RightWrist]
+      Class    : confirmed_human
+      Conf     : 1.00
+      Sessions : 4
+      Obs      : 3679
+      Position : (32.16, 18.88) m
+      Speed    : 0.157 m/s
+      Height   : 0.96m
+      Min dist : 0.24341124704332842
+      Crit time: 2.2s
+      Encounters: F=1284 S=1630 R=765
+  
+  --- SAFETY ---
+    Critical total : 96
+    Warning total  : 157
+    Closest ever   : 0.0cm
+  
+  --- LIDAR LEARNING ---
+    Labeled patterns : 863
+    Label transfers  : 863
+  
+  --- SPATIAL KNOWLEDGE ---
+    Human zones  : 8
+    Risk zones   : 0
+  
+  --- ANOMALIES (12) ---
+    [high] 'kia hat 002' sudden movement (jerk=32.6)
+    [high] 'kiarash_leftwrist' sudden movement (jerk=27.7)
+    [high] 'kiarash_RightWrist' sudden movement (jerk=23.7)
+    [high] 'kia hat 002' sudden movement (jerk=35.5)
+    [high] 'kiarash_RightWrist' sudden movement (jerk=21.5)
+  
+  --- INSIGHTS (last 15 of 31) ---
+    - [session_2026-08-24_13-57-33] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=25.4)
+    - [session_2026-08-24_13-57-33] ANOMALY [critical]: 'kiarash_leftwrist' INSIDE robot footprint
+    - [session_2026-08-24_13-57-33] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=15.3)
+    - [session_2026-08-24_13-57-33] ANOMALY [critical]: 'kiarash_RightWrist' INSIDE robot footprint
+    - [session_2026-08-25_17-32-01] RECLASSIFIED 'kiarash_leftwrist': 'human_marker' -> 'confirmed_human'
+    - [session_2026-08-25_17-32-01] SAFETY: 1 WARNING events
+    - [session_2026-08-25_17-32-01] LIDAR: 116 label transfers
+    - [session_2026-08-25_17-32-01] LIDAR: 29421 unlabeled clusters
+    - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=32.6)
+    - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_leftwrist' sudden movement (jerk=27.7)
+    - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=23.7)
+    - [session_2026-08-25_17-43-02] LIDAR: 203 label transfers
+    - [session_2026-08-25_17-43-02] LIDAR: 29722 unlabeled clusters
+    - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=35.5)
+    - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=21.5)
+  
+  --- QUESTIONS (0) ---
+  
+  ============================================================
+
+--- 4. THIS SESSION'S NEW DISCOVERIES ---
+  No new insights from this session.
+
+--- 5. SAFETY ANALYSIS (this session) ---
+  No safety events in this session. All clear.
+
+--- 6. UNRESOLVED QUESTIONS (need your input) ---
+  No pending questions.
+
+--- 7. RECOMMENDED NEXT STEPS ---
+  → Run more sessions (4/5 minimum for reliable classification)
+  → 3 objects confirmed: kia hat 002, kiarash_leftwrist, kiarash_RightWrist
+  → Fix 6 flagged issues above before running more sessions.
+
+======================================================================
+ END OF REPORT
+ This report includes the FULL cumulative brain snapshot.
+ Paste it into your AI assistant for review.
+======================================================================

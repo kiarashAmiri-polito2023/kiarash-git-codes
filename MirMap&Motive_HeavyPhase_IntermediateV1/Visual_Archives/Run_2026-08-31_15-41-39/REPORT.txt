@@ -1,0 +1,25 @@
+======================================================================
+PUBLICATION-GRADE VISUAL REPORT v5.0  |  2026-08-31_15-41-39
+Operator: Kiarash Amiri (s322803) | Politecnico di Torino / DIGEP
+======================================================================
+session analyzed : session_2026-08-27_17-54-20
+videos used      : session_2026-08-27_17-54-20-Camera 1 (M69428).avi; session_2026-08-27_17-54-20-Camera 7 (M69432).avi
+
+INVENTORY:
+  1_BEV_Frames            : 20 files
+  2_YOLO_Detections       : 32 files
+  3_SLAM_Maps             : 3 files
+  4_Publication_Figures   : 7 files
+  5_Decision_Dashboards   : 6 files
+  errors logged           : 0
+
+DATA PROVENANCE (zero hardcoded numbers):
+  Table 1   <- eval_results_v3.json [mae_v, mae_w, z_bl, m_bl]
+  Figure 1  <- training_history.json [epochs]
+  Figure 2  <- training_history.json [canary] (per-epoch, per-sample)
+  Figure 3  <- eval_results_v3.json [p] (69 gt/pred pairs)
+  Figure 4  <- eval_results_v3.json [p] grouped by [cls]
+  Figure 5  <- eval_results_v3.json [p][raw] chain-of-thought
+  Figure 6  <- sessions/*/bev_images
+  Maps 1-3  <- slam_data.pkl + fused_data.pkl
+  YOLO      <- motive sessions AVI + yolo_detections.json

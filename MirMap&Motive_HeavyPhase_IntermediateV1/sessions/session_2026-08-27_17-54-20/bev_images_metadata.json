@@ -1,0 +1,5168 @@
+{
+  "total_frames": 344,
+  "resolution": "448x448",
+  "channels": 3,
+  "format": "PNG",
+  "frames": [
+    {
+      "frame_id": 0,
+      "filename": "frame_00000.png",
+      "relative_path": "bev_images/frame_00000.png",
+      "timestamp_s": 0.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 1,
+      "filename": "frame_00001.png",
+      "relative_path": "bev_images/frame_00001.png",
+      "timestamp_s": 0.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 2,
+      "filename": "frame_00002.png",
+      "relative_path": "bev_images/frame_00002.png",
+      "timestamp_s": 0.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 3,
+      "filename": "frame_00003.png",
+      "relative_path": "bev_images/frame_00003.png",
+      "timestamp_s": 0.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 4,
+      "filename": "frame_00004.png",
+      "relative_path": "bev_images/frame_00004.png",
+      "timestamp_s": 1.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 5,
+      "filename": "frame_00005.png",
+      "relative_path": "bev_images/frame_00005.png",
+      "timestamp_s": 1.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 6,
+      "filename": "frame_00006.png",
+      "relative_path": "bev_images/frame_00006.png",
+      "timestamp_s": 1.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 7,
+      "filename": "frame_00007.png",
+      "relative_path": "bev_images/frame_00007.png",
+      "timestamp_s": 1.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 8,
+      "filename": "frame_00008.png",
+      "relative_path": "bev_images/frame_00008.png",
+      "timestamp_s": 2.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 9,
+      "filename": "frame_00009.png",
+      "relative_path": "bev_images/frame_00009.png",
+      "timestamp_s": 2.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 10,
+      "filename": "frame_00010.png",
+      "relative_path": "bev_images/frame_00010.png",
+      "timestamp_s": 2.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 11,
+      "filename": "frame_00011.png",
+      "relative_path": "bev_images/frame_00011.png",
+      "timestamp_s": 2.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 12,
+      "filename": "frame_00012.png",
+      "relative_path": "bev_images/frame_00012.png",
+      "timestamp_s": 3.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 13,
+      "filename": "frame_00013.png",
+      "relative_path": "bev_images/frame_00013.png",
+      "timestamp_s": 3.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 14,
+      "filename": "frame_00014.png",
+      "relative_path": "bev_images/frame_00014.png",
+      "timestamp_s": 3.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 15,
+      "filename": "frame_00015.png",
+      "relative_path": "bev_images/frame_00015.png",
+      "timestamp_s": 3.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 16,
+      "filename": "frame_00016.png",
+      "relative_path": "bev_images/frame_00016.png",
+      "timestamp_s": 4.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 17,
+      "filename": "frame_00017.png",
+      "relative_path": "bev_images/frame_00017.png",
+      "timestamp_s": 4.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 18,
+      "filename": "frame_00018.png",
+      "relative_path": "bev_images/frame_00018.png",
+      "timestamp_s": 4.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 19,
+      "filename": "frame_00019.png",
+      "relative_path": "bev_images/frame_00019.png",
+      "timestamp_s": 4.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 20,
+      "filename": "frame_00020.png",
+      "relative_path": "bev_images/frame_00020.png",
+      "timestamp_s": 5.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 21,
+      "filename": "frame_00021.png",
+      "relative_path": "bev_images/frame_00021.png",
+      "timestamp_s": 5.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 22,
+      "filename": "frame_00022.png",
+      "relative_path": "bev_images/frame_00022.png",
+      "timestamp_s": 5.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 23,
+      "filename": "frame_00023.png",
+      "relative_path": "bev_images/frame_00023.png",
+      "timestamp_s": 5.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 24,
+      "filename": "frame_00024.png",
+      "relative_path": "bev_images/frame_00024.png",
+      "timestamp_s": 6.0,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 25,
+      "filename": "frame_00025.png",
+      "relative_path": "bev_images/frame_00025.png",
+      "timestamp_s": 6.25,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 26,
+      "filename": "frame_00026.png",
+      "relative_path": "bev_images/frame_00026.png",
+      "timestamp_s": 6.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1298
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 27,
+      "filename": "frame_00027.png",
+      "relative_path": "bev_images/frame_00027.png",
+      "timestamp_s": 6.75,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.1294
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 28,
+      "filename": "frame_00028.png",
+      "relative_path": "bev_images/frame_00028.png",
+      "timestamp_s": 7.0,
+      "robot_pose": {
+        "x": 27.825,
+        "y": 21.2648,
+        "yaw": 0.124
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 29,
+      "filename": "frame_00029.png",
+      "relative_path": "bev_images/frame_00029.png",
+      "timestamp_s": 7.25,
+      "robot_pose": {
+        "x": 27.825,
+        "y": 21.2648,
+        "yaw": 0.0846
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 30,
+      "filename": "frame_00030.png",
+      "relative_path": "bev_images/frame_00030.png",
+      "timestamp_s": 7.5,
+      "robot_pose": {
+        "x": 27.8255,
+        "y": 21.2649,
+        "yaw": 0.0202
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 31,
+      "filename": "frame_00031.png",
+      "relative_path": "bev_images/frame_00031.png",
+      "timestamp_s": 7.75,
+      "robot_pose": {
+        "x": 27.8248,
+        "y": 21.2649,
+        "yaw": -0.0625
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 32,
+      "filename": "frame_00032.png",
+      "relative_path": "bev_images/frame_00032.png",
+      "timestamp_s": 8.0,
+      "robot_pose": {
+        "x": 27.8243,
+        "y": 21.2649,
+        "yaw": -0.1025
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 33,
+      "filename": "frame_00033.png",
+      "relative_path": "bev_images/frame_00033.png",
+      "timestamp_s": 8.25,
+      "robot_pose": {
+        "x": 27.8422,
+        "y": 21.2678,
+        "yaw": -0.1552
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 34,
+      "filename": "frame_00034.png",
+      "relative_path": "bev_images/frame_00034.png",
+      "timestamp_s": 8.5,
+      "robot_pose": {
+        "x": 27.85,
+        "y": 21.2664,
+        "yaw": -0.1669
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 35,
+      "filename": "frame_00035.png",
+      "relative_path": "bev_images/frame_00035.png",
+      "timestamp_s": 8.75,
+      "robot_pose": {
+        "x": 27.868,
+        "y": 21.2635,
+        "yaw": -0.1642
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 36,
+      "filename": "frame_00036.png",
+      "relative_path": "bev_images/frame_00036.png",
+      "timestamp_s": 9.0,
+      "robot_pose": {
+        "x": 27.8926,
+        "y": 21.2593,
+        "yaw": -0.1758
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 37,
+      "filename": "frame_00037.png",
+      "relative_path": "bev_images/frame_00037.png",
+      "timestamp_s": 9.25,
+      "robot_pose": {
+        "x": 27.9081,
+        "y": 21.2564,
+        "yaw": -0.1893
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 38,
+      "filename": "frame_00038.png",
+      "relative_path": "bev_images/frame_00038.png",
+      "timestamp_s": 9.5,
+      "robot_pose": {
+        "x": 27.9465,
+        "y": 21.2485,
+        "yaw": -0.2148
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 39,
+      "filename": "frame_00039.png",
+      "relative_path": "bev_images/frame_00039.png",
+      "timestamp_s": 9.75,
+      "robot_pose": {
+        "x": 27.9877,
+        "y": 21.2391,
+        "yaw": -0.2349
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 40,
+      "filename": "frame_00040.png",
+      "relative_path": "bev_images/frame_00040.png",
+      "timestamp_s": 10.0,
+      "robot_pose": {
+        "x": 28.0229,
+        "y": 21.2302,
+        "yaw": -0.2607
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 41,
+      "filename": "frame_00041.png",
+      "relative_path": "bev_images/frame_00041.png",
+      "timestamp_s": 10.25,
+      "robot_pose": {
+        "x": 28.0591,
+        "y": 21.2202,
+        "yaw": -0.2741
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 42,
+      "filename": "frame_00042.png",
+      "relative_path": "bev_images/frame_00042.png",
+      "timestamp_s": 10.5,
+      "robot_pose": {
+        "x": 28.0784,
+        "y": 21.2127,
+        "yaw": -0.2736
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 43,
+      "filename": "frame_00043.png",
+      "relative_path": "bev_images/frame_00043.png",
+      "timestamp_s": 10.75,
+      "robot_pose": {
+        "x": 28.1266,
+        "y": 21.199,
+        "yaw": -0.2789
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 44,
+      "filename": "frame_00044.png",
+      "relative_path": "bev_images/frame_00044.png",
+      "timestamp_s": 11.0,
+      "robot_pose": {
+        "x": 28.1834,
+        "y": 21.1824,
+        "yaw": -0.2906
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 45,
+      "filename": "frame_00045.png",
+      "relative_path": "bev_images/frame_00045.png",
+      "timestamp_s": 11.25,
+      "robot_pose": {
+        "x": 28.2479,
+        "y": 21.1626,
+        "yaw": -0.3064
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 46,
+      "filename": "frame_00046.png",
+      "relative_path": "bev_images/frame_00046.png",
+      "timestamp_s": 11.5,
+      "robot_pose": {
+        "x": 28.3185,
+        "y": 21.1483,
+        "yaw": -0.3254
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 47,
+      "filename": "frame_00047.png",
+      "relative_path": "bev_images/frame_00047.png",
+      "timestamp_s": 11.75,
+      "robot_pose": {
+        "x": 28.3585,
+        "y": 21.1345,
+        "yaw": -0.3403
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 48,
+      "filename": "frame_00048.png",
+      "relative_path": "bev_images/frame_00048.png",
+      "timestamp_s": 12.0,
+      "robot_pose": {
+        "x": 28.4449,
+        "y": 21.1025,
+        "yaw": -0.3699
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 49,
+      "filename": "frame_00049.png",
+      "relative_path": "bev_images/frame_00049.png",
+      "timestamp_s": 12.25,
+      "robot_pose": {
+        "x": 28.5582,
+        "y": 21.0747,
+        "yaw": -0.3947
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 50,
+      "filename": "frame_00050.png",
+      "relative_path": "bev_images/frame_00050.png",
+      "timestamp_s": 12.5,
+      "robot_pose": {
+        "x": 28.6498,
+        "y": 21.0349,
+        "yaw": -0.4271
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 51,
+      "filename": "frame_00051.png",
+      "relative_path": "bev_images/frame_00051.png",
+      "timestamp_s": 12.75,
+      "robot_pose": {
+        "x": 28.7397,
+        "y": 20.9923,
+        "yaw": -0.4598
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 52,
+      "filename": "frame_00052.png",
+      "relative_path": "bev_images/frame_00052.png",
+      "timestamp_s": 13.0,
+      "robot_pose": {
+        "x": 28.7881,
+        "y": 20.9795,
+        "yaw": -0.4797
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 53,
+      "filename": "frame_00053.png",
+      "relative_path": "bev_images/frame_00053.png",
+      "timestamp_s": 13.25,
+      "robot_pose": {
+        "x": 28.8763,
+        "y": 20.9315,
+        "yaw": -0.5177
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 54,
+      "filename": "frame_00054.png",
+      "relative_path": "bev_images/frame_00054.png",
+      "timestamp_s": 13.5,
+      "robot_pose": {
+        "x": 28.9623,
+        "y": 20.8801,
+        "yaw": -0.5637
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 55,
+      "filename": "frame_00055.png",
+      "relative_path": "bev_images/frame_00055.png",
+      "timestamp_s": 13.75,
+      "robot_pose": {
+        "x": 29.0447,
+        "y": 20.8303,
+        "yaw": -0.6134
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 56,
+      "filename": "frame_00056.png",
+      "relative_path": "bev_images/frame_00056.png",
+      "timestamp_s": 14.0,
+      "robot_pose": {
+        "x": 29.1251,
+        "y": 20.7705,
+        "yaw": -0.6678
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 57,
+      "filename": "frame_00057.png",
+      "relative_path": "bev_images/frame_00057.png",
+      "timestamp_s": 14.25,
+      "robot_pose": {
+        "x": 29.1638,
+        "y": 20.739,
+        "yaw": -0.6962
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 58,
+      "filename": "frame_00058.png",
+      "relative_path": "bev_images/frame_00058.png",
+      "timestamp_s": 14.5,
+      "robot_pose": {
+        "x": 29.2289,
+        "y": 20.6743,
+        "yaw": -0.7601
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 59,
+      "filename": "frame_00059.png",
+      "relative_path": "bev_images/frame_00059.png",
+      "timestamp_s": 14.75,
+      "robot_pose": {
+        "x": 29.2881,
+        "y": 20.6151,
+        "yaw": -0.8117
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 60,
+      "filename": "frame_00060.png",
+      "relative_path": "bev_images/frame_00060.png",
+      "timestamp_s": 15.0,
+      "robot_pose": {
+        "x": 29.3452,
+        "y": 20.5519,
+        "yaw": -0.8574
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 61,
+      "filename": "frame_00061.png",
+      "relative_path": "bev_images/frame_00061.png",
+      "timestamp_s": 15.25,
+      "robot_pose": {
+        "x": 29.3863,
+        "y": 20.4845,
+        "yaw": -0.8858
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 62,
+      "filename": "frame_00062.png",
+      "relative_path": "bev_images/frame_00062.png",
+      "timestamp_s": 15.5,
+      "robot_pose": {
+        "x": 29.4334,
+        "y": 20.4251,
+        "yaw": -0.9152
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 63,
+      "filename": "frame_00063.png",
+      "relative_path": "bev_images/frame_00063.png",
+      "timestamp_s": 15.75,
+      "robot_pose": {
+        "x": 29.4565,
+        "y": 20.3947,
+        "yaw": -0.9296
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 64,
+      "filename": "frame_00064.png",
+      "relative_path": "bev_images/frame_00064.png",
+      "timestamp_s": 16.0,
+      "robot_pose": {
+        "x": 29.5053,
+        "y": 20.327,
+        "yaw": -0.9612
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 65,
+      "filename": "frame_00065.png",
+      "relative_path": "bev_images/frame_00065.png",
+      "timestamp_s": 16.25,
+      "robot_pose": {
+        "x": 29.5544,
+        "y": 20.2535,
+        "yaw": -0.9878
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 66,
+      "filename": "frame_00066.png",
+      "relative_path": "bev_images/frame_00066.png",
+      "timestamp_s": 16.5,
+      "robot_pose": {
+        "x": 29.6064,
+        "y": 20.1724,
+        "yaw": -1.0135
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 67,
+      "filename": "frame_00067.png",
+      "relative_path": "bev_images/frame_00067.png",
+      "timestamp_s": 16.75,
+      "robot_pose": {
+        "x": 29.6465,
+        "y": 20.0902,
+        "yaw": -1.0366
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 68,
+      "filename": "frame_00068.png",
+      "relative_path": "bev_images/frame_00068.png",
+      "timestamp_s": 17.0,
+      "robot_pose": {
+        "x": 29.6711,
+        "y": 20.0481,
+        "yaw": -1.0466
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 69,
+      "filename": "frame_00069.png",
+      "relative_path": "bev_images/frame_00069.png",
+      "timestamp_s": 17.25,
+      "robot_pose": {
+        "x": 29.7203,
+        "y": 19.962,
+        "yaw": -1.0567
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 70,
+      "filename": "frame_00070.png",
+      "relative_path": "bev_images/frame_00070.png",
+      "timestamp_s": 17.5,
+      "robot_pose": {
+        "x": 29.7899,
+        "y": 19.8724,
+        "yaw": -1.0624
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 71,
+      "filename": "frame_00071.png",
+      "relative_path": "bev_images/frame_00071.png",
+      "timestamp_s": 17.75,
+      "robot_pose": {
+        "x": 29.8353,
+        "y": 19.7895,
+        "yaw": -1.0782
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 72,
+      "filename": "frame_00072.png",
+      "relative_path": "bev_images/frame_00072.png",
+      "timestamp_s": 18.0,
+      "robot_pose": {
+        "x": 29.8832,
+        "y": 19.7108,
+        "yaw": -1.0915
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 73,
+      "filename": "frame_00073.png",
+      "relative_path": "bev_images/frame_00073.png",
+      "timestamp_s": 18.25,
+      "robot_pose": {
+        "x": 29.9015,
+        "y": 19.6753,
+        "yaw": -1.1024
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 74,
+      "filename": "frame_00074.png",
+      "relative_path": "bev_images/frame_00074.png",
+      "timestamp_s": 18.5,
+      "robot_pose": {
+        "x": 29.9327,
+        "y": 19.6116,
+        "yaw": -1.1276
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 75,
+      "filename": "frame_00075.png",
+      "relative_path": "bev_images/frame_00075.png",
+      "timestamp_s": 18.75,
+      "robot_pose": {
+        "x": 29.9562,
+        "y": 19.561,
+        "yaw": -1.1428
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 76,
+      "filename": "frame_00076.png",
+      "relative_path": "bev_images/frame_00076.png",
+      "timestamp_s": 19.0,
+      "robot_pose": {
+        "x": 29.9763,
+        "y": 19.5186,
+        "yaw": -1.1411
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 77,
+      "filename": "frame_00077.png",
+      "relative_path": "bev_images/frame_00077.png",
+      "timestamp_s": 19.25,
+      "robot_pose": {
+        "x": 29.9857,
+        "y": 19.4983,
+        "yaw": -1.1203
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 78,
+      "filename": "frame_00078.png",
+      "relative_path": "bev_images/frame_00078.png",
+      "timestamp_s": 19.5,
+      "robot_pose": {
+        "x": 29.991,
+        "y": 19.4878,
+        "yaw": -1.0994
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 79,
+      "filename": "frame_00079.png",
+      "relative_path": "bev_images/frame_00079.png",
+      "timestamp_s": 19.75,
+      "robot_pose": {
+        "x": 30.0027,
+        "y": 19.4659,
+        "yaw": -1.0654
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 80,
+      "filename": "frame_00080.png",
+      "relative_path": "bev_images/frame_00080.png",
+      "timestamp_s": 20.0,
+      "robot_pose": {
+        "x": 30.0118,
+        "y": 19.4496,
+        "yaw": -1.0511
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 81,
+      "filename": "frame_00081.png",
+      "relative_path": "bev_images/frame_00081.png",
+      "timestamp_s": 20.25,
+      "robot_pose": {
+        "x": 30.0237,
+        "y": 19.4295,
+        "yaw": -1.0284
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 82,
+      "filename": "frame_00082.png",
+      "relative_path": "bev_images/frame_00082.png",
+      "timestamp_s": 20.5,
+      "robot_pose": {
+        "x": 30.0414,
+        "y": 19.401,
+        "yaw": -0.9976
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 83,
+      "filename": "frame_00083.png",
+      "relative_path": "bev_images/frame_00083.png",
+      "timestamp_s": 20.75,
+      "robot_pose": {
+        "x": 30.0523,
+        "y": 19.3845,
+        "yaw": -0.9793
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 84,
+      "filename": "frame_00084.png",
+      "relative_path": "bev_images/frame_00084.png",
+      "timestamp_s": 21.0,
+      "robot_pose": {
+        "x": 30.0759,
+        "y": 19.3508,
+        "yaw": -0.9449
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 85,
+      "filename": "frame_00085.png",
+      "relative_path": "bev_images/frame_00085.png",
+      "timestamp_s": 21.25,
+      "robot_pose": {
+        "x": 30.0953,
+        "y": 19.3129,
+        "yaw": -0.918
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 86,
+      "filename": "frame_00086.png",
+      "relative_path": "bev_images/frame_00086.png",
+      "timestamp_s": 21.5,
+      "robot_pose": {
+        "x": 30.1148,
+        "y": 19.2881,
+        "yaw": -0.8955
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 87,
+      "filename": "frame_00087.png",
+      "relative_path": "bev_images/frame_00087.png",
+      "timestamp_s": 21.75,
+      "robot_pose": {
+        "x": 30.1325,
+        "y": 19.266,
+        "yaw": -0.8931
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 88,
+      "filename": "frame_00088.png",
+      "relative_path": "bev_images/frame_00088.png",
+      "timestamp_s": 22.0,
+      "robot_pose": {
+        "x": 30.14,
+        "y": 19.2568,
+        "yaw": -0.89
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 89,
+      "filename": "frame_00089.png",
+      "relative_path": "bev_images/frame_00089.png",
+      "timestamp_s": 22.25,
+      "robot_pose": {
+        "x": 30.1473,
+        "y": 19.2478,
+        "yaw": -0.885
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 90,
+      "filename": "frame_00090.png",
+      "relative_path": "bev_images/frame_00090.png",
+      "timestamp_s": 22.5,
+      "robot_pose": {
+        "x": 30.1471,
+        "y": 19.248,
+        "yaw": -0.8796
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 91,
+      "filename": "frame_00091.png",
+      "relative_path": "bev_images/frame_00091.png",
+      "timestamp_s": 22.75,
+      "robot_pose": {
+        "x": 30.146,
+        "y": 19.2494,
+        "yaw": -0.8588
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 92,
+      "filename": "frame_00092.png",
+      "relative_path": "bev_images/frame_00092.png",
+      "timestamp_s": 23.0,
+      "robot_pose": {
+        "x": 30.1411,
+        "y": 19.2547,
+        "yaw": -0.8128
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 93,
+      "filename": "frame_00093.png",
+      "relative_path": "bev_images/frame_00093.png",
+      "timestamp_s": 23.25,
+      "robot_pose": {
+        "x": 30.1321,
+        "y": 19.2639,
+        "yaw": -0.7995
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 94,
+      "filename": "frame_00094.png",
+      "relative_path": "bev_images/frame_00094.png",
+      "timestamp_s": 23.5,
+      "robot_pose": {
+        "x": 30.1262,
+        "y": 19.2701,
+        "yaw": -0.8081
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 95,
+      "filename": "frame_00095.png",
+      "relative_path": "bev_images/frame_00095.png",
+      "timestamp_s": 23.75,
+      "robot_pose": {
+        "x": 30.1108,
+        "y": 19.2862,
+        "yaw": -0.8087
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 96,
+      "filename": "frame_00096.png",
+      "relative_path": "bev_images/frame_00096.png",
+      "timestamp_s": 24.0,
+      "robot_pose": {
+        "x": 30.093,
+        "y": 19.3046,
+        "yaw": -0.7925
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 97,
+      "filename": "frame_00097.png",
+      "relative_path": "bev_images/frame_00097.png",
+      "timestamp_s": 24.25,
+      "robot_pose": {
+        "x": 30.0731,
+        "y": 19.3246,
+        "yaw": -0.7822
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 98,
+      "filename": "frame_00098.png",
+      "relative_path": "bev_images/frame_00098.png",
+      "timestamp_s": 24.5,
+      "robot_pose": {
+        "x": 30.0536,
+        "y": 19.3441,
+        "yaw": -0.7919
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 99,
+      "filename": "frame_00099.png",
+      "relative_path": "bev_images/frame_00099.png",
+      "timestamp_s": 24.75,
+      "robot_pose": {
+        "x": 30.0443,
+        "y": 19.3536,
+        "yaw": -0.7959
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 100,
+      "filename": "frame_00100.png",
+      "relative_path": "bev_images/frame_00100.png",
+      "timestamp_s": 25.0,
+      "robot_pose": {
+        "x": 30.0267,
+        "y": 19.3717,
+        "yaw": -0.7993
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 101,
+      "filename": "frame_00101.png",
+      "relative_path": "bev_images/frame_00101.png",
+      "timestamp_s": 25.25,
+      "robot_pose": {
+        "x": 30.0128,
+        "y": 19.386,
+        "yaw": -0.7983
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 102,
+      "filename": "frame_00102.png",
+      "relative_path": "bev_images/frame_00102.png",
+      "timestamp_s": 25.5,
+      "robot_pose": {
+        "x": 30.0114,
+        "y": 19.3873,
+        "yaw": -0.8027
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 103,
+      "filename": "frame_00103.png",
+      "relative_path": "bev_images/frame_00103.png",
+      "timestamp_s": 25.75,
+      "robot_pose": {
+        "x": 30.0116,
+        "y": 19.3871,
+        "yaw": -0.8026
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 104,
+      "filename": "frame_00104.png",
+      "relative_path": "bev_images/frame_00104.png",
+      "timestamp_s": 26.0,
+      "robot_pose": {
+        "x": 30.0116,
+        "y": 19.3871,
+        "yaw": -0.8021
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 105,
+      "filename": "frame_00105.png",
+      "relative_path": "bev_images/frame_00105.png",
+      "timestamp_s": 26.25,
+      "robot_pose": {
+        "x": 30.0119,
+        "y": 19.3868,
+        "yaw": -0.7999
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 106,
+      "filename": "frame_00106.png",
+      "relative_path": "bev_images/frame_00106.png",
+      "timestamp_s": 26.5,
+      "robot_pose": {
+        "x": 30.0125,
+        "y": 19.3862,
+        "yaw": -0.7886
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 107,
+      "filename": "frame_00107.png",
+      "relative_path": "bev_images/frame_00107.png",
+      "timestamp_s": 26.75,
+      "robot_pose": {
+        "x": 30.0118,
+        "y": 19.3869,
+        "yaw": -0.7445
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 108,
+      "filename": "frame_00108.png",
+      "relative_path": "bev_images/frame_00108.png",
+      "timestamp_s": 27.0,
+      "robot_pose": {
+        "x": 30.0234,
+        "y": 19.3775,
+        "yaw": -0.6824
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 109,
+      "filename": "frame_00109.png",
+      "relative_path": "bev_images/frame_00109.png",
+      "timestamp_s": 27.25,
+      "robot_pose": {
+        "x": 30.0262,
+        "y": 19.3753,
+        "yaw": -0.6671
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 110,
+      "filename": "frame_00110.png",
+      "relative_path": "bev_images/frame_00110.png",
+      "timestamp_s": 27.5,
+      "robot_pose": {
+        "x": 30.0381,
+        "y": 19.3658,
+        "yaw": -0.678
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 111,
+      "filename": "frame_00111.png",
+      "relative_path": "bev_images/frame_00111.png",
+      "timestamp_s": 27.75,
+      "robot_pose": {
+        "x": 30.0565,
+        "y": 19.3509,
+        "yaw": -0.6798
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 112,
+      "filename": "frame_00112.png",
+      "relative_path": "bev_images/frame_00112.png",
+      "timestamp_s": 28.0,
+      "robot_pose": {
+        "x": 30.0782,
+        "y": 19.3337,
+        "yaw": -0.6622
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 113,
+      "filename": "frame_00113.png",
+      "relative_path": "bev_images/frame_00113.png",
+      "timestamp_s": 28.25,
+      "robot_pose": {
+        "x": 30.0974,
+        "y": 19.3191,
+        "yaw": -0.6386
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 114,
+      "filename": "frame_00114.png",
+      "relative_path": "bev_images/frame_00114.png",
+      "timestamp_s": 28.5,
+      "robot_pose": {
+        "x": 30.1075,
+        "y": 19.3116,
+        "yaw": -0.6354
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 115,
+      "filename": "frame_00115.png",
+      "relative_path": "bev_images/frame_00115.png",
+      "timestamp_s": 28.75,
+      "robot_pose": {
+        "x": 30.1305,
+        "y": 19.2944,
+        "yaw": -0.6495
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 116,
+      "filename": "frame_00116.png",
+      "relative_path": "bev_images/frame_00116.png",
+      "timestamp_s": 29.0,
+      "robot_pose": {
+        "x": 30.1588,
+        "y": 19.2725,
+        "yaw": -0.6695
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 117,
+      "filename": "frame_00117.png",
+      "relative_path": "bev_images/frame_00117.png",
+      "timestamp_s": 29.25,
+      "robot_pose": {
+        "x": 30.1911,
+        "y": 19.2468,
+        "yaw": -0.6736
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 118,
+      "filename": "frame_00118.png",
+      "relative_path": "bev_images/frame_00118.png",
+      "timestamp_s": 29.5,
+      "robot_pose": {
+        "x": 30.232,
+        "y": 19.2138,
+        "yaw": -0.6791
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 119,
+      "filename": "frame_00119.png",
+      "relative_path": "bev_images/frame_00119.png",
+      "timestamp_s": 29.75,
+      "robot_pose": {
+        "x": 30.2729,
+        "y": 19.175,
+        "yaw": -0.7001
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 120,
+      "filename": "frame_00120.png",
+      "relative_path": "bev_images/frame_00120.png",
+      "timestamp_s": 30.0,
+      "robot_pose": {
+        "x": 30.3011,
+        "y": 19.1511,
+        "yaw": -0.7055
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 121,
+      "filename": "frame_00121.png",
+      "relative_path": "bev_images/frame_00121.png",
+      "timestamp_s": 30.25,
+      "robot_pose": {
+        "x": 30.3615,
+        "y": 19.099,
+        "yaw": -0.7185
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 122,
+      "filename": "frame_00122.png",
+      "relative_path": "bev_images/frame_00122.png",
+      "timestamp_s": 30.5,
+      "robot_pose": {
+        "x": 30.4271,
+        "y": 19.0407,
+        "yaw": -0.736
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 123,
+      "filename": "frame_00123.png",
+      "relative_path": "bev_images/frame_00123.png",
+      "timestamp_s": 30.75,
+      "robot_pose": {
+        "x": 30.4923,
+        "y": 18.9817,
+        "yaw": -0.7628
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 124,
+      "filename": "frame_00124.png",
+      "relative_path": "bev_images/frame_00124.png",
+      "timestamp_s": 31.0,
+      "robot_pose": {
+        "x": 30.5482,
+        "y": 18.9266,
+        "yaw": -0.7988
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 125,
+      "filename": "frame_00125.png",
+      "relative_path": "bev_images/frame_00125.png",
+      "timestamp_s": 31.25,
+      "robot_pose": {
+        "x": 30.5757,
+        "y": 18.8974,
+        "yaw": -0.8312
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 126,
+      "filename": "frame_00126.png",
+      "relative_path": "bev_images/frame_00126.png",
+      "timestamp_s": 31.5,
+      "robot_pose": {
+        "x": 30.628,
+        "y": 18.8358,
+        "yaw": -0.9046
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 127,
+      "filename": "frame_00127.png",
+      "relative_path": "bev_images/frame_00127.png",
+      "timestamp_s": 31.75,
+      "robot_pose": {
+        "x": 30.678,
+        "y": 18.7686,
+        "yaw": -0.9818
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 128,
+      "filename": "frame_00128.png",
+      "relative_path": "bev_images/frame_00128.png",
+      "timestamp_s": 32.0,
+      "robot_pose": {
+        "x": 30.7231,
+        "y": 18.6944,
+        "yaw": -1.067
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 129,
+      "filename": "frame_00129.png",
+      "relative_path": "bev_images/frame_00129.png",
+      "timestamp_s": 32.25,
+      "robot_pose": {
+        "x": 30.7412,
+        "y": 18.6134,
+        "yaw": -1.1712
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 130,
+      "filename": "frame_00130.png",
+      "relative_path": "bev_images/frame_00130.png",
+      "timestamp_s": 32.5,
+      "robot_pose": {
+        "x": 30.7581,
+        "y": 18.5706,
+        "yaw": -1.2215
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 131,
+      "filename": "frame_00131.png",
+      "relative_path": "bev_images/frame_00131.png",
+      "timestamp_s": 32.75,
+      "robot_pose": {
+        "x": 30.779,
+        "y": 18.5039,
+        "yaw": -1.3306
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 132,
+      "filename": "frame_00132.png",
+      "relative_path": "bev_images/frame_00132.png",
+      "timestamp_s": 33.0,
+      "robot_pose": {
+        "x": 30.7835,
+        "y": 18.4816,
+        "yaw": -1.4374
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 133,
+      "filename": "frame_00133.png",
+      "relative_path": "bev_images/frame_00133.png",
+      "timestamp_s": 33.25,
+      "robot_pose": {
+        "x": 30.7838,
+        "y": 18.4802,
+        "yaw": -1.54
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 134,
+      "filename": "frame_00134.png",
+      "relative_path": "bev_images/frame_00134.png",
+      "timestamp_s": 33.5,
+      "robot_pose": {
+        "x": 30.799,
+        "y": 18.4894,
+        "yaw": -1.6598
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 135,
+      "filename": "frame_00135.png",
+      "relative_path": "bev_images/frame_00135.png",
+      "timestamp_s": 33.75,
+      "robot_pose": {
+        "x": 30.7992,
+        "y": 18.4908,
+        "yaw": -1.7257
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 136,
+      "filename": "frame_00136.png",
+      "relative_path": "bev_images/frame_00136.png",
+      "timestamp_s": 34.0,
+      "robot_pose": {
+        "x": 30.8061,
+        "y": 18.4866,
+        "yaw": -1.8473
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 137,
+      "filename": "frame_00137.png",
+      "relative_path": "bev_images/frame_00137.png",
+      "timestamp_s": 34.25,
+      "robot_pose": {
+        "x": 30.8065,
+        "y": 18.4878,
+        "yaw": -1.9341
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 138,
+      "filename": "frame_00138.png",
+      "relative_path": "bev_images/frame_00138.png",
+      "timestamp_s": 34.5,
+      "robot_pose": {
+        "x": 30.832,
+        "y": 18.4931,
+        "yaw": -1.9685
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 139,
+      "filename": "frame_00139.png",
+      "relative_path": "bev_images/frame_00139.png",
+      "timestamp_s": 34.75,
+      "robot_pose": {
+        "x": 30.8319,
+        "y": 18.4928,
+        "yaw": -2.0023
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 140,
+      "filename": "frame_00140.png",
+      "relative_path": "bev_images/frame_00140.png",
+      "timestamp_s": 35.0,
+      "robot_pose": {
+        "x": 30.832,
+        "y": 18.493,
+        "yaw": -2.0318
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 141,
+      "filename": "frame_00141.png",
+      "relative_path": "bev_images/frame_00141.png",
+      "timestamp_s": 35.25,
+      "robot_pose": {
+        "x": 30.8322,
+        "y": 18.4933,
+        "yaw": -2.1031
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 142,
+      "filename": "frame_00142.png",
+      "relative_path": "bev_images/frame_00142.png",
+      "timestamp_s": 35.5,
+      "robot_pose": {
+        "x": 30.8324,
+        "y": 18.4938,
+        "yaw": -2.1567
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 143,
+      "filename": "frame_00143.png",
+      "relative_path": "bev_images/frame_00143.png",
+      "timestamp_s": 35.75,
+      "robot_pose": {
+        "x": 30.8349,
+        "y": 18.4883,
+        "yaw": -2.1827
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 144,
+      "filename": "frame_00144.png",
+      "relative_path": "bev_images/frame_00144.png",
+      "timestamp_s": 36.0,
+      "robot_pose": {
+        "x": 30.8351,
+        "y": 18.4885,
+        "yaw": -2.1961
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 145,
+      "filename": "frame_00145.png",
+      "relative_path": "bev_images/frame_00145.png",
+      "timestamp_s": 36.25,
+      "robot_pose": {
+        "x": 30.835,
+        "y": 18.4884,
+        "yaw": -2.1975
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 146,
+      "filename": "frame_00146.png",
+      "relative_path": "bev_images/frame_00146.png",
+      "timestamp_s": 36.5,
+      "robot_pose": {
+        "x": 30.8352,
+        "y": 18.4887,
+        "yaw": -2.1993
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 147,
+      "filename": "frame_00147.png",
+      "relative_path": "bev_images/frame_00147.png",
+      "timestamp_s": 36.75,
+      "robot_pose": {
+        "x": 30.8352,
+        "y": 18.4887,
+        "yaw": -2.1981
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 148,
+      "filename": "frame_00148.png",
+      "relative_path": "bev_images/frame_00148.png",
+      "timestamp_s": 37.0,
+      "robot_pose": {
+        "x": 30.8352,
+        "y": 18.4887,
+        "yaw": -2.1979
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 149,
+      "filename": "frame_00149.png",
+      "relative_path": "bev_images/frame_00149.png",
+      "timestamp_s": 37.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1975
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 150,
+      "filename": "frame_00150.png",
+      "relative_path": "bev_images/frame_00150.png",
+      "timestamp_s": 37.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 151,
+      "filename": "frame_00151.png",
+      "relative_path": "bev_images/frame_00151.png",
+      "timestamp_s": 37.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 152,
+      "filename": "frame_00152.png",
+      "relative_path": "bev_images/frame_00152.png",
+      "timestamp_s": 38.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 153,
+      "filename": "frame_00153.png",
+      "relative_path": "bev_images/frame_00153.png",
+      "timestamp_s": 38.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 154,
+      "filename": "frame_00154.png",
+      "relative_path": "bev_images/frame_00154.png",
+      "timestamp_s": 38.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 155,
+      "filename": "frame_00155.png",
+      "relative_path": "bev_images/frame_00155.png",
+      "timestamp_s": 38.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 156,
+      "filename": "frame_00156.png",
+      "relative_path": "bev_images/frame_00156.png",
+      "timestamp_s": 39.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 157,
+      "filename": "frame_00157.png",
+      "relative_path": "bev_images/frame_00157.png",
+      "timestamp_s": 39.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 158,
+      "filename": "frame_00158.png",
+      "relative_path": "bev_images/frame_00158.png",
+      "timestamp_s": 39.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 159,
+      "filename": "frame_00159.png",
+      "relative_path": "bev_images/frame_00159.png",
+      "timestamp_s": 39.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 160,
+      "filename": "frame_00160.png",
+      "relative_path": "bev_images/frame_00160.png",
+      "timestamp_s": 40.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 161,
+      "filename": "frame_00161.png",
+      "relative_path": "bev_images/frame_00161.png",
+      "timestamp_s": 40.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 162,
+      "filename": "frame_00162.png",
+      "relative_path": "bev_images/frame_00162.png",
+      "timestamp_s": 40.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 163,
+      "filename": "frame_00163.png",
+      "relative_path": "bev_images/frame_00163.png",
+      "timestamp_s": 40.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 164,
+      "filename": "frame_00164.png",
+      "relative_path": "bev_images/frame_00164.png",
+      "timestamp_s": 41.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 165,
+      "filename": "frame_00165.png",
+      "relative_path": "bev_images/frame_00165.png",
+      "timestamp_s": 41.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 166,
+      "filename": "frame_00166.png",
+      "relative_path": "bev_images/frame_00166.png",
+      "timestamp_s": 41.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 167,
+      "filename": "frame_00167.png",
+      "relative_path": "bev_images/frame_00167.png",
+      "timestamp_s": 41.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 168,
+      "filename": "frame_00168.png",
+      "relative_path": "bev_images/frame_00168.png",
+      "timestamp_s": 42.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 169,
+      "filename": "frame_00169.png",
+      "relative_path": "bev_images/frame_00169.png",
+      "timestamp_s": 42.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 170,
+      "filename": "frame_00170.png",
+      "relative_path": "bev_images/frame_00170.png",
+      "timestamp_s": 42.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 171,
+      "filename": "frame_00171.png",
+      "relative_path": "bev_images/frame_00171.png",
+      "timestamp_s": 42.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 172,
+      "filename": "frame_00172.png",
+      "relative_path": "bev_images/frame_00172.png",
+      "timestamp_s": 43.0,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 173,
+      "filename": "frame_00173.png",
+      "relative_path": "bev_images/frame_00173.png",
+      "timestamp_s": 43.25,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 174,
+      "filename": "frame_00174.png",
+      "relative_path": "bev_images/frame_00174.png",
+      "timestamp_s": 43.5,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1974
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 175,
+      "filename": "frame_00175.png",
+      "relative_path": "bev_images/frame_00175.png",
+      "timestamp_s": 43.75,
+      "robot_pose": {
+        "x": 30.8353,
+        "y": 18.4888,
+        "yaw": -2.1968
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 176,
+      "filename": "frame_00176.png",
+      "relative_path": "bev_images/frame_00176.png",
+      "timestamp_s": 44.0,
+      "robot_pose": {
+        "x": 30.8355,
+        "y": 18.4891,
+        "yaw": -2.1945
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 177,
+      "filename": "frame_00177.png",
+      "relative_path": "bev_images/frame_00177.png",
+      "timestamp_s": 44.25,
+      "robot_pose": {
+        "x": 30.8352,
+        "y": 18.4887,
+        "yaw": -2.1792
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 178,
+      "filename": "frame_00178.png",
+      "relative_path": "bev_images/frame_00178.png",
+      "timestamp_s": 44.5,
+      "robot_pose": {
+        "x": 30.835,
+        "y": 18.4883,
+        "yaw": -2.1309
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 179,
+      "filename": "frame_00179.png",
+      "relative_path": "bev_images/frame_00179.png",
+      "timestamp_s": 44.75,
+      "robot_pose": {
+        "x": 30.8326,
+        "y": 18.4842,
+        "yaw": -2.0759
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 180,
+      "filename": "frame_00180.png",
+      "relative_path": "bev_images/frame_00180.png",
+      "timestamp_s": 45.0,
+      "robot_pose": {
+        "x": 30.8262,
+        "y": 18.4725,
+        "yaw": -2.0816
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 181,
+      "filename": "frame_00181.png",
+      "relative_path": "bev_images/frame_00181.png",
+      "timestamp_s": 45.25,
+      "robot_pose": {
+        "x": 30.8156,
+        "y": 18.4541,
+        "yaw": -2.1006
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 182,
+      "filename": "frame_00182.png",
+      "relative_path": "bev_images/frame_00182.png",
+      "timestamp_s": 45.5,
+      "robot_pose": {
+        "x": 30.8094,
+        "y": 18.4436,
+        "yaw": -2.1018
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 183,
+      "filename": "frame_00183.png",
+      "relative_path": "bev_images/frame_00183.png",
+      "timestamp_s": 45.75,
+      "robot_pose": {
+        "x": 30.7944,
+        "y": 18.4178,
+        "yaw": -2.0935
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 184,
+      "filename": "frame_00184.png",
+      "relative_path": "bev_images/frame_00184.png",
+      "timestamp_s": 46.0,
+      "robot_pose": {
+        "x": 30.7746,
+        "y": 18.3831,
+        "yaw": -2.087
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 185,
+      "filename": "frame_00185.png",
+      "relative_path": "bev_images/frame_00185.png",
+      "timestamp_s": 46.25,
+      "robot_pose": {
+        "x": 30.7502,
+        "y": 18.3399,
+        "yaw": -2.0816
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 186,
+      "filename": "frame_00186.png",
+      "relative_path": "bev_images/frame_00186.png",
+      "timestamp_s": 46.5,
+      "robot_pose": {
+        "x": 30.7266,
+        "y": 18.2979,
+        "yaw": -2.0829
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 187,
+      "filename": "frame_00187.png",
+      "relative_path": "bev_images/frame_00187.png",
+      "timestamp_s": 46.75,
+      "robot_pose": {
+        "x": 30.714,
+        "y": 18.2754,
+        "yaw": -2.0802
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 188,
+      "filename": "frame_00188.png",
+      "relative_path": "bev_images/frame_00188.png",
+      "timestamp_s": 47.0,
+      "robot_pose": {
+        "x": 30.6939,
+        "y": 18.2365,
+        "yaw": -2.0795
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 189,
+      "filename": "frame_00189.png",
+      "relative_path": "bev_images/frame_00189.png",
+      "timestamp_s": 47.25,
+      "robot_pose": {
+        "x": 30.6587,
+        "y": 18.1728,
+        "yaw": -2.0706
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 190,
+      "filename": "frame_00190.png",
+      "relative_path": "bev_images/frame_00190.png",
+      "timestamp_s": 47.5,
+      "robot_pose": {
+        "x": 30.6193,
+        "y": 18.0995,
+        "yaw": -2.0585
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 191,
+      "filename": "frame_00191.png",
+      "relative_path": "bev_images/frame_00191.png",
+      "timestamp_s": 47.75,
+      "robot_pose": {
+        "x": 30.5752,
+        "y": 18.0275,
+        "yaw": -2.041
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 192,
+      "filename": "frame_00192.png",
+      "relative_path": "bev_images/frame_00192.png",
+      "timestamp_s": 48.0,
+      "robot_pose": {
+        "x": 30.558,
+        "y": 17.9932,
+        "yaw": -2.0349
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 193,
+      "filename": "frame_00193.png",
+      "relative_path": "bev_images/frame_00193.png",
+      "timestamp_s": 48.25,
+      "robot_pose": {
+        "x": 30.5294,
+        "y": 17.9356,
+        "yaw": -2.026
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 194,
+      "filename": "frame_00194.png",
+      "relative_path": "bev_images/frame_00194.png",
+      "timestamp_s": 48.5,
+      "robot_pose": {
+        "x": 30.5043,
+        "y": 17.8836,
+        "yaw": -2.0133
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 195,
+      "filename": "frame_00195.png",
+      "relative_path": "bev_images/frame_00195.png",
+      "timestamp_s": 48.75,
+      "robot_pose": {
+        "x": 30.48,
+        "y": 17.831,
+        "yaw": -1.9941
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 196,
+      "filename": "frame_00196.png",
+      "relative_path": "bev_images/frame_00196.png",
+      "timestamp_s": 49.0,
+      "robot_pose": {
+        "x": 30.4513,
+        "y": 17.7753,
+        "yaw": -1.9553
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 197,
+      "filename": "frame_00197.png",
+      "relative_path": "bev_images/frame_00197.png",
+      "timestamp_s": 49.25,
+      "robot_pose": {
+        "x": 30.4404,
+        "y": 17.7473,
+        "yaw": -1.9332
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 198,
+      "filename": "frame_00198.png",
+      "relative_path": "bev_images/frame_00198.png",
+      "timestamp_s": 49.5,
+      "robot_pose": {
+        "x": 30.4207,
+        "y": 17.6911,
+        "yaw": -1.8799
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 199,
+      "filename": "frame_00199.png",
+      "relative_path": "bev_images/frame_00199.png",
+      "timestamp_s": 49.75,
+      "robot_pose": {
+        "x": 30.405,
+        "y": 17.6365,
+        "yaw": -1.8151
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 200,
+      "filename": "frame_00200.png",
+      "relative_path": "bev_images/frame_00200.png",
+      "timestamp_s": 50.0,
+      "robot_pose": {
+        "x": 30.4091,
+        "y": 17.5939,
+        "yaw": -1.7439
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 201,
+      "filename": "frame_00201.png",
+      "relative_path": "bev_images/frame_00201.png",
+      "timestamp_s": 50.25,
+      "robot_pose": {
+        "x": 30.4039,
+        "y": 17.5565,
+        "yaw": -1.6712
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 202,
+      "filename": "frame_00202.png",
+      "relative_path": "bev_images/frame_00202.png",
+      "timestamp_s": 50.5,
+      "robot_pose": {
+        "x": 30.4024,
+        "y": 17.5371,
+        "yaw": -1.6255
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 203,
+      "filename": "frame_00203.png",
+      "relative_path": "bev_images/frame_00203.png",
+      "timestamp_s": 50.75,
+      "robot_pose": {
+        "x": 30.4087,
+        "y": 17.5081,
+        "yaw": -1.537
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 204,
+      "filename": "frame_00204.png",
+      "relative_path": "bev_images/frame_00204.png",
+      "timestamp_s": 51.0,
+      "robot_pose": {
+        "x": 30.4104,
+        "y": 17.481,
+        "yaw": -1.4832
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 205,
+      "filename": "frame_00205.png",
+      "relative_path": "bev_images/frame_00205.png",
+      "timestamp_s": 51.25,
+      "robot_pose": {
+        "x": 30.4131,
+        "y": 17.4568,
+        "yaw": -1.4333
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 206,
+      "filename": "frame_00206.png",
+      "relative_path": "bev_images/frame_00206.png",
+      "timestamp_s": 51.5,
+      "robot_pose": {
+        "x": 30.418,
+        "y": 17.4281,
+        "yaw": -1.3698
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 207,
+      "filename": "frame_00207.png",
+      "relative_path": "bev_images/frame_00207.png",
+      "timestamp_s": 51.75,
+      "robot_pose": {
+        "x": 30.4359,
+        "y": 17.4018,
+        "yaw": -1.2998
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 208,
+      "filename": "frame_00208.png",
+      "relative_path": "bev_images/frame_00208.png",
+      "timestamp_s": 52.0,
+      "robot_pose": {
+        "x": 30.4401,
+        "y": 17.3875,
+        "yaw": -1.2694
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 209,
+      "filename": "frame_00209.png",
+      "relative_path": "bev_images/frame_00209.png",
+      "timestamp_s": 52.25,
+      "robot_pose": {
+        "x": 30.4497,
+        "y": 17.3597,
+        "yaw": -1.2119
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 210,
+      "filename": "frame_00210.png",
+      "relative_path": "bev_images/frame_00210.png",
+      "timestamp_s": 52.5,
+      "robot_pose": {
+        "x": 30.4601,
+        "y": 17.3336,
+        "yaw": -1.1737
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 211,
+      "filename": "frame_00211.png",
+      "relative_path": "bev_images/frame_00211.png",
+      "timestamp_s": 52.75,
+      "robot_pose": {
+        "x": 30.4784,
+        "y": 17.3161,
+        "yaw": -1.1517
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 212,
+      "filename": "frame_00212.png",
+      "relative_path": "bev_images/frame_00212.png",
+      "timestamp_s": 53.0,
+      "robot_pose": {
+        "x": 30.4886,
+        "y": 17.2942,
+        "yaw": -1.1222
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 213,
+      "filename": "frame_00213.png",
+      "relative_path": "bev_images/frame_00213.png",
+      "timestamp_s": 53.25,
+      "robot_pose": {
+        "x": 30.4934,
+        "y": 17.2843,
+        "yaw": -1.1138
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 214,
+      "filename": "frame_00214.png",
+      "relative_path": "bev_images/frame_00214.png",
+      "timestamp_s": 53.5,
+      "robot_pose": {
+        "x": 30.5031,
+        "y": 17.2646,
+        "yaw": -1.1158
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 215,
+      "filename": "frame_00215.png",
+      "relative_path": "bev_images/frame_00215.png",
+      "timestamp_s": 53.75,
+      "robot_pose": {
+        "x": 30.5106,
+        "y": 17.2491,
+        "yaw": -1.1296
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 216,
+      "filename": "frame_00216.png",
+      "relative_path": "bev_images/frame_00216.png",
+      "timestamp_s": 54.0,
+      "robot_pose": {
+        "x": 30.5177,
+        "y": 17.2337,
+        "yaw": -1.1389
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 217,
+      "filename": "frame_00217.png",
+      "relative_path": "bev_images/frame_00217.png",
+      "timestamp_s": 54.25,
+      "robot_pose": {
+        "x": 30.5242,
+        "y": 17.2197,
+        "yaw": -1.1412
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 218,
+      "filename": "frame_00218.png",
+      "relative_path": "bev_images/frame_00218.png",
+      "timestamp_s": 54.5,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2175,
+        "yaw": -1.1513
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 219,
+      "filename": "frame_00219.png",
+      "relative_path": "bev_images/frame_00219.png",
+      "timestamp_s": 54.75,
+      "robot_pose": {
+        "x": 30.5258,
+        "y": 17.2161,
+        "yaw": -1.1838
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 220,
+      "filename": "frame_00220.png",
+      "relative_path": "bev_images/frame_00220.png",
+      "timestamp_s": 55.0,
+      "robot_pose": {
+        "x": 30.5262,
+        "y": 17.215,
+        "yaw": -1.2548
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 221,
+      "filename": "frame_00221.png",
+      "relative_path": "bev_images/frame_00221.png",
+      "timestamp_s": 55.25,
+      "robot_pose": {
+        "x": 30.5263,
+        "y": 17.2148,
+        "yaw": -1.3572
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 222,
+      "filename": "frame_00222.png",
+      "relative_path": "bev_images/frame_00222.png",
+      "timestamp_s": 55.5,
+      "robot_pose": {
+        "x": 30.5251,
+        "y": 17.2118,
+        "yaw": -1.4725
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 223,
+      "filename": "frame_00223.png",
+      "relative_path": "bev_images/frame_00223.png",
+      "timestamp_s": 55.75,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.211,
+        "yaw": -1.5174
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 224,
+      "filename": "frame_00224.png",
+      "relative_path": "bev_images/frame_00224.png",
+      "timestamp_s": 56.0,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.211,
+        "yaw": -1.557
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 225,
+      "filename": "frame_00225.png",
+      "relative_path": "bev_images/frame_00225.png",
+      "timestamp_s": 56.25,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2116,
+        "yaw": -1.5507
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 226,
+      "filename": "frame_00226.png",
+      "relative_path": "bev_images/frame_00226.png",
+      "timestamp_s": 56.5,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2114,
+        "yaw": -1.5531
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 227,
+      "filename": "frame_00227.png",
+      "relative_path": "bev_images/frame_00227.png",
+      "timestamp_s": 56.75,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2114,
+        "yaw": -1.5539
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 228,
+      "filename": "frame_00228.png",
+      "relative_path": "bev_images/frame_00228.png",
+      "timestamp_s": 57.0,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2115,
+        "yaw": -1.5546
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 229,
+      "filename": "frame_00229.png",
+      "relative_path": "bev_images/frame_00229.png",
+      "timestamp_s": 57.25,
+      "robot_pose": {
+        "x": 30.5252,
+        "y": 17.2113,
+        "yaw": -1.5705
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 230,
+      "filename": "frame_00230.png",
+      "relative_path": "bev_images/frame_00230.png",
+      "timestamp_s": 57.5,
+      "robot_pose": {
+        "x": 30.507,
+        "y": 17.2109,
+        "yaw": -1.6229
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 231,
+      "filename": "frame_00231.png",
+      "relative_path": "bev_images/frame_00231.png",
+      "timestamp_s": 57.75,
+      "robot_pose": {
+        "x": 30.5069,
+        "y": 17.2106,
+        "yaw": -1.7014
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 232,
+      "filename": "frame_00232.png",
+      "relative_path": "bev_images/frame_00232.png",
+      "timestamp_s": 58.0,
+      "robot_pose": {
+        "x": 30.5068,
+        "y": 17.2101,
+        "yaw": -1.8091
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 233,
+      "filename": "frame_00233.png",
+      "relative_path": "bev_images/frame_00233.png",
+      "timestamp_s": 58.25,
+      "robot_pose": {
+        "x": 30.5103,
+        "y": 17.1985,
+        "yaw": -1.8756
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 234,
+      "filename": "frame_00234.png",
+      "relative_path": "bev_images/frame_00234.png",
+      "timestamp_s": 58.5,
+      "robot_pose": {
+        "x": 30.5104,
+        "y": 17.1987,
+        "yaw": -2.0021
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 235,
+      "filename": "frame_00235.png",
+      "relative_path": "bev_images/frame_00235.png",
+      "timestamp_s": 58.75,
+      "robot_pose": {
+        "x": 30.5099,
+        "y": 17.1945,
+        "yaw": -2.1205
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 236,
+      "filename": "frame_00236.png",
+      "relative_path": "bev_images/frame_00236.png",
+      "timestamp_s": 59.0,
+      "robot_pose": {
+        "x": 30.5095,
+        "y": 17.1939,
+        "yaw": -2.2427
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 237,
+      "filename": "frame_00237.png",
+      "relative_path": "bev_images/frame_00237.png",
+      "timestamp_s": 59.25,
+      "robot_pose": {
+        "x": 30.4967,
+        "y": 17.1948,
+        "yaw": -2.3388
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 238,
+      "filename": "frame_00238.png",
+      "relative_path": "bev_images/frame_00238.png",
+      "timestamp_s": 59.5,
+      "robot_pose": {
+        "x": 30.4919,
+        "y": 17.19,
+        "yaw": -2.3532
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 239,
+      "filename": "frame_00239.png",
+      "relative_path": "bev_images/frame_00239.png",
+      "timestamp_s": 59.75,
+      "robot_pose": {
+        "x": 30.4877,
+        "y": 17.1857,
+        "yaw": -2.3322
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 240,
+      "filename": "frame_00240.png",
+      "relative_path": "bev_images/frame_00240.png",
+      "timestamp_s": 60.0,
+      "robot_pose": {
+        "x": 30.4763,
+        "y": 17.1734,
+        "yaw": -2.3143
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 241,
+      "filename": "frame_00241.png",
+      "relative_path": "bev_images/frame_00241.png",
+      "timestamp_s": 60.25,
+      "robot_pose": {
+        "x": 30.4615,
+        "y": 17.1577,
+        "yaw": -2.3445
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 242,
+      "filename": "frame_00242.png",
+      "relative_path": "bev_images/frame_00242.png",
+      "timestamp_s": 60.5,
+      "robot_pose": {
+        "x": 30.4434,
+        "y": 17.1397,
+        "yaw": -2.3667
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 243,
+      "filename": "frame_00243.png",
+      "relative_path": "bev_images/frame_00243.png",
+      "timestamp_s": 60.75,
+      "robot_pose": {
+        "x": 30.4301,
+        "y": 17.1268,
+        "yaw": -2.3756
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 244,
+      "filename": "frame_00244.png",
+      "relative_path": "bev_images/frame_00244.png",
+      "timestamp_s": 61.0,
+      "robot_pose": {
+        "x": 30.4234,
+        "y": 17.1203,
+        "yaw": -2.368
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 245,
+      "filename": "frame_00245.png",
+      "relative_path": "bev_images/frame_00245.png",
+      "timestamp_s": 61.25,
+      "robot_pose": {
+        "x": 30.4062,
+        "y": 17.1032,
+        "yaw": -2.3521
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 246,
+      "filename": "frame_00246.png",
+      "relative_path": "bev_images/frame_00246.png",
+      "timestamp_s": 61.5,
+      "robot_pose": {
+        "x": 30.3874,
+        "y": 17.0843,
+        "yaw": -2.3576
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 247,
+      "filename": "frame_00247.png",
+      "relative_path": "bev_images/frame_00247.png",
+      "timestamp_s": 61.75,
+      "robot_pose": {
+        "x": 30.3681,
+        "y": 17.0651,
+        "yaw": -2.36
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 248,
+      "filename": "frame_00248.png",
+      "relative_path": "bev_images/frame_00248.png",
+      "timestamp_s": 62.0,
+      "robot_pose": {
+        "x": 30.3486,
+        "y": 17.0458,
+        "yaw": -2.3595
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 249,
+      "filename": "frame_00249.png",
+      "relative_path": "bev_images/frame_00249.png",
+      "timestamp_s": 62.25,
+      "robot_pose": {
+        "x": 30.3386,
+        "y": 17.0358,
+        "yaw": -2.3607
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 250,
+      "filename": "frame_00250.png",
+      "relative_path": "bev_images/frame_00250.png",
+      "timestamp_s": 62.5,
+      "robot_pose": {
+        "x": 30.3189,
+        "y": 17.0163,
+        "yaw": -2.3613
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 251,
+      "filename": "frame_00251.png",
+      "relative_path": "bev_images/frame_00251.png",
+      "timestamp_s": 62.75,
+      "robot_pose": {
+        "x": 30.3102,
+        "y": 17.0182,
+        "yaw": -2.3488
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 252,
+      "filename": "frame_00252.png",
+      "relative_path": "bev_images/frame_00252.png",
+      "timestamp_s": 63.0,
+      "robot_pose": {
+        "x": 30.3098,
+        "y": 17.0177,
+        "yaw": -2.3605
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 253,
+      "filename": "frame_00253.png",
+      "relative_path": "bev_images/frame_00253.png",
+      "timestamp_s": 63.25,
+      "robot_pose": {
+        "x": 30.3113,
+        "y": 17.0191,
+        "yaw": -2.3876
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 254,
+      "filename": "frame_00254.png",
+      "relative_path": "bev_images/frame_00254.png",
+      "timestamp_s": 63.5,
+      "robot_pose": {
+        "x": 30.3114,
+        "y": 17.0193,
+        "yaw": -2.4099
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 255,
+      "filename": "frame_00255.png",
+      "relative_path": "bev_images/frame_00255.png",
+      "timestamp_s": 63.75,
+      "robot_pose": {
+        "x": 30.3099,
+        "y": 17.018,
+        "yaw": -2.4884
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 256,
+      "filename": "frame_00256.png",
+      "relative_path": "bev_images/frame_00256.png",
+      "timestamp_s": 64.0,
+      "robot_pose": {
+        "x": 30.3105,
+        "y": 17.0184,
+        "yaw": -2.6066
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 257,
+      "filename": "frame_00257.png",
+      "relative_path": "bev_images/frame_00257.png",
+      "timestamp_s": 64.25,
+      "robot_pose": {
+        "x": 30.2956,
+        "y": 17.0189,
+        "yaw": -2.7343
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 258,
+      "filename": "frame_00258.png",
+      "relative_path": "bev_images/frame_00258.png",
+      "timestamp_s": 64.5,
+      "robot_pose": {
+        "x": 30.3105,
+        "y": 17.0198,
+        "yaw": -2.856
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 259,
+      "filename": "frame_00259.png",
+      "relative_path": "bev_images/frame_00259.png",
+      "timestamp_s": 64.75,
+      "robot_pose": {
+        "x": 30.3111,
+        "y": 17.02,
+        "yaw": -2.9158
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 260,
+      "filename": "frame_00260.png",
+      "relative_path": "bev_images/frame_00260.png",
+      "timestamp_s": 65.0,
+      "robot_pose": {
+        "x": 30.2991,
+        "y": 17.023,
+        "yaw": -3.0405
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 261,
+      "filename": "frame_00261.png",
+      "relative_path": "bev_images/frame_00261.png",
+      "timestamp_s": 65.25,
+      "robot_pose": {
+        "x": 30.2991,
+        "y": 17.0231,
+        "yaw": 3.1271
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 262,
+      "filename": "frame_00262.png",
+      "relative_path": "bev_images/frame_00262.png",
+      "timestamp_s": 65.5,
+      "robot_pose": {
+        "x": 30.2928,
+        "y": 17.0249,
+        "yaw": 3.0202
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 263,
+      "filename": "frame_00263.png",
+      "relative_path": "bev_images/frame_00263.png",
+      "timestamp_s": 65.75,
+      "robot_pose": {
+        "x": 30.2933,
+        "y": 17.0248,
+        "yaw": 2.8991
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 264,
+      "filename": "frame_00264.png",
+      "relative_path": "bev_images/frame_00264.png",
+      "timestamp_s": 66.0,
+      "robot_pose": {
+        "x": 30.293,
+        "y": 17.0249,
+        "yaw": 2.8394
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 265,
+      "filename": "frame_00265.png",
+      "relative_path": "bev_images/frame_00265.png",
+      "timestamp_s": 66.25,
+      "robot_pose": {
+        "x": 30.2957,
+        "y": 17.0313,
+        "yaw": 2.7229
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 266,
+      "filename": "frame_00266.png",
+      "relative_path": "bev_images/frame_00266.png",
+      "timestamp_s": 66.5,
+      "robot_pose": {
+        "x": 30.2907,
+        "y": 17.0268,
+        "yaw": 2.5954
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 267,
+      "filename": "frame_00267.png",
+      "relative_path": "bev_images/frame_00267.png",
+      "timestamp_s": 66.75,
+      "robot_pose": {
+        "x": 30.2909,
+        "y": 17.0267,
+        "yaw": 2.4733
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 268,
+      "filename": "frame_00268.png",
+      "relative_path": "bev_images/frame_00268.png",
+      "timestamp_s": 67.0,
+      "robot_pose": {
+        "x": 30.2905,
+        "y": 17.0243,
+        "yaw": 2.3521
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 269,
+      "filename": "frame_00269.png",
+      "relative_path": "bev_images/frame_00269.png",
+      "timestamp_s": 67.25,
+      "robot_pose": {
+        "x": 30.2907,
+        "y": 17.0241,
+        "yaw": 2.2334
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 270,
+      "filename": "frame_00270.png",
+      "relative_path": "bev_images/frame_00270.png",
+      "timestamp_s": 67.5,
+      "robot_pose": {
+        "x": 30.2741,
+        "y": 17.0161,
+        "yaw": 2.1676
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 271,
+      "filename": "frame_00271.png",
+      "relative_path": "bev_images/frame_00271.png",
+      "timestamp_s": 67.75,
+      "robot_pose": {
+        "x": 30.2743,
+        "y": 17.0158,
+        "yaw": 2.0509
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 272,
+      "filename": "frame_00272.png",
+      "relative_path": "bev_images/frame_00272.png",
+      "timestamp_s": 68.0,
+      "robot_pose": {
+        "x": 30.2739,
+        "y": 17.0224,
+        "yaw": 1.9361
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 273,
+      "filename": "frame_00273.png",
+      "relative_path": "bev_images/frame_00273.png",
+      "timestamp_s": 68.25,
+      "robot_pose": {
+        "x": 30.2737,
+        "y": 17.023,
+        "yaw": 1.8192
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 274,
+      "filename": "frame_00274.png",
+      "relative_path": "bev_images/frame_00274.png",
+      "timestamp_s": 68.5,
+      "robot_pose": {
+        "x": 30.2706,
+        "y": 17.0187,
+        "yaw": 1.6968
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 275,
+      "filename": "frame_00275.png",
+      "relative_path": "bev_images/frame_00275.png",
+      "timestamp_s": 68.75,
+      "robot_pose": {
+        "x": 30.2706,
+        "y": 17.019,
+        "yaw": 1.6342
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 276,
+      "filename": "frame_00276.png",
+      "relative_path": "bev_images/frame_00276.png",
+      "timestamp_s": 69.0,
+      "robot_pose": {
+        "x": 30.2652,
+        "y": 17.0229,
+        "yaw": 1.5283
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 277,
+      "filename": "frame_00277.png",
+      "relative_path": "bev_images/frame_00277.png",
+      "timestamp_s": 69.25,
+      "robot_pose": {
+        "x": 30.2653,
+        "y": 17.0232,
+        "yaw": 1.475
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 278,
+      "filename": "frame_00278.png",
+      "relative_path": "bev_images/frame_00278.png",
+      "timestamp_s": 69.5,
+      "robot_pose": {
+        "x": 30.2652,
+        "y": 17.0228,
+        "yaw": 1.4719
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 279,
+      "filename": "frame_00279.png",
+      "relative_path": "bev_images/frame_00279.png",
+      "timestamp_s": 69.75,
+      "robot_pose": {
+        "x": 30.2653,
+        "y": 17.0231,
+        "yaw": 1.4576
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 280,
+      "filename": "frame_00280.png",
+      "relative_path": "bev_images/frame_00280.png",
+      "timestamp_s": 70.0,
+      "robot_pose": {
+        "x": 30.2652,
+        "y": 17.0229,
+        "yaw": 1.4358
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 281,
+      "filename": "frame_00281.png",
+      "relative_path": "bev_images/frame_00281.png",
+      "timestamp_s": 70.25,
+      "robot_pose": {
+        "x": 30.2652,
+        "y": 17.0229,
+        "yaw": 1.3976
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 282,
+      "filename": "frame_00282.png",
+      "relative_path": "bev_images/frame_00282.png",
+      "timestamp_s": 70.5,
+      "robot_pose": {
+        "x": 30.2612,
+        "y": 17.0192,
+        "yaw": 1.3761
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 283,
+      "filename": "frame_00283.png",
+      "relative_path": "bev_images/frame_00283.png",
+      "timestamp_s": 70.75,
+      "robot_pose": {
+        "x": 30.2611,
+        "y": 17.0188,
+        "yaw": 1.3737
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 284,
+      "filename": "frame_00284.png",
+      "relative_path": "bev_images/frame_00284.png",
+      "timestamp_s": 71.0,
+      "robot_pose": {
+        "x": 30.2611,
+        "y": 17.0188,
+        "yaw": 1.3731
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 285,
+      "filename": "frame_00285.png",
+      "relative_path": "bev_images/frame_00285.png",
+      "timestamp_s": 71.25,
+      "robot_pose": {
+        "x": 30.2611,
+        "y": 17.0188,
+        "yaw": 1.3738
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 286,
+      "filename": "frame_00286.png",
+      "relative_path": "bev_images/frame_00286.png",
+      "timestamp_s": 71.5,
+      "robot_pose": {
+        "x": 30.2611,
+        "y": 17.0188,
+        "yaw": 1.3743
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 287,
+      "filename": "frame_00287.png",
+      "relative_path": "bev_images/frame_00287.png",
+      "timestamp_s": 71.75,
+      "robot_pose": {
+        "x": 30.2611,
+        "y": 17.0188,
+        "yaw": 1.3745
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 288,
+      "filename": "frame_00288.png",
+      "relative_path": "bev_images/frame_00288.png",
+      "timestamp_s": 72.0,
+      "robot_pose": {
+        "x": 30.262,
+        "y": 17.023,
+        "yaw": 1.3686
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 289,
+      "filename": "frame_00289.png",
+      "relative_path": "bev_images/frame_00289.png",
+      "timestamp_s": 72.25,
+      "robot_pose": {
+        "x": 30.2653,
+        "y": 17.0384,
+        "yaw": 1.3514
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 290,
+      "filename": "frame_00290.png",
+      "relative_path": "bev_images/frame_00290.png",
+      "timestamp_s": 72.5,
+      "robot_pose": {
+        "x": 30.2682,
+        "y": 17.0511,
+        "yaw": 1.341
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 291,
+      "filename": "frame_00291.png",
+      "relative_path": "bev_images/frame_00291.png",
+      "timestamp_s": 72.75,
+      "robot_pose": {
+        "x": 30.277,
+        "y": 17.0871,
+        "yaw": 1.3172
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 292,
+      "filename": "frame_00292.png",
+      "relative_path": "bev_images/frame_00292.png",
+      "timestamp_s": 73.0,
+      "robot_pose": {
+        "x": 30.2907,
+        "y": 17.1369,
+        "yaw": 1.289
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 293,
+      "filename": "frame_00293.png",
+      "relative_path": "bev_images/frame_00293.png",
+      "timestamp_s": 73.25,
+      "robot_pose": {
+        "x": 30.3092,
+        "y": 17.1977,
+        "yaw": 1.2613
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 294,
+      "filename": "frame_00294.png",
+      "relative_path": "bev_images/frame_00294.png",
+      "timestamp_s": 73.5,
+      "robot_pose": {
+        "x": 30.3327,
+        "y": 17.2592,
+        "yaw": 1.2286
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 295,
+      "filename": "frame_00295.png",
+      "relative_path": "bev_images/frame_00295.png",
+      "timestamp_s": 73.75,
+      "robot_pose": {
+        "x": 30.3619,
+        "y": 17.3362,
+        "yaw": 1.1901
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 296,
+      "filename": "frame_00296.png",
+      "relative_path": "bev_images/frame_00296.png",
+      "timestamp_s": 74.0,
+      "robot_pose": {
+        "x": 30.3788,
+        "y": 17.3772,
+        "yaw": 1.167
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 297,
+      "filename": "frame_00297.png",
+      "relative_path": "bev_images/frame_00297.png",
+      "timestamp_s": 74.25,
+      "robot_pose": {
+        "x": 30.4179,
+        "y": 17.4626,
+        "yaw": 1.115
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 298,
+      "filename": "frame_00298.png",
+      "relative_path": "bev_images/frame_00298.png",
+      "timestamp_s": 74.5,
+      "robot_pose": {
+        "x": 30.4696,
+        "y": 17.5517,
+        "yaw": 1.058
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 299,
+      "filename": "frame_00299.png",
+      "relative_path": "bev_images/frame_00299.png",
+      "timestamp_s": 74.75,
+      "robot_pose": {
+        "x": 30.5212,
+        "y": 17.6378,
+        "yaw": 1.0069
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 300,
+      "filename": "frame_00300.png",
+      "relative_path": "bev_images/frame_00300.png",
+      "timestamp_s": 75.0,
+      "robot_pose": {
+        "x": 30.5773,
+        "y": 17.7213,
+        "yaw": 0.9513
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 301,
+      "filename": "frame_00301.png",
+      "relative_path": "bev_images/frame_00301.png",
+      "timestamp_s": 75.25,
+      "robot_pose": {
+        "x": 30.6104,
+        "y": 17.767,
+        "yaw": 0.9241
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 302,
+      "filename": "frame_00302.png",
+      "relative_path": "bev_images/frame_00302.png",
+      "timestamp_s": 75.5,
+      "robot_pose": {
+        "x": 30.6724,
+        "y": 17.8447,
+        "yaw": 0.8699
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 303,
+      "filename": "frame_00303.png",
+      "relative_path": "bev_images/frame_00303.png",
+      "timestamp_s": 75.75,
+      "robot_pose": {
+        "x": 30.7387,
+        "y": 17.9193,
+        "yaw": 0.8187
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 304,
+      "filename": "frame_00304.png",
+      "relative_path": "bev_images/frame_00304.png",
+      "timestamp_s": 76.0,
+      "robot_pose": {
+        "x": 30.8033,
+        "y": 17.99,
+        "yaw": 0.7642
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 305,
+      "filename": "frame_00305.png",
+      "relative_path": "bev_images/frame_00305.png",
+      "timestamp_s": 76.25,
+      "robot_pose": {
+        "x": 30.8763,
+        "y": 18.0566,
+        "yaw": 0.7132
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 306,
+      "filename": "frame_00306.png",
+      "relative_path": "bev_images/frame_00306.png",
+      "timestamp_s": 76.5,
+      "robot_pose": {
+        "x": 30.915,
+        "y": 18.0892,
+        "yaw": 0.6871
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 307,
+      "filename": "frame_00307.png",
+      "relative_path": "bev_images/frame_00307.png",
+      "timestamp_s": 76.75,
+      "robot_pose": {
+        "x": 31.0028,
+        "y": 18.1596,
+        "yaw": 0.635
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 308,
+      "filename": "frame_00308.png",
+      "relative_path": "bev_images/frame_00308.png",
+      "timestamp_s": 77.0,
+      "robot_pose": {
+        "x": 31.0848,
+        "y": 18.217,
+        "yaw": 0.5857
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 309,
+      "filename": "frame_00309.png",
+      "relative_path": "bev_images/frame_00309.png",
+      "timestamp_s": 77.25,
+      "robot_pose": {
+        "x": 31.1623,
+        "y": 18.2709,
+        "yaw": 0.5427
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 310,
+      "filename": "frame_00310.png",
+      "relative_path": "bev_images/frame_00310.png",
+      "timestamp_s": 77.5,
+      "robot_pose": {
+        "x": 31.2481,
+        "y": 18.3202,
+        "yaw": 0.4993
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 311,
+      "filename": "frame_00311.png",
+      "relative_path": "bev_images/frame_00311.png",
+      "timestamp_s": 77.75,
+      "robot_pose": {
+        "x": 31.2925,
+        "y": 18.3439,
+        "yaw": 0.4785
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 312,
+      "filename": "frame_00312.png",
+      "relative_path": "bev_images/frame_00312.png",
+      "timestamp_s": 78.0,
+      "robot_pose": {
+        "x": 31.3869,
+        "y": 18.3972,
+        "yaw": 0.444
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 313,
+      "filename": "frame_00313.png",
+      "relative_path": "bev_images/frame_00313.png",
+      "timestamp_s": 78.25,
+      "robot_pose": {
+        "x": 31.477,
+        "y": 18.4386,
+        "yaw": 0.4176
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 314,
+      "filename": "frame_00314.png",
+      "relative_path": "bev_images/frame_00314.png",
+      "timestamp_s": 78.5,
+      "robot_pose": {
+        "x": 31.5675,
+        "y": 18.4818,
+        "yaw": 0.4045
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 315,
+      "filename": "frame_00315.png",
+      "relative_path": "bev_images/frame_00315.png",
+      "timestamp_s": 78.75,
+      "robot_pose": {
+        "x": 31.6579,
+        "y": 18.5198,
+        "yaw": 0.3909
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 316,
+      "filename": "frame_00316.png",
+      "relative_path": "bev_images/frame_00316.png",
+      "timestamp_s": 79.0,
+      "robot_pose": {
+        "x": 31.7031,
+        "y": 18.5382,
+        "yaw": 0.3823
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 317,
+      "filename": "frame_00317.png",
+      "relative_path": "bev_images/frame_00317.png",
+      "timestamp_s": 79.25,
+      "robot_pose": {
+        "x": 31.7896,
+        "y": 18.5703,
+        "yaw": 0.3641
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 318,
+      "filename": "frame_00318.png",
+      "relative_path": "bev_images/frame_00318.png",
+      "timestamp_s": 79.5,
+      "robot_pose": {
+        "x": 31.8771,
+        "y": 18.6027,
+        "yaw": 0.3462
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 319,
+      "filename": "frame_00319.png",
+      "relative_path": "bev_images/frame_00319.png",
+      "timestamp_s": 79.75,
+      "robot_pose": {
+        "x": 31.9459,
+        "y": 18.6229,
+        "yaw": 0.3261
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 320,
+      "filename": "frame_00320.png",
+      "relative_path": "bev_images/frame_00320.png",
+      "timestamp_s": 80.0,
+      "robot_pose": {
+        "x": 31.9847,
+        "y": 18.6356,
+        "yaw": 0.3014
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 321,
+      "filename": "frame_00321.png",
+      "relative_path": "bev_images/frame_00321.png",
+      "timestamp_s": 80.25,
+      "robot_pose": {
+        "x": 31.9993,
+        "y": 18.64,
+        "yaw": 0.2862
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 322,
+      "filename": "frame_00322.png",
+      "relative_path": "bev_images/frame_00322.png",
+      "timestamp_s": 80.5,
+      "robot_pose": {
+        "x": 32.0293,
+        "y": 18.6481,
+        "yaw": 0.2368
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 323,
+      "filename": "frame_00323.png",
+      "relative_path": "bev_images/frame_00323.png",
+      "timestamp_s": 80.75,
+      "robot_pose": {
+        "x": 32.0653,
+        "y": 18.6557,
+        "yaw": 0.181
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 324,
+      "filename": "frame_00324.png",
+      "relative_path": "bev_images/frame_00324.png",
+      "timestamp_s": 81.0,
+      "robot_pose": {
+        "x": 32.1051,
+        "y": 18.6593,
+        "yaw": 0.1254
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 325,
+      "filename": "frame_00325.png",
+      "relative_path": "bev_images/frame_00325.png",
+      "timestamp_s": 81.25,
+      "robot_pose": {
+        "x": 32.1414,
+        "y": 18.6632,
+        "yaw": 0.0857
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 326,
+      "filename": "frame_00326.png",
+      "relative_path": "bev_images/frame_00326.png",
+      "timestamp_s": 81.5,
+      "robot_pose": {
+        "x": 32.1786,
+        "y": 18.6659,
+        "yaw": 0.0672
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 327,
+      "filename": "frame_00327.png",
+      "relative_path": "bev_images/frame_00327.png",
+      "timestamp_s": 81.75,
+      "robot_pose": {
+        "x": 32.1958,
+        "y": 18.667,
+        "yaw": 0.064
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 328,
+      "filename": "frame_00328.png",
+      "relative_path": "bev_images/frame_00328.png",
+      "timestamp_s": 82.0,
+      "robot_pose": {
+        "x": 32.2222,
+        "y": 18.6684,
+        "yaw": 0.0433
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 329,
+      "filename": "frame_00329.png",
+      "relative_path": "bev_images/frame_00329.png",
+      "timestamp_s": 82.25,
+      "robot_pose": {
+        "x": 32.2424,
+        "y": 18.6692,
+        "yaw": 0.0301
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 330,
+      "filename": "frame_00330.png",
+      "relative_path": "bev_images/frame_00330.png",
+      "timestamp_s": 82.5,
+      "robot_pose": {
+        "x": 32.261,
+        "y": 18.6696,
+        "yaw": 0.0168
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 331,
+      "filename": "frame_00331.png",
+      "relative_path": "bev_images/frame_00331.png",
+      "timestamp_s": 82.75,
+      "robot_pose": {
+        "x": 32.2764,
+        "y": 18.6698,
+        "yaw": 0.0132
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 332,
+      "filename": "frame_00332.png",
+      "relative_path": "bev_images/frame_00332.png",
+      "timestamp_s": 83.0,
+      "robot_pose": {
+        "x": 32.2848,
+        "y": 18.6699,
+        "yaw": 0.0094
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 333,
+      "filename": "frame_00333.png",
+      "relative_path": "bev_images/frame_00333.png",
+      "timestamp_s": 83.25,
+      "robot_pose": {
+        "x": 32.3028,
+        "y": 18.6699,
+        "yaw": -0.0016
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 334,
+      "filename": "frame_00334.png",
+      "relative_path": "bev_images/frame_00334.png",
+      "timestamp_s": 83.5,
+      "robot_pose": {
+        "x": 32.3174,
+        "y": 18.6699,
+        "yaw": -0.0069
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 335,
+      "filename": "frame_00335.png",
+      "relative_path": "bev_images/frame_00335.png",
+      "timestamp_s": 83.75,
+      "robot_pose": {
+        "x": 32.3302,
+        "y": 18.6698,
+        "yaw": -0.0038
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 336,
+      "filename": "frame_00336.png",
+      "relative_path": "bev_images/frame_00336.png",
+      "timestamp_s": 84.0,
+      "robot_pose": {
+        "x": 32.3412,
+        "y": 18.6698,
+        "yaw": -0.0066
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 337,
+      "filename": "frame_00337.png",
+      "relative_path": "bev_images/frame_00337.png",
+      "timestamp_s": 84.25,
+      "robot_pose": {
+        "x": 32.3438,
+        "y": 18.6697,
+        "yaw": -0.0104
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 338,
+      "filename": "frame_00338.png",
+      "relative_path": "bev_images/frame_00338.png",
+      "timestamp_s": 84.5,
+      "robot_pose": {
+        "x": 32.3439,
+        "y": 18.6697,
+        "yaw": -0.0109
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 339,
+      "filename": "frame_00339.png",
+      "relative_path": "bev_images/frame_00339.png",
+      "timestamp_s": 84.75,
+      "robot_pose": {
+        "x": 32.3438,
+        "y": 18.6697,
+        "yaw": -0.0111
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 340,
+      "filename": "frame_00340.png",
+      "relative_path": "bev_images/frame_00340.png",
+      "timestamp_s": 85.0,
+      "robot_pose": {
+        "x": 32.3438,
+        "y": 18.6697,
+        "yaw": -0.0109
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 341,
+      "filename": "frame_00341.png",
+      "relative_path": "bev_images/frame_00341.png",
+      "timestamp_s": 85.25,
+      "robot_pose": {
+        "x": 32.3446,
+        "y": 18.6697,
+        "yaw": -0.0015
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 342,
+      "filename": "frame_00342.png",
+      "relative_path": "bev_images/frame_00342.png",
+      "timestamp_s": 85.5,
+      "robot_pose": {
+        "x": 32.3452,
+        "y": 18.6697,
+        "yaw": 0.0068
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    },
+    {
+      "frame_id": 343,
+      "filename": "frame_00343.png",
+      "relative_path": "bev_images/frame_00343.png",
+      "timestamp_s": 85.75,
+      "robot_pose": {
+        "x": 32.3454,
+        "y": 18.6697,
+        "yaw": 0.0521
+      },
+      "action": {
+        "linear_x": 0.0,
+        "angular_z": 0.0
+      }
+    }
+  ]
+}

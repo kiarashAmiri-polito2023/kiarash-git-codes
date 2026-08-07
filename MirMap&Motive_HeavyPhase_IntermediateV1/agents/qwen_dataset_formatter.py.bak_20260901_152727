@@ -1,0 +1,34 @@
+﻿#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os, sys, glob, json
+from vla_dataset_builder import build_qwen_training_pairs
+
+def main():
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    sessions_dir = os.path.join(project_root, "sessions")
+    out_dir = os.path.join(project_root, "dataset_qwen_vla")
+    os.makedirs(out_dir, exist_ok=True)
+    
+    # Filter only actual directories
+    session_dirs = sorted([d for d in glob.glob(os.path.join(sessions_dir, "session_*")) if os.path.isdir(d)])
+    
+    all_samples = []
+    for s in session_dirs:
+        samples = build_qwen_training_pairs(s)
+        if samples:
+            print(f"  [OK] Processed {os.path.basename(s)}: {len(samples)} valid VLA pairs")
+            all_samples.extend(samples)
+        else:
+            print(f"  [SKIP] {os.path.basename(s)}: No complete BEV/SLAM data")
+            
+    print(f"\nTotal Multi-Modal Pairs Generated: {len(all_samples)}")
+    
+    train_file = os.path.join(out_dir, "train.jsonl")
+    with open(train_file, "w", encoding="utf-8") as f:
+        for item in all_samples:
+            f.write(json.dumps(item) + "\n")
+            
+    print(f"Dataset successfully compiled to:\n  {train_file}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,177 @@
+﻿"""
+PROJECT SNAPSHOT v6.0 - Smart Change-Tracker + AI Handoff
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli
+"""
+
+import json, pickle, os
+from datetime import datetime
+from pathlib import Path
+
+WORKSPACE = Path(__file__).resolve().parent.parent
+AGENTS_DIR = WORKSPACE / "agents"
+SESSIONS_DIR = WORKSPACE / "sessions"
+DATA_DIR = WORKSPACE / "data"
+MEMORY_DIR = WORKSPACE / "memory"
+ARCHIVE_DIR = WORKSPACE / "archive"
+REPORT_MD = WORKSPACE / "MASTER_REPORT.md"
+REPORT_JSON = WORKSPACE / "MASTER_REPORT.json"
+
+class SnapshotV6:
+    def __init__(self):
+        self.ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+        self.prior = self._load_prior()
+        self.state = {"version": "6.0", "generated": self.ts}
+
+    def _load_prior(self):
+        if REPORT_JSON.exists():
+            try: return json.load(open(REPORT_JSON, encoding="utf-8"))
+            except: return None
+        return None
+
+    def audit_agents(self):
+        active = {}
+        if AGENTS_DIR.exists():
+            for f in AGENTS_DIR.glob("*.py"):
+                try:
+                    lines = len(open(f, encoding="utf-8", errors="ignore").readlines())
+                    active[f.name] = {"lines": lines, "kb": round(f.stat().st_size/1024,2)}
+                except: pass
+        return {"active_count": len(active), "active": active}
+
+    def audit_memory(self):
+        mem = {"json": {}, "pkl": {}, "total_entities": 0}
+        for d in [MEMORY_DIR, WORKSPACE/"knowledge", WORKSPACE]:
+            if not d.exists(): continue
+            for jf in d.glob("*.json"):
+                if "MASTER_REPORT" in jf.name: continue
+                try:
+                    data = json.load(open(jf, encoding="utf-8", errors="ignore"))
+                    cnt = len(data) if isinstance(data, (list,dict)) else 0
+                    mem["json"][jf.name] = {"records": cnt, "kb": round(jf.stat().st_size/1024,2)}
+                    mem["total_entities"] += cnt
+                except: pass
+            for pf in d.glob("*.pkl"):
+                try:
+                    obj = pickle.load(open(pf, "rb"))
+                    cnt = len(obj) if isinstance(obj, (list,dict,set)) else "N/A"
+                    mem["pkl"][pf.name] = {"entries": cnt, "kb": round(pf.stat().st_size/1024,2)}
+                except Exception as e:
+                    mem["pkl"][pf.name] = {"warn": str(e)}
+        return mem
+
+    def audit_sessions(self):
+        sessions, actions = {}, {}
+        dirs = []
+        if SESSIONS_DIR.exists(): dirs += list(SESSIONS_DIR.iterdir())
+        if DATA_DIR.exists(): dirs += list(DATA_DIR.glob("session_*"))
+        for sd in sorted(set(dirs), key=lambda x: x.name):
+            if not sd.is_dir(): continue
+            csvs = list(sd.glob("*.csv"))
+            vids = list(sd.glob("*.avi")) + list(sd.glob("*.mp4"))
+            pars = list(sd.glob("*.parquet"))
+
+            has_mocap = any("motive" in f.name.lower() or "mocap" in f.name.lower() for f in csvs)
+            has_slam  = any("slam" in f.name.lower() or "odom" in f.name.lower() for f in csvs)
+            has_cmd   = any("cmd" in f.name.lower() or "action" in f.name.lower() for f in csvs)
+            has_video = len(vids) > 0
+            has_fusion = len(pars) > 0
+
+            score = int(sum([has_mocap, has_slam, has_cmd, has_video, has_fusion]) / 5 * 100)
+
+            # Action Density
+            total_cmd, nonzero = 0, 0
+            for cf in [f for f in csvs if "cmd" in f.name.lower() or "action" in f.name.lower()]:
+                try:
+                    for line in open(cf, encoding="utf-8", errors="ignore").readlines()[1:]:
+                        total_cmd += 1
+                        try:
+                            vals = [float(x) for x in line.strip().split(",") if x.replace(".","",1).replace("-","",1).isdigit()]
+                            if any(abs(v) > 0.001 for v in vals): nonzero += 1
+                        except: pass
+                except: pass
+            density = round(nonzero / total_cmd * 100, 1) if total_cmd > 0 else 0.0
+
+            sessions[sd.name] = {"mocap": has_mocap, "slam": has_slam, "cmd": has_cmd,
+                                 "video": has_video, "fusion": has_fusion, "score": score}
+            actions[sd.name] = {"total": total_cmd, "nonzero": nonzero, "density": density}
+
+        return sessions, actions
+
+    def compute_changes(self, agents, sessions, mem):
+        if not self.prior: return {"status": "BASELINE", "deltas": []}
+        deltas = []
+        pa = self.prior.get("agent_registry", {}).get("active", {})
+        ps = self.prior.get("sessions_analysis", {})
+        for a, m in agents.get("active", {}).items():
+            if a not in pa: deltas.append(f"NEW: {a}")
+            elif pa[a].get("lines") != m.get("lines"): deltas.append(f"MODIFIED: {a}")
+        for s in sessions:
+            if s not in ps: deltas.append(f"NEW SESSION: {s}")
+        return {"status": "CHANGES" if deltas else "NO_CHANGE", "deltas": deltas}
+
+    def auto_tick_roadmap(self, actions):
+        has_vla = any(a["total"] > 100 for a in actions.values())
+        has_narrator = (AGENTS_DIR / "video_narrator.py").exists()
+        has_bev = (AGENTS_DIR / "slam_to_bev.py").exists()
+        has_builder = (AGENTS_DIR / "vla_dataset_builder.py").exists()
+        return [
+            {"phase": "Phase 1: Foundation", "done": True},
+            {"phase": "Phase 2: Full VLA Session 7", "done": has_vla},
+            {"phase": "Phase 3: Video Narrator + SLAM-BEV", "done": has_narrator and has_bev},
+            {"phase": "Phase 4: VLA Dataset Builder", "done": has_builder},
+            {"phase": "Phase 5: Fine-Tuning + Paper", "done": False},
+        ]
+
+    def generate_ai_prompt(self, readiness, roadmap, changes):
+        next_step = next((r for r in roadmap if not r["done"]), roadmap[-1])
+        d = "\n".join(changes.get("deltas", [])) or "No changes"
+        return f"""# AI HANDOFF PROMPT
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli
+Readiness: {readiness.get('score',0)}/100
+Recent Changes:\n{d}
+Next Target: {next_step['phase']}
+Immediate Action: Record Session 7 with full VLA modalities."""
+
+    def run(self):
+        print(f"[{self.ts}] Running Snapshot v6.0...")
+        agents = self.audit_agents()
+        mem = self.audit_memory()
+        sessions, actions = self.audit_sessions()
+        changes = self.compute_changes(agents, sessions, mem)
+        roadmap = self.auto_tick_roadmap(actions)
+
+        # Paper Readiness (ساده)
+        n = len(sessions)
+        score = round(sum(s["score"] for s in sessions.values()) / n, 1) if n > 0 else 0
+        grade = "A" if score >= 85 else "B" if score >= 70 else "C" if score >= 50 else "D" if score >= 35 else "F"
+
+        prompt = self.generate_ai_prompt({"score": score, "grade": grade}, roadmap, changes)
+
+        self.state.update({
+            "agent_registry": agents,
+            "memory_health": mem,
+            "sessions_analysis": sessions,
+            "action_density": actions,
+            "change_tracker": changes,
+            "roadmap": roadmap,
+            "paper_readiness": {"score": score, "grade": grade},
+            "ai_prompt": prompt
+        })
+
+        with open(REPORT_JSON, "w", encoding="utf-8") as f: json.dump(self.state, f, indent=2)
+
+        # Markdown Report
+        md = [f"# MASTER REPORT v6.0\nGenerated: {self.ts}\n"]
+        md.append(f"## Paper Readiness: {score}/100 ({grade})")
+        md.append("## Change Tracker")
+        for d in changes.get("deltas", []): md.append(f"- {d}")
+        md.append("\n## Roadmap (Auto-Ticked)")
+        for r in roadmap: md.append(f"- [{'x' if r['done'] else ' '}] {r['phase']}")
+        md.append(f"\n## AI Handoff Prompt\n```\n{prompt}\n```")
+        with open(REPORT_MD, "w", encoding="utf-8") as f: f.write("\n".join(md))
+
+        print(f"[OK] Snapshot v6.0 completed | Readiness: {score}/100 ({grade})")
+        print(f"Reports saved: {REPORT_MD} | {REPORT_JSON}")
+
+if __name__ == "__main__":
+    SnapshotV6().run()

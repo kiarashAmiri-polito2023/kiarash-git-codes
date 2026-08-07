@@ -1,0 +1,5 @@
+=== PENDING MERGE CANDIDATE: session_2026-08-26_20-28-17 ===
+Objects: 0, Safety: 0, Anomalies: 0
+Sessions: 6 -> 6
+Objects: 3 -> 3
+New objects: []

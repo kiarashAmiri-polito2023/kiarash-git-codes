@@ -1,0 +1,5449 @@
+{
+  "A15_referee_ai_loop.py": [
+    {
+      "name": "load_key",
+      "args": []
+    },
+    {
+      "name": "discover_free_models",
+      "args": []
+    },
+    {
+      "name": "read_safe",
+      "args": [
+        "path",
+        "max_c"
+      ]
+    },
+    {
+      "name": "find_files",
+      "args": [
+        "pattern"
+      ]
+    },
+    {
+      "name": "encode_image_b64",
+      "args": [
+        "path",
+        "max_kb"
+      ]
+    },
+    {
+      "name": "scan_agent_code",
+      "args": []
+    },
+    {
+      "name": "get_dashboard_images",
+      "args": [
+        "n"
+      ]
+    },
+    {
+      "name": "gather_data",
+      "args": []
+    },
+    {
+      "name": "call_ai",
+      "args": [
+        "system",
+        "user_content",
+        "text_models",
+        "vision_models",
+        "need_vision"
+      ]
+    },
+    {
+      "name": "generate_dynamic_focus",
+      "args": [
+        "persona",
+        "cumulative_findings",
+        "text_models",
+        "key"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "A16_agent_deep_analyzer.py": [
+    {
+      "name": "check_api_availability",
+      "args": []
+    },
+    {
+      "name": "query_claude",
+      "args": [
+        "prompt",
+        "system",
+        "max_tokens"
+      ]
+    },
+    {
+      "name": "query_grok",
+      "args": [
+        "prompt",
+        "system",
+        "max_tokens"
+      ]
+    },
+    {
+      "name": "query_gemini",
+      "args": [
+        "prompt",
+        "system",
+        "max_tokens"
+      ]
+    },
+    {
+      "name": "query_openrouter",
+      "args": [
+        "prompt",
+        "system",
+        "max_tokens"
+      ]
+    },
+    {
+      "name": "query_all_models",
+      "args": [
+        "prompt",
+        "system"
+      ]
+    },
+    {
+      "name": "scan_agent_files",
+      "args": [
+        "agents_dir"
+      ]
+    },
+    {
+      "name": "analyze_session_quality",
+      "args": [
+        "session_dir"
+      ]
+    },
+    {
+      "name": "build_analysis_prompt",
+      "args": [
+        "agents",
+        "sessions_analysis"
+      ]
+    },
+    {
+      "name": "run_full_analysis",
+      "args": []
+    }
+  ],
+  "A18_deep_agent_verifier.py": "PARSE ERROR: invalid non-printable character U+FEFF (<unknown>, line 1)",
+  "DataDescriptions.py": [
+    {
+      "name": "get_tab_str",
+      "args": [
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "add_lists",
+      "args": [
+        "totals",
+        "totals_tmp"
+      ]
+    },
+    {
+      "name": "test_hash",
+      "args": [
+        "test_name",
+        "test_hash_str",
+        "test_object"
+      ]
+    },
+    {
+      "name": "test_hash2",
+      "args": [
+        "test_name",
+        "test_hash_str",
+        "test_object",
+        "run_test"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "input_str"
+      ]
+    },
+    {
+      "name": "get_data_sub_packet_type",
+      "args": [
+        "new_data"
+      ]
+    },
+    {
+      "class": "MarkerSetDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_name",
+          "args": [
+            "self",
+            "new_name"
+          ]
+        },
+        {
+          "name": "get_num_markers",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_marker_name",
+          "args": [
+            "self",
+            "marker_name"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "RBMarker",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "marker_name",
+            "active_label",
+            "pos"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "RigidBodyDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "sz_name",
+            "new_id",
+            "parent_id",
+            "pos"
+          ]
+        },
+        {
+          "name": "set_name",
+          "args": [
+            "self",
+            "new_name"
+          ]
+        },
+        {
+          "name": "set_id",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "set_parent_id",
+          "args": [
+            "self",
+            "parent_id"
+          ]
+        },
+        {
+          "name": "set_pos",
+          "args": [
+            "self",
+            "p_x",
+            "p_y",
+            "p_z"
+          ]
+        },
+        {
+          "name": "get_num_markers",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_rb_marker",
+          "args": [
+            "self",
+            "new_rb_maker"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "SkeletonDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "name",
+            "new_id"
+          ]
+        },
+        {
+          "name": "set_name",
+          "args": [
+            "self",
+            "new_name"
+          ]
+        },
+        {
+          "name": "set_id",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "add_rigid_body_description",
+          "args": [
+            "self",
+            "rigid_body_description"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "ForcePlateDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id",
+            "serial_number"
+          ]
+        },
+        {
+          "name": "set_id",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "set_serial_number",
+          "args": [
+            "self",
+            "serial_number"
+          ]
+        },
+        {
+          "name": "set_dimensions",
+          "args": [
+            "self",
+            "width",
+            "length"
+          ]
+        },
+        {
+          "name": "set_origin",
+          "args": [
+            "self",
+            "p_x",
+            "p_y",
+            "p_z"
+          ]
+        },
+        {
+          "name": "set_cal_matrix",
+          "args": [
+            "self",
+            "cal_matrix"
+          ]
+        },
+        {
+          "name": "set_corners",
+          "args": [
+            "self",
+            "corners"
+          ]
+        },
+        {
+          "name": "set_plate_type",
+          "args": [
+            "self",
+            "plate_type"
+          ]
+        },
+        {
+          "name": "set_channel_data_type",
+          "args": [
+            "self",
+            "channel_data_type"
+          ]
+        },
+        {
+          "name": "add_channel_name",
+          "args": [
+            "self",
+            "channel_name"
+          ]
+        },
+        {
+          "name": "get_cal_matrix_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        },
+        {
+          "name": "get_corners_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "DeviceDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id",
+            "name",
+            "serial_number",
+            "device_type",
+            "channel_data_type"
+          ]
+        },
+        {
+          "name": "set_id",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "set_name",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "add_channel_name",
+          "args": [
+            "self",
+            "channel_name"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "CameraDescription",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "name",
+            "position_vec3",
+            "orientation_quat"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "DataDescriptions",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "generate_order_name",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_marker_set",
+          "args": [
+            "self",
+            "new_marker_set"
+          ]
+        },
+        {
+          "name": "add_rigid_body",
+          "args": [
+            "self",
+            "new_rigid_body"
+          ]
+        },
+        {
+          "name": "add_skeleton",
+          "args": [
+            "self",
+            "new_skeleton"
+          ]
+        },
+        {
+          "name": "add_force_plate",
+          "args": [
+            "self",
+            "new_force_plate"
+          ]
+        },
+        {
+          "name": "add_device",
+          "args": [
+            "self",
+            "newdevice"
+          ]
+        },
+        {
+          "name": "add_camera",
+          "args": [
+            "self",
+            "newcamera"
+          ]
+        },
+        {
+          "name": "add_data",
+          "args": [
+            "self",
+            "new_data"
+          ]
+        },
+        {
+          "name": "get_object_from_list",
+          "args": [
+            "self",
+            "list_name",
+            "pos_num"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generate_marker_set_description",
+      "args": [
+        "set_num"
+      ]
+    },
+    {
+      "name": "generate_rb_marker",
+      "args": [
+        "marker_num"
+      ]
+    },
+    {
+      "name": "generate_rigid_body_description",
+      "args": [
+        "rbd_num"
+      ]
+    },
+    {
+      "name": "generate_skeleton_description",
+      "args": [
+        "skeleton_num"
+      ]
+    },
+    {
+      "name": "generate_force_plate_description",
+      "args": [
+        "force_plate_num"
+      ]
+    },
+    {
+      "name": "generate_device_description",
+      "args": [
+        "dev_num"
+      ]
+    },
+    {
+      "name": "generate_camera_description",
+      "args": [
+        "cam_num"
+      ]
+    },
+    {
+      "name": "generate_data_descriptions",
+      "args": [
+        "data_desc_num"
+      ]
+    },
+    {
+      "name": "test_all",
+      "args": [
+        "run_test"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_name",
+      "args": [
+        "self",
+        "new_name"
+      ]
+    },
+    {
+      "name": "get_num_markers",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_marker_name",
+      "args": [
+        "self",
+        "marker_name"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "marker_name",
+        "active_label",
+        "pos"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "sz_name",
+        "new_id",
+        "parent_id",
+        "pos"
+      ]
+    },
+    {
+      "name": "set_name",
+      "args": [
+        "self",
+        "new_name"
+      ]
+    },
+    {
+      "name": "set_id",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "set_parent_id",
+      "args": [
+        "self",
+        "parent_id"
+      ]
+    },
+    {
+      "name": "set_pos",
+      "args": [
+        "self",
+        "p_x",
+        "p_y",
+        "p_z"
+      ]
+    },
+    {
+      "name": "get_num_markers",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_rb_marker",
+      "args": [
+        "self",
+        "new_rb_maker"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "name",
+        "new_id"
+      ]
+    },
+    {
+      "name": "set_name",
+      "args": [
+        "self",
+        "new_name"
+      ]
+    },
+    {
+      "name": "set_id",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "add_rigid_body_description",
+      "args": [
+        "self",
+        "rigid_body_description"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id",
+        "serial_number"
+      ]
+    },
+    {
+      "name": "set_id",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "set_serial_number",
+      "args": [
+        "self",
+        "serial_number"
+      ]
+    },
+    {
+      "name": "set_dimensions",
+      "args": [
+        "self",
+        "width",
+        "length"
+      ]
+    },
+    {
+      "name": "set_origin",
+      "args": [
+        "self",
+        "p_x",
+        "p_y",
+        "p_z"
+      ]
+    },
+    {
+      "name": "set_cal_matrix",
+      "args": [
+        "self",
+        "cal_matrix"
+      ]
+    },
+    {
+      "name": "set_corners",
+      "args": [
+        "self",
+        "corners"
+      ]
+    },
+    {
+      "name": "set_plate_type",
+      "args": [
+        "self",
+        "plate_type"
+      ]
+    },
+    {
+      "name": "set_channel_data_type",
+      "args": [
+        "self",
+        "channel_data_type"
+      ]
+    },
+    {
+      "name": "add_channel_name",
+      "args": [
+        "self",
+        "channel_name"
+      ]
+    },
+    {
+      "name": "get_cal_matrix_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "get_corners_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id",
+        "name",
+        "serial_number",
+        "device_type",
+        "channel_data_type"
+      ]
+    },
+    {
+      "name": "set_id",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "set_name",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "add_channel_name",
+      "args": [
+        "self",
+        "channel_name"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "name",
+        "position_vec3",
+        "orientation_quat"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "generate_order_name",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_marker_set",
+      "args": [
+        "self",
+        "new_marker_set"
+      ]
+    },
+    {
+      "name": "add_rigid_body",
+      "args": [
+        "self",
+        "new_rigid_body"
+      ]
+    },
+    {
+      "name": "add_skeleton",
+      "args": [
+        "self",
+        "new_skeleton"
+      ]
+    },
+    {
+      "name": "add_force_plate",
+      "args": [
+        "self",
+        "new_force_plate"
+      ]
+    },
+    {
+      "name": "add_device",
+      "args": [
+        "self",
+        "newdevice"
+      ]
+    },
+    {
+      "name": "add_camera",
+      "args": [
+        "self",
+        "newcamera"
+      ]
+    },
+    {
+      "name": "add_data",
+      "args": [
+        "self",
+        "new_data"
+      ]
+    },
+    {
+      "name": "get_object_from_list",
+      "args": [
+        "self",
+        "list_name",
+        "pos_num"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    }
+  ],
+  "MoCapData.py": [
+    {
+      "name": "get_tab_str",
+      "args": [
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "add_lists",
+      "args": [
+        "totals",
+        "totals_tmp"
+      ]
+    },
+    {
+      "name": "test_hash",
+      "args": [
+        "test_name",
+        "test_hash_str",
+        "test_object"
+      ]
+    },
+    {
+      "name": "test_hash2",
+      "args": [
+        "test_name",
+        "test_hash_str",
+        "test_object",
+        "run_test"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "input_str"
+      ]
+    },
+    {
+      "class": "FramePrefixData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "frame_number"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "MarkerData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_model_name",
+          "args": [
+            "self",
+            "model_name"
+          ]
+        },
+        {
+          "name": "add_pos",
+          "args": [
+            "self",
+            "pos"
+          ]
+        },
+        {
+          "name": "get_num_points",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "MarkerSetData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_marker_data",
+          "args": [
+            "self",
+            "marker_data"
+          ]
+        },
+        {
+          "name": "add_unlabeled_marker",
+          "args": [
+            "self",
+            "pos"
+          ]
+        },
+        {
+          "name": "get_marker_set_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_unlabeled_marker_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "RigidBodyMarker",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "RigidBody",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id",
+            "pos",
+            "rot"
+          ]
+        },
+        {
+          "name": "add_rigid_body_marker",
+          "args": [
+            "self",
+            "rigid_body_marker"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "RigidBodyData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_rigid_body",
+          "args": [
+            "self",
+            "rigid_body"
+          ]
+        },
+        {
+          "name": "get_rigid_body_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "Skeleton",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "add_rigid_body",
+          "args": [
+            "self",
+            "rigid_body"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "SkeletonData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_skeleton",
+          "args": [
+            "self",
+            "new_skeleton"
+          ]
+        },
+        {
+          "name": "get_skeleton_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "LabeledMarker",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id",
+            "pos",
+            "size",
+            "param",
+            "residual"
+          ]
+        },
+        {
+          "name": "__decode_marker_id",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "__decode_param",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "LabeledMarkerData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_labeled_marker",
+          "args": [
+            "self",
+            "labeled_marker"
+          ]
+        },
+        {
+          "name": "get_labeled_marker_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "ForcePlateChannelData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_frame_entry",
+          "args": [
+            "self",
+            "frame_entry"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level",
+            "channel_num"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "ForcePlate",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "add_channel_data",
+          "args": [
+            "self",
+            "channel_data"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "ForcePlateData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_force_plate",
+          "args": [
+            "self",
+            "force_plate"
+          ]
+        },
+        {
+          "name": "get_force_plate_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "DeviceChannelData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_frame_entry",
+          "args": [
+            "self",
+            "frame_entry"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level",
+            "channel_num"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "Device",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "add_channel_data",
+          "args": [
+            "self",
+            "channel_data"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level",
+            "device_num"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "DeviceData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_device",
+          "args": [
+            "self",
+            "device"
+          ]
+        },
+        {
+          "name": "get_device_count",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "FrameSuffixData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "MoCapData",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_prefix_data",
+          "args": [
+            "self",
+            "new_prefix_data"
+          ]
+        },
+        {
+          "name": "set_marker_set_data",
+          "args": [
+            "self",
+            "new_marker_set_data"
+          ]
+        },
+        {
+          "name": "set_rigid_body_data",
+          "args": [
+            "self",
+            "new_rigid_body_data"
+          ]
+        },
+        {
+          "name": "set_skeleton_data",
+          "args": [
+            "self",
+            "new_skeleton_data"
+          ]
+        },
+        {
+          "name": "set_labeled_marker_data",
+          "args": [
+            "self",
+            "new_labeled_marker_data"
+          ]
+        },
+        {
+          "name": "set_force_plate_data",
+          "args": [
+            "self",
+            "new_force_plate_data"
+          ]
+        },
+        {
+          "name": "set_device_data",
+          "args": [
+            "self",
+            "new_device_data"
+          ]
+        },
+        {
+          "name": "set_suffix_data",
+          "args": [
+            "self",
+            "new_suffix_data"
+          ]
+        },
+        {
+          "name": "get_as_string",
+          "args": [
+            "self",
+            "tab_str",
+            "level"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "generate_prefix_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_label",
+      "args": [
+        "label_base",
+        "label_num"
+      ]
+    },
+    {
+      "name": "generate_position_srand",
+      "args": [
+        "pos_num",
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_marker_data",
+      "args": [
+        "label_base",
+        "label_num",
+        "num_points"
+      ]
+    },
+    {
+      "name": "generate_marker_set_data",
+      "args": [
+        "frame_num",
+        "marker_set_num"
+      ]
+    },
+    {
+      "name": "generate_rigid_body_marker_srand",
+      "args": [
+        "marker_num",
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_rigid_body",
+      "args": [
+        "body_num",
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_rigid_body_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_skeleton",
+      "args": [
+        "frame_num",
+        "skeleton_num",
+        "num_rbs"
+      ]
+    },
+    {
+      "name": "generate_skeleton_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_labeled_marker",
+      "args": [
+        "frame_num",
+        "marker_num"
+      ]
+    },
+    {
+      "name": "generate_labeled_marker_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_fp_channel_data",
+      "args": [
+        "frame_num",
+        "fp_num",
+        "channel_num",
+        "num_frames"
+      ]
+    },
+    {
+      "name": "generate_force_plate",
+      "args": [
+        "frame_num",
+        "fp_num",
+        "num_channels"
+      ]
+    },
+    {
+      "name": "generate_force_plate_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_device_channel_data",
+      "args": [
+        "frame_num",
+        "device_num",
+        "channel_num",
+        "num_frames"
+      ]
+    },
+    {
+      "name": "generate_device",
+      "args": [
+        "frame_num",
+        "device_num"
+      ]
+    },
+    {
+      "name": "generate_device_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_suffix_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "generate_mocap_data",
+      "args": [
+        "frame_num"
+      ]
+    },
+    {
+      "name": "test_all",
+      "args": [
+        "run_test"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "frame_number"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_model_name",
+      "args": [
+        "self",
+        "model_name"
+      ]
+    },
+    {
+      "name": "add_pos",
+      "args": [
+        "self",
+        "pos"
+      ]
+    },
+    {
+      "name": "get_num_points",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_marker_data",
+      "args": [
+        "self",
+        "marker_data"
+      ]
+    },
+    {
+      "name": "add_unlabeled_marker",
+      "args": [
+        "self",
+        "pos"
+      ]
+    },
+    {
+      "name": "get_marker_set_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_unlabeled_marker_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id",
+        "pos",
+        "rot"
+      ]
+    },
+    {
+      "name": "add_rigid_body_marker",
+      "args": [
+        "self",
+        "rigid_body_marker"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_rigid_body",
+      "args": [
+        "self",
+        "rigid_body"
+      ]
+    },
+    {
+      "name": "get_rigid_body_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "add_rigid_body",
+      "args": [
+        "self",
+        "rigid_body"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_skeleton",
+      "args": [
+        "self",
+        "new_skeleton"
+      ]
+    },
+    {
+      "name": "get_skeleton_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id",
+        "pos",
+        "size",
+        "param",
+        "residual"
+      ]
+    },
+    {
+      "name": "__decode_marker_id",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "__decode_param",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_labeled_marker",
+      "args": [
+        "self",
+        "labeled_marker"
+      ]
+    },
+    {
+      "name": "get_labeled_marker_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_frame_entry",
+      "args": [
+        "self",
+        "frame_entry"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level",
+        "channel_num"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "add_channel_data",
+      "args": [
+        "self",
+        "channel_data"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_force_plate",
+      "args": [
+        "self",
+        "force_plate"
+      ]
+    },
+    {
+      "name": "get_force_plate_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_frame_entry",
+      "args": [
+        "self",
+        "frame_entry"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level",
+        "channel_num"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "add_channel_data",
+      "args": [
+        "self",
+        "channel_data"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level",
+        "device_num"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_device",
+      "args": [
+        "self",
+        "device"
+      ]
+    },
+    {
+      "name": "get_device_count",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_prefix_data",
+      "args": [
+        "self",
+        "new_prefix_data"
+      ]
+    },
+    {
+      "name": "set_marker_set_data",
+      "args": [
+        "self",
+        "new_marker_set_data"
+      ]
+    },
+    {
+      "name": "set_rigid_body_data",
+      "args": [
+        "self",
+        "new_rigid_body_data"
+      ]
+    },
+    {
+      "name": "set_skeleton_data",
+      "args": [
+        "self",
+        "new_skeleton_data"
+      ]
+    },
+    {
+      "name": "set_labeled_marker_data",
+      "args": [
+        "self",
+        "new_labeled_marker_data"
+      ]
+    },
+    {
+      "name": "set_force_plate_data",
+      "args": [
+        "self",
+        "new_force_plate_data"
+      ]
+    },
+    {
+      "name": "set_device_data",
+      "args": [
+        "self",
+        "new_device_data"
+      ]
+    },
+    {
+      "name": "set_suffix_data",
+      "args": [
+        "self",
+        "new_suffix_data"
+      ]
+    },
+    {
+      "name": "get_as_string",
+      "args": [
+        "self",
+        "tab_str",
+        "level"
+      ]
+    }
+  ],
+  "NatNetClient.py": [
+    {
+      "name": "trace",
+      "args": []
+    },
+    {
+      "name": "trace_dd",
+      "args": []
+    },
+    {
+      "name": "trace_mf",
+      "args": []
+    },
+    {
+      "name": "get_message_id",
+      "args": [
+        "data"
+      ]
+    },
+    {
+      "class": "NatNetClient",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_client_address",
+          "args": [
+            "self",
+            "local_ip_address"
+          ]
+        },
+        {
+          "name": "get_client_address",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_server_address",
+          "args": [
+            "self",
+            "server_ip_address"
+          ]
+        },
+        {
+          "name": "get_server_address",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_use_multicast",
+          "args": [
+            "self",
+            "use_multicast"
+          ]
+        },
+        {
+          "name": "can_change_bitstream_version",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_nat_net_version",
+          "args": [
+            "self",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "get_major",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_minor",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "set_print_level",
+          "args": [
+            "self",
+            "print_level"
+          ]
+        },
+        {
+          "name": "get_print_level",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "connected",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "__create_command_socket",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "__create_data_socket",
+          "args": [
+            "self",
+            "port"
+          ]
+        },
+        {
+          "name": "__unpack_rigid_body",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor",
+            "rb_num"
+          ]
+        },
+        {
+          "name": "__unpack_skeleton",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_frame_prefix_data",
+          "args": [
+            "self",
+            "data"
+          ]
+        },
+        {
+          "name": "__unpack_marker_set_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_rigid_body_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_skeleton_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__decode_marker_id",
+          "args": [
+            "self",
+            "new_id"
+          ]
+        },
+        {
+          "name": "__unpack_labeled_marker_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_force_plate_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_device_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_frame_suffix_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_mocap_data",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_marker_set_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_rigid_body_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_skeleton_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_force_plate_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_device_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_camera_description",
+          "args": [
+            "self",
+            "data",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_data_descriptions",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__unpack_server_info",
+          "args": [
+            "self",
+            "data",
+            "packet_size",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "__command_thread_function",
+          "args": [
+            "self",
+            "in_socket",
+            "stop",
+            "gprint_level"
+          ]
+        },
+        {
+          "name": "__data_thread_function",
+          "args": [
+            "self",
+            "in_socket",
+            "stop",
+            "gprint_level"
+          ]
+        },
+        {
+          "name": "__process_message",
+          "args": [
+            "self",
+            "data",
+            "print_level"
+          ]
+        },
+        {
+          "name": "send_request",
+          "args": [
+            "self",
+            "in_socket",
+            "command",
+            "command_str",
+            "address"
+          ]
+        },
+        {
+          "name": "send_command",
+          "args": [
+            "self",
+            "command_str"
+          ]
+        },
+        {
+          "name": "send_commands",
+          "args": [
+            "self",
+            "tmpCommands",
+            "print_results"
+          ]
+        },
+        {
+          "name": "send_keep_alive",
+          "args": [
+            "self",
+            "in_socket",
+            "server_ip_address",
+            "server_port"
+          ]
+        },
+        {
+          "name": "shutdown",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "run",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_client_address",
+      "args": [
+        "self",
+        "local_ip_address"
+      ]
+    },
+    {
+      "name": "get_client_address",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_server_address",
+      "args": [
+        "self",
+        "server_ip_address"
+      ]
+    },
+    {
+      "name": "get_server_address",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_use_multicast",
+      "args": [
+        "self",
+        "use_multicast"
+      ]
+    },
+    {
+      "name": "can_change_bitstream_version",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_nat_net_version",
+      "args": [
+        "self",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "get_major",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_minor",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "set_print_level",
+      "args": [
+        "self",
+        "print_level"
+      ]
+    },
+    {
+      "name": "get_print_level",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "connected",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "__create_command_socket",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "__create_data_socket",
+      "args": [
+        "self",
+        "port"
+      ]
+    },
+    {
+      "name": "__unpack_rigid_body",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor",
+        "rb_num"
+      ]
+    },
+    {
+      "name": "__unpack_skeleton",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_frame_prefix_data",
+      "args": [
+        "self",
+        "data"
+      ]
+    },
+    {
+      "name": "__unpack_marker_set_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_rigid_body_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_skeleton_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__decode_marker_id",
+      "args": [
+        "self",
+        "new_id"
+      ]
+    },
+    {
+      "name": "__unpack_labeled_marker_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_force_plate_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_device_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_frame_suffix_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_mocap_data",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_marker_set_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_rigid_body_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_skeleton_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_force_plate_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_device_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_camera_description",
+      "args": [
+        "self",
+        "data",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_data_descriptions",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__unpack_server_info",
+      "args": [
+        "self",
+        "data",
+        "packet_size",
+        "major",
+        "minor"
+      ]
+    },
+    {
+      "name": "__command_thread_function",
+      "args": [
+        "self",
+        "in_socket",
+        "stop",
+        "gprint_level"
+      ]
+    },
+    {
+      "name": "__data_thread_function",
+      "args": [
+        "self",
+        "in_socket",
+        "stop",
+        "gprint_level"
+      ]
+    },
+    {
+      "name": "__process_message",
+      "args": [
+        "self",
+        "data",
+        "print_level"
+      ]
+    },
+    {
+      "name": "send_request",
+      "args": [
+        "self",
+        "in_socket",
+        "command",
+        "command_str",
+        "address"
+      ]
+    },
+    {
+      "name": "send_command",
+      "args": [
+        "self",
+        "command_str"
+      ]
+    },
+    {
+      "name": "send_commands",
+      "args": [
+        "self",
+        "tmpCommands",
+        "print_results"
+      ]
+    },
+    {
+      "name": "send_keep_alive",
+      "args": [
+        "self",
+        "in_socket",
+        "server_ip_address",
+        "server_port"
+      ]
+    },
+    {
+      "name": "shutdown",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "run",
+      "args": [
+        "self"
+      ]
+    }
+  ],
+  "apply_merge.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "timestamp_tag",
+      "args": []
+    },
+    {
+      "name": "deep_memory_path",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "deep_memory_summary_path",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "backup_dir",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "create_backup",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "list_all_backups",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "print_preview_summary",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "apply_merge",
+      "args": [
+        "session_path",
+        "root_path",
+        "force_yes",
+        "show_only"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "auto_labeler.py": [
+    {
+      "name": "load_gdino_model",
+      "args": []
+    },
+    {
+      "name": "run_grounding_dino",
+      "args": [
+        "frame_bgr",
+        "prompts",
+        "threshold"
+      ]
+    },
+    {
+      "name": "create_cvat_xml",
+      "args": [
+        "annotations_by_frame",
+        "video_name",
+        "output_path"
+      ]
+    },
+    {
+      "name": "auto_label_video",
+      "args": [
+        "video_path",
+        "prompts",
+        "output_path",
+        "sample_rate"
+      ]
+    }
+  ],
+  "bev_image_renderer.py": [
+    {
+      "name": "world_to_bev",
+      "args": [
+        "wx",
+        "wy",
+        "cx",
+        "cy"
+      ]
+    },
+    {
+      "name": "render_semantic_bev_frame",
+      "args": [
+        "slam_grid",
+        "map_meta",
+        "robot_pose",
+        "lidar_points",
+        "mocap_human",
+        "semantic_objects"
+      ]
+    },
+    {
+      "name": "process_session",
+      "args": [
+        "sname"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "co_pilot_agent.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "_next_report_version",
+      "args": [
+        "reports_dir"
+      ]
+    },
+    {
+      "name": "check_slam_health",
+      "args": [
+        "slam_pkl_path"
+      ]
+    },
+    {
+      "name": "check_motive_health",
+      "args": [
+        "motive_pkl_path"
+      ]
+    },
+    {
+      "name": "check_fusion_quality",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "check_calibration_sanity",
+      "args": [
+        "calibration_pkl_path",
+        "max_age_days"
+      ]
+    },
+    {
+      "name": "review_persistent_knowledge",
+      "args": [
+        "knowledge"
+      ]
+    },
+    {
+      "name": "get_knowledge_engine_section",
+      "args": [
+        "root_path",
+        "session_path"
+      ]
+    },
+    {
+      "name": "get_session_discoveries",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "get_session_safety",
+      "args": [
+        "root_path",
+        "session_name"
+      ]
+    },
+    {
+      "name": "get_recommendations",
+      "args": [
+        "root_path",
+        "all_issues"
+      ]
+    },
+    {
+      "name": "generate_report",
+      "args": [
+        "root_path",
+        "session_path",
+        "calibration_pkl_path"
+      ]
+    }
+  ],
+  "cross_modal_aligner.py": [
+    {
+      "name": "match_slam_to_mocap_interpolated",
+      "args": [
+        "mocap_timestamps",
+        "slam_timestamps",
+        "slam_poses"
+      ]
+    },
+    {
+      "name": "compute_sync_quality",
+      "args": [
+        "mocap_timestamps",
+        "slam_timestamps",
+        "max_gap"
+      ]
+    },
+    {
+      "name": "match_slam_to_mocap",
+      "args": [
+        "mocap_timestamps",
+        "slam_data"
+      ]
+    },
+    {
+      "name": "run_alignment",
+      "args": [
+        "session_path",
+        "root_path"
+      ]
+    }
+  ],
+  "cvat_converter.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "parse_cvat_xml",
+      "args": [
+        "xml_path"
+      ]
+    },
+    {
+      "name": "convert_to_jsonl",
+      "args": [
+        "annotations",
+        "session_id",
+        "camera_name",
+        "video_path",
+        "fps"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "entity_registry.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "safe_pickle_dump",
+      "args": [
+        "obj",
+        "path"
+      ]
+    },
+    {
+      "class": "EntityRegistry",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "root_path"
+          ]
+        },
+        {
+          "name": "_load",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "save",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "create_entity",
+          "args": [
+            "self",
+            "canonical_name",
+            "entity_type",
+            "motive_markers",
+            "classification",
+            "is_dynamic",
+            "confidence"
+          ]
+        },
+        {
+          "name": "get_entity_by_motive_marker",
+          "args": [
+            "self",
+            "marker_name"
+          ]
+        },
+        {
+          "name": "get_entity_by_slam_cluster",
+          "args": [
+            "self",
+            "cluster_id"
+          ]
+        },
+        {
+          "name": "link_slam_cluster",
+          "args": [
+            "self",
+            "entity_id",
+            "cluster_id",
+            "session_name",
+            "confidence"
+          ]
+        },
+        {
+          "name": "link_video_bbox",
+          "args": [
+            "self",
+            "entity_id",
+            "bbox_info"
+          ]
+        },
+        {
+          "name": "confirm_entity",
+          "args": [
+            "self",
+            "entity_id",
+            "confirmed_by"
+          ]
+        },
+        {
+          "name": "suggest_grouping",
+          "args": [
+            "self",
+            "motive_markers",
+            "deep_memory"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rebuild_from_deep_memory",
+      "args": [
+        "root_path",
+        "auto_confirm"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "root_path"
+      ]
+    },
+    {
+      "name": "_load",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "save",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "create_entity",
+      "args": [
+        "self",
+        "canonical_name",
+        "entity_type",
+        "motive_markers",
+        "classification",
+        "is_dynamic",
+        "confidence"
+      ]
+    },
+    {
+      "name": "get_entity_by_motive_marker",
+      "args": [
+        "self",
+        "marker_name"
+      ]
+    },
+    {
+      "name": "get_entity_by_slam_cluster",
+      "args": [
+        "self",
+        "cluster_id"
+      ]
+    },
+    {
+      "name": "link_slam_cluster",
+      "args": [
+        "self",
+        "entity_id",
+        "cluster_id",
+        "session_name",
+        "confidence"
+      ]
+    },
+    {
+      "name": "link_video_bbox",
+      "args": [
+        "self",
+        "entity_id",
+        "bbox_info"
+      ]
+    },
+    {
+      "name": "confirm_entity",
+      "args": [
+        "self",
+        "entity_id",
+        "confirmed_by"
+      ]
+    },
+    {
+      "name": "suggest_grouping",
+      "args": [
+        "self",
+        "motive_markers",
+        "deep_memory"
+      ]
+    }
+  ],
+  "knowledge_engine.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "safe_pickle_dump",
+      "args": [
+        "obj",
+        "path"
+      ]
+    },
+    {
+      "name": "_empty_deep_memory",
+      "args": []
+    },
+    {
+      "name": "load_deep_memory",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "save_deep_memory",
+      "args": [
+        "root_path",
+        "memory"
+      ]
+    },
+    {
+      "name": "_is_robot",
+      "args": [
+        "name"
+      ]
+    },
+    {
+      "name": "_is_reference",
+      "args": [
+        "name"
+      ]
+    },
+    {
+      "name": "_safety_zone",
+      "args": [
+        "distance_m"
+      ]
+    },
+    {
+      "name": "_classify_by_name",
+      "args": [
+        "name"
+      ]
+    },
+    {
+      "name": "_grid_key",
+      "args": [
+        "x",
+        "y"
+      ]
+    },
+    {
+      "name": "_safe_div",
+      "args": [
+        "a",
+        "b",
+        "default"
+      ]
+    },
+    {
+      "name": "cluster_lidar_points",
+      "args": [
+        "fused_objects"
+      ]
+    },
+    {
+      "name": "transfer_labels_to_clusters",
+      "args": [
+        "motive_features",
+        "lidar_clusters"
+      ]
+    },
+    {
+      "name": "extract_session_features",
+      "args": [
+        "fused_data"
+      ]
+    },
+    {
+      "name": "update_memory_from_session",
+      "args": [
+        "memory",
+        "session_name",
+        "session_results"
+      ]
+    },
+    {
+      "name": "_height_str",
+      "args": [
+        "t"
+      ]
+    },
+    {
+      "name": "generate_report_section",
+      "args": [
+        "memory"
+      ]
+    },
+    {
+      "name": "_simulate_merge_preview",
+      "args": [
+        "current_memory",
+        "session_name",
+        "session_results"
+      ]
+    },
+    {
+      "name": "_write_candidate_summary",
+      "args": [
+        "txt_path",
+        "session_name",
+        "session_results",
+        "diff"
+      ]
+    },
+    {
+      "name": "analyze_session_safe",
+      "args": [
+        "root_path",
+        "session_path"
+      ]
+    },
+    {
+      "name": "analyze_session",
+      "args": [
+        "root_path",
+        "session_path"
+      ]
+    },
+    {
+      "name": "load_pending_candidate",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "clear_pending_candidate",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "rebuild_all_sessions",
+      "args": [
+        "root_path"
+      ]
+    }
+  ],
+  "label_registry.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "generate_label_id",
+      "args": []
+    },
+    {
+      "name": "safe_pickle_dump",
+      "args": [
+        "obj",
+        "path"
+      ]
+    },
+    {
+      "name": "create_label_entry",
+      "args": [
+        "canonical_name",
+        "object_class",
+        "source",
+        "motive_body_name",
+        "slam_cluster_id",
+        "mean_position_m",
+        "is_confirmed"
+      ]
+    },
+    {
+      "class": "LabelRegistry",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "root_path"
+          ]
+        },
+        {
+          "name": "_load",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "save",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "_write_summary",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "add_label",
+          "args": [
+            "self",
+            "canonical_name",
+            "object_class",
+            "source",
+            "motive_body_name",
+            "slam_cluster_id",
+            "mean_position_m",
+            "session_name",
+            "is_confirmed"
+          ]
+        },
+        {
+          "name": "get_label_by_name",
+          "args": [
+            "self",
+            "canonical_name"
+          ]
+        },
+        {
+          "name": "get_label_by_motive_name",
+          "args": [
+            "self",
+            "motive_body_name"
+          ]
+        },
+        {
+          "name": "update_label",
+          "args": [
+            "self",
+            "label_id",
+            "session_name",
+            "new_observations",
+            "new_position_m",
+            "motive_body_name",
+            "slam_cluster_id"
+          ]
+        },
+        {
+          "name": "confirm_label",
+          "args": [
+            "self",
+            "label_id"
+          ]
+        },
+        {
+          "name": "suggest_matches",
+          "args": [
+            "self",
+            "source",
+            "source_id",
+            "position_m",
+            "object_class",
+            "max_distance_m"
+          ]
+        },
+        {
+          "name": "list_all_labels",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "root_path"
+      ]
+    },
+    {
+      "name": "_load",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "save",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "_write_summary",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "add_label",
+      "args": [
+        "self",
+        "canonical_name",
+        "object_class",
+        "source",
+        "motive_body_name",
+        "slam_cluster_id",
+        "mean_position_m",
+        "session_name",
+        "is_confirmed"
+      ]
+    },
+    {
+      "name": "get_label_by_name",
+      "args": [
+        "self",
+        "canonical_name"
+      ]
+    },
+    {
+      "name": "get_label_by_motive_name",
+      "args": [
+        "self",
+        "motive_body_name"
+      ]
+    },
+    {
+      "name": "update_label",
+      "args": [
+        "self",
+        "label_id",
+        "session_name",
+        "new_observations",
+        "new_position_m",
+        "motive_body_name",
+        "slam_cluster_id"
+      ]
+    },
+    {
+      "name": "confirm_label",
+      "args": [
+        "self",
+        "label_id"
+      ]
+    },
+    {
+      "name": "suggest_matches",
+      "args": [
+        "self",
+        "source",
+        "source_id",
+        "position_m",
+        "object_class",
+        "max_distance_m"
+      ]
+    },
+    {
+      "name": "list_all_labels",
+      "args": [
+        "self"
+      ]
+    }
+  ],
+  "label_registry_auto.py": [
+    {
+      "name": "load_taxonomy",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "classify_by_taxonomy",
+      "args": [
+        "name",
+        "taxonomy"
+      ]
+    },
+    {
+      "name": "run_auto_registry",
+      "args": [
+        "root_path",
+        "session_path",
+        "auto_yes"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "launch_session.py": [
+    {
+      "class": "CrashLogger",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "session_path"
+          ]
+        },
+        {
+          "name": "log_error",
+          "args": [
+            "self",
+            "stage",
+            "error_type",
+            "error_message",
+            "traceback_str"
+          ]
+        },
+        {
+          "name": "save_crash_log",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "utc_now_epoch",
+      "args": []
+    },
+    {
+      "name": "safe_pickle_dump",
+      "args": [
+        "obj",
+        "path"
+      ]
+    },
+    {
+      "name": "normalize_angle",
+      "args": [
+        "a"
+      ]
+    },
+    {
+      "name": "find_project_root",
+      "args": []
+    },
+    {
+      "name": "bootstrap_root",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "create_session",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "find_calibration",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "class": "MirSlamLogger",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "session_path"
+          ]
+        },
+        {
+          "name": "try_connect",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "_robot_pose_callback",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_laser_callback",
+          "args": [
+            "self",
+            "msg",
+            "sensor_name",
+            "offset_x",
+            "offset_y",
+            "offset_yaw"
+          ]
+        },
+        {
+          "name": "_f_scan_cb",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_b_scan_cb",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "subscribe_and_run",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "save_final",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "stop",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "class": "MotiveTrackerThread",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "session_path"
+          ]
+        },
+        {
+          "name": "try_connect",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "select_bodies",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "ask_remote_recording",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "_check_recording_ended",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "run_collection",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "save_final",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "stop",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "run_full_pipeline",
+      "args": [
+        "root_path",
+        "session_path",
+        "calib_path",
+        "slam_ok",
+        "motive_ok",
+        "crash_logger"
+      ]
+    },
+    {
+      "name": "ask_run_ai_advisor",
+      "args": []
+    },
+    {
+      "name": "run_ai_advisor_mock",
+      "args": [
+        "session_path",
+        "root_path",
+        "crash_logger"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "session_path"
+      ]
+    },
+    {
+      "name": "log_error",
+      "args": [
+        "self",
+        "stage",
+        "error_type",
+        "error_message",
+        "traceback_str"
+      ]
+    },
+    {
+      "name": "save_crash_log",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "session_path"
+      ]
+    },
+    {
+      "name": "try_connect",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "_robot_pose_callback",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_laser_callback",
+      "args": [
+        "self",
+        "msg",
+        "sensor_name",
+        "offset_x",
+        "offset_y",
+        "offset_yaw"
+      ]
+    },
+    {
+      "name": "_f_scan_cb",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_b_scan_cb",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "subscribe_and_run",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "save_final",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "stop",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "session_path"
+      ]
+    },
+    {
+      "name": "try_connect",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "select_bodies",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "ask_remote_recording",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "_check_recording_ended",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "run_collection",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "save_final",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "stop",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "on_motive_recording_ended",
+      "args": []
+    },
+    {
+      "name": "map_cb",
+      "args": [
+        "msg"
+      ]
+    }
+  ],
+  "mir_command_logger.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "utc_now_epoch",
+      "args": []
+    },
+    {
+      "name": "safe_pickle_dump",
+      "args": [
+        "obj",
+        "path"
+      ]
+    },
+    {
+      "class": "MirCommandLogger",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "session_path",
+            "robot_ip",
+            "ros_port",
+            "rest_port",
+            "rest_auth",
+            "poll_rest_every_s"
+          ]
+        },
+        {
+          "name": "_cmd_vel_callback",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_odom_callback",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_joystick_callback",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_battery_callback",
+          "args": [
+            "self",
+            "msg"
+          ]
+        },
+        {
+          "name": "_rest_poll_loop",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "try_connect",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "stop",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "save_final",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "session_path",
+        "robot_ip",
+        "ros_port",
+        "rest_port",
+        "rest_auth",
+        "poll_rest_every_s"
+      ]
+    },
+    {
+      "name": "_cmd_vel_callback",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_odom_callback",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_joystick_callback",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_battery_callback",
+      "args": [
+        "self",
+        "msg"
+      ]
+    },
+    {
+      "name": "_rest_poll_loop",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "try_connect",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "stop",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "save_final",
+      "args": [
+        "self"
+      ]
+    }
+  ],
+  "motive_connector.py": [
+    {
+      "name": "quaternion_to_euler_deg",
+      "args": [
+        "qx",
+        "qy",
+        "qz",
+        "qw"
+      ]
+    },
+    {
+      "class": "MotiveConnector",
+      "methods": [
+        {
+          "name": "__init__",
+          "args": [
+            "self",
+            "stale_timeout_sec"
+          ]
+        },
+        {
+          "name": "_on_rigid_body",
+          "args": [
+            "self",
+            "new_id",
+            "position",
+            "rotation"
+          ]
+        },
+        {
+          "name": "_on_model_definitions",
+          "args": [
+            "self",
+            "data_descs"
+          ]
+        },
+        {
+          "name": "_on_new_frame",
+          "args": [
+            "self",
+            "data_dict"
+          ]
+        },
+        {
+          "name": "connect",
+          "args": [
+            "self",
+            "client_address",
+            "server_address",
+            "use_multicast"
+          ]
+        },
+        {
+          "name": "request_model_definitions",
+          "args": [
+            "self",
+            "timeout_sec",
+            "poll_interval"
+          ]
+        },
+        {
+          "name": "shutdown",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "start_recording",
+          "args": [
+            "self",
+            "take_name"
+          ]
+        },
+        {
+          "name": "stop_recording",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "is_motive_recording",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "list_rigid_bodies",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "is_tracked",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "is_fresh",
+          "args": [
+            "self",
+            "name",
+            "max_age_sec"
+          ]
+        },
+        {
+          "name": "get_age_sec",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_position_mm",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_ground_position_mm",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_height_mm",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_quaternion",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_euler_deg",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_full_state",
+          "args": [
+            "self",
+            "name"
+          ]
+        },
+        {
+          "name": "get_all_full_states",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "get_latest_frame",
+          "args": [
+            "self"
+          ]
+        },
+        {
+          "name": "auto_detect_robot_name",
+          "args": [
+            "self",
+            "keywords"
+          ]
+        },
+        {
+          "name": "get_camera_descriptions",
+          "args": [
+            "self"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "__init__",
+      "args": [
+        "self",
+        "stale_timeout_sec"
+      ]
+    },
+    {
+      "name": "_on_rigid_body",
+      "args": [
+        "self",
+        "new_id",
+        "position",
+        "rotation"
+      ]
+    },
+    {
+      "name": "_on_model_definitions",
+      "args": [
+        "self",
+        "data_descs"
+      ]
+    },
+    {
+      "name": "_on_new_frame",
+      "args": [
+        "self",
+        "data_dict"
+      ]
+    },
+    {
+      "name": "connect",
+      "args": [
+        "self",
+        "client_address",
+        "server_address",
+        "use_multicast"
+      ]
+    },
+    {
+      "name": "request_model_definitions",
+      "args": [
+        "self",
+        "timeout_sec",
+        "poll_interval"
+      ]
+    },
+    {
+      "name": "shutdown",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "start_recording",
+      "args": [
+        "self",
+        "take_name"
+      ]
+    },
+    {
+      "name": "stop_recording",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "is_motive_recording",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "list_rigid_bodies",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "is_tracked",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "is_fresh",
+      "args": [
+        "self",
+        "name",
+        "max_age_sec"
+      ]
+    },
+    {
+      "name": "get_age_sec",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_position_mm",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_ground_position_mm",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_height_mm",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_quaternion",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_euler_deg",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_full_state",
+      "args": [
+        "self",
+        "name"
+      ]
+    },
+    {
+      "name": "get_all_full_states",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "get_latest_frame",
+      "args": [
+        "self"
+      ]
+    },
+    {
+      "name": "auto_detect_robot_name",
+      "args": [
+        "self",
+        "keywords"
+      ]
+    },
+    {
+      "name": "get_camera_descriptions",
+      "args": [
+        "self"
+      ]
+    }
+  ],
+  "offline_processor.py": [
+    {
+      "name": "find_project_root",
+      "args": []
+    },
+    {
+      "name": "list_sessions",
+      "args": [
+        "root"
+      ]
+    },
+    {
+      "name": "pick_session",
+      "args": [
+        "sessions"
+      ]
+    },
+    {
+      "name": "run_stage",
+      "args": [
+        "name",
+        "cmd",
+        "cwd"
+      ]
+    },
+    {
+      "name": "process_session",
+      "args": [
+        "root",
+        "session_path"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "project_snapshot.py": [
+    {
+      "name": "audit_agents",
+      "args": []
+    },
+    {
+      "name": "audit_persistent_knowledge",
+      "args": []
+    },
+    {
+      "name": "deep_vla_audit",
+      "args": [
+        "session_dir"
+      ]
+    },
+    {
+      "name": "audit_multimodal_dataset",
+      "args": []
+    },
+    {
+      "name": "audit_sessions",
+      "args": []
+    },
+    {
+      "name": "audit_model",
+      "args": []
+    },
+    {
+      "name": "verify_bug_fixes",
+      "args": []
+    },
+    {
+      "name": "audit_backup",
+      "args": []
+    },
+    {
+      "name": "audit_detector",
+      "args": []
+    },
+    {
+      "name": "audit_video_learning",
+      "args": []
+    },
+    {
+      "name": "audit_slam_to_bev",
+      "args": []
+    },
+    {
+      "name": "audit_videos",
+      "args": []
+    },
+    {
+      "name": "generate_master_report",
+      "args": []
+    }
+  ],
+  "quality_gate.py": [
+    {
+      "name": "_flag_zero_placeholder",
+      "args": [
+        "fused_data_stats"
+      ]
+    },
+    {
+      "name": "_flag_duplicate_positions",
+      "args": [
+        "fused_objects"
+      ]
+    },
+    {
+      "name": "_flag_reference_bug",
+      "args": [
+        "fused_objects"
+      ]
+    },
+    {
+      "name": "_flag_low_confidence",
+      "args": [
+        "session_results"
+      ]
+    },
+    {
+      "name": "_flag_statistical_outliers",
+      "args": [
+        "session_results",
+        "memory"
+      ]
+    },
+    {
+      "name": "_flag_empty_session",
+      "args": [
+        "session_results"
+      ]
+    },
+    {
+      "name": "_flag_excessive_anomalies",
+      "args": [
+        "session_results"
+      ]
+    },
+    {
+      "name": "_flag_suspicious_speed",
+      "args": [
+        "session_results"
+      ]
+    },
+    {
+      "name": "_flag_learning_stagnation",
+      "args": [
+        "session_results",
+        "memory"
+      ]
+    },
+    {
+      "name": "_calculate_learning_progress",
+      "args": [
+        "session_results",
+        "memory"
+      ]
+    },
+    {
+      "name": "run_quality_gate",
+      "args": [
+        "root_path",
+        "session_path"
+      ]
+    }
+  ],
+  "qwen_dataset_formatter.py": [
+    {
+      "name": "classify_behavior",
+      "args": [
+        "linear_v",
+        "angular_w"
+      ]
+    },
+    {
+      "name": "format_session",
+      "args": [
+        "sname"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "robot_data_analyzer.py": [
+    {
+      "name": "wrap_to_pi",
+      "args": [
+        "angle"
+      ]
+    },
+    {
+      "name": "compute_differential_kinematics_robust",
+      "args": [
+        "poses",
+        "timestamps",
+        "max_v",
+        "max_w"
+      ]
+    },
+    {
+      "name": "validate_mir100_commands",
+      "args": [
+        "v_array",
+        "w_array"
+      ]
+    },
+    {
+      "name": "compute_session_statistics",
+      "args": [
+        "poses",
+        "timestamps"
+      ]
+    }
+  ],
+  "run_session_analysis.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "run_fusion",
+      "args": [
+        "session_path",
+        "calibration_path"
+      ]
+    },
+    {
+      "name": "run_knowledge_engine_safe",
+      "args": [
+        "session_path",
+        "root_path"
+      ]
+    },
+    {
+      "name": "run_quality_gate",
+      "args": [
+        "session_path",
+        "root_path"
+      ]
+    },
+    {
+      "name": "generate_merge_review_package",
+      "args": [
+        "session_path",
+        "root_path",
+        "flags",
+        "learning_score"
+      ]
+    },
+    {
+      "name": "initialize_comprehensive_report",
+      "args": [
+        "session_path"
+      ]
+    },
+    {
+      "name": "append_agent_output",
+      "args": [
+        "session_path",
+        "agent_name",
+        "output"
+      ]
+    },
+    {
+      "name": "run_full_analysis",
+      "args": [
+        "session_path",
+        "calibration_path",
+        "root_path"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "scene_object_detector.py": [
+    {
+      "name": "get_model",
+      "args": []
+    },
+    {
+      "name": "_evict_cache",
+      "args": []
+    },
+    {
+      "name": "_cache_key",
+      "args": [
+        "frame_bgr"
+      ]
+    },
+    {
+      "name": "detect_objects_safe",
+      "args": [
+        "frame_bgr",
+        "timestamp"
+      ]
+    }
+  ],
+  "semantic_slam_fusion.py": [
+    {
+      "name": "map_pixels_to_slam",
+      "args": [
+        "cx",
+        "cy",
+        "cam_type",
+        "map_metadata"
+      ]
+    },
+    {
+      "name": "fuse_session_data",
+      "args": [
+        "sname"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "session_manager.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "utc_now_epoch",
+      "args": []
+    },
+    {
+      "name": "_empty_knowledge",
+      "args": []
+    },
+    {
+      "name": "load_persistent_knowledge",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "save_persistent_knowledge",
+      "args": [
+        "root_path",
+        "knowledge"
+      ]
+    },
+    {
+      "name": "bootstrap_project_root",
+      "args": [
+        "base_path"
+      ]
+    },
+    {
+      "name": "create_new_session_folder",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "update_knowledge_from_session",
+      "args": [
+        "root_path",
+        "session_path",
+        "calibration_path"
+      ]
+    },
+    {
+      "name": "inspect_project",
+      "args": [
+        "root_path"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "session_worthiness_analyzer.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "load_pkl",
+      "args": [
+        "path"
+      ]
+    },
+    {
+      "name": "analyze_session_worthiness",
+      "args": [
+        "session_path",
+        "session_name"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "slam_auto_namer.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "link_slam_to_entities",
+      "args": [
+        "root_path",
+        "session_path",
+        "distance_threshold_m"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "slam_map_annotator.py": [
+    {
+      "name": "annotate_slam_session",
+      "args": [
+        "session_dir"
+      ]
+    }
+  ],
+  "slam_to_bev.py": [
+    {
+      "name": "generate_bev_tokens",
+      "args": [
+        "session_dir"
+      ]
+    }
+  ],
+  "spatial_temporal_fusion.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "load_calibration",
+      "args": [
+        "calibration_pkl_path"
+      ]
+    },
+    {
+      "name": "load_slam_session",
+      "args": [
+        "slam_pkl_path"
+      ]
+    },
+    {
+      "name": "load_motive_session",
+      "args": [
+        "motive_pkl_path"
+      ]
+    },
+    {
+      "name": "motive_to_mir_point",
+      "args": [
+        "x_mm",
+        "y_mm",
+        "motive_to_mir_matrix"
+      ]
+    },
+    {
+      "name": "robot_edge_distance_m",
+      "args": [
+        "robot_x",
+        "robot_y",
+        "robot_yaw_rad",
+        "obj_x",
+        "obj_y"
+      ]
+    },
+    {
+      "name": "safety_zone",
+      "args": [
+        "distance_m"
+      ]
+    },
+    {
+      "name": "is_zero_placeholder_mm",
+      "args": [
+        "x_mm",
+        "y_mm",
+        "z_mm",
+        "epsilon_m"
+      ]
+    },
+    {
+      "name": "is_near_zero_point_m",
+      "args": [
+        "x_m",
+        "y_m",
+        "epsilon_m"
+      ]
+    },
+    {
+      "name": "relative_angle_deg",
+      "args": [
+        "robot_x",
+        "robot_y",
+        "robot_yaw_rad",
+        "obj_x",
+        "obj_y"
+      ]
+    },
+    {
+      "name": "encounter_direction",
+      "args": [
+        "rel_angle_deg"
+      ]
+    },
+    {
+      "name": "robot_heading_toward",
+      "args": [
+        "robot_x",
+        "robot_y",
+        "robot_yaw_rad",
+        "robot_speed",
+        "obj_x",
+        "obj_y"
+      ]
+    },
+    {
+      "name": "find_nearest_robot_state",
+      "args": [
+        "robot_states",
+        "target_timestamp_utc"
+      ]
+    },
+    {
+      "name": "fuse_session",
+      "args": [
+        "session_path",
+        "calibration_pkl_path"
+      ]
+    },
+    {
+      "name": "save_fusion_result",
+      "args": [
+        "session_path",
+        "fusion_result"
+      ]
+    }
+  ],
+  "training_curriculum_advisor.py": [
+    {
+      "name": "generate_curriculum",
+      "args": []
+    }
+  ],
+  "video_event_extractor.py": [
+    {
+      "name": "analyze_video_file",
+      "args": [
+        "video_path",
+        "max_frames"
+      ]
+    },
+    {
+      "name": "process_all_sessions",
+      "args": []
+    }
+  ],
+  "video_learning_agent.py": [
+    {
+      "name": "compute_video_motion_profile",
+      "args": [
+        "video_path",
+        "sample_stride"
+      ]
+    },
+    {
+      "name": "analyze_mocap_dynamics",
+      "args": [
+        "motive_pkl_path"
+      ]
+    },
+    {
+      "name": "pair_and_analyze_all_sessions",
+      "args": []
+    }
+  ],
+  "video_narrator.py": [
+    {
+      "name": "build_vla_narrative_and_dataset",
+      "args": [
+        "session_dir"
+      ]
+    }
+  ],
+  "video_quality_agent.py": [
+    {
+      "name": "utc_now_iso",
+      "args": []
+    },
+    {
+      "name": "find_project_root",
+      "args": []
+    },
+    {
+      "name": "list_video_sessions",
+      "args": [
+        "motive_dir"
+      ]
+    },
+    {
+      "name": "count_csv_frames",
+      "args": [
+        "csv_path"
+      ]
+    },
+    {
+      "name": "detect_ghost_overlay",
+      "args": [
+        "gray"
+      ]
+    },
+    {
+      "name": "measure_motion_blur",
+      "args": [
+        "gray"
+      ]
+    },
+    {
+      "name": "measure_dynamic_range",
+      "args": [
+        "gray"
+      ]
+    },
+    {
+      "name": "compute_scene_diversity",
+      "args": [
+        "histograms"
+      ]
+    },
+    {
+      "name": "detect_text_overlay_regions",
+      "args": [
+        "gray"
+      ]
+    },
+    {
+      "name": "estimate_foreground_ratio",
+      "args": [
+        "gray"
+      ]
+    },
+    {
+      "name": "measure_temporal_jitter",
+      "args": [
+        "prev_gray",
+        "gray"
+      ]
+    },
+    {
+      "name": "analyze_video",
+      "args": [
+        "video_path",
+        "csv_frames",
+        "out_dir"
+      ]
+    },
+    {
+      "name": "write_report",
+      "args": [
+        "sessions_analyzed",
+        "out_txt",
+        "out_dir"
+      ]
+    },
+    {
+      "name": "main",
+      "args": []
+    }
+  ],
+  "vla_dataset_builder.py": [
+    {
+      "name": "find_bev_images",
+      "args": [
+        "session_dir"
+      ]
+    },
+    {
+      "name": "extract_kinematics",
+      "args": [
+        "session_dir",
+        "n_frames"
+      ]
+    },
+    {
+      "name": "build_qwen_training_pairs",
+      "args": [
+        "session_dir",
+        "output_file"
+      ]
+    }
+  ],
+  "vla_scenario_validator.py": [
+    {
+      "name": "analyze_session_physics",
+      "args": [
+        "session_dir"
+      ]
+    }
+  ],
+  "vla_supervisor_agent.py": [
+    {
+      "name": "run_supervisor",
+      "args": []
+    }
+  ]
+}

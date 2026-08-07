@@ -1,0 +1,125 @@
+{
+  "agent": "A15_referee_ai_loop",
+  "file": "A15_referee_ai_loop.py",
+  "final_verdict": "FAIL",
+  "confidence": 62.3,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "FAIL",
+      "confidence": 92,
+      "elapsed": 54.3,
+      "finish": "stop",
+      "details": {
+        "agent": "A15_referee_ai_loop",
+        "verdict": "FAIL",
+        "confidence": 92,
+        "critical_bugs": [
+          "Unstructured API response parsing in call_ai() and generate_dynamic_focus(): Direct dictionary indexing (resp.json()['choices'][0]...) on HTTP 200 responses will raise KeyError/IndexError if OpenRouter returns a valid but structurally different payload or error wrapper, causing immediate script termination.",
+          "load_key() lacks existence/permission checks: Will crash with FileNotFoundError or PermissionError at startup if .secrets/openrouter.key is missing or unreadable, halting the entire audit pipeline before initialization.",
+          "Bare except: clauses in encode_image_b64(), scan_agent_code(), and API loops suppress specific exceptions (including KeyboardInterrupt/SystemExit) and obscure root causes during debugging."
+        ],
+        "warnings": [
+          "Hardcoded Windows absolute paths (D:\\kiarash\\...) reduce portability and will fail on Linux/macOS CI/CD environments.",
+          "PIL Image objects in encode_image_b64() are not explicitly closed, relying on garbage collection which can lead to file descriptor exhaustion under heavy load.",
+          "Repeated requests.get/post calls without a persistent Session object cause redundant TCP/TLS handshakes and increase latency."
+        ],
+        "recommendations": [
+          "Wrap all API JSON parsing in try/except blocks or use .get() with safe defaults to handle schema variations gracefully.",
+          "Add file existence checks and graceful fallbacks in load_key(), or raise a custom configuration error with clear instructions.",
+          "Implement exponential backoff/retry logic (e.g., using tenacity or requests.adapters.HTTPAdapter) for network calls to handle transient rate limits or timeouts.",
+          "Replace bare except: with specific exception types (Exception, IOError, json.JSONDecodeError) and log full tracebacks during development.",
+          "Parameterize project paths via environment variables or CLI arguments to support cross-platform deployment."
+        ]
+      }
+    },
+    {
+      "model": "qwen/qwen3-vl-30b",
+      "verdict": "FAIL",
+      "confidence": 95,
+      "elapsed": 33.6,
+      "finish": "stop",
+      "details": {
+        "agent": "A15_referee_ai_loop",
+        "verdict": "FAIL",
+        "confidence": 95,
+        "critical_bugs": [
+          {
+            "description": "Infinite loop in main loop due to missing break condition in persona iteration",
+            "location": "main() function, line 280",
+            "severity": "critical"
+          },
+          {
+            "description": "Unbounded memory usage in cumulative findings accumulation",
+            "location": "main() function, line 280",
+            "severity": "critical"
+          },
+          {
+            "description": "Uncaught exception in scan_agent_code() can crash the entire process",
+            "location": "scan_agent_code() function, line 148",
+            "severity": "critical"
+          },
+          {
+            "description": "Missing file handle closure in read_safe() function",
+            "location": "read_safe() function, line 104",
+            "severity": "critical"
+          },
+          {
+            "description": "Unbounded recursion in generate_dynamic_focus() due to lack of depth control",
+            "location": "generate_dynamic_focus() function, line 210",
+            "severity": "critical"
+          }
+        ],
+        "warnings": [
+          {
+            "description": "Hardcoded API key path in KEY_FILE variable",
+            "location": "global scope, line 24",
+            "severity": "warning"
+          },
+          {
+            "description": "Unvalidated user input in API calls (no input sanitization)",
+            "location": "call_ai() function, line 240",
+            "severity": "warning"
+          },
+          {
+            "description": "No rate limiting on API calls to OpenRouter",
+            "location": "discover_free_models() function, line 70",
+            "severity": "warning"
+          },
+          {
+            "description": "Unbounded file size in read_safe() function",
+            "location": "read_safe() function, line 104",
+            "severity": "warning"
+          },
+          {
+            "description": "Potential race condition in file access in scan_agent_code()",
+            "location": "scan_agent_code() function, line 148",
+            "severity": "warning"
+          }
+        ],
+        "recommendations": [
+          "Add try-except blocks around all file operations to prevent crashes",
+          "Implement proper error handling for network calls with retry logic",
+          "Add memory limits to cumulative findings accumulation",
+          "Use context managers for all file operations to ensure proper closure",
+          "Implement rate limiting for API calls to prevent throttling",
+          "Add input validation for all user-provided data",
+          "Use environment variables instead of hardcoded paths for secrets",
+          "Add proper logging instead of print statements for debugging",
+          "Implement a maximum recursion depth limit for dynamic focus generation",
+          "Add a timeout mechanism for the main loop to prevent infinite execution"
+        ]
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "elapsed": 124.2,
+      "finish": "length",
+      "details": {
+        "raw": ""
+      }
+    }
+  ]
+}

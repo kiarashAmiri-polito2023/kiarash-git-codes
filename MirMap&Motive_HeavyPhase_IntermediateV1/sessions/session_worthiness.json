@@ -1,0 +1,278 @@
+[
+  {
+    "session": "session_2026-08-24_13-16-03",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-24_13-16-03",
+    "timestamp": "2026-08-26T18:32:52.477884+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 15,
+        "max": 25,
+        "motive": true,
+        "slam": true,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 0,
+        "max": 10
+      },
+      "novelty": {
+        "score": 10,
+        "max": 10
+      }
+    },
+    "score": 50,
+    "grade": "C",
+    "recommendations": [
+      "Run cross_modal_aligner"
+    ],
+    "critical_issues": [
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  },
+  {
+    "session": "session_2026-08-24_13-57-33",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-24_13-57-33",
+    "timestamp": "2026-08-26T18:32:56.013060+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 15,
+        "max": 25,
+        "motive": true,
+        "slam": true,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 0,
+        "max": 10
+      },
+      "novelty": {
+        "score": 10,
+        "max": 10
+      }
+    },
+    "score": 50,
+    "grade": "C",
+    "recommendations": [
+      "Run cross_modal_aligner"
+    ],
+    "critical_issues": [
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  },
+  {
+    "session": "session_2026-08-25_17-32-01",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-25_17-32-01",
+    "timestamp": "2026-08-26T18:32:59.170819+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 10,
+        "max": 25,
+        "motive": true,
+        "slam": true,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 10,
+        "max": 10
+      },
+      "novelty": {
+        "score": 4,
+        "max": 10
+      }
+    },
+    "score": 49,
+    "grade": "D",
+    "recommendations": [],
+    "critical_issues": [
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  },
+  {
+    "session": "session_2026-08-25_17-43-02",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-25_17-43-02",
+    "timestamp": "2026-08-26T18:33:02.501482+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 10,
+        "max": 25,
+        "motive": true,
+        "slam": true,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 10,
+        "max": 10
+      },
+      "novelty": {
+        "score": 4,
+        "max": 10
+      }
+    },
+    "score": 49,
+    "grade": "D",
+    "recommendations": [],
+    "critical_issues": [
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  },
+  {
+    "session": "session_2026-08-25_20-14-09",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-25_20-14-09",
+    "timestamp": "2026-08-26T18:33:05.869894+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 5,
+        "max": 25,
+        "motive": true,
+        "slam": false,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 0,
+        "max": 10
+      },
+      "novelty": {
+        "score": 4,
+        "max": 10
+      }
+    },
+    "score": 34,
+    "grade": "D",
+    "recommendations": [],
+    "critical_issues": [
+      "Fusion exists but SLAM missing (LIDAR disconnected)",
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  },
+  {
+    "session": "session_2026-08-26_20-28-17",
+    "path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\sessions\\session_2026-08-26_20-28-17",
+    "timestamp": "2026-08-26T18:33:05.870396+00:00",
+    "dimensions": {
+      "modality": {
+        "score": 5,
+        "max": 25,
+        "motive": true,
+        "slam": false,
+        "robot": false,
+        "video": false
+      },
+      "quality": {
+        "score": 10,
+        "max": 20,
+        "issues": [
+          "Too few observations"
+        ]
+      },
+      "behavior": {
+        "score": 0,
+        "max": 20
+      },
+      "safety": {
+        "score": 15,
+        "max": 15
+      },
+      "cross_modal": {
+        "score": 0,
+        "max": 10
+      },
+      "novelty": {
+        "score": 4,
+        "max": 10
+      }
+    },
+    "score": 34,
+    "grade": "D",
+    "recommendations": [],
+    "critical_issues": [
+      "Fusion exists but SLAM missing (LIDAR disconnected)",
+      "No robot command data (/cmd_vel, /odom empty)"
+    ],
+    "paper_ready": false
+  }
+]

@@ -1,0 +1,3058 @@
+{
+  "generated_at_utc": "2026-08-24T14:03:19.535798+00:00",
+  "root": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1",
+  "agents": {
+    "apply_merge.py": {
+      "size_kb": 13.5,
+      "mtime": "2026-08-24 12:22:07",
+      "line_count": 399,
+      "sha256_full": "fefdeca9abd59925",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 55,
+          "line_end": 56,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "timestamp_tag": {
+          "line_start": 59,
+          "line_end": 60,
+          "line_count": 2,
+          "hash": "18440444e3e7"
+        },
+        "deep_memory_path": {
+          "line_start": 66,
+          "line_end": 69,
+          "line_count": 4,
+          "hash": "6e4bcc80582a"
+        },
+        "deep_memory_summary_path": {
+          "line_start": 72,
+          "line_end": 75,
+          "line_count": 4,
+          "hash": "2735785dc2f3"
+        },
+        "backup_dir": {
+          "line_start": 78,
+          "line_end": 80,
+          "line_count": 3,
+          "hash": "5f07128ae6d0"
+        },
+        "create_backup": {
+          "line_start": 86,
+          "line_end": 120,
+          "line_count": 35,
+          "hash": "af730cfd80f9"
+        },
+        "list_all_backups": {
+          "line_start": 123,
+          "line_end": 154,
+          "line_count": 32,
+          "hash": "e6254ea648f3"
+        },
+        "print_preview_summary": {
+          "line_start": 160,
+          "line_end": 178,
+          "line_count": 19,
+          "hash": "446dd7ecd74f"
+        },
+        "apply_merge": {
+          "line_start": 184,
+          "line_end": 334,
+          "line_count": 151,
+          "hash": "1008fb897791"
+        },
+        "main": {
+          "line_start": 340,
+          "line_end": 395,
+          "line_count": 56,
+          "hash": "3fb5b3187260"
+        }
+      },
+      "classes": {},
+      "module_docstring": "apply_merge.py — Human-Approved Merge Executor\n\nPer Master Doc section 15.2:\n  The user (with optional AI advice) makes the final decision\n  whether a session's merge candidate should be permanently\n  merged into deep_learning_memory.pkl.\n\nKey rules (all confirmed in Master Doc):\n  - DEFAULT = NO MERGE. Empty input, Enter, or anything except\n    the exact word \"yes\" (case-insensitive) means: do NOT merge.\n  - Always creates a timestamped backup of deep_memory BEFORE\n    merging (for rollback).\n  - Refuses to double-merge a session that's already in memory\n    (unless user restores an older backup first).\n  - Removes the candidate files after successful merge so they\n    can't accidentally be re-applied.\n  - Logs every merge action to merge_history.log for traceability.\n\nUsage:\n    python agents/apply_merge.py <session_path>\n\nOptional flags:\n    --root <path>    Project root path (default: parent of agents/)\n    --force-yes      Skip the interactive prompt (STILL creates a\n                     backup first). Use with extreme caution — this\n                     bypasses the human-in-the-loop safety rule.\n    --show-only      Just display the preview, do nothing else.\n    --list-backups   Show all available backups and exit.",
+      "parse_error": null,
+      "read_error": null
+    },
+    "co_pilot_agent.py": {
+      "size_kb": 23.7,
+      "mtime": "2026-08-19 18:22:29",
+      "line_count": 635,
+      "sha256_full": "d07e48a17af72a9f",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 51,
+          "line_end": 52,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "_next_report_version": {
+          "line_start": 55,
+          "line_end": 65,
+          "line_count": 11,
+          "hash": "1fc38535e087"
+        },
+        "check_slam_health": {
+          "line_start": 71,
+          "line_end": 118,
+          "line_count": 48,
+          "hash": "bb10baf95716"
+        },
+        "check_motive_health": {
+          "line_start": 121,
+          "line_end": 157,
+          "line_count": 37,
+          "hash": "9aa36616ceed"
+        },
+        "check_fusion_quality": {
+          "line_start": 160,
+          "line_end": 186,
+          "line_count": 27,
+          "hash": "bd339db68ab4"
+        },
+        "check_calibration_sanity": {
+          "line_start": 189,
+          "line_end": 222,
+          "line_count": 34,
+          "hash": "a3c914dff365"
+        },
+        "review_persistent_knowledge": {
+          "line_start": 225,
+          "line_end": 248,
+          "line_count": 24,
+          "hash": "6028bf56ce1d"
+        },
+        "get_knowledge_engine_section": {
+          "line_start": 254,
+          "line_end": 307,
+          "line_count": 54,
+          "hash": "0fd92c793e51"
+        },
+        "get_session_discoveries": {
+          "line_start": 313,
+          "line_end": 342,
+          "line_count": 30,
+          "hash": "555d8bf191c9"
+        },
+        "get_session_safety": {
+          "line_start": 348,
+          "line_end": 393,
+          "line_count": 46,
+          "hash": "5843ba57c40d"
+        },
+        "get_recommendations": {
+          "line_start": 399,
+          "line_end": 467,
+          "line_count": 69,
+          "hash": "cb38261f8c38"
+        },
+        "generate_report": {
+          "line_start": 473,
+          "line_end": 620,
+          "line_count": 148,
+          "hash": "1b0fce41bcbb"
+        }
+      },
+      "classes": {},
+      "module_docstring": "Agent: co_pilot_agent.py  (\"کمک خلبان\") — v2\n\nPurpose:\n  Your personal assistant that runs AFTER a session (and after\n  knowledge_engine has updated deep learning memory), reviews\n  EVERYTHING, and writes a single, versioned, human-and-AI-readable\n  report file.\n\nWhat changed in v2:\n  - NEW section: Knowledge Engine Brain Report\n    Shows everything the cumulative brain has learned so far,\n    including object classifications, safety events, insights,\n    unresolved questions, and user feedback history.\n  - NEW section: Session-vs-History comparison\n    Shows what changed in THIS session compared to previous knowledge.\n  - NEW section: Recommended Next Steps\n    Suggests what to do next based on data quality and coverage.\n  - Reads deep_learning_memory.pkl and includes its full snapshot.\n\nReport sections:\n  1. FLAGGED ISSUES (review these first)\n  2. DETAILED INFO (SLAM, Motive, Fusion, Calibration health)\n  3. PERSISTENT KNOWLEDGE (environment_knowledge.pkl summary)\n  4. KNOWLEDGE ENGINE BRAIN REPORT (deep_learning_memory snapshot)\n  5. THIS SESSION'S NEW DISCOVERIES (what changed this time)\n  6. SAFETY ANALYSIS (critical/warning events this session)\n  7. UNRESOLVED QUESTIONS (pending human feedback)\n  8. RECOMMENDED NEXT STEPS",
+      "parse_error": null,
+      "read_error": null
+    },
+    "DataDescriptions.py": {
+      "size_kb": 28.6,
+      "mtime": "2022-11-02 11:24:54",
+      "line_count": 736,
+      "sha256_full": "a99a6feb4dd428dc",
+      "functions": {
+        "get_tab_str": {
+          "line_start": 34,
+          "line_end": 39,
+          "line_count": 6,
+          "hash": "018e260aa99d"
+        },
+        "add_lists": {
+          "line_start": 41,
+          "line_end": 45,
+          "line_count": 5,
+          "hash": "40e2b2556abb"
+        },
+        "test_hash": {
+          "line_start": 49,
+          "line_end": 61,
+          "line_count": 13,
+          "hash": "c63e52eb7076"
+        },
+        "test_hash2": {
+          "line_start": 63,
+          "line_end": 94,
+          "line_count": 32,
+          "hash": "bfd456b16938"
+        },
+        "get_as_string": {
+          "line_start": 98,
+          "line_end": 102,
+          "line_count": 5,
+          "hash": "94d6751db993"
+        },
+        "get_data_sub_packet_type": {
+          "line_start": 105,
+          "line_end": 124,
+          "line_count": 20,
+          "hash": "0e3b6de0cefa"
+        },
+        "MarkerSetDescription.__init__": {
+          "line_start": 128,
+          "line_end": 130,
+          "line_count": 3,
+          "hash": "26a5d7ad49d8"
+        },
+        "MarkerSetDescription.set_name": {
+          "line_start": 132,
+          "line_end": 133,
+          "line_count": 2,
+          "hash": "5a863024b563"
+        },
+        "MarkerSetDescription.get_num_markers": {
+          "line_start": 135,
+          "line_end": 136,
+          "line_count": 2,
+          "hash": "e8584a9532a9"
+        },
+        "MarkerSetDescription.add_marker_name": {
+          "line_start": 138,
+          "line_end": 140,
+          "line_count": 3,
+          "hash": "da98c60107ae"
+        },
+        "MarkerSetDescription.get_as_string": {
+          "line_start": 142,
+          "line_end": 152,
+          "line_count": 11,
+          "hash": "ec55ecf5dfbf"
+        },
+        "RBMarker.__init__": {
+          "line_start": 155,
+          "line_end": 158,
+          "line_count": 4,
+          "hash": "f93c58b30dfb"
+        },
+        "RBMarker.get_as_string": {
+          "line_start": 160,
+          "line_end": 165,
+          "line_count": 6,
+          "hash": "d5181f984a2e"
+        },
+        "RigidBodyDescription.__init__": {
+          "line_start": 169,
+          "line_end": 174,
+          "line_count": 6,
+          "hash": "f22bacf92e07"
+        },
+        "RigidBodyDescription.set_name": {
+          "line_start": 177,
+          "line_end": 178,
+          "line_count": 2,
+          "hash": "3a5fb2453516"
+        },
+        "RigidBodyDescription.set_id": {
+          "line_start": 180,
+          "line_end": 181,
+          "line_count": 2,
+          "hash": "5cd478aea2a3"
+        },
+        "RigidBodyDescription.set_parent_id": {
+          "line_start": 183,
+          "line_end": 184,
+          "line_count": 2,
+          "hash": "58f6aa68552b"
+        },
+        "RigidBodyDescription.set_pos": {
+          "line_start": 186,
+          "line_end": 187,
+          "line_count": 2,
+          "hash": "ffce31e73d39"
+        },
+        "RigidBodyDescription.get_num_markers": {
+          "line_start": 189,
+          "line_end": 190,
+          "line_count": 2,
+          "hash": "83856357aeea"
+        },
+        "RigidBodyDescription.add_rb_marker": {
+          "line_start": 192,
+          "line_end": 194,
+          "line_count": 3,
+          "hash": "4bc899bc6e87"
+        },
+        "RigidBodyDescription.get_as_string": {
+          "line_start": 197,
+          "line_end": 210,
+          "line_count": 14,
+          "hash": "6ecd1a9efd23"
+        },
+        "SkeletonDescription.__init__": {
+          "line_start": 215,
+          "line_end": 218,
+          "line_count": 4,
+          "hash": "85cedcd9825e"
+        },
+        "SkeletonDescription.set_name": {
+          "line_start": 220,
+          "line_end": 221,
+          "line_count": 2,
+          "hash": "59de5c7d8299"
+        },
+        "SkeletonDescription.set_id": {
+          "line_start": 223,
+          "line_end": 224,
+          "line_count": 2,
+          "hash": "5cd478aea2a3"
+        },
+        "SkeletonDescription.add_rigid_body_description": {
+          "line_start": 226,
+          "line_end": 228,
+          "line_count": 3,
+          "hash": "a94da2b1f498"
+        },
+        "SkeletonDescription.get_as_string": {
+          "line_start": 230,
+          "line_end": 241,
+          "line_count": 12,
+          "hash": "9566fe585f4f"
+        },
+        "ForcePlateDescription.__init__": {
+          "line_start": 245,
+          "line_end": 255,
+          "line_count": 11,
+          "hash": "16b4e3edb994"
+        },
+        "ForcePlateDescription.set_id": {
+          "line_start": 257,
+          "line_end": 258,
+          "line_count": 2,
+          "hash": "5cd478aea2a3"
+        },
+        "ForcePlateDescription.set_serial_number": {
+          "line_start": 260,
+          "line_end": 261,
+          "line_count": 2,
+          "hash": "b73ad81be971"
+        },
+        "ForcePlateDescription.set_dimensions": {
+          "line_start": 263,
+          "line_end": 265,
+          "line_count": 3,
+          "hash": "09a4e816215b"
+        },
+        "ForcePlateDescription.set_origin": {
+          "line_start": 267,
+          "line_end": 268,
+          "line_count": 2,
+          "hash": "16b2e51c9065"
+        },
+        "ForcePlateDescription.set_cal_matrix": {
+          "line_start": 270,
+          "line_end": 271,
+          "line_count": 2,
+          "hash": "8b1fce9e2b78"
+        },
+        "ForcePlateDescription.set_corners": {
+          "line_start": 273,
+          "line_end": 274,
+          "line_count": 2,
+          "hash": "4fda6bcac7f6"
+        },
+        "ForcePlateDescription.set_plate_type": {
+          "line_start": 276,
+          "line_end": 277,
+          "line_count": 2,
+          "hash": "f558f20f8883"
+        },
+        "ForcePlateDescription.set_channel_data_type": {
+          "line_start": 279,
+          "line_end": 280,
+          "line_count": 2,
+          "hash": "7d159b535ace"
+        },
+        "ForcePlateDescription.add_channel_name": {
+          "line_start": 282,
+          "line_end": 284,
+          "line_count": 3,
+          "hash": "d8a57b24cf18"
+        },
+        "ForcePlateDescription.get_cal_matrix_as_string": {
+          "line_start": 286,
+          "line_end": 301,
+          "line_count": 16,
+          "hash": "ba8b76250ab6"
+        },
+        "ForcePlateDescription.get_corners_as_string": {
+          "line_start": 303,
+          "line_end": 314,
+          "line_count": 12,
+          "hash": "a27b8347c1e8"
+        },
+        "ForcePlateDescription.get_as_string": {
+          "line_start": 317,
+          "line_end": 343,
+          "line_count": 27,
+          "hash": "96cbd9c907f3"
+        },
+        "DeviceDescription.__init__": {
+          "line_start": 347,
+          "line_end": 353,
+          "line_count": 7,
+          "hash": "1d21a23ab51c"
+        },
+        "DeviceDescription.set_id": {
+          "line_start": 355,
+          "line_end": 357,
+          "line_count": 3,
+          "hash": "973ab0741aa4"
+        },
+        "DeviceDescription.set_name": {
+          "line_start": 359,
+          "line_end": 361,
+          "line_count": 3,
+          "hash": "f6e841e7d06a"
+        },
+        "DeviceDescription.add_channel_name": {
+          "line_start": 363,
+          "line_end": 366,
+          "line_count": 4,
+          "hash": "eb4f9f8fb556"
+        },
+        "DeviceDescription.get_as_string": {
+          "line_start": 368,
+          "line_end": 383,
+          "line_count": 16,
+          "hash": "e1ff35d83ed2"
+        },
+        "CameraDescription.__init__": {
+          "line_start": 387,
+          "line_end": 390,
+          "line_count": 4,
+          "hash": "259cabd7ff19"
+        },
+        "CameraDescription.get_as_string": {
+          "line_start": 392,
+          "line_end": 403,
+          "line_count": 12,
+          "hash": "de733537e774"
+        },
+        "DataDescriptions.__init__": {
+          "line_start": 412,
+          "line_end": 419,
+          "line_count": 8,
+          "hash": "b8510ee61ade"
+        },
+        "DataDescriptions.generate_order_name": {
+          "line_start": 421,
+          "line_end": 426,
+          "line_count": 6,
+          "hash": "0a4d1047a10c"
+        },
+        "DataDescriptions.add_marker_set": {
+          "line_start": 429,
+          "line_end": 436,
+          "line_count": 8,
+          "hash": "054125c0676a"
+        },
+        "DataDescriptions.add_rigid_body": {
+          "line_start": 439,
+          "line_end": 446,
+          "line_count": 8,
+          "hash": "40ff468ce514"
+        },
+        "DataDescriptions.add_skeleton": {
+          "line_start": 450,
+          "line_end": 457,
+          "line_count": 8,
+          "hash": "076ddcd77101"
+        },
+        "DataDescriptions.add_force_plate": {
+          "line_start": 461,
+          "line_end": 468,
+          "line_count": 8,
+          "hash": "4855640b03c9"
+        },
+        "DataDescriptions.add_device": {
+          "line_start": 471,
+          "line_end": 478,
+          "line_count": 8,
+          "hash": "933ef064e473"
+        },
+        "DataDescriptions.add_camera": {
+          "line_start": 481,
+          "line_end": 488,
+          "line_count": 8,
+          "hash": "8be58cc039fe"
+        },
+        "DataDescriptions.add_data": {
+          "line_start": 490,
+          "line_end": 508,
+          "line_count": 19,
+          "hash": "fc7b2a592886"
+        },
+        "DataDescriptions.get_object_from_list": {
+          "line_start": 510,
+          "line_end": 540,
+          "line_count": 31,
+          "hash": "1f561ddb13dc"
+        },
+        "DataDescriptions.get_as_string": {
+          "line_start": 542,
+          "line_end": 569,
+          "line_count": 28,
+          "hash": "8a0418f63fbb"
+        },
+        "generate_marker_set_description": {
+          "line_start": 573,
+          "line_end": 581,
+          "line_count": 9,
+          "hash": "2aa26a7ddce7"
+        },
+        "generate_rb_marker": {
+          "line_start": 583,
+          "line_end": 596,
+          "line_count": 14,
+          "hash": "9b5db10163a2"
+        },
+        "generate_rigid_body_description": {
+          "line_start": 598,
+          "line_end": 609,
+          "line_count": 12,
+          "hash": "4b8ddd707d2b"
+        },
+        "generate_skeleton_description": {
+          "line_start": 611,
+          "line_end": 621,
+          "line_count": 11,
+          "hash": "f753eba58d03"
+        },
+        "generate_force_plate_description": {
+          "line_start": 623,
+          "line_end": 644,
+          "line_count": 22,
+          "hash": "350de89d72b3"
+        },
+        "generate_device_description": {
+          "line_start": 647,
+          "line_end": 657,
+          "line_count": 11,
+          "hash": "02a9755f9532"
+        },
+        "generate_camera_description": {
+          "line_start": 660,
+          "line_end": 664,
+          "line_count": 5,
+          "hash": "944b8d0c9aab"
+        },
+        "generate_data_descriptions": {
+          "line_start": 668,
+          "line_end": 694,
+          "line_count": 27,
+          "hash": "9b28ca40dc2b"
+        },
+        "test_all": {
+          "line_start": 698,
+          "line_end": 730,
+          "line_count": 33,
+          "hash": "eea29ae701ab"
+        }
+      },
+      "classes": {
+        "MarkerSetDescription": {
+          "line_start": 127,
+          "line_end": 152,
+          "method_count": 5,
+          "methods": [
+            "__init__",
+            "add_marker_name",
+            "get_as_string",
+            "get_num_markers",
+            "set_name"
+          ],
+          "hash": "992d743266ff"
+        },
+        "RBMarker": {
+          "line_start": 154,
+          "line_end": 165,
+          "method_count": 2,
+          "methods": [
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "7ae6f9a14cdd"
+        },
+        "RigidBodyDescription": {
+          "line_start": 168,
+          "line_end": 210,
+          "method_count": 8,
+          "methods": [
+            "__init__",
+            "add_rb_marker",
+            "get_as_string",
+            "get_num_markers",
+            "set_id",
+            "set_name",
+            "set_parent_id",
+            "set_pos"
+          ],
+          "hash": "8617b2549ae3"
+        },
+        "SkeletonDescription": {
+          "line_start": 214,
+          "line_end": 241,
+          "method_count": 5,
+          "methods": [
+            "__init__",
+            "add_rigid_body_description",
+            "get_as_string",
+            "set_id",
+            "set_name"
+          ],
+          "hash": "cba891f60eb5"
+        },
+        "ForcePlateDescription": {
+          "line_start": 244,
+          "line_end": 343,
+          "method_count": 13,
+          "methods": [
+            "__init__",
+            "add_channel_name",
+            "get_as_string",
+            "get_cal_matrix_as_string",
+            "get_corners_as_string",
+            "set_cal_matrix",
+            "set_channel_data_type",
+            "set_corners",
+            "set_dimensions",
+            "set_id",
+            "set_origin",
+            "set_plate_type",
+            "set_serial_number"
+          ],
+          "hash": "188762840388"
+        },
+        "DeviceDescription": {
+          "line_start": 345,
+          "line_end": 383,
+          "method_count": 5,
+          "methods": [
+            "__init__",
+            "add_channel_name",
+            "get_as_string",
+            "set_id",
+            "set_name"
+          ],
+          "hash": "c5227e81b69c"
+        },
+        "CameraDescription": {
+          "line_start": 385,
+          "line_end": 403,
+          "method_count": 2,
+          "methods": [
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "6cbda5172360"
+        },
+        "DataDescriptions": {
+          "line_start": 409,
+          "line_end": 569,
+          "method_count": 11,
+          "methods": [
+            "__init__",
+            "add_camera",
+            "add_data",
+            "add_device",
+            "add_force_plate",
+            "add_marker_set",
+            "add_rigid_body",
+            "add_skeleton",
+            "generate_order_name",
+            "get_as_string",
+            "get_object_from_list"
+          ],
+          "hash": "9b791394ae12"
+        }
+      },
+      "module_docstring": null,
+      "parse_error": null,
+      "read_error": null
+    },
+    "knowledge_engine.py": {
+      "size_kb": 31.2,
+      "mtime": "2026-08-24 14:53:16",
+      "line_count": 448,
+      "sha256_full": "1b85a3affaf256cf",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 34,
+          "line_end": 35,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "safe_pickle_dump": {
+          "line_start": 37,
+          "line_end": 41,
+          "line_count": 5,
+          "hash": "d7c9b4007807"
+        },
+        "_empty_deep_memory": {
+          "line_start": 43,
+          "line_end": 59,
+          "line_count": 17,
+          "hash": "651fb0265bf1"
+        },
+        "load_deep_memory": {
+          "line_start": 61,
+          "line_end": 72,
+          "line_count": 12,
+          "hash": "272529977877"
+        },
+        "save_deep_memory": {
+          "line_start": 74,
+          "line_end": 80,
+          "line_count": 7,
+          "hash": "d268f57dafed"
+        },
+        "_is_robot": {
+          "line_start": 82,
+          "line_end": 83,
+          "line_count": 2,
+          "hash": "43d657cff5fb"
+        },
+        "_is_reference": {
+          "line_start": 85,
+          "line_end": 86,
+          "line_count": 2,
+          "hash": "f8d5a9c44a9f"
+        },
+        "_safety_zone": {
+          "line_start": 88,
+          "line_end": 91,
+          "line_count": 4,
+          "hash": "2a79ec51ea34"
+        },
+        "_classify_by_name": {
+          "line_start": 93,
+          "line_end": 97,
+          "line_count": 5,
+          "hash": "4d648e92f9b6"
+        },
+        "_grid_key": {
+          "line_start": 99,
+          "line_end": 100,
+          "line_count": 2,
+          "hash": "1849aff7ff4b"
+        },
+        "_safe_div": {
+          "line_start": 102,
+          "line_end": 103,
+          "line_count": 2,
+          "hash": "24fffc9391b1"
+        },
+        "cluster_lidar_points": {
+          "line_start": 105,
+          "line_end": 127,
+          "line_count": 23,
+          "hash": "0619ac5381e5"
+        },
+        "transfer_labels_to_clusters": {
+          "line_start": 129,
+          "line_end": 142,
+          "line_count": 14,
+          "hash": "2c646e11fc18"
+        },
+        "extract_session_features": {
+          "line_start": 144,
+          "line_end": 247,
+          "line_count": 104,
+          "hash": "8e0aa3a254fb"
+        },
+        "update_memory_from_session": {
+          "line_start": 249,
+          "line_end": 337,
+          "line_count": 89,
+          "hash": "1af986b7a039"
+        },
+        "_height_str": {
+          "line_start": 339,
+          "line_end": 342,
+          "line_count": 4,
+          "hash": "65b12023600d"
+        },
+        "generate_report_section": {
+          "line_start": 345,
+          "line_end": 369,
+          "line_count": 25,
+          "hash": "9695f830f316"
+        },
+        "_simulate_merge_preview": {
+          "line_start": 371,
+          "line_end": 377,
+          "line_count": 7,
+          "hash": "cad89ab59408"
+        },
+        "_write_candidate_summary": {
+          "line_start": 379,
+          "line_end": 386,
+          "line_count": 8,
+          "hash": "81fe099cb0e9"
+        },
+        "analyze_session_safe": {
+          "line_start": 388,
+          "line_end": 405,
+          "line_count": 18,
+          "hash": "e365153603ca"
+        },
+        "analyze_session": {
+          "line_start": 407,
+          "line_end": 408,
+          "line_count": 2,
+          "hash": "81605a9f7cb7"
+        },
+        "load_pending_candidate": {
+          "line_start": 410,
+          "line_end": 413,
+          "line_count": 4,
+          "hash": "e5aaab5fe25d"
+        },
+        "clear_pending_candidate": {
+          "line_start": 415,
+          "line_end": 418,
+          "line_count": 4,
+          "hash": "e1896ff3c5da"
+        },
+        "rebuild_all_sessions": {
+          "line_start": 420,
+          "line_end": 435,
+          "line_count": 16,
+          "hash": "23821734c7d9"
+        }
+      },
+      "classes": {},
+      "module_docstring": "knowledge_engine.py — Cumulative Learning Brain (v2.1)\nSAFE MODE: No auto-merge. Use analyze_session_safe() + apply_merge.py.",
+      "parse_error": null,
+      "read_error": null
+    },
+    "launch_session.py": {
+      "size_kb": 43.2,
+      "mtime": "2026-08-21 16:50:06",
+      "line_count": 1187,
+      "sha256_full": "92c96fde380fc929",
+      "functions": {
+        "CrashLogger.__init__": {
+          "line_start": 63,
+          "line_end": 67,
+          "line_count": 5,
+          "hash": "2d014f035e53"
+        },
+        "CrashLogger.log_error": {
+          "line_start": 69,
+          "line_end": 80,
+          "line_count": 12,
+          "hash": "766f9515f8ab"
+        },
+        "CrashLogger.save_crash_log": {
+          "line_start": 82,
+          "line_end": 101,
+          "line_count": 20,
+          "hash": "0691c4d3c727"
+        },
+        "utc_now_iso": {
+          "line_start": 104,
+          "line_end": 105,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "utc_now_epoch": {
+          "line_start": 108,
+          "line_end": 109,
+          "line_count": 2,
+          "hash": "b216d2214bdd"
+        },
+        "safe_pickle_dump": {
+          "line_start": 112,
+          "line_end": 116,
+          "line_count": 5,
+          "hash": "d7c9b4007807"
+        },
+        "normalize_angle": {
+          "line_start": 119,
+          "line_end": 120,
+          "line_count": 2,
+          "hash": "7d6e50f3498d"
+        },
+        "find_project_root": {
+          "line_start": 126,
+          "line_end": 134,
+          "line_count": 9,
+          "hash": "f90c3868a17c"
+        },
+        "bootstrap_root": {
+          "line_start": 137,
+          "line_end": 141,
+          "line_count": 5,
+          "hash": "e9e7bd2d3a0d"
+        },
+        "create_session": {
+          "line_start": 144,
+          "line_end": 162,
+          "line_count": 19,
+          "hash": "f52d8530d9ee"
+        },
+        "find_calibration": {
+          "line_start": 165,
+          "line_end": 174,
+          "line_count": 10,
+          "hash": "b37f8713e3d7"
+        },
+        "MirSlamLogger.__init__": {
+          "line_start": 181,
+          "line_end": 215,
+          "line_count": 35,
+          "hash": "eb0a670ac87c"
+        },
+        "MirSlamLogger.try_connect": {
+          "line_start": 217,
+          "line_end": 239,
+          "line_count": 23,
+          "hash": "5827702c9818"
+        },
+        "MirSlamLogger._robot_pose_callback": {
+          "line_start": 241,
+          "line_end": 316,
+          "line_count": 76,
+          "hash": "a34036452d3c"
+        },
+        "MirSlamLogger._laser_callback": {
+          "line_start": 318,
+          "line_end": 363,
+          "line_count": 46,
+          "hash": "2eb24fb7ae23"
+        },
+        "MirSlamLogger._f_scan_cb": {
+          "line_start": 365,
+          "line_end": 367,
+          "line_count": 3,
+          "hash": "adc41633d126"
+        },
+        "MirSlamLogger._b_scan_cb": {
+          "line_start": 369,
+          "line_end": 371,
+          "line_count": 3,
+          "hash": "54336005972f"
+        },
+        "MirSlamLogger.subscribe_and_run": {
+          "line_start": 373,
+          "line_end": 439,
+          "line_count": 67,
+          "hash": "30dd03ad05b4"
+        },
+        "MirSlamLogger.map_cb": {
+          "line_start": 383,
+          "line_end": 401,
+          "line_count": 19,
+          "hash": "16c2bfaabbe9"
+        },
+        "MirSlamLogger.save_final": {
+          "line_start": 441,
+          "line_end": 447,
+          "line_count": 7,
+          "hash": "d205bcae3183"
+        },
+        "MirSlamLogger.stop": {
+          "line_start": 449,
+          "line_end": 455,
+          "line_count": 7,
+          "hash": "1504a51ce19c"
+        },
+        "MotiveTrackerThread.__init__": {
+          "line_start": 462,
+          "line_end": 484,
+          "line_count": 23,
+          "hash": "a4543a9c6304"
+        },
+        "MotiveTrackerThread.try_connect": {
+          "line_start": 486,
+          "line_end": 501,
+          "line_count": 16,
+          "hash": "d133bfbaf873"
+        },
+        "MotiveTrackerThread.select_bodies": {
+          "line_start": 503,
+          "line_end": 555,
+          "line_count": 53,
+          "hash": "3606f3b40c00"
+        },
+        "MotiveTrackerThread.ask_remote_recording": {
+          "line_start": 557,
+          "line_end": 572,
+          "line_count": 16,
+          "hash": "c46e769418ca"
+        },
+        "MotiveTrackerThread._check_recording_ended": {
+          "line_start": 574,
+          "line_end": 609,
+          "line_count": 36,
+          "hash": "774c2e08bd6a"
+        },
+        "MotiveTrackerThread.run_collection": {
+          "line_start": 611,
+          "line_end": 688,
+          "line_count": 78,
+          "hash": "de8fc04eb250"
+        },
+        "MotiveTrackerThread.save_final": {
+          "line_start": 690,
+          "line_end": 724,
+          "line_count": 35,
+          "hash": "2a5ba064ef21"
+        },
+        "MotiveTrackerThread.stop": {
+          "line_start": 726,
+          "line_end": 732,
+          "line_count": 7,
+          "hash": "a30be151ba3c"
+        },
+        "run_full_pipeline": {
+          "line_start": 738,
+          "line_end": 884,
+          "line_count": 147,
+          "hash": "09051a9fae18"
+        },
+        "ask_run_ai_advisor": {
+          "line_start": 890,
+          "line_end": 910,
+          "line_count": 21,
+          "hash": "85f942911e9d"
+        },
+        "run_ai_advisor_mock": {
+          "line_start": 913,
+          "line_end": 984,
+          "line_count": 72,
+          "hash": "2b3915f74d5a"
+        },
+        "main": {
+          "line_start": 990,
+          "line_end": 1183,
+          "line_count": 194,
+          "hash": "057dc7bc0a83"
+        },
+        "on_motive_recording_ended": {
+          "line_start": 1031,
+          "line_end": 1033,
+          "line_count": 3,
+          "hash": "ba5b25e76b73"
+        }
+      },
+      "classes": {
+        "CrashLogger": {
+          "line_start": 57,
+          "line_end": 101,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "log_error",
+            "save_crash_log"
+          ],
+          "hash": "bd5dca359306"
+        },
+        "MirSlamLogger": {
+          "line_start": 180,
+          "line_end": 455,
+          "method_count": 9,
+          "methods": [
+            "__init__",
+            "_b_scan_cb",
+            "_f_scan_cb",
+            "_laser_callback",
+            "_robot_pose_callback",
+            "save_final",
+            "stop",
+            "subscribe_and_run",
+            "try_connect"
+          ],
+          "hash": "c96552a83301"
+        },
+        "MotiveTrackerThread": {
+          "line_start": 461,
+          "line_end": 732,
+          "method_count": 8,
+          "methods": [
+            "__init__",
+            "_check_recording_ended",
+            "ask_remote_recording",
+            "run_collection",
+            "save_final",
+            "select_bodies",
+            "stop",
+            "try_connect"
+          ],
+          "hash": "36dfbf49d75c"
+        }
+      },
+      "module_docstring": "launch_session.py — v5 (Dual Stop + Crash Post-Mortem + AI Advisor Trigger)\n\nFeatures:\n  1. Auto-stop detection (Motive recording ends)\n  2. Manual stop (Ctrl+C)\n  3. Crash post-mortem (capture traceback)\n  4. User decision: keep session or delete\n  5. Full-auto pipeline (5 stages)\n  6. AI Advisor trigger (at the end)\n  7. Graceful failure handling",
+      "parse_error": null,
+      "read_error": null
+    },
+    "MoCapData.py": {
+      "size_kb": 31.3,
+      "mtime": "2022-11-02 11:24:54",
+      "line_count": 872,
+      "sha256_full": "ae1d534ebe466ca9",
+      "functions": {
+        "get_tab_str": {
+          "line_start": 35,
+          "line_end": 40,
+          "line_count": 6,
+          "hash": "018e260aa99d"
+        },
+        "add_lists": {
+          "line_start": 42,
+          "line_end": 46,
+          "line_count": 5,
+          "hash": "40e2b2556abb"
+        },
+        "test_hash": {
+          "line_start": 48,
+          "line_end": 60,
+          "line_count": 13,
+          "hash": "a5347aab89db"
+        },
+        "test_hash2": {
+          "line_start": 63,
+          "line_end": 94,
+          "line_count": 32,
+          "hash": "ef098384f503"
+        },
+        "get_as_string": {
+          "line_start": 97,
+          "line_end": 107,
+          "line_count": 11,
+          "hash": "eced22d53634"
+        },
+        "FramePrefixData.__init__": {
+          "line_start": 112,
+          "line_end": 113,
+          "line_count": 2,
+          "hash": "64c3a8b38540"
+        },
+        "FramePrefixData.get_as_string": {
+          "line_start": 115,
+          "line_end": 118,
+          "line_count": 4,
+          "hash": "ccf66b49843a"
+        },
+        "MarkerData.__init__": {
+          "line_start": 121,
+          "line_end": 123,
+          "line_count": 3,
+          "hash": "af797cb808d2"
+        },
+        "MarkerData.set_model_name": {
+          "line_start": 125,
+          "line_end": 126,
+          "line_count": 2,
+          "hash": "3b4e8b7a72c4"
+        },
+        "MarkerData.add_pos": {
+          "line_start": 128,
+          "line_end": 130,
+          "line_count": 3,
+          "hash": "cc8ea02f2318"
+        },
+        "MarkerData.get_num_points": {
+          "line_start": 133,
+          "line_end": 134,
+          "line_count": 2,
+          "hash": "4a2d20ca169f"
+        },
+        "MarkerData.get_as_string": {
+          "line_start": 137,
+          "line_end": 148,
+          "line_count": 12,
+          "hash": "013eb0ad88ab"
+        },
+        "MarkerSetData.__init__": {
+          "line_start": 151,
+          "line_end": 154,
+          "line_count": 4,
+          "hash": "46609d4a3624"
+        },
+        "MarkerSetData.add_marker_data": {
+          "line_start": 156,
+          "line_end": 158,
+          "line_count": 3,
+          "hash": "10cb0a17d113"
+        },
+        "MarkerSetData.add_unlabeled_marker": {
+          "line_start": 160,
+          "line_end": 161,
+          "line_count": 2,
+          "hash": "a725daa06f2c"
+        },
+        "MarkerSetData.get_marker_set_count": {
+          "line_start": 163,
+          "line_end": 164,
+          "line_count": 2,
+          "hash": "e99d621e06ce"
+        },
+        "MarkerSetData.get_unlabeled_marker_count": {
+          "line_start": 166,
+          "line_end": 167,
+          "line_count": 2,
+          "hash": "f80e17fa91ac"
+        },
+        "MarkerSetData.get_as_string": {
+          "line_start": 168,
+          "line_end": 184,
+          "line_count": 17,
+          "hash": "bd4c95663fcb"
+        },
+        "RigidBodyMarker.__init__": {
+          "line_start": 187,
+          "line_end": 191,
+          "line_count": 5,
+          "hash": "2c909cc7e934"
+        },
+        "RigidBodyMarker.get_as_string": {
+          "line_start": 193,
+          "line_end": 200,
+          "line_count": 8,
+          "hash": "5d40dcc1ea69"
+        },
+        "RigidBody.__init__": {
+          "line_start": 204,
+          "line_end": 210,
+          "line_count": 7,
+          "hash": "effa919e9092"
+        },
+        "RigidBody.add_rigid_body_marker": {
+          "line_start": 212,
+          "line_end": 214,
+          "line_count": 3,
+          "hash": "081ae9943970"
+        },
+        "RigidBody.get_as_string": {
+          "line_start": 217,
+          "line_end": 248,
+          "line_count": 32,
+          "hash": "65c612e6a8a4"
+        },
+        "RigidBodyData.__init__": {
+          "line_start": 252,
+          "line_end": 253,
+          "line_count": 2,
+          "hash": "ccae1f63c63e"
+        },
+        "RigidBodyData.add_rigid_body": {
+          "line_start": 256,
+          "line_end": 258,
+          "line_count": 3,
+          "hash": "1bc1fdc583ed"
+        },
+        "RigidBodyData.get_rigid_body_count": {
+          "line_start": 261,
+          "line_end": 262,
+          "line_count": 2,
+          "hash": "fed80df40083"
+        },
+        "RigidBodyData.get_as_string": {
+          "line_start": 265,
+          "line_end": 272,
+          "line_count": 8,
+          "hash": "96474b1b6ba7"
+        },
+        "Skeleton.__init__": {
+          "line_start": 275,
+          "line_end": 277,
+          "line_count": 3,
+          "hash": "cba542a413d3"
+        },
+        "Skeleton.add_rigid_body": {
+          "line_start": 280,
+          "line_end": 282,
+          "line_count": 3,
+          "hash": "1bc1fdc583ed"
+        },
+        "Skeleton.get_as_string": {
+          "line_start": 285,
+          "line_end": 295,
+          "line_count": 11,
+          "hash": "e9ec519b572a"
+        },
+        "SkeletonData.__init__": {
+          "line_start": 299,
+          "line_end": 300,
+          "line_count": 2,
+          "hash": "344e8042386b"
+        },
+        "SkeletonData.add_skeleton": {
+          "line_start": 303,
+          "line_end": 304,
+          "line_count": 2,
+          "hash": "69c3bbe85901"
+        },
+        "SkeletonData.get_skeleton_count": {
+          "line_start": 307,
+          "line_end": 308,
+          "line_count": 2,
+          "hash": "7d23c65ea9fa"
+        },
+        "SkeletonData.get_as_string": {
+          "line_start": 311,
+          "line_end": 321,
+          "line_count": 11,
+          "hash": "ea4f00697423"
+        },
+        "LabeledMarker.__init__": {
+          "line_start": 324,
+          "line_end": 331,
+          "line_count": 8,
+          "hash": "1b879ba9f49f"
+        },
+        "LabeledMarker.__decode_marker_id": {
+          "line_start": 334,
+          "line_end": 337,
+          "line_count": 4,
+          "hash": "8cbca634eb68"
+        },
+        "LabeledMarker.__decode_param": {
+          "line_start": 339,
+          "line_end": 343,
+          "line_count": 5,
+          "hash": "0603d78c97de"
+        },
+        "LabeledMarker.get_as_string": {
+          "line_start": 345,
+          "line_end": 359,
+          "line_count": 15,
+          "hash": "cf6834376a52"
+        },
+        "LabeledMarkerData.__init__": {
+          "line_start": 363,
+          "line_end": 364,
+          "line_count": 2,
+          "hash": "86966984d7ef"
+        },
+        "LabeledMarkerData.add_labeled_marker": {
+          "line_start": 366,
+          "line_end": 368,
+          "line_count": 3,
+          "hash": "0e0f821aa135"
+        },
+        "LabeledMarkerData.get_labeled_marker_count": {
+          "line_start": 370,
+          "line_end": 371,
+          "line_count": 2,
+          "hash": "e1394b6f4d6f"
+        },
+        "LabeledMarkerData.get_as_string": {
+          "line_start": 373,
+          "line_end": 384,
+          "line_count": 12,
+          "hash": "87c27bf84017"
+        },
+        "ForcePlateChannelData.__init__": {
+          "line_start": 387,
+          "line_end": 389,
+          "line_count": 3,
+          "hash": "ca11d6308965"
+        },
+        "ForcePlateChannelData.add_frame_entry": {
+          "line_start": 392,
+          "line_end": 394,
+          "line_count": 3,
+          "hash": "15d749d86d5a"
+        },
+        "ForcePlateChannelData.get_as_string": {
+          "line_start": 397,
+          "line_end": 413,
+          "line_count": 17,
+          "hash": "db875973b58c"
+        },
+        "ForcePlate.__init__": {
+          "line_start": 416,
+          "line_end": 418,
+          "line_count": 3,
+          "hash": "f8cc678f7790"
+        },
+        "ForcePlate.add_channel_data": {
+          "line_start": 420,
+          "line_end": 422,
+          "line_count": 3,
+          "hash": "8be54235638c"
+        },
+        "ForcePlate.get_as_string": {
+          "line_start": 424,
+          "line_end": 433,
+          "line_count": 10,
+          "hash": "647a9d683285"
+        },
+        "ForcePlateData.__init__": {
+          "line_start": 436,
+          "line_end": 437,
+          "line_count": 2,
+          "hash": "1330fb00a023"
+        },
+        "ForcePlateData.add_force_plate": {
+          "line_start": 439,
+          "line_end": 441,
+          "line_count": 3,
+          "hash": "a8224c349f71"
+        },
+        "ForcePlateData.get_force_plate_count": {
+          "line_start": 444,
+          "line_end": 445,
+          "line_count": 2,
+          "hash": "4b2f45b48fde"
+        },
+        "ForcePlateData.get_as_string": {
+          "line_start": 448,
+          "line_end": 459,
+          "line_count": 12,
+          "hash": "635ea5852bc6"
+        },
+        "DeviceChannelData.__init__": {
+          "line_start": 462,
+          "line_end": 464,
+          "line_count": 3,
+          "hash": "ca11d6308965"
+        },
+        "DeviceChannelData.add_frame_entry": {
+          "line_start": 467,
+          "line_end": 469,
+          "line_count": 3,
+          "hash": "15d749d86d5a"
+        },
+        "DeviceChannelData.get_as_string": {
+          "line_start": 472,
+          "line_end": 488,
+          "line_count": 17,
+          "hash": "dfcc27c25e28"
+        },
+        "Device.__init__": {
+          "line_start": 492,
+          "line_end": 494,
+          "line_count": 3,
+          "hash": "a43038451f85"
+        },
+        "Device.add_channel_data": {
+          "line_start": 496,
+          "line_end": 498,
+          "line_count": 3,
+          "hash": "8be54235638c"
+        },
+        "Device.get_as_string": {
+          "line_start": 500,
+          "line_end": 510,
+          "line_count": 11,
+          "hash": "5eab4dbc842b"
+        },
+        "DeviceData.__init__": {
+          "line_start": 514,
+          "line_end": 515,
+          "line_count": 2,
+          "hash": "3ae3a0de7ca0"
+        },
+        "DeviceData.add_device": {
+          "line_start": 517,
+          "line_end": 519,
+          "line_count": 3,
+          "hash": "81e413212cb2"
+        },
+        "DeviceData.get_device_count": {
+          "line_start": 522,
+          "line_end": 523,
+          "line_count": 2,
+          "hash": "82f58a96d57e"
+        },
+        "DeviceData.get_as_string": {
+          "line_start": 526,
+          "line_end": 535,
+          "line_count": 10,
+          "hash": "72fe3a131fdd"
+        },
+        "FrameSuffixData.__init__": {
+          "line_start": 538,
+          "line_end": 547,
+          "line_count": 10,
+          "hash": "e203d9bbf98a"
+        },
+        "FrameSuffixData.get_as_string": {
+          "line_start": 550,
+          "line_end": 563,
+          "line_count": 14,
+          "hash": "cc895089d399"
+        },
+        "MoCapData.__init__": {
+          "line_start": 566,
+          "line_end": 575,
+          "line_count": 10,
+          "hash": "f5df5fcdfaa7"
+        },
+        "MoCapData.set_prefix_data": {
+          "line_start": 577,
+          "line_end": 578,
+          "line_count": 2,
+          "hash": "13f6a22f52b4"
+        },
+        "MoCapData.set_marker_set_data": {
+          "line_start": 580,
+          "line_end": 581,
+          "line_count": 2,
+          "hash": "8bdb0a1bae19"
+        },
+        "MoCapData.set_rigid_body_data": {
+          "line_start": 583,
+          "line_end": 584,
+          "line_count": 2,
+          "hash": "b6ac7270020c"
+        },
+        "MoCapData.set_skeleton_data": {
+          "line_start": 586,
+          "line_end": 587,
+          "line_count": 2,
+          "hash": "d1ec1cb197eb"
+        },
+        "MoCapData.set_labeled_marker_data": {
+          "line_start": 589,
+          "line_end": 590,
+          "line_count": 2,
+          "hash": "1a0f0348236e"
+        },
+        "MoCapData.set_force_plate_data": {
+          "line_start": 592,
+          "line_end": 593,
+          "line_count": 2,
+          "hash": "e5865da1b9b9"
+        },
+        "MoCapData.set_device_data": {
+          "line_start": 595,
+          "line_end": 596,
+          "line_count": 2,
+          "hash": "5a491f9fec86"
+        },
+        "MoCapData.set_suffix_data": {
+          "line_start": 598,
+          "line_end": 599,
+          "line_count": 2,
+          "hash": "c78357699731"
+        },
+        "MoCapData.get_as_string": {
+          "line_start": 601,
+          "line_end": 648,
+          "line_count": 48,
+          "hash": "c217dd0f3f20"
+        },
+        "generate_prefix_data": {
+          "line_start": 654,
+          "line_end": 656,
+          "line_count": 3,
+          "hash": "fd7f05f86cc4"
+        },
+        "generate_label": {
+          "line_start": 658,
+          "line_end": 660,
+          "line_count": 3,
+          "hash": "9ba1dee577d2"
+        },
+        "generate_position_srand": {
+          "line_start": 662,
+          "line_end": 665,
+          "line_count": 4,
+          "hash": "61edafb6235c"
+        },
+        "generate_marker_data": {
+          "line_start": 667,
+          "line_end": 679,
+          "line_count": 13,
+          "hash": "547863362583"
+        },
+        "generate_marker_set_data": {
+          "line_start": 682,
+          "line_end": 695,
+          "line_count": 14,
+          "hash": "1369bed1d27b"
+        },
+        "generate_rigid_body_marker_srand": {
+          "line_start": 697,
+          "line_end": 706,
+          "line_count": 10,
+          "hash": "11140873ca2e"
+        },
+        "generate_rigid_body": {
+          "line_start": 707,
+          "line_end": 714,
+          "line_count": 8,
+          "hash": "4cc5e3bf3fb7"
+        },
+        "generate_rigid_body_data": {
+          "line_start": 716,
+          "line_end": 722,
+          "line_count": 7,
+          "hash": "39c95b69fa2e"
+        },
+        "generate_skeleton": {
+          "line_start": 724,
+          "line_end": 731,
+          "line_count": 8,
+          "hash": "67d80905a108"
+        },
+        "generate_skeleton_data": {
+          "line_start": 733,
+          "line_end": 738,
+          "line_count": 6,
+          "hash": "069ce5b4060d"
+        },
+        "generate_labeled_marker": {
+          "line_start": 740,
+          "line_end": 752,
+          "line_count": 13,
+          "hash": "d7401526ec78"
+        },
+        "generate_labeled_marker_data": {
+          "line_start": 755,
+          "line_end": 762,
+          "line_count": 8,
+          "hash": "cc0ddcc3e7db"
+        },
+        "generate_fp_channel_data": {
+          "line_start": 764,
+          "line_end": 770,
+          "line_count": 7,
+          "hash": "070b26785a46"
+        },
+        "generate_force_plate": {
+          "line_start": 773,
+          "line_end": 778,
+          "line_count": 6,
+          "hash": "cad4169549f9"
+        },
+        "generate_force_plate_data": {
+          "line_start": 781,
+          "line_end": 787,
+          "line_count": 7,
+          "hash": "4128f38ba4d5"
+        },
+        "generate_device_channel_data": {
+          "line_start": 789,
+          "line_end": 795,
+          "line_count": 7,
+          "hash": "36dc5600de43"
+        },
+        "generate_device": {
+          "line_start": 798,
+          "line_end": 803,
+          "line_count": 6,
+          "hash": "ea062fee2921"
+        },
+        "generate_device_data": {
+          "line_start": 805,
+          "line_end": 809,
+          "line_count": 5,
+          "hash": "56cc235bb218"
+        },
+        "generate_suffix_data": {
+          "line_start": 811,
+          "line_end": 819,
+          "line_count": 9,
+          "hash": "9ecca0795e66"
+        },
+        "generate_mocap_data": {
+          "line_start": 822,
+          "line_end": 834,
+          "line_count": 13,
+          "hash": "ea8267813d31"
+        },
+        "test_all": {
+          "line_start": 836,
+          "line_end": 869,
+          "line_count": 34,
+          "hash": "6a7e1364cc94"
+        }
+      },
+      "classes": {
+        "FramePrefixData": {
+          "line_start": 111,
+          "line_end": 118,
+          "method_count": 2,
+          "methods": [
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "7b0d259767a6"
+        },
+        "MarkerData": {
+          "line_start": 120,
+          "line_end": 148,
+          "method_count": 5,
+          "methods": [
+            "__init__",
+            "add_pos",
+            "get_as_string",
+            "get_num_points",
+            "set_model_name"
+          ],
+          "hash": "8d6a91b1123a"
+        },
+        "MarkerSetData": {
+          "line_start": 150,
+          "line_end": 184,
+          "method_count": 6,
+          "methods": [
+            "__init__",
+            "add_marker_data",
+            "add_unlabeled_marker",
+            "get_as_string",
+            "get_marker_set_count",
+            "get_unlabeled_marker_count"
+          ],
+          "hash": "7bb6914f8df8"
+        },
+        "RigidBodyMarker": {
+          "line_start": 186,
+          "line_end": 200,
+          "method_count": 2,
+          "methods": [
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "d8fa7a97b7da"
+        },
+        "RigidBody": {
+          "line_start": 203,
+          "line_end": 248,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_rigid_body_marker",
+            "get_as_string"
+          ],
+          "hash": "2be50955c32e"
+        },
+        "RigidBodyData": {
+          "line_start": 251,
+          "line_end": 272,
+          "method_count": 4,
+          "methods": [
+            "__init__",
+            "add_rigid_body",
+            "get_as_string",
+            "get_rigid_body_count"
+          ],
+          "hash": "e396b2deb39b"
+        },
+        "Skeleton": {
+          "line_start": 274,
+          "line_end": 295,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_rigid_body",
+            "get_as_string"
+          ],
+          "hash": "5f24ba540c16"
+        },
+        "SkeletonData": {
+          "line_start": 298,
+          "line_end": 321,
+          "method_count": 4,
+          "methods": [
+            "__init__",
+            "add_skeleton",
+            "get_as_string",
+            "get_skeleton_count"
+          ],
+          "hash": "25e5d883f6f1"
+        },
+        "LabeledMarker": {
+          "line_start": 323,
+          "line_end": 359,
+          "method_count": 4,
+          "methods": [
+            "__decode_marker_id",
+            "__decode_param",
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "6985e28e3d5d"
+        },
+        "LabeledMarkerData": {
+          "line_start": 362,
+          "line_end": 384,
+          "method_count": 4,
+          "methods": [
+            "__init__",
+            "add_labeled_marker",
+            "get_as_string",
+            "get_labeled_marker_count"
+          ],
+          "hash": "8750dbd53cd4"
+        },
+        "ForcePlateChannelData": {
+          "line_start": 386,
+          "line_end": 413,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_frame_entry",
+            "get_as_string"
+          ],
+          "hash": "413f29e4d975"
+        },
+        "ForcePlate": {
+          "line_start": 415,
+          "line_end": 433,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_channel_data",
+            "get_as_string"
+          ],
+          "hash": "35e9de09a692"
+        },
+        "ForcePlateData": {
+          "line_start": 435,
+          "line_end": 459,
+          "method_count": 4,
+          "methods": [
+            "__init__",
+            "add_force_plate",
+            "get_as_string",
+            "get_force_plate_count"
+          ],
+          "hash": "a68e8573b660"
+        },
+        "DeviceChannelData": {
+          "line_start": 461,
+          "line_end": 488,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_frame_entry",
+            "get_as_string"
+          ],
+          "hash": "8c13d4bcbae9"
+        },
+        "Device": {
+          "line_start": 491,
+          "line_end": 510,
+          "method_count": 3,
+          "methods": [
+            "__init__",
+            "add_channel_data",
+            "get_as_string"
+          ],
+          "hash": "b1833fbd06a9"
+        },
+        "DeviceData": {
+          "line_start": 513,
+          "line_end": 535,
+          "method_count": 4,
+          "methods": [
+            "__init__",
+            "add_device",
+            "get_as_string",
+            "get_device_count"
+          ],
+          "hash": "fddd863bbbf1"
+        },
+        "FrameSuffixData": {
+          "line_start": 537,
+          "line_end": 563,
+          "method_count": 2,
+          "methods": [
+            "__init__",
+            "get_as_string"
+          ],
+          "hash": "ebcd36f1b3cd"
+        },
+        "MoCapData": {
+          "line_start": 565,
+          "line_end": 648,
+          "method_count": 10,
+          "methods": [
+            "__init__",
+            "get_as_string",
+            "set_device_data",
+            "set_force_plate_data",
+            "set_labeled_marker_data",
+            "set_marker_set_data",
+            "set_prefix_data",
+            "set_rigid_body_data",
+            "set_skeleton_data",
+            "set_suffix_data"
+          ],
+          "hash": "f6f09cfbc328"
+        }
+      },
+      "module_docstring": null,
+      "parse_error": null,
+      "read_error": null
+    },
+    "motive_connector.py": {
+      "size_kb": 18.0,
+      "mtime": "2026-08-18 18:07:55",
+      "line_count": 491,
+      "sha256_full": "cdab73f91e96efcc",
+      "functions": {
+        "quaternion_to_euler_deg": {
+          "line_start": 46,
+          "line_end": 59,
+          "line_count": 14,
+          "hash": "415b5fe2e0b8"
+        },
+        "MotiveConnector.__init__": {
+          "line_start": 78,
+          "line_end": 100,
+          "line_count": 23,
+          "hash": "562fccbd3da0"
+        },
+        "MotiveConnector._on_rigid_body": {
+          "line_start": 105,
+          "line_end": 143,
+          "line_count": 39,
+          "hash": "e6d93ba83644"
+        },
+        "MotiveConnector._on_model_definitions": {
+          "line_start": 145,
+          "line_end": 176,
+          "line_count": 32,
+          "hash": "bf581e37cdf2"
+        },
+        "MotiveConnector._on_new_frame": {
+          "line_start": 178,
+          "line_end": 185,
+          "line_count": 8,
+          "hash": "be3a81c2c6b2"
+        },
+        "MotiveConnector.connect": {
+          "line_start": 190,
+          "line_end": 216,
+          "line_count": 27,
+          "hash": "5800ce6c8936"
+        },
+        "MotiveConnector.request_model_definitions": {
+          "line_start": 218,
+          "line_end": 262,
+          "line_count": 45,
+          "hash": "8fbff74cec7e"
+        },
+        "MotiveConnector.shutdown": {
+          "line_start": 264,
+          "line_end": 270,
+          "line_count": 7,
+          "hash": "07e3f910f5ca"
+        },
+        "MotiveConnector.start_recording": {
+          "line_start": 275,
+          "line_end": 310,
+          "line_count": 36,
+          "hash": "eb4ca6f1b275"
+        },
+        "MotiveConnector.stop_recording": {
+          "line_start": 312,
+          "line_end": 328,
+          "line_count": 17,
+          "hash": "4ea3df04c3c3"
+        },
+        "MotiveConnector.is_motive_recording": {
+          "line_start": 330,
+          "line_end": 334,
+          "line_count": 5,
+          "hash": "d054e480cdd4"
+        },
+        "MotiveConnector.list_rigid_bodies": {
+          "line_start": 339,
+          "line_end": 341,
+          "line_count": 3,
+          "hash": "d9f7590c5679"
+        },
+        "MotiveConnector.is_tracked": {
+          "line_start": 343,
+          "line_end": 346,
+          "line_count": 4,
+          "hash": "e10668b773ce"
+        },
+        "MotiveConnector.is_fresh": {
+          "line_start": 348,
+          "line_end": 355,
+          "line_count": 8,
+          "hash": "88f89b605db2"
+        },
+        "MotiveConnector.get_age_sec": {
+          "line_start": 357,
+          "line_end": 362,
+          "line_count": 6,
+          "hash": "c605bbe447ce"
+        },
+        "MotiveConnector.get_position_mm": {
+          "line_start": 364,
+          "line_end": 370,
+          "line_count": 7,
+          "hash": "ed0f49d9bff5"
+        },
+        "MotiveConnector.get_ground_position_mm": {
+          "line_start": 372,
+          "line_end": 375,
+          "line_count": 4,
+          "hash": "dc09cef50810"
+        },
+        "MotiveConnector.get_height_mm": {
+          "line_start": 377,
+          "line_end": 380,
+          "line_count": 4,
+          "hash": "e91a03858888"
+        },
+        "MotiveConnector.get_quaternion": {
+          "line_start": 382,
+          "line_end": 387,
+          "line_count": 6,
+          "hash": "3ebe6fd56aa5"
+        },
+        "MotiveConnector.get_euler_deg": {
+          "line_start": 389,
+          "line_end": 395,
+          "line_count": 7,
+          "hash": "a4c51c8c41ee"
+        },
+        "MotiveConnector.get_full_state": {
+          "line_start": 397,
+          "line_end": 406,
+          "line_count": 10,
+          "hash": "dc0fe367606a"
+        },
+        "MotiveConnector.get_all_full_states": {
+          "line_start": 408,
+          "line_end": 411,
+          "line_count": 4,
+          "hash": "1574a42bd27f"
+        },
+        "MotiveConnector.get_latest_frame": {
+          "line_start": 413,
+          "line_end": 416,
+          "line_count": 4,
+          "hash": "598b9e48dc95"
+        },
+        "MotiveConnector.auto_detect_robot_name": {
+          "line_start": 418,
+          "line_end": 422,
+          "line_count": 5,
+          "hash": "b6f747828aa9"
+        },
+        "MotiveConnector.get_camera_descriptions": {
+          "line_start": 424,
+          "line_end": 428,
+          "line_count": 5,
+          "hash": "b0f06e561bf4"
+        }
+      },
+      "classes": {
+        "MotiveConnector": {
+          "line_start": 62,
+          "line_end": 428,
+          "method_count": 24,
+          "methods": [
+            "__init__",
+            "_on_model_definitions",
+            "_on_new_frame",
+            "_on_rigid_body",
+            "auto_detect_robot_name",
+            "connect",
+            "get_age_sec",
+            "get_all_full_states",
+            "get_camera_descriptions",
+            "get_euler_deg",
+            "get_full_state",
+            "get_ground_position_mm",
+            "get_height_mm",
+            "get_latest_frame",
+            "get_position_mm",
+            "get_quaternion",
+            "is_fresh",
+            "is_motive_recording",
+            "is_tracked",
+            "list_rigid_bodies",
+            "request_model_definitions",
+            "shutdown",
+            "start_recording",
+            "stop_recording"
+          ],
+          "hash": "36b404b3a43e"
+        }
+      },
+      "module_docstring": "Module: motive_connector.py  (v2 — rewritten against the ACTUAL NatNetClient SDK)\n\nThe ONLY module in the project that touches NatNetClient directly.\nEvery other script must import and use MotiveConnector.\n\nConfirmed project convention (calibration v4, PASS):\n  - Motive Up Axis = Z\n  - Ground plane   = Motive (X, Y)\n  - Vertical       = Motive Z\n  - All positions returned in MILLIMETERS.\n\nChangelog vs v1:\n  - Uses client.run() which returns True/False (not Thread(target=run)).\n  - Captures per-frame metadata (frame_number, timestamp, is_recording)\n    via new_frame_listener for future video sync.\n  - Captures camera descriptions (name, position, orientation) from the\n    SDK's __unpack_camera_description, for the future video annotation\n    module (OptiTrack cameras in Object Mode -> AVI).\n  - Adds start_recording() / stop_recording() using NAT_REQUEST with\n    text commands, confirmed compatible with this SDK's send_request().\n  - Thread safety via self._lock on all shared state.",
+      "parse_error": null,
+      "read_error": null
+    },
+    "NatNetClient.py": {
+      "size_kb": 37.1,
+      "mtime": "2026-07-27 19:22:42",
+      "line_count": 842,
+      "sha256_full": "e9779bff32c995c4",
+      "functions": {
+        "trace": {
+          "line_start": 23,
+          "line_end": 24,
+          "line_count": 2,
+          "hash": "7bf8d22d17a8"
+        },
+        "trace_dd": {
+          "line_start": 26,
+          "line_end": 27,
+          "line_count": 2,
+          "hash": "8fdc32730e1d"
+        },
+        "trace_mf": {
+          "line_start": 29,
+          "line_end": 30,
+          "line_count": 2,
+          "hash": "5947ad3422d6"
+        },
+        "get_message_id": {
+          "line_start": 32,
+          "line_end": 34,
+          "line_count": 3,
+          "hash": "b5eb2252f302"
+        },
+        "NatNetClient.__init__": {
+          "line_start": 48,
+          "line_end": 71,
+          "line_count": 24,
+          "hash": "26c06851af21"
+        },
+        "NatNetClient.set_client_address": {
+          "line_start": 87,
+          "line_end": 89,
+          "line_count": 3,
+          "hash": "dca37fe9e047"
+        },
+        "NatNetClient.get_client_address": {
+          "line_start": 91,
+          "line_end": 92,
+          "line_count": 2,
+          "hash": "9e397da92432"
+        },
+        "NatNetClient.set_server_address": {
+          "line_start": 94,
+          "line_end": 96,
+          "line_count": 3,
+          "hash": "398f1d6a736f"
+        },
+        "NatNetClient.get_server_address": {
+          "line_start": 98,
+          "line_end": 99,
+          "line_count": 2,
+          "hash": "7a0784d7b209"
+        },
+        "NatNetClient.set_use_multicast": {
+          "line_start": 101,
+          "line_end": 103,
+          "line_count": 3,
+          "hash": "4f2d536acf7d"
+        },
+        "NatNetClient.can_change_bitstream_version": {
+          "line_start": 105,
+          "line_end": 106,
+          "line_count": 2,
+          "hash": "3ada7b12632e"
+        },
+        "NatNetClient.set_nat_net_version": {
+          "line_start": 108,
+          "line_end": 125,
+          "line_count": 18,
+          "hash": "d51a91df7a7e"
+        },
+        "NatNetClient.get_major": {
+          "line_start": 127,
+          "line_end": 128,
+          "line_count": 2,
+          "hash": "e293270bee8b"
+        },
+        "NatNetClient.get_minor": {
+          "line_start": 130,
+          "line_end": 131,
+          "line_count": 2,
+          "hash": "c672f199d4e9"
+        },
+        "NatNetClient.set_print_level": {
+          "line_start": 133,
+          "line_end": 136,
+          "line_count": 4,
+          "hash": "d75ef90e4e5b"
+        },
+        "NatNetClient.get_print_level": {
+          "line_start": 138,
+          "line_end": 139,
+          "line_count": 2,
+          "hash": "6eb89aaf9594"
+        },
+        "NatNetClient.connected": {
+          "line_start": 141,
+          "line_end": 151,
+          "line_count": 11,
+          "hash": "e6cf92198ec7"
+        },
+        "NatNetClient.__create_command_socket": {
+          "line_start": 153,
+          "line_end": 172,
+          "line_count": 20,
+          "hash": "4f8e82a91ae1"
+        },
+        "NatNetClient.__create_data_socket": {
+          "line_start": 174,
+          "line_end": 193,
+          "line_count": 20,
+          "hash": "e70a38b94f92"
+        },
+        "NatNetClient.__unpack_rigid_body": {
+          "line_start": 195,
+          "line_end": 219,
+          "line_count": 25,
+          "hash": "95a41531ce61"
+        },
+        "NatNetClient.__unpack_skeleton": {
+          "line_start": 221,
+          "line_end": 232,
+          "line_count": 12,
+          "hash": "7bb8fa29c34c"
+        },
+        "NatNetClient.__unpack_frame_prefix_data": {
+          "line_start": 234,
+          "line_end": 239,
+          "line_count": 6,
+          "hash": "06f73a5207b2"
+        },
+        "NatNetClient.__unpack_marker_set_data": {
+          "line_start": 241,
+          "line_end": 264,
+          "line_count": 24,
+          "hash": "71e1d022b094"
+        },
+        "NatNetClient.__unpack_rigid_body_data": {
+          "line_start": 266,
+          "line_end": 275,
+          "line_count": 10,
+          "hash": "f34bd2ec3937"
+        },
+        "NatNetClient.__unpack_skeleton_data": {
+          "line_start": 277,
+          "line_end": 288,
+          "line_count": 12,
+          "hash": "fb2834b47c3b"
+        },
+        "NatNetClient.__decode_marker_id": {
+          "line_start": 290,
+          "line_end": 293,
+          "line_count": 4,
+          "hash": "e6108d3dfba2"
+        },
+        "NatNetClient.__unpack_labeled_marker_data": {
+          "line_start": 295,
+          "line_end": 320,
+          "line_count": 26,
+          "hash": "979cde91de7f"
+        },
+        "NatNetClient.__unpack_force_plate_data": {
+          "line_start": 322,
+          "line_end": 345,
+          "line_count": 24,
+          "hash": "c4e8ba91dd44"
+        },
+        "NatNetClient.__unpack_device_data": {
+          "line_start": 347,
+          "line_end": 370,
+          "line_count": 24,
+          "hash": "34ca155272dc"
+        },
+        "NatNetClient.__unpack_frame_suffix_data": {
+          "line_start": 372,
+          "line_end": 409,
+          "line_count": 38,
+          "hash": "bc3dad0ca598"
+        },
+        "NatNetClient.__unpack_mocap_data": {
+          "line_start": 411,
+          "line_end": 476,
+          "line_count": 66,
+          "hash": "e3fb30f6b9ca"
+        },
+        "NatNetClient.__unpack_marker_set_description": {
+          "line_start": 478,
+          "line_end": 490,
+          "line_count": 13,
+          "hash": "2a01e1ea0935"
+        },
+        "NatNetClient.__unpack_rigid_body_description": {
+          "line_start": 492,
+          "line_end": 529,
+          "line_count": 38,
+          "hash": "4d2a33f2c15a"
+        },
+        "NatNetClient.__unpack_skeleton_description": {
+          "line_start": 531,
+          "line_end": 546,
+          "line_count": 16,
+          "hash": "f9884358d01b"
+        },
+        "NatNetClient.__unpack_force_plate_description": {
+          "line_start": 548,
+          "line_end": 595,
+          "line_count": 48,
+          "hash": "8e379b22c338"
+        },
+        "NatNetClient.__unpack_device_description": {
+          "line_start": 597,
+          "line_end": 618,
+          "line_count": 22,
+          "hash": "92f9339c527c"
+        },
+        "NatNetClient.__unpack_camera_description": {
+          "line_start": 620,
+          "line_end": 629,
+          "line_count": 10,
+          "hash": "ff6d46ae844d"
+        },
+        "NatNetClient.__unpack_data_descriptions": {
+          "line_start": 631,
+          "line_end": 656,
+          "line_count": 26,
+          "hash": "7fe241be5df0"
+        },
+        "NatNetClient.__unpack_server_info": {
+          "line_start": 658,
+          "line_end": 682,
+          "line_count": 25,
+          "hash": "8fd85e5f4aad"
+        },
+        "NatNetClient.__command_thread_function": {
+          "line_start": 684,
+          "line_end": 719,
+          "line_count": 36,
+          "hash": "7497cc58c557"
+        },
+        "NatNetClient.__data_thread_function": {
+          "line_start": 721,
+          "line_end": 749,
+          "line_count": 29,
+          "hash": "1aa4173aab01"
+        },
+        "NatNetClient.__process_message": {
+          "line_start": 751,
+          "line_end": 775,
+          "line_count": 25,
+          "hash": "6b18730508d3"
+        },
+        "NatNetClient.send_request": {
+          "line_start": 777,
+          "line_end": 795,
+          "line_count": 19,
+          "hash": "3d2f5676f7dc"
+        },
+        "NatNetClient.send_command": {
+          "line_start": 797,
+          "line_end": 805,
+          "line_count": 9,
+          "hash": "080a66fef24b"
+        },
+        "NatNetClient.send_commands": {
+          "line_start": 807,
+          "line_end": 809,
+          "line_count": 3,
+          "hash": "809104608a92"
+        },
+        "NatNetClient.send_keep_alive": {
+          "line_start": 811,
+          "line_end": 812,
+          "line_count": 2,
+          "hash": "db14a67d5452"
+        },
+        "NatNetClient.shutdown": {
+          "line_start": 814,
+          "line_end": 822,
+          "line_count": 9,
+          "hash": "3dae3796e1e6"
+        },
+        "NatNetClient.run": {
+          "line_start": 824,
+          "line_end": 842,
+          "line_count": 19,
+          "hash": "50a81d60cedf"
+        }
+      },
+      "classes": {
+        "NatNetClient": {
+          "line_start": 45,
+          "line_end": 842,
+          "method_count": 44,
+          "methods": [
+            "__command_thread_function",
+            "__create_command_socket",
+            "__create_data_socket",
+            "__data_thread_function",
+            "__decode_marker_id",
+            "__init__",
+            "__process_message",
+            "__unpack_camera_description",
+            "__unpack_data_descriptions",
+            "__unpack_device_data",
+            "__unpack_device_description",
+            "__unpack_force_plate_data",
+            "__unpack_force_plate_description",
+            "__unpack_frame_prefix_data",
+            "__unpack_frame_suffix_data",
+            "__unpack_labeled_marker_data",
+            "__unpack_marker_set_data",
+            "__unpack_marker_set_description",
+            "__unpack_mocap_data",
+            "__unpack_rigid_body",
+            "__unpack_rigid_body_data",
+            "__unpack_rigid_body_description",
+            "__unpack_server_info",
+            "__unpack_skeleton",
+            "__unpack_skeleton_data",
+            "__unpack_skeleton_description",
+            "can_change_bitstream_version",
+            "connected",
+            "get_client_address",
+            "get_major",
+            "get_minor",
+            "get_print_level",
+            "get_server_address",
+            "run",
+            "send_command",
+            "send_commands",
+            "send_keep_alive",
+            "send_request",
+            "set_client_address",
+            "set_nat_net_version",
+            "set_print_level",
+            "set_server_address",
+            "set_use_multicast",
+            "shutdown"
+          ],
+          "hash": "f2f92b88506b"
+        }
+      },
+      "module_docstring": null,
+      "parse_error": null,
+      "read_error": null
+    },
+    "plannar snapshot theises.py": {
+      "size_kb": 0.0,
+      "mtime": "2026-08-24 16:02:16",
+      "line_count": 0,
+      "sha256_full": "e3b0c44298fc1c14",
+      "functions": {},
+      "classes": {},
+      "module_docstring": null,
+      "parse_error": null,
+      "read_error": null
+    },
+    "quality_gate.py": {
+      "size_kb": 19.2,
+      "mtime": "2026-08-24 14:53:16",
+      "line_count": 508,
+      "sha256_full": "82756a20fc6af6be",
+      "functions": {
+        "_flag_zero_placeholder": {
+          "line_start": 73,
+          "line_end": 103,
+          "line_count": 31,
+          "hash": "5ac73c1062c6"
+        },
+        "_flag_duplicate_positions": {
+          "line_start": 106,
+          "line_end": 131,
+          "line_count": 26,
+          "hash": "5a6497d6f650"
+        },
+        "_flag_reference_bug": {
+          "line_start": 134,
+          "line_end": 158,
+          "line_count": 25,
+          "hash": "924366e5a1c0"
+        },
+        "_flag_low_confidence": {
+          "line_start": 161,
+          "line_end": 186,
+          "line_count": 26,
+          "hash": "aaba413beddf"
+        },
+        "_flag_statistical_outliers": {
+          "line_start": 189,
+          "line_end": 257,
+          "line_count": 69,
+          "hash": "7f84ed4ad545"
+        },
+        "_flag_empty_session": {
+          "line_start": 260,
+          "line_end": 277,
+          "line_count": 18,
+          "hash": "1f164f9de627"
+        },
+        "_flag_excessive_anomalies": {
+          "line_start": 280,
+          "line_end": 297,
+          "line_count": 18,
+          "hash": "9a38ddd5e765"
+        },
+        "_flag_suspicious_speed": {
+          "line_start": 300,
+          "line_end": 320,
+          "line_count": 21,
+          "hash": "90e8ad3647ae"
+        },
+        "_flag_learning_stagnation": {
+          "line_start": 323,
+          "line_end": 344,
+          "line_count": 22,
+          "hash": "9e1d0aecb771"
+        },
+        "_calculate_learning_progress": {
+          "line_start": 350,
+          "line_end": 411,
+          "line_count": 62,
+          "hash": "d4f6e1bd0d62"
+        },
+        "run_quality_gate": {
+          "line_start": 417,
+          "line_end": 508,
+          "line_count": 92,
+          "hash": "50067e3ef181"
+        }
+      },
+      "classes": {},
+      "module_docstring": "quality_gate.py — Flag Generator (v2)\n\nPer Master Doc section 15.3:\n  This agent is NO LONGER a \"judge\" that decides pass/fail.\n  Instead, it ONLY generates flags (informational warnings)\n  about potential issues in the session data.\n\n  The flags are written to the session's comprehensive report,\n  and later used by the AI Advisor and human reviewer to make\n  the final merge/no-merge decision.\n\nResponsibilities:\n  - Flag data quality issues (zero-placeholder, untracked, etc.)\n  - Flag statistical outliers (safety events, anomalies, etc.)\n  - Flag duplicate/redundant data\n  - Flag reference bugs (shared dicts)\n  - Flag low-confidence classifications\n  - Flag empty sessions (no Motive objects)\n  - Flag suspicious speeds/positions\n  - Calculate Learning Progress Score (section 15.4)\n\nOutput:\n  - Writes a \"QUALITY GATE FLAGS\" section to the session's\n    comprehensive report file.\n  - Returns a dict of flags for programmatic use (e.g. by\n    run_session_analysis.py).",
+      "parse_error": null,
+      "read_error": null
+    },
+    "run_session_analysis.py": {
+      "size_kb": 13.8,
+      "mtime": "2026-08-24 12:44:35",
+      "line_count": 337,
+      "sha256_full": "9e8d99dab3a72ab0",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 44,
+          "line_end": 45,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "run_fusion": {
+          "line_start": 51,
+          "line_end": 75,
+          "line_count": 25,
+          "hash": "f0b468f32290"
+        },
+        "run_knowledge_engine_safe": {
+          "line_start": 78,
+          "line_end": 98,
+          "line_count": 21,
+          "hash": "b5aa8354acd6"
+        },
+        "run_quality_gate": {
+          "line_start": 101,
+          "line_end": 110,
+          "line_count": 10,
+          "hash": "b32204fde891"
+        },
+        "generate_merge_review_package": {
+          "line_start": 116,
+          "line_end": 204,
+          "line_count": 89,
+          "hash": "b4211567d08d"
+        },
+        "initialize_comprehensive_report": {
+          "line_start": 207,
+          "line_end": 223,
+          "line_count": 17,
+          "hash": "2a65e7799f0f"
+        },
+        "append_agent_output": {
+          "line_start": 226,
+          "line_end": 235,
+          "line_count": 10,
+          "hash": "6c10f1c831f4"
+        },
+        "run_full_analysis": {
+          "line_start": 241,
+          "line_end": 296,
+          "line_count": 56,
+          "hash": "a90cef301ea3"
+        },
+        "main": {
+          "line_start": 302,
+          "line_end": 333,
+          "line_count": 32,
+          "hash": "b99ca354af3b"
+        }
+      },
+      "classes": {},
+      "module_docstring": "run_session_analysis.py — Orchestrator for Full Session Workflow\n\nRuns the entire analysis pipeline for a single session with one command:\n\n  python agents/run_session_analysis.py <session_path> [calibration_path]\n\nSteps performed:\n  1. Runs spatial_temporal_fusion.py (if fused_data.pkl doesn't exist)\n  2. Runs knowledge_engine.py --safe (creates pending merge candidate)\n  3. Runs quality_gate.py (generates flags and learning score)\n  4. Generates MERGE REVIEW PACKAGE in the session's comprehensive report\n  5. Prints instructions for next steps\n\nOutput:\n  - All intermediate files (fused_data.pkl, candidate files, etc.)\n  - A single comprehensive report file with ALL agent outputs:\n      sessions/<session>/session_comprehensive_report.txt",
+      "parse_error": null,
+      "read_error": null
+    },
+    "session_manager.py": {
+      "size_kb": 15.7,
+      "mtime": "2026-08-19 18:06:31",
+      "line_count": 419,
+      "sha256_full": "d49163961e0d004c",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 38,
+          "line_end": 39,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "utc_now_epoch": {
+          "line_start": 42,
+          "line_end": 44,
+          "line_count": 3,
+          "hash": "17bfcf454669"
+        },
+        "_empty_knowledge": {
+          "line_start": 47,
+          "line_end": 55,
+          "line_count": 9,
+          "hash": "4b6639aadbe6"
+        },
+        "load_persistent_knowledge": {
+          "line_start": 61,
+          "line_end": 73,
+          "line_count": 13,
+          "hash": "6a2947905d7e"
+        },
+        "save_persistent_knowledge": {
+          "line_start": 76,
+          "line_end": 112,
+          "line_count": 37,
+          "hash": "d2942b5e0d71"
+        },
+        "bootstrap_project_root": {
+          "line_start": 118,
+          "line_end": 143,
+          "line_count": 26,
+          "hash": "b8bfff5eb994"
+        },
+        "create_new_session_folder": {
+          "line_start": 149,
+          "line_end": 166,
+          "line_count": 18,
+          "hash": "a1b4b5e44368"
+        },
+        "update_knowledge_from_session": {
+          "line_start": 172,
+          "line_end": 319,
+          "line_count": 148,
+          "hash": "2ce157821c47"
+        },
+        "inspect_project": {
+          "line_start": 325,
+          "line_end": 383,
+          "line_count": 59,
+          "hash": "bad87222e8fc"
+        },
+        "main": {
+          "line_start": 389,
+          "line_end": 415,
+          "line_count": 27,
+          "hash": "55333e9615f5"
+        }
+      },
+      "classes": {},
+      "module_docstring": "session_manager.py — Project Inspector + Memory Manager\n\nResponsibilities:\n  1. Bootstrap project root (only creates what's missing)\n  2. Create new session folders\n  3. Load / save persistent knowledge (environment_knowledge.pkl)\n  4. Update knowledge from a completed session's fused_data.pkl\n  5. Inspect project status (how many sessions, reports, etc.)\n\nFIXED vs original:\n  - bootstrap no longer overwrites existing knowledge\n  - update_knowledge_from_session() actually exists now\n  - default run = inspect mode, not create mode",
+      "parse_error": null,
+      "read_error": null
+    },
+    "spatial_temporal_fusion.py": {
+      "size_kb": 17.8,
+      "mtime": "2026-08-24 13:44:26",
+      "line_count": 523,
+      "sha256_full": "208b08b95661d90b",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 53,
+          "line_end": 54,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "load_calibration": {
+          "line_start": 60,
+          "line_end": 68,
+          "line_count": 9,
+          "hash": "ca8db6e8db8e"
+        },
+        "load_slam_session": {
+          "line_start": 71,
+          "line_end": 73,
+          "line_count": 3,
+          "hash": "eb2d616b70aa"
+        },
+        "load_motive_session": {
+          "line_start": 76,
+          "line_end": 81,
+          "line_count": 6,
+          "hash": "a724e1f832c9"
+        },
+        "motive_to_mir_point": {
+          "line_start": 87,
+          "line_end": 90,
+          "line_count": 4,
+          "hash": "1542fec5f2fb"
+        },
+        "robot_edge_distance_m": {
+          "line_start": 96,
+          "line_end": 112,
+          "line_count": 17,
+          "hash": "12a029656514"
+        },
+        "safety_zone": {
+          "line_start": 115,
+          "line_end": 122,
+          "line_count": 8,
+          "hash": "a80a177fc08d"
+        },
+        "is_zero_placeholder_mm": {
+          "line_start": 126,
+          "line_end": 128,
+          "line_count": 3,
+          "hash": "7794e5f13c6b"
+        },
+        "is_near_zero_point_m": {
+          "line_start": 130,
+          "line_end": 131,
+          "line_count": 2,
+          "hash": "d9e8713ee334"
+        },
+        "relative_angle_deg": {
+          "line_start": 133,
+          "line_end": 148,
+          "line_count": 16,
+          "hash": "7181166442d7"
+        },
+        "encounter_direction": {
+          "line_start": 151,
+          "line_end": 161,
+          "line_count": 11,
+          "hash": "d2f1f22c7a36"
+        },
+        "robot_heading_toward": {
+          "line_start": 164,
+          "line_end": 180,
+          "line_count": 17,
+          "hash": "6fb07e5fb694"
+        },
+        "find_nearest_robot_state": {
+          "line_start": 183,
+          "line_end": 194,
+          "line_count": 12,
+          "hash": "7eac4ccb7124"
+        },
+        "fuse_session": {
+          "line_start": 200,
+          "line_end": 438,
+          "line_count": 239,
+          "hash": "54bb833a2750"
+        },
+        "save_fusion_result": {
+          "line_start": 441,
+          "line_end": 500,
+          "line_count": 60,
+          "hash": "6f410a9affc0"
+        }
+      },
+      "classes": {},
+      "module_docstring": "Agent 3: spatial_temporal_fusion.py (v2)\n\nUnifies SLAM (MiR) and Motive data into ONE common frame (MiR, meters).\n\nChanges in v2:\n  - NEW: relative_angle_deg (object angle relative to robot heading)\n  - NEW: encounter_direction (front/side/rear)\n  - NEW: safety_zone (critical/warning/safe)\n  - NEW: robot_heading_toward_object (bool)\n  - NEW: approach_speed_mps (negative = approaching)\n  - These features feed directly into knowledge_engine for learning\n\nSafety thresholds (confirmed):\n  - Critical : < 0.10 m\n  - Warning  : 0.10 – 0.30 m\n  - Safe     : > 0.30 m\n\nRobot footprint (MiR100):\n  length = 0.78 m, width = 0.505 m, height = 0.88 m",
+      "parse_error": null,
+      "read_error": null
+    },
+    "theises planer snapshout .py": {
+      "size_kb": 31.0,
+      "mtime": "2026-08-24 15:54:35",
+      "line_count": 796,
+      "sha256_full": "58a4b31e82779796",
+      "functions": {
+        "utc_now_iso": {
+          "line_start": 68,
+          "line_end": 69,
+          "line_count": 2,
+          "hash": "6cf5b9bae8ea"
+        },
+        "utc_now_stamp": {
+          "line_start": 72,
+          "line_end": 73,
+          "line_count": 2,
+          "hash": "2ac14eb85bf1"
+        },
+        "find_project_root": {
+          "line_start": 76,
+          "line_end": 83,
+          "line_count": 8,
+          "hash": "422c122cf425"
+        },
+        "CodeStructureVisitor.__init__": {
+          "line_start": 92,
+          "line_end": 96,
+          "line_count": 5,
+          "hash": "ce028d40b6e6"
+        },
+        "CodeStructureVisitor._hash_segment": {
+          "line_start": 98,
+          "line_end": 100,
+          "line_count": 3,
+          "hash": "da7891746724"
+        },
+        "CodeStructureVisitor.visit_ClassDef": {
+          "line_start": 102,
+          "line_end": 114,
+          "line_count": 13,
+          "hash": "13d463752f64"
+        },
+        "CodeStructureVisitor._handle_function": {
+          "line_start": 116,
+          "line_end": 125,
+          "line_count": 10,
+          "hash": "e7c7cf6e77d9"
+        },
+        "CodeStructureVisitor.visit_FunctionDef": {
+          "line_start": 127,
+          "line_end": 129,
+          "line_count": 3,
+          "hash": "8f55194dc45b"
+        },
+        "scan_python_file": {
+          "line_start": 134,
+          "line_end": 174,
+          "line_count": 41,
+          "hash": "d9da84117f9e"
+        },
+        "count_files_capped": {
+          "line_start": 177,
+          "line_end": 188,
+          "line_count": 12,
+          "hash": "ebe876481058"
+        },
+        "read_knowledge_summary": {
+          "line_start": 194,
+          "line_end": 213,
+          "line_count": 20,
+          "hash": "c575d806408f"
+        },
+        "read_deep_memory_summary": {
+          "line_start": 216,
+          "line_end": 230,
+          "line_count": 15,
+          "hash": "d759ff98e019"
+        },
+        "check_roadmap_status": {
+          "line_start": 233,
+          "line_end": 260,
+          "line_count": 28,
+          "hash": "160189ebc83a"
+        },
+        "build_full_state": {
+          "line_start": 263,
+          "line_end": 306,
+          "line_count": 44,
+          "hash": "b609307b10b1"
+        },
+        "diff_named_items": {
+          "line_start": 312,
+          "line_end": 326,
+          "line_count": 15,
+          "hash": "95ce70097133"
+        },
+        "diff_states": {
+          "line_start": 329,
+          "line_end": 420,
+          "line_count": 92,
+          "hash": "8274cb315e3d"
+        },
+        "history_dir": {
+          "line_start": 426,
+          "line_end": 429,
+          "line_count": 4,
+          "hash": "d130b0f53f1d"
+        },
+        "load_previous_state": {
+          "line_start": 432,
+          "line_end": 440,
+          "line_count": 9,
+          "hash": "a4784cdd46c0"
+        },
+        "save_current_state": {
+          "line_start": 443,
+          "line_end": 453,
+          "line_count": 11,
+          "hash": "c3e347fa498c"
+        },
+        "append_changelog": {
+          "line_start": 456,
+          "line_end": 527,
+          "line_count": 72,
+          "hash": "11dd402d38b6"
+        },
+        "read_last_changelog_entries": {
+          "line_start": 530,
+          "line_end": 545,
+          "line_count": 16,
+          "hash": "59b02ead4cf8"
+        },
+        "render_report": {
+          "line_start": 551,
+          "line_end": 740,
+          "line_count": 190,
+          "hash": "63635fd7213a"
+        },
+        "main": {
+          "line_start": 746,
+          "line_end": 788,
+          "line_count": 43,
+          "hash": "38fbe50413bb"
+        }
+      },
+      "classes": {
+        "CodeStructureVisitor": {
+          "line_start": 89,
+          "line_end": 131,
+          "method_count": 5,
+          "methods": [
+            "__init__",
+            "_handle_function",
+            "_hash_segment",
+            "visit_ClassDef",
+            "visit_FunctionDef"
+          ],
+          "hash": "5822f729b7c6"
+        }
+      },
+      "module_docstring": "project_snapshot.py — Intelligent Diff-Aware Project Snapshot Generator (v2)\n\nPurpose:\n  Generates a complete, function-level-detailed snapshot of the project\n  and compares it against the PREVIOUS run to show exactly what changed:\n  which functions were added/removed/modified in which file, on which date.\n\n  Designed for AI handoff: run this, copy the output (or the saved .md file),\n  paste to any new AI assistant, and it will understand the ENTIRE history\n  and current state of the project down to the function level.\n\nUsage:\n  python agents/project_snapshot.py\n\nOutputs:\n  - Terminal printout (copy-paste ready)\n  - reports/latest_snapshot_for_ai.md      (overwritten each run)\n  - project_history/CHANGELOG.md            (appended each run, permanent)\n  - project_history/snapshots/snapshot_<timestamp>.json  (permanent archive)\n  - project_history/latest_state.json       (used internally for next diff)",
+      "parse_error": null,
+      "read_error": null
+    }
+  },
+  "sessions": {
+    "session_2026-08-24_13-16-03": {
+      "mtime": "2026-08-24 13:54:50",
+      "has_fused_data": true,
+      "has_comprehensive_report": true,
+      "has_pending_merge_candidate": false,
+      "file_count": 9,
+      "top_level_items": [
+        "fused_data.pkl",
+        "fused_data_summary.txt",
+        "knowledge_engine_report.txt",
+        "motive_data.pkl",
+        "motive_data_autosave.pkl",
+        "motive_data_summary.txt",
+        "processed",
+        "raw",
+        "session_comprehensive_report.txt",
+        "session_metadata.txt",
+        "slam_data.pkl",
+        "video"
+      ]
+    },
+    "session_2026-08-24_13-57-33": {
+      "mtime": "2026-08-24 14:54:43",
+      "has_fused_data": true,
+      "has_comprehensive_report": true,
+      "has_pending_merge_candidate": true,
+      "file_count": 12,
+      "top_level_items": [
+        "crash_log.txt",
+        "fused_data.pkl",
+        "fused_data_summary.txt",
+        "knowledge_engine_report.txt",
+        "motive_data.pkl",
+        "motive_data_autosave.pkl",
+        "motive_data_summary.txt",
+        "pending_merge_candidate.pkl",
+        "pending_merge_candidate_summary.txt",
+        "processed",
+        "raw",
+        "session_comprehensive_report.txt",
+        "session_metadata.txt",
+        "slam_data.pkl",
+        "video"
+      ]
+    }
+  },
+  "knowledge": {
+    "total_sessions": 2,
+    "last_updated": "2026-08-24T11:59:06.299881+00:00",
+    "object_count": 3,
+    "object_names": [
+      "kia hat 002",
+      "kiarash_RightWrist",
+      "kiarash_leftwrist"
+    ]
+  },
+  "deep_memory": {
+    "sessions_analyzed": 1,
+    "object_track_names": [
+      "kia hat 002",
+      "kiarash_RightWrist",
+      "kiarash_leftwrist"
+    ],
+    "safety_events_count": 116
+  },
+  "roadmap": {
+    "1": {
+      "name": "Fix Bug #7 - Zero Placeholder Filtering",
+      "status": "DONE",
+      "details": ""
+    },
+    "2": {
+      "name": "Rebuild Merge System (Human-in-the-Loop)",
+      "status": "DONE",
+      "details": ""
+    },
+    "3": {
+      "name": "Persistent Label Registry",
+      "status": "NOT_STARTED",
+      "details": "missing: persistent_knowledge/label_registry.pkl"
+    },
+    "4": {
+      "name": "SLAM Map Annotator (Semi-Automatic)",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/slam_map_annotator.py"
+    },
+    "5": {
+      "name": "Motive Video Annotator (.tak/NatNet)",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/motive_video_annotator.py"
+    },
+    "6": {
+      "name": "Cross-Reference Engine",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/cross_reference_engine.py"
+    },
+    "7": {
+      "name": "Unified Session Report Integration",
+      "status": "MANUAL_CHECK",
+      "details": ""
+    },
+    "8": {
+      "name": "Robot Command History Importer",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/robot_command_history_importer.py"
+    },
+    "9": {
+      "name": "AI Advisor (Dual Mode)",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/ai_advisor.py"
+    },
+    "10": {
+      "name": "VLA Dataset Builder (Final)",
+      "status": "NOT_STARTED",
+      "details": "missing: agents/vla_dataset_builder.py"
+    }
+  }
+}

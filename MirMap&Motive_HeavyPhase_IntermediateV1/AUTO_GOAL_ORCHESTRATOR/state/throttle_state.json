@@ -1,0 +1,17 @@
+{
+  "current_level": 0,
+  "last_crash_timestamp": null,
+  "crash_count_total": 0,
+  "crash_count_current_session": 0,
+  "last_stable_hours": 0,
+  "current_settings": {
+    "gpu_offload": 62,
+    "cpu_thread_pool": 16,
+    "context_length": 65536
+  },
+  "baseline_settings": {
+    "gpu_offload": 62,
+    "cpu_thread_pool": 16,
+    "context_length": 65536
+  }
+}

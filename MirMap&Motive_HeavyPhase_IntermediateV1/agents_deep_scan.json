@@ -1,0 +1,3660 @@
+{
+  "A15_referee_ai_loop.py": {
+    "lines": 405,
+    "functions": [
+      {
+        "name": "load_key",
+        "args": [],
+        "line": 70
+      },
+      {
+        "name": "discover_free_models",
+        "args": [],
+        "line": 74
+      },
+      {
+        "name": "read_safe",
+        "args": [
+          "path",
+          "max_c"
+        ],
+        "line": 126
+      },
+      {
+        "name": "find_files",
+        "args": [
+          "pattern"
+        ],
+        "line": 136
+      },
+      {
+        "name": "encode_image_b64",
+        "args": [
+          "path",
+          "max_kb"
+        ],
+        "line": 139
+      },
+      {
+        "name": "scan_agent_code",
+        "args": [],
+        "line": 157
+      },
+      {
+        "name": "get_dashboard_images",
+        "args": [
+          "n"
+        ],
+        "line": 179
+      },
+      {
+        "name": "gather_data",
+        "args": [],
+        "line": 190
+      },
+      {
+        "name": "call_ai",
+        "args": [
+          "system",
+          "user_content",
+          "text_models",
+          "vision_models",
+          "need_vision"
+        ],
+        "line": 206
+      },
+      {
+        "name": "generate_dynamic_focus",
+        "args": [
+          "persona",
+          "cumulative_findings",
+          "text_models",
+          "key"
+        ],
+        "line": 238
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 280
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "glob",
+      "time",
+      "base64",
+      "ast",
+      "traceback",
+      "pathlib",
+      "datetime",
+      "requests",
+      "requests",
+      "requests",
+      "PIL",
+      "io"
+    ],
+    "docstring": "A15_referee_ai_loop.py v3.5 \u2014 Hybrid 2-Part Persona + Auto Model Discovery\nQueries OpenRouter /models endpoint to find real free models.\nPart 1 = Fixed Core Pillar | Part 2 = Dynamic AI-Generated Inspection Directive"
+  },
+  "A16_agent_deep_analyzer.py": {
+    "lines": 594,
+    "functions": [
+      {
+        "name": "check_api_availability",
+        "args": [],
+        "line": 50
+      },
+      {
+        "name": "query_claude",
+        "args": [
+          "prompt",
+          "system",
+          "max_tokens"
+        ],
+        "line": 79
+      },
+      {
+        "name": "query_grok",
+        "args": [
+          "prompt",
+          "system",
+          "max_tokens"
+        ],
+        "line": 96
+      },
+      {
+        "name": "query_gemini",
+        "args": [
+          "prompt",
+          "system",
+          "max_tokens"
+        ],
+        "line": 120
+      },
+      {
+        "name": "query_openrouter",
+        "args": [
+          "prompt",
+          "system",
+          "max_tokens"
+        ],
+        "line": 136
+      },
+      {
+        "name": "query_all_models",
+        "args": [
+          "prompt",
+          "system"
+        ],
+        "line": 160
+      },
+      {
+        "name": "scan_agent_files",
+        "args": [
+          "agents_dir"
+        ],
+        "line": 194
+      },
+      {
+        "name": "analyze_session_quality",
+        "args": [
+          "session_dir"
+        ],
+        "line": 272
+      },
+      {
+        "name": "build_analysis_prompt",
+        "args": [
+          "agents",
+          "sessions_analysis"
+        ],
+        "line": 377
+      },
+      {
+        "name": "run_full_analysis",
+        "args": [],
+        "line": 437
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "glob",
+      "time",
+      "hashlib",
+      "datetime",
+      "pathlib",
+      "typing",
+      "logging",
+      "anthropic",
+      "openai",
+      "google.generativeai",
+      "openai",
+      "pickle",
+      "numpy",
+      "pickle",
+      "numpy"
+    ],
+    "docstring": "A16_agent_deep_analyzer.py \u2014 Intelligent Multi-AI Agent Analyzer v1.0\n\nPURPOSE:\n    Reads ALL agent files in the project, analyzes their purpose, quality,\n    and relevance to the thesis goal (Q1 paper on Qwen-VL VLA for MiR100),\n    then consults multiple AI models (Claude, Grok, Gemini) for consensus\n    on what to fix, merge, or delete.\n\nCONNECTS TO:\n    1. Anthropic Claude (claude-sonnet-4-20250514)\n    2. xAI Grok (grok-3)\n    3. Google Gemini Pro (gemini-2.5-pro)\n    4. OpenRouter (fallback)\n\nOUTPUTS:\n    - agents/analysis_report/agent_audit_TIMESTAMP.json\n    - agents/analysis_report/agent_audit_TIMESTAMP.md\n    - Console summary with color-coded recommendations"
+  },
+  "A18_deep_agent_verifier.py": {
+    "lines": 234,
+    "functions": [
+      {
+        "name": "extract_json",
+        "args": [
+          "text"
+        ],
+        "line": 29
+      },
+      {
+        "name": "query_lmstudio",
+        "args": [
+          "model_name",
+          "prompt",
+          "retries"
+        ],
+        "line": 75
+      },
+      {
+        "name": "analyze_agent",
+        "args": [
+          "name",
+          "content"
+        ],
+        "line": 110
+      },
+      {
+        "name": "warmup_lmstudio",
+        "args": [],
+        "line": 172
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 181
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "time",
+      "urllib.request",
+      "urllib.error",
+      "re",
+      "collections"
+    ],
+    "docstring": null
+  },
+  "DataDescriptions.py": {
+    "lines": 737,
+    "functions": [
+      {
+        "name": "get_tab_str",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 34
+      },
+      {
+        "name": "add_lists",
+        "args": [
+          "totals",
+          "totals_tmp"
+        ],
+        "line": 41
+      },
+      {
+        "name": "test_hash",
+        "args": [
+          "test_name",
+          "test_hash_str",
+          "test_object"
+        ],
+        "line": 49
+      },
+      {
+        "name": "test_hash2",
+        "args": [
+          "test_name",
+          "test_hash_str",
+          "test_object",
+          "run_test"
+        ],
+        "line": 63
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "input_str"
+        ],
+        "line": 98
+      },
+      {
+        "name": "get_data_sub_packet_type",
+        "args": [
+          "new_data"
+        ],
+        "line": 105
+      },
+      {
+        "name": "generate_marker_set_description",
+        "args": [
+          "set_num"
+        ],
+        "line": 573
+      },
+      {
+        "name": "generate_rb_marker",
+        "args": [
+          "marker_num"
+        ],
+        "line": 583
+      },
+      {
+        "name": "generate_rigid_body_description",
+        "args": [
+          "rbd_num"
+        ],
+        "line": 598
+      },
+      {
+        "name": "generate_skeleton_description",
+        "args": [
+          "skeleton_num"
+        ],
+        "line": 611
+      },
+      {
+        "name": "generate_force_plate_description",
+        "args": [
+          "force_plate_num"
+        ],
+        "line": 623
+      },
+      {
+        "name": "generate_device_description",
+        "args": [
+          "dev_num"
+        ],
+        "line": 647
+      },
+      {
+        "name": "generate_camera_description",
+        "args": [
+          "cam_num"
+        ],
+        "line": 660
+      },
+      {
+        "name": "generate_data_descriptions",
+        "args": [
+          "data_desc_num"
+        ],
+        "line": 668
+      },
+      {
+        "name": "test_all",
+        "args": [
+          "run_test"
+        ],
+        "line": 698
+      },
+      {
+        "name": "set_name",
+        "args": [
+          "new_name"
+        ],
+        "line": 132
+      },
+      {
+        "name": "get_num_markers",
+        "args": [],
+        "line": 135
+      },
+      {
+        "name": "add_marker_name",
+        "args": [
+          "marker_name"
+        ],
+        "line": 138
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 142
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 160
+      },
+      {
+        "name": "set_name",
+        "args": [
+          "new_name"
+        ],
+        "line": 177
+      },
+      {
+        "name": "set_id",
+        "args": [
+          "new_id"
+        ],
+        "line": 180
+      },
+      {
+        "name": "set_parent_id",
+        "args": [
+          "parent_id"
+        ],
+        "line": 183
+      },
+      {
+        "name": "set_pos",
+        "args": [
+          "p_x",
+          "p_y",
+          "p_z"
+        ],
+        "line": 186
+      },
+      {
+        "name": "get_num_markers",
+        "args": [],
+        "line": 189
+      },
+      {
+        "name": "add_rb_marker",
+        "args": [
+          "new_rb_maker"
+        ],
+        "line": 192
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 197
+      },
+      {
+        "name": "set_name",
+        "args": [
+          "new_name"
+        ],
+        "line": 220
+      },
+      {
+        "name": "set_id",
+        "args": [
+          "new_id"
+        ],
+        "line": 223
+      },
+      {
+        "name": "add_rigid_body_description",
+        "args": [
+          "rigid_body_description"
+        ],
+        "line": 226
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 230
+      },
+      {
+        "name": "set_id",
+        "args": [
+          "new_id"
+        ],
+        "line": 257
+      },
+      {
+        "name": "set_serial_number",
+        "args": [
+          "serial_number"
+        ],
+        "line": 260
+      },
+      {
+        "name": "set_dimensions",
+        "args": [
+          "width",
+          "length"
+        ],
+        "line": 263
+      },
+      {
+        "name": "set_origin",
+        "args": [
+          "p_x",
+          "p_y",
+          "p_z"
+        ],
+        "line": 267
+      },
+      {
+        "name": "set_cal_matrix",
+        "args": [
+          "cal_matrix"
+        ],
+        "line": 270
+      },
+      {
+        "name": "set_corners",
+        "args": [
+          "corners"
+        ],
+        "line": 273
+      },
+      {
+        "name": "set_plate_type",
+        "args": [
+          "plate_type"
+        ],
+        "line": 276
+      },
+      {
+        "name": "set_channel_data_type",
+        "args": [
+          "channel_data_type"
+        ],
+        "line": 279
+      },
+      {
+        "name": "add_channel_name",
+        "args": [
+          "channel_name"
+        ],
+        "line": 282
+      },
+      {
+        "name": "get_cal_matrix_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 286
+      },
+      {
+        "name": "get_corners_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 303
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 317
+      },
+      {
+        "name": "set_id",
+        "args": [
+          "new_id"
+        ],
+        "line": 355
+      },
+      {
+        "name": "set_name",
+        "args": [
+          "name"
+        ],
+        "line": 359
+      },
+      {
+        "name": "add_channel_name",
+        "args": [
+          "channel_name"
+        ],
+        "line": 363
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 368
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 392
+      },
+      {
+        "name": "generate_order_name",
+        "args": [],
+        "line": 421
+      },
+      {
+        "name": "add_marker_set",
+        "args": [
+          "new_marker_set"
+        ],
+        "line": 429
+      },
+      {
+        "name": "add_rigid_body",
+        "args": [
+          "new_rigid_body"
+        ],
+        "line": 439
+      },
+      {
+        "name": "add_skeleton",
+        "args": [
+          "new_skeleton"
+        ],
+        "line": 450
+      },
+      {
+        "name": "add_force_plate",
+        "args": [
+          "new_force_plate"
+        ],
+        "line": 461
+      },
+      {
+        "name": "add_device",
+        "args": [
+          "newdevice"
+        ],
+        "line": 471
+      },
+      {
+        "name": "add_camera",
+        "args": [
+          "newcamera"
+        ],
+        "line": 481
+      },
+      {
+        "name": "add_data",
+        "args": [
+          "new_data"
+        ],
+        "line": 490
+      },
+      {
+        "name": "get_object_from_list",
+        "args": [
+          "list_name",
+          "pos_num"
+        ],
+        "line": 510
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 542
+      }
+    ],
+    "classes": [
+      "MarkerSetDescription",
+      "RBMarker",
+      "RigidBodyDescription",
+      "SkeletonDescription",
+      "ForcePlateDescription",
+      "DeviceDescription",
+      "CameraDescription",
+      "DataDescriptions"
+    ],
+    "imports": [
+      "copy",
+      "hashlib",
+      "random"
+    ],
+    "docstring": null
+  },
+  "MoCapData.py": {
+    "lines": 873,
+    "functions": [
+      {
+        "name": "get_tab_str",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 35
+      },
+      {
+        "name": "add_lists",
+        "args": [
+          "totals",
+          "totals_tmp"
+        ],
+        "line": 42
+      },
+      {
+        "name": "test_hash",
+        "args": [
+          "test_name",
+          "test_hash_str",
+          "test_object"
+        ],
+        "line": 48
+      },
+      {
+        "name": "test_hash2",
+        "args": [
+          "test_name",
+          "test_hash_str",
+          "test_object",
+          "run_test"
+        ],
+        "line": 63
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "input_str"
+        ],
+        "line": 97
+      },
+      {
+        "name": "generate_prefix_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 654
+      },
+      {
+        "name": "generate_label",
+        "args": [
+          "label_base",
+          "label_num"
+        ],
+        "line": 658
+      },
+      {
+        "name": "generate_position_srand",
+        "args": [
+          "pos_num",
+          "frame_num"
+        ],
+        "line": 662
+      },
+      {
+        "name": "generate_marker_data",
+        "args": [
+          "label_base",
+          "label_num",
+          "num_points"
+        ],
+        "line": 667
+      },
+      {
+        "name": "generate_marker_set_data",
+        "args": [
+          "frame_num",
+          "marker_set_num"
+        ],
+        "line": 682
+      },
+      {
+        "name": "generate_rigid_body_marker_srand",
+        "args": [
+          "marker_num",
+          "frame_num"
+        ],
+        "line": 697
+      },
+      {
+        "name": "generate_rigid_body",
+        "args": [
+          "body_num",
+          "frame_num"
+        ],
+        "line": 707
+      },
+      {
+        "name": "generate_rigid_body_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 716
+      },
+      {
+        "name": "generate_skeleton",
+        "args": [
+          "frame_num",
+          "skeleton_num",
+          "num_rbs"
+        ],
+        "line": 724
+      },
+      {
+        "name": "generate_skeleton_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 733
+      },
+      {
+        "name": "generate_labeled_marker",
+        "args": [
+          "frame_num",
+          "marker_num"
+        ],
+        "line": 740
+      },
+      {
+        "name": "generate_labeled_marker_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 755
+      },
+      {
+        "name": "generate_fp_channel_data",
+        "args": [
+          "frame_num",
+          "fp_num",
+          "channel_num",
+          "num_frames"
+        ],
+        "line": 764
+      },
+      {
+        "name": "generate_force_plate",
+        "args": [
+          "frame_num",
+          "fp_num",
+          "num_channels"
+        ],
+        "line": 773
+      },
+      {
+        "name": "generate_force_plate_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 781
+      },
+      {
+        "name": "generate_device_channel_data",
+        "args": [
+          "frame_num",
+          "device_num",
+          "channel_num",
+          "num_frames"
+        ],
+        "line": 789
+      },
+      {
+        "name": "generate_device",
+        "args": [
+          "frame_num",
+          "device_num"
+        ],
+        "line": 798
+      },
+      {
+        "name": "generate_device_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 805
+      },
+      {
+        "name": "generate_suffix_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 811
+      },
+      {
+        "name": "generate_mocap_data",
+        "args": [
+          "frame_num"
+        ],
+        "line": 822
+      },
+      {
+        "name": "test_all",
+        "args": [
+          "run_test"
+        ],
+        "line": 836
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 115
+      },
+      {
+        "name": "set_model_name",
+        "args": [
+          "model_name"
+        ],
+        "line": 125
+      },
+      {
+        "name": "add_pos",
+        "args": [
+          "pos"
+        ],
+        "line": 128
+      },
+      {
+        "name": "get_num_points",
+        "args": [],
+        "line": 133
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 137
+      },
+      {
+        "name": "add_marker_data",
+        "args": [
+          "marker_data"
+        ],
+        "line": 156
+      },
+      {
+        "name": "add_unlabeled_marker",
+        "args": [
+          "pos"
+        ],
+        "line": 160
+      },
+      {
+        "name": "get_marker_set_count",
+        "args": [],
+        "line": 163
+      },
+      {
+        "name": "get_unlabeled_marker_count",
+        "args": [],
+        "line": 166
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 168
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 193
+      },
+      {
+        "name": "add_rigid_body_marker",
+        "args": [
+          "rigid_body_marker"
+        ],
+        "line": 212
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 217
+      },
+      {
+        "name": "add_rigid_body",
+        "args": [
+          "rigid_body"
+        ],
+        "line": 256
+      },
+      {
+        "name": "get_rigid_body_count",
+        "args": [],
+        "line": 261
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 265
+      },
+      {
+        "name": "add_rigid_body",
+        "args": [
+          "rigid_body"
+        ],
+        "line": 280
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 285
+      },
+      {
+        "name": "add_skeleton",
+        "args": [
+          "new_skeleton"
+        ],
+        "line": 303
+      },
+      {
+        "name": "get_skeleton_count",
+        "args": [],
+        "line": 307
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 311
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 345
+      },
+      {
+        "name": "add_labeled_marker",
+        "args": [
+          "labeled_marker"
+        ],
+        "line": 366
+      },
+      {
+        "name": "get_labeled_marker_count",
+        "args": [],
+        "line": 370
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 373
+      },
+      {
+        "name": "add_frame_entry",
+        "args": [
+          "frame_entry"
+        ],
+        "line": 392
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level",
+          "channel_num"
+        ],
+        "line": 397
+      },
+      {
+        "name": "add_channel_data",
+        "args": [
+          "channel_data"
+        ],
+        "line": 420
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 424
+      },
+      {
+        "name": "add_force_plate",
+        "args": [
+          "force_plate"
+        ],
+        "line": 439
+      },
+      {
+        "name": "get_force_plate_count",
+        "args": [],
+        "line": 444
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 448
+      },
+      {
+        "name": "add_frame_entry",
+        "args": [
+          "frame_entry"
+        ],
+        "line": 467
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level",
+          "channel_num"
+        ],
+        "line": 472
+      },
+      {
+        "name": "add_channel_data",
+        "args": [
+          "channel_data"
+        ],
+        "line": 496
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level",
+          "device_num"
+        ],
+        "line": 500
+      },
+      {
+        "name": "add_device",
+        "args": [
+          "device"
+        ],
+        "line": 517
+      },
+      {
+        "name": "get_device_count",
+        "args": [],
+        "line": 522
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 526
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 550
+      },
+      {
+        "name": "set_prefix_data",
+        "args": [
+          "new_prefix_data"
+        ],
+        "line": 577
+      },
+      {
+        "name": "set_marker_set_data",
+        "args": [
+          "new_marker_set_data"
+        ],
+        "line": 580
+      },
+      {
+        "name": "set_rigid_body_data",
+        "args": [
+          "new_rigid_body_data"
+        ],
+        "line": 583
+      },
+      {
+        "name": "set_skeleton_data",
+        "args": [
+          "new_skeleton_data"
+        ],
+        "line": 586
+      },
+      {
+        "name": "set_labeled_marker_data",
+        "args": [
+          "new_labeled_marker_data"
+        ],
+        "line": 589
+      },
+      {
+        "name": "set_force_plate_data",
+        "args": [
+          "new_force_plate_data"
+        ],
+        "line": 592
+      },
+      {
+        "name": "set_device_data",
+        "args": [
+          "new_device_data"
+        ],
+        "line": 595
+      },
+      {
+        "name": "set_suffix_data",
+        "args": [
+          "new_suffix_data"
+        ],
+        "line": 598
+      },
+      {
+        "name": "get_as_string",
+        "args": [
+          "tab_str",
+          "level"
+        ],
+        "line": 601
+      }
+    ],
+    "classes": [
+      "FramePrefixData",
+      "MarkerData",
+      "MarkerSetData",
+      "RigidBodyMarker",
+      "RigidBody",
+      "RigidBodyData",
+      "Skeleton",
+      "SkeletonData",
+      "LabeledMarker",
+      "LabeledMarkerData",
+      "ForcePlateChannelData",
+      "ForcePlate",
+      "ForcePlateData",
+      "DeviceChannelData",
+      "Device",
+      "DeviceData",
+      "FrameSuffixData",
+      "MoCapData"
+    ],
+    "imports": [
+      "copy",
+      "hashlib",
+      "random"
+    ],
+    "docstring": null
+  },
+  "NatNetClient.py": {
+    "lines": 842,
+    "functions": [
+      {
+        "name": "trace",
+        "args": [],
+        "line": 23
+      },
+      {
+        "name": "trace_dd",
+        "args": [],
+        "line": 26
+      },
+      {
+        "name": "trace_mf",
+        "args": [],
+        "line": 29
+      },
+      {
+        "name": "get_message_id",
+        "args": [
+          "data"
+        ],
+        "line": 32
+      },
+      {
+        "name": "set_client_address",
+        "args": [
+          "local_ip_address"
+        ],
+        "line": 87
+      },
+      {
+        "name": "get_client_address",
+        "args": [],
+        "line": 91
+      },
+      {
+        "name": "set_server_address",
+        "args": [
+          "server_ip_address"
+        ],
+        "line": 94
+      },
+      {
+        "name": "get_server_address",
+        "args": [],
+        "line": 98
+      },
+      {
+        "name": "set_use_multicast",
+        "args": [
+          "use_multicast"
+        ],
+        "line": 101
+      },
+      {
+        "name": "can_change_bitstream_version",
+        "args": [],
+        "line": 105
+      },
+      {
+        "name": "set_nat_net_version",
+        "args": [
+          "major",
+          "minor"
+        ],
+        "line": 108
+      },
+      {
+        "name": "get_major",
+        "args": [],
+        "line": 127
+      },
+      {
+        "name": "get_minor",
+        "args": [],
+        "line": 130
+      },
+      {
+        "name": "set_print_level",
+        "args": [
+          "print_level"
+        ],
+        "line": 133
+      },
+      {
+        "name": "get_print_level",
+        "args": [],
+        "line": 138
+      },
+      {
+        "name": "connected",
+        "args": [],
+        "line": 141
+      },
+      {
+        "name": "send_request",
+        "args": [
+          "in_socket",
+          "command",
+          "command_str",
+          "address"
+        ],
+        "line": 777
+      },
+      {
+        "name": "send_command",
+        "args": [
+          "command_str"
+        ],
+        "line": 797
+      },
+      {
+        "name": "send_commands",
+        "args": [
+          "tmpCommands",
+          "print_results"
+        ],
+        "line": 807
+      },
+      {
+        "name": "send_keep_alive",
+        "args": [
+          "in_socket",
+          "server_ip_address",
+          "server_port"
+        ],
+        "line": 811
+      },
+      {
+        "name": "shutdown",
+        "args": [],
+        "line": 814
+      },
+      {
+        "name": "run",
+        "args": [],
+        "line": 824
+      }
+    ],
+    "classes": [
+      "NatNetClient"
+    ],
+    "imports": [
+      "socket",
+      "struct",
+      "threading",
+      "copy",
+      "time",
+      "DataDescriptions",
+      "MoCapData"
+    ],
+    "docstring": null
+  },
+  "apply_merge.py": {
+    "lines": 399,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 55
+      },
+      {
+        "name": "timestamp_tag",
+        "args": [],
+        "line": 59
+      },
+      {
+        "name": "deep_memory_path",
+        "args": [
+          "root_path"
+        ],
+        "line": 66
+      },
+      {
+        "name": "deep_memory_summary_path",
+        "args": [
+          "root_path"
+        ],
+        "line": 72
+      },
+      {
+        "name": "backup_dir",
+        "args": [
+          "root_path"
+        ],
+        "line": 78
+      },
+      {
+        "name": "create_backup",
+        "args": [
+          "root_path"
+        ],
+        "line": 86
+      },
+      {
+        "name": "list_all_backups",
+        "args": [
+          "root_path"
+        ],
+        "line": 123
+      },
+      {
+        "name": "print_preview_summary",
+        "args": [
+          "session_path"
+        ],
+        "line": 160
+      },
+      {
+        "name": "apply_merge",
+        "args": [
+          "session_path",
+          "root_path",
+          "force_yes",
+          "show_only"
+        ],
+        "line": 184
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 340
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "shutil",
+      "argparse",
+      "datetime",
+      "knowledge_engine"
+    ],
+    "docstring": "apply_merge.py \u2014 Human-Approved Merge Executor\n\nPer Master Doc section 15.2:\n  The user (with optional AI advice) makes the final decision\n  whether a session's merge candidate should be permanently\n  merged into deep_learning_memory.pkl.\n\nKey rules (all confirmed in Master Doc):\n  - DEFAULT = NO MERGE. Empty input, Enter, or anything except\n    the exact word \"yes\" (case-insensitive) means: do NOT merge.\n  - Always creates a timestamped backup of deep_memory BEFORE\n    merging (for rollback).\n  - Refuses to double-merge a session that's already in memory\n    (unless user restores an older backup first).\n  - Removes the candidate files after successful merge so they\n    can't accidentally be re-applied.\n  - Logs every merge action to merge_history.log for traceability.\n\nUsage:\n    python agents/apply_merge.py <session_path>\n\nOptional flags:\n    --root <path>    Project root path (default: parent of agents/)\n    --force-yes      Skip the interactive prompt (STILL creates a\n                     backup first). Use with extreme caution \u2014 this\n                     bypasses the human-in-the-loop safety rule.\n    --show-only      Just display the preview, do nothing else.\n    --list-backups   Show all available backups and exit."
+  },
+  "auto_labeler.py": {
+    "lines": 261,
+    "functions": [
+      {
+        "name": "load_gdino_model",
+        "args": [],
+        "line": 29
+      },
+      {
+        "name": "run_grounding_dino",
+        "args": [
+          "frame_bgr",
+          "prompts",
+          "threshold"
+        ],
+        "line": 50
+      },
+      {
+        "name": "create_cvat_xml",
+        "args": [
+          "annotations_by_frame",
+          "video_name",
+          "output_path"
+        ],
+        "line": 111
+      },
+      {
+        "name": "auto_label_video",
+        "args": [
+          "video_path",
+          "prompts",
+          "output_path",
+          "sample_rate"
+        ],
+        "line": 152
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "cv2",
+      "xml.etree.ElementTree",
+      "xml.dom",
+      "pathlib",
+      "groundingdino.util.inference",
+      "torch",
+      "torchvision.ops",
+      "json",
+      "argparse",
+      "torch",
+      "PIL",
+      "torchvision.transforms"
+    ],
+    "docstring": "auto_labeler.py \u2014 Fixed v2\nFixes: try/finally cap.release, XML schema, streaming write, HITL export"
+  },
+  "bev_image_renderer.py": {
+    "lines": 220,
+    "functions": [
+      {
+        "name": "world_to_bev",
+        "args": [
+          "wx",
+          "wy",
+          "cx",
+          "cy"
+        ],
+        "line": 34
+      },
+      {
+        "name": "render_semantic_bev_frame",
+        "args": [
+          "slam_grid",
+          "map_meta",
+          "robot_pose",
+          "lidar_points",
+          "mocap_human",
+          "semantic_objects"
+        ],
+        "line": 43
+      },
+      {
+        "name": "process_session",
+        "args": [
+          "sname"
+        ],
+        "line": 138
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 211
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "pathlib",
+      "os",
+      "json",
+      "pickle",
+      "math",
+      "numpy",
+      "PIL"
+    ],
+    "docstring": null
+  },
+  "co_pilot_agent.py": {
+    "lines": 647,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 63
+      },
+      {
+        "name": "check_slam_health",
+        "args": [
+          "slam_pkl_path"
+        ],
+        "line": 83
+      },
+      {
+        "name": "check_motive_health",
+        "args": [
+          "motive_pkl_path"
+        ],
+        "line": 133
+      },
+      {
+        "name": "check_fusion_quality",
+        "args": [
+          "session_path"
+        ],
+        "line": 172
+      },
+      {
+        "name": "check_calibration_sanity",
+        "args": [
+          "calibration_pkl_path",
+          "max_age_days"
+        ],
+        "line": 201
+      },
+      {
+        "name": "review_persistent_knowledge",
+        "args": [
+          "knowledge"
+        ],
+        "line": 237
+      },
+      {
+        "name": "get_knowledge_engine_section",
+        "args": [
+          "root_path",
+          "session_path"
+        ],
+        "line": 266
+      },
+      {
+        "name": "get_session_discoveries",
+        "args": [
+          "session_path"
+        ],
+        "line": 325
+      },
+      {
+        "name": "get_session_safety",
+        "args": [
+          "root_path",
+          "session_name"
+        ],
+        "line": 360
+      },
+      {
+        "name": "get_recommendations",
+        "args": [
+          "root_path",
+          "all_issues"
+        ],
+        "line": 411
+      },
+      {
+        "name": "generate_report",
+        "args": [
+          "root_path",
+          "session_path",
+          "calibration_pkl_path"
+        ],
+        "line": 485
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "glob",
+      "pickle",
+      "datetime",
+      "session_manager",
+      "robot_data_analyzer",
+      "entity_registry",
+      "knowledge_engine",
+      "math"
+    ],
+    "docstring": "Agent: co_pilot_agent.py  (\"\u06a9\u0645\u06a9 \u062e\u0644\u0628\u0627\u0646\") \u2014 v2\n\nPurpose:\n  Your personal assistant that runs AFTER a session (and after\n  knowledge_engine has updated deep learning memory), reviews\n  EVERYTHING, and writes a single, versioned, human-and-AI-readable\n  report file.\n\nWhat changed in v2:\n  - NEW section: Knowledge Engine Brain Report\n    Shows everything the cumulative brain has learned so far,\n    including object classifications, safety events, insights,\n    unresolved questions, and user feedback history.\n  - NEW section: Session-vs-History comparison\n    Shows what changed in THIS session compared to previous knowledge.\n  - NEW section: Recommended Next Steps\n    Suggests what to do next based on data quality and coverage.\n  - Reads deep_learning_memory.pkl and includes its full snapshot.\n\nReport sections:\n  1. FLAGGED ISSUES (review these first)\n  2. DETAILED INFO (SLAM, Motive, Fusion, Calibration health)\n  3. PERSISTENT KNOWLEDGE (environment_knowledge.pkl summary)\n  4. KNOWLEDGE ENGINE BRAIN REPORT (deep_learning_memory snapshot)\n  5. THIS SESSION'S NEW DISCOVERIES (what changed this time)\n  6. SAFETY ANALYSIS (critical/warning events this session)\n  7. UNRESOLVED QUESTIONS (pending human feedback)\n  8. RECOMMENDED NEXT STEPS"
+  },
+  "cross_modal_aligner.py": {
+    "lines": 229,
+    "functions": [
+      {
+        "name": "match_slam_to_mocap_interpolated",
+        "args": [
+          "mocap_timestamps",
+          "slam_timestamps",
+          "slam_poses"
+        ],
+        "line": 20
+      },
+      {
+        "name": "compute_sync_quality",
+        "args": [
+          "mocap_timestamps",
+          "slam_timestamps",
+          "max_gap"
+        ],
+        "line": 103
+      },
+      {
+        "name": "match_slam_to_mocap",
+        "args": [
+          "mocap_timestamps",
+          "slam_data"
+        ],
+        "line": 144
+      },
+      {
+        "name": "run_alignment",
+        "args": [
+          "session_path",
+          "root_path"
+        ],
+        "line": 160
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "numpy",
+      "scipy.interpolate",
+      "logging",
+      "pickle",
+      "pathlib"
+    ],
+    "docstring": "cross_modal_aligner.py \u2014 FIXED v2.0\nFixes BUG-A: Robot was frozen at index [0] when MoCap timestamps exceeded SLAM range.\nNow uses scipy linear interpolation with proper SO(2) angle unwrapping.\nOriginal backup saved before this patch."
+  },
+  "cvat_converter.py": {
+    "lines": 86,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 15
+      },
+      {
+        "name": "parse_cvat_xml",
+        "args": [
+          "xml_path"
+        ],
+        "line": 19
+      },
+      {
+        "name": "convert_to_jsonl",
+        "args": [
+          "annotations",
+          "session_id",
+          "camera_name",
+          "video_path",
+          "fps"
+        ],
+        "line": 45
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 63
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "argparse",
+      "xml.etree.ElementTree",
+      "datetime"
+    ],
+    "docstring": "agents/cvat_converter.py - CVAT Export to Project JSONL"
+  },
+  "entity_registry.py": {
+    "lines": 283,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 18
+      },
+      {
+        "name": "safe_pickle_dump",
+        "args": [
+          "obj",
+          "path"
+        ],
+        "line": 21
+      },
+      {
+        "name": "rebuild_from_deep_memory",
+        "args": [
+          "root_path",
+          "auto_confirm"
+        ],
+        "line": 180
+      },
+      {
+        "name": "save",
+        "args": [],
+        "line": 49
+      },
+      {
+        "name": "create_entity",
+        "args": [
+          "canonical_name",
+          "entity_type",
+          "motive_markers",
+          "classification",
+          "is_dynamic",
+          "confidence"
+        ],
+        "line": 74
+      },
+      {
+        "name": "get_entity_by_motive_marker",
+        "args": [
+          "marker_name"
+        ],
+        "line": 98
+      },
+      {
+        "name": "get_entity_by_slam_cluster",
+        "args": [
+          "cluster_id"
+        ],
+        "line": 104
+      },
+      {
+        "name": "link_slam_cluster",
+        "args": [
+          "entity_id",
+          "cluster_id",
+          "session_name",
+          "confidence"
+        ],
+        "line": 110
+      },
+      {
+        "name": "link_video_bbox",
+        "args": [
+          "entity_id",
+          "bbox_info"
+        ],
+        "line": 121
+      },
+      {
+        "name": "confirm_entity",
+        "args": [
+          "entity_id",
+          "confirmed_by"
+        ],
+        "line": 127
+      },
+      {
+        "name": "suggest_grouping",
+        "args": [
+          "motive_markers",
+          "deep_memory"
+        ],
+        "line": 133
+      }
+    ],
+    "classes": [
+      "EntityRegistry"
+    ],
+    "imports": [
+      "os",
+      "sys",
+      "pickle",
+      "uuid",
+      "json",
+      "math",
+      "datetime",
+      "argparse"
+    ],
+    "docstring": "entity_registry.py - Master Entity Registry (v1.0)\n\nGroups multiple markers/clusters into ONE real-world entity.\nBased on Google RT-X, Physical Intelligence, NVIDIA GR00T architecture.\n\nExample:\n  entity \"person_kiarash\" contains:\n    - motive markers: [kia hat 002, kiarash_leftwrist, kiarash_RightWrist]\n    - slam clusters : [cluster_289, cluster_310]\n    - video bboxes  : [obj_1_cam_1, obj_1_cam_4]"
+  },
+  "knowledge_engine.py": {
+    "lines": 455,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 35
+      },
+      {
+        "name": "safe_pickle_dump",
+        "args": [
+          "obj",
+          "path"
+        ],
+        "line": 38
+      },
+      {
+        "name": "load_deep_memory",
+        "args": [
+          "root_path"
+        ],
+        "line": 62
+      },
+      {
+        "name": "save_deep_memory",
+        "args": [
+          "root_path",
+          "memory"
+        ],
+        "line": 75
+      },
+      {
+        "name": "cluster_lidar_points",
+        "args": [
+          "fused_objects"
+        ],
+        "line": 106
+      },
+      {
+        "name": "transfer_labels_to_clusters",
+        "args": [
+          "motive_features",
+          "lidar_clusters"
+        ],
+        "line": 130
+      },
+      {
+        "name": "extract_session_features",
+        "args": [
+          "fused_data"
+        ],
+        "line": 145
+      },
+      {
+        "name": "update_memory_from_session",
+        "args": [
+          "memory",
+          "session_name",
+          "session_results"
+        ],
+        "line": 256
+      },
+      {
+        "name": "generate_report_section",
+        "args": [
+          "memory"
+        ],
+        "line": 352
+      },
+      {
+        "name": "analyze_session_safe",
+        "args": [
+          "root_path",
+          "session_path"
+        ],
+        "line": 395
+      },
+      {
+        "name": "analyze_session",
+        "args": [
+          "root_path",
+          "session_path"
+        ],
+        "line": 414
+      },
+      {
+        "name": "load_pending_candidate",
+        "args": [
+          "session_path"
+        ],
+        "line": 417
+      },
+      {
+        "name": "clear_pending_candidate",
+        "args": [
+          "session_path"
+        ],
+        "line": 422
+      },
+      {
+        "name": "rebuild_all_sessions",
+        "args": [
+          "root_path"
+        ],
+        "line": 427
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "copy",
+      "math",
+      "pickle",
+      "time",
+      "glob",
+      "datetime",
+      "collections",
+      "numpy",
+      "sklearn.cluster"
+    ],
+    "docstring": "knowledge_engine.py \u2014 Cumulative Learning Brain (v2.2)\nSAFE MODE: No auto-merge. Use analyze_session_safe() + apply_merge.py."
+  },
+  "label_registry.py": {
+    "lines": 300,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 35
+      },
+      {
+        "name": "generate_label_id",
+        "args": [],
+        "line": 39
+      },
+      {
+        "name": "safe_pickle_dump",
+        "args": [
+          "obj",
+          "path"
+        ],
+        "line": 44
+      },
+      {
+        "name": "create_label_entry",
+        "args": [
+          "canonical_name",
+          "object_class",
+          "source",
+          "motive_body_name",
+          "slam_cluster_id",
+          "mean_position_m",
+          "is_confirmed"
+        ],
+        "line": 51
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 283
+      },
+      {
+        "name": "save",
+        "args": [],
+        "line": 125
+      },
+      {
+        "name": "add_label",
+        "args": [
+          "canonical_name",
+          "object_class",
+          "source",
+          "motive_body_name",
+          "slam_cluster_id",
+          "mean_position_m",
+          "session_name",
+          "is_confirmed"
+        ],
+        "line": 164
+      },
+      {
+        "name": "get_label_by_name",
+        "args": [
+          "canonical_name"
+        ],
+        "line": 181
+      },
+      {
+        "name": "get_label_by_motive_name",
+        "args": [
+          "motive_body_name"
+        ],
+        "line": 191
+      },
+      {
+        "name": "update_label",
+        "args": [
+          "label_id",
+          "session_name",
+          "new_observations",
+          "new_position_m",
+          "motive_body_name",
+          "slam_cluster_id"
+        ],
+        "line": 199
+      },
+      {
+        "name": "confirm_label",
+        "args": [
+          "label_id"
+        ],
+        "line": 230
+      },
+      {
+        "name": "suggest_matches",
+        "args": [
+          "source",
+          "source_id",
+          "position_m",
+          "object_class",
+          "max_distance_m"
+        ],
+        "line": 237
+      },
+      {
+        "name": "list_all_labels",
+        "args": [],
+        "line": 272
+      }
+    ],
+    "classes": [
+      "LabelRegistry"
+    ],
+    "imports": [
+      "os",
+      "sys",
+      "pickle",
+      "uuid",
+      "datetime",
+      "typing",
+      "math"
+    ],
+    "docstring": "agents/label_registry.py - Persistent Label Registry (v1)"
+  },
+  "label_registry_auto.py": {
+    "lines": 127,
+    "functions": [
+      {
+        "name": "load_taxonomy",
+        "args": [
+          "root_path"
+        ],
+        "line": 21
+      },
+      {
+        "name": "classify_by_taxonomy",
+        "args": [
+          "name",
+          "taxonomy"
+        ],
+        "line": 29
+      },
+      {
+        "name": "run_auto_registry",
+        "args": [
+          "root_path",
+          "session_path",
+          "auto_yes"
+        ],
+        "line": 40
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 118
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "pickle",
+      "label_registry"
+    ],
+    "docstring": "agents/label_registry_auto.py - Auto-Activation Module"
+  },
+  "launch_session.py": {
+    "lines": 1218,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 103
+      },
+      {
+        "name": "utc_now_epoch",
+        "args": [],
+        "line": 107
+      },
+      {
+        "name": "safe_pickle_dump",
+        "args": [
+          "obj",
+          "path"
+        ],
+        "line": 111
+      },
+      {
+        "name": "normalize_angle",
+        "args": [
+          "a"
+        ],
+        "line": 118
+      },
+      {
+        "name": "find_project_root",
+        "args": [],
+        "line": 125
+      },
+      {
+        "name": "bootstrap_root",
+        "args": [
+          "root_path"
+        ],
+        "line": 135
+      },
+      {
+        "name": "create_session",
+        "args": [
+          "root_path"
+        ],
+        "line": 142
+      },
+      {
+        "name": "find_calibration",
+        "args": [
+          "root_path"
+        ],
+        "line": 161
+      },
+      {
+        "name": "run_full_pipeline",
+        "args": [
+          "root_path",
+          "session_path",
+          "calib_path",
+          "slam_ok",
+          "motive_ok",
+          "crash_logger"
+        ],
+        "line": 668
+      },
+      {
+        "name": "ask_run_ai_advisor",
+        "args": [],
+        "line": 961
+      },
+      {
+        "name": "run_ai_advisor_mock",
+        "args": [
+          "session_path",
+          "root_path",
+          "crash_logger"
+        ],
+        "line": 979
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 1028
+      },
+      {
+        "name": "log_error",
+        "args": [
+          "stage",
+          "error_type",
+          "error_message",
+          "traceback_str"
+        ],
+        "line": 72
+      },
+      {
+        "name": "save_crash_log",
+        "args": [],
+        "line": 84
+      },
+      {
+        "name": "try_connect",
+        "args": [],
+        "line": 209
+      },
+      {
+        "name": "subscribe_and_run",
+        "args": [],
+        "line": 348
+      },
+      {
+        "name": "save_final",
+        "args": [],
+        "line": 408
+      },
+      {
+        "name": "stop",
+        "args": [],
+        "line": 416
+      },
+      {
+        "name": "try_connect",
+        "args": [],
+        "line": 450
+      },
+      {
+        "name": "select_bodies",
+        "args": [],
+        "line": 467
+      },
+      {
+        "name": "ask_remote_recording",
+        "args": [],
+        "line": 513
+      },
+      {
+        "name": "run_collection",
+        "args": [],
+        "line": 560
+      },
+      {
+        "name": "save_final",
+        "args": [],
+        "line": 627
+      },
+      {
+        "name": "stop",
+        "args": [],
+        "line": 656
+      },
+      {
+        "name": "on_motive_recording_ended",
+        "args": [],
+        "line": 1071
+      },
+      {
+        "name": "map_cb",
+        "args": [
+          "msg"
+        ],
+        "line": 356
+      }
+    ],
+    "classes": [
+      "CrashLogger",
+      "MirSlamLogger",
+      "MotiveTrackerThread"
+    ],
+    "imports": [
+      "os",
+      "sys",
+      "time",
+      "math",
+      "pickle",
+      "glob",
+      "threading",
+      "subprocess",
+      "traceback",
+      "datetime",
+      "io",
+      "numpy",
+      "mir_command_logger",
+      "roslibpy",
+      "subprocess",
+      "sys",
+      "co_pilot_agent",
+      "roslibpy",
+      "motive_connector",
+      "spatial_temporal_fusion"
+    ],
+    "docstring": "launch_session.py \u2014 v7 (Full VLA Pipeline) (Extended Pipeline + New Agents)\n\nFeatures:\n  1. Auto-stop detection (Motive recording ends)\n  2. Manual stop (Ctrl+C)\n  3. Crash post-mortem (capture traceback)\n  4. User decision: keep session or delete\n  5. Full-auto pipeline (8 stages)\n  6. Label Registry auto-import\n  7. Cross-Modal Alignment (Motive <-> SLAM)\n  8. Auto-Labeler trigger for videos\n  9. AI Advisor trigger\n  10. Graceful failure handling"
+  },
+  "mir_command_logger.py": {
+    "lines": 258,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 23
+      },
+      {
+        "name": "utc_now_epoch",
+        "args": [],
+        "line": 26
+      },
+      {
+        "name": "safe_pickle_dump",
+        "args": [
+          "obj",
+          "path"
+        ],
+        "line": 29
+      },
+      {
+        "name": "try_connect",
+        "args": [],
+        "line": 173
+      },
+      {
+        "name": "stop",
+        "args": [],
+        "line": 206
+      },
+      {
+        "name": "save_final",
+        "args": [],
+        "line": 217
+      }
+    ],
+    "classes": [
+      "MirCommandLogger"
+    ],
+    "imports": [
+      "os",
+      "sys",
+      "time",
+      "threading",
+      "pickle",
+      "math",
+      "json",
+      "base64",
+      "datetime",
+      "roslibpy",
+      "requests",
+      "argparse"
+    ],
+    "docstring": "mir_command_logger.py - Robot Command History Logger (v1.0)\nCaptures /cmd_vel, /odom, /joystick, /battery, REST API state.\nProvides ACTION GROUND TRUTH for VLA training."
+  },
+  "motive_connector.py": {
+    "lines": 491,
+    "functions": [
+      {
+        "name": "quaternion_to_euler_deg",
+        "args": [
+          "qx",
+          "qy",
+          "qz",
+          "qw"
+        ],
+        "line": 46
+      },
+      {
+        "name": "connect",
+        "args": [
+          "client_address",
+          "server_address",
+          "use_multicast"
+        ],
+        "line": 190
+      },
+      {
+        "name": "request_model_definitions",
+        "args": [
+          "timeout_sec",
+          "poll_interval"
+        ],
+        "line": 218
+      },
+      {
+        "name": "shutdown",
+        "args": [],
+        "line": 264
+      },
+      {
+        "name": "start_recording",
+        "args": [
+          "take_name"
+        ],
+        "line": 275
+      },
+      {
+        "name": "stop_recording",
+        "args": [],
+        "line": 312
+      },
+      {
+        "name": "is_motive_recording",
+        "args": [],
+        "line": 330
+      },
+      {
+        "name": "list_rigid_bodies",
+        "args": [],
+        "line": 339
+      },
+      {
+        "name": "is_tracked",
+        "args": [
+          "name"
+        ],
+        "line": 343
+      },
+      {
+        "name": "is_fresh",
+        "args": [
+          "name",
+          "max_age_sec"
+        ],
+        "line": 348
+      },
+      {
+        "name": "get_age_sec",
+        "args": [
+          "name"
+        ],
+        "line": 357
+      },
+      {
+        "name": "get_position_mm",
+        "args": [
+          "name"
+        ],
+        "line": 364
+      },
+      {
+        "name": "get_ground_position_mm",
+        "args": [
+          "name"
+        ],
+        "line": 372
+      },
+      {
+        "name": "get_height_mm",
+        "args": [
+          "name"
+        ],
+        "line": 377
+      },
+      {
+        "name": "get_quaternion",
+        "args": [
+          "name"
+        ],
+        "line": 382
+      },
+      {
+        "name": "get_euler_deg",
+        "args": [
+          "name"
+        ],
+        "line": 389
+      },
+      {
+        "name": "get_full_state",
+        "args": [
+          "name"
+        ],
+        "line": 397
+      },
+      {
+        "name": "get_all_full_states",
+        "args": [],
+        "line": 408
+      },
+      {
+        "name": "get_latest_frame",
+        "args": [],
+        "line": 413
+      },
+      {
+        "name": "auto_detect_robot_name",
+        "args": [
+          "keywords"
+        ],
+        "line": 418
+      },
+      {
+        "name": "get_camera_descriptions",
+        "args": [],
+        "line": 424
+      }
+    ],
+    "classes": [
+      "MotiveConnector"
+    ],
+    "imports": [
+      "sys",
+      "time",
+      "math",
+      "threading",
+      "numpy",
+      "NatNetClient"
+    ],
+    "docstring": "Module: motive_connector.py  (v2 \u2014 rewritten against the ACTUAL NatNetClient SDK)\n\nThe ONLY module in the project that touches NatNetClient directly.\nEvery other script must import and use MotiveConnector.\n\nConfirmed project convention (calibration v4, PASS):\n  - Motive Up Axis = Z\n  - Ground plane   = Motive (X, Y)\n  - Vertical       = Motive Z\n  - All positions returned in MILLIMETERS.\n\nChangelog vs v1:\n  - Uses client.run() which returns True/False (not Thread(target=run)).\n  - Captures per-frame metadata (frame_number, timestamp, is_recording)\n    via new_frame_listener for future video sync.\n  - Captures camera descriptions (name, position, orientation) from the\n    SDK's __unpack_camera_description, for the future video annotation\n    module (OptiTrack cameras in Object Mode -> AVI).\n  - Adds start_recording() / stop_recording() using NAT_REQUEST with\n    text commands, confirmed compatible with this SDK's send_request().\n  - Thread safety via self._lock on all shared state."
+  },
+  "offline_processor.py": {
+    "lines": 156,
+    "functions": [
+      {
+        "name": "find_project_root",
+        "args": [],
+        "line": 20
+      },
+      {
+        "name": "list_sessions",
+        "args": [
+          "root"
+        ],
+        "line": 25
+      },
+      {
+        "name": "pick_session",
+        "args": [
+          "sessions"
+        ],
+        "line": 32
+      },
+      {
+        "name": "run_stage",
+        "args": [
+          "name",
+          "cmd",
+          "cwd"
+        ],
+        "line": 50
+      },
+      {
+        "name": "process_session",
+        "args": [
+          "root",
+          "session_path"
+        ],
+        "line": 62
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 133
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "glob",
+      "subprocess"
+    ],
+    "docstring": "agents/offline_processor.py - Standalone processor for existing sessions\n\nWhen videos are already recorded, run this instead of launch_session.\nIt runs the full pipeline on existing data without recording new session."
+  },
+  "project_snapshot.py": {
+    "lines": 651,
+    "functions": [
+      {
+        "name": "audit_agents",
+        "args": [],
+        "line": 43
+      },
+      {
+        "name": "audit_persistent_knowledge",
+        "args": [],
+        "line": 71
+      },
+      {
+        "name": "deep_vla_audit",
+        "args": [
+          "session_dir"
+        ],
+        "line": 113
+      },
+      {
+        "name": "audit_multimodal_dataset",
+        "args": [],
+        "line": 175
+      },
+      {
+        "name": "audit_sessions",
+        "args": [],
+        "line": 198
+      },
+      {
+        "name": "audit_model",
+        "args": [],
+        "line": 242
+      },
+      {
+        "name": "verify_bug_fixes",
+        "args": [],
+        "line": 273
+      },
+      {
+        "name": "audit_backup",
+        "args": [],
+        "line": 299
+      },
+      {
+        "name": "audit_detector",
+        "args": [],
+        "line": 335
+      },
+      {
+        "name": "audit_video_learning",
+        "args": [],
+        "line": 379
+      },
+      {
+        "name": "audit_slam_to_bev",
+        "args": [],
+        "line": 398
+      },
+      {
+        "name": "audit_videos",
+        "args": [],
+        "line": 419
+      },
+      {
+        "name": "generate_master_report",
+        "args": [],
+        "line": 434
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "numpy",
+      "json",
+      "pickle",
+      "os",
+      "re",
+      "hashlib",
+      "sys",
+      "subprocess",
+      "glob",
+      "datetime",
+      "pathlib",
+      "scene_object_detector",
+      "video_learning_agent",
+      "slam_to_bev"
+    ],
+    "docstring": null
+  },
+  "quality_gate.py": {
+    "lines": 509,
+    "functions": [
+      {
+        "name": "run_quality_gate",
+        "args": [
+          "root_path",
+          "session_path"
+        ],
+        "line": 417
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "math",
+      "pickle",
+      "datetime",
+      "datetime",
+      "statistics",
+      "collections",
+      "knowledge_engine"
+    ],
+    "docstring": "quality_gate.py \u2014 Flag Generator (v2)\n\nPer Master Doc section 15.3:\n  This agent is NO LONGER a \"judge\" that decides pass/fail.\n  Instead, it ONLY generates flags (informational warnings)\n  about potential issues in the session data.\n\n  The flags are written to the session's comprehensive report,\n  and later used by the AI Advisor and human reviewer to make\n  the final merge/no-merge decision.\n\nResponsibilities:\n  - Flag data quality issues (zero-placeholder, untracked, etc.)\n  - Flag statistical outliers (safety events, anomalies, etc.)\n  - Flag duplicate/redundant data\n  - Flag reference bugs (shared dicts)\n  - Flag low-confidence classifications\n  - Flag empty sessions (no Motive objects)\n  - Flag suspicious speeds/positions\n  - Calculate Learning Progress Score (section 15.4)\n\nOutput:\n  - Writes a \"QUALITY GATE FLAGS\" section to the session's\n    comprehensive report file.\n  - Returns a dict of flags for programmatic use (e.g. by\n    run_session_analysis.py)."
+  },
+  "qwen_dataset_formatter.py": {
+    "lines": 157,
+    "functions": [
+      {
+        "name": "classify_behavior",
+        "args": [
+          "linear_v",
+          "angular_w"
+        ],
+        "line": 35
+      },
+      {
+        "name": "format_session",
+        "args": [
+          "sname"
+        ],
+        "line": 50
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 148
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "json",
+      "pickle",
+      "math"
+    ],
+    "docstring": "qwen_dataset_formatter.py (v3.0 - Real Dynamic SLAM Ground Truth)\n====================================================================\nPolitecnico di Torino - Reactive Collaborative Robotics Thesis\nOperator: Kiarash Amiri (s322803) | Supervisor: Prof. Dario Antonelli\n\nPURPOSE:\n- Extracts TRUE linear and angular velocities from SLAM robot_states.\n- Clamps outlier sensor jumps to physical MiR100 limits (v: 0-1.2 m/s, w: -1.0..1.0 rad/s).\n- Dynamically assigns 4 industrial behavior classes:\n    * FORWARD_CRUISING\n    * ROTATIONAL_MANEUVER\n    * LOW_SPEED_NAVIGATION\n    * IDLE_STATIONARY\n- Generates context-rich Chain-of-Thought prompts reflecting semantic objects.\n===================================================================="
+  },
+  "robot_data_analyzer.py": {
+    "lines": 220,
+    "functions": [
+      {
+        "name": "wrap_to_pi",
+        "args": [
+          "angle"
+        ],
+        "line": 24
+      },
+      {
+        "name": "compute_differential_kinematics_robust",
+        "args": [
+          "poses",
+          "timestamps",
+          "max_v",
+          "max_w"
+        ],
+        "line": 29
+      },
+      {
+        "name": "validate_mir100_commands",
+        "args": [
+          "v_array",
+          "w_array"
+        ],
+        "line": 156
+      },
+      {
+        "name": "compute_session_statistics",
+        "args": [
+          "poses",
+          "timestamps"
+        ],
+        "line": 195
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "numpy",
+      "logging"
+    ],
+    "docstring": "robot_data_analyzer.py \u2014 FIXED v2.0\nFixes BUG-C: velocity was 9.13 m/s due to dt jitter (should be max 1.5 m/s)\nFixes BUG-D: R2_w=0.134 due to missing SO(2) angle unwrapping"
+  },
+  "run_session_analysis.py": {
+    "lines": 337,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 44
+      },
+      {
+        "name": "run_fusion",
+        "args": [
+          "session_path",
+          "calibration_path"
+        ],
+        "line": 51
+      },
+      {
+        "name": "run_knowledge_engine_safe",
+        "args": [
+          "session_path",
+          "root_path"
+        ],
+        "line": 78
+      },
+      {
+        "name": "run_quality_gate",
+        "args": [
+          "session_path",
+          "root_path"
+        ],
+        "line": 101
+      },
+      {
+        "name": "generate_merge_review_package",
+        "args": [
+          "session_path",
+          "root_path",
+          "flags",
+          "learning_score"
+        ],
+        "line": 116
+      },
+      {
+        "name": "initialize_comprehensive_report",
+        "args": [
+          "session_path"
+        ],
+        "line": 207
+      },
+      {
+        "name": "append_agent_output",
+        "args": [
+          "session_path",
+          "agent_name",
+          "output"
+        ],
+        "line": 226
+      },
+      {
+        "name": "run_full_analysis",
+        "args": [
+          "session_path",
+          "calibration_path",
+          "root_path"
+        ],
+        "line": 241
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 302
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "subprocess",
+      "argparse",
+      "datetime",
+      "pickle",
+      "quality_gate"
+    ],
+    "docstring": "run_session_analysis.py \u2014 Orchestrator for Full Session Workflow\n\nRuns the entire analysis pipeline for a single session with one command:\n\n  python agents/run_session_analysis.py <session_path> [calibration_path]\n\nSteps performed:\n  1. Runs spatial_temporal_fusion.py (if fused_data.pkl doesn't exist)\n  2. Runs knowledge_engine.py --safe (creates pending merge candidate)\n  3. Runs quality_gate.py (generates flags and learning score)\n  4. Generates MERGE REVIEW PACKAGE in the session's comprehensive report\n  5. Prints instructions for next steps\n\nOutput:\n  - All intermediate files (fused_data.pkl, candidate files, etc.)\n  - A single comprehensive report file with ALL agent outputs:\n      sessions/<session>/session_comprehensive_report.txt"
+  },
+  "scene_object_detector.py": {
+    "lines": 119,
+    "functions": [
+      {
+        "name": "get_model",
+        "args": [],
+        "line": 25
+      },
+      {
+        "name": "detect_objects_safe",
+        "args": [
+          "frame_bgr",
+          "timestamp"
+        ],
+        "line": 59
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "time",
+      "hashlib",
+      "pathlib",
+      "ultralytics",
+      "cv2",
+      "torch",
+      "numpy"
+    ],
+    "docstring": "scene_object_detector.py - Fixed v2\nFixes: timestamp, cache eviction, safe-state, pipeline compatible"
+  },
+  "semantic_slam_fusion.py": {
+    "lines": 172,
+    "functions": [
+      {
+        "name": "map_pixels_to_slam",
+        "args": [
+          "cx",
+          "cy",
+          "cam_type",
+          "map_metadata"
+        ],
+        "line": 27
+      },
+      {
+        "name": "fuse_session_data",
+        "args": [
+          "sname"
+        ],
+        "line": 61
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 154
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "json",
+      "pickle",
+      "numpy"
+    ],
+    "docstring": "semantic_slam_fusion.py (v1.0)\n====================================================================\nPolitecnico di Torino - Reactive Collaborative Robotics Thesis\nOperator: Kiarash Amiri (s322803) | Supervisor: Prof. Dario Antonelli\n\nPURPOSE:\n- Ingests slam_data.pkl (Base map + LiDAR) and yolo_detections.json.\n- Back-projects 2D camera pixels to 2D metric map coordinates (X_m, Y_m) \n  using homography-approximation calibrated against MoCap ground truth.\n- Clusters detected bounding boxes across time to isolate unique static \n  and dynamic objects (e.g. merging 500 chair boxes into 3 physical chairs).\n- Generates high-fidelity 'sessions/*/semantic_object_map.json' to feed\n  the multi-layer BEV renderer.\n===================================================================="
+  },
+  "session_manager.py": {
+    "lines": 419,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 38
+      },
+      {
+        "name": "utc_now_epoch",
+        "args": [],
+        "line": 42
+      },
+      {
+        "name": "load_persistent_knowledge",
+        "args": [
+          "root_path"
+        ],
+        "line": 61
+      },
+      {
+        "name": "save_persistent_knowledge",
+        "args": [
+          "root_path",
+          "knowledge"
+        ],
+        "line": 76
+      },
+      {
+        "name": "bootstrap_project_root",
+        "args": [
+          "base_path"
+        ],
+        "line": 118
+      },
+      {
+        "name": "create_new_session_folder",
+        "args": [
+          "root_path"
+        ],
+        "line": 149
+      },
+      {
+        "name": "update_knowledge_from_session",
+        "args": [
+          "root_path",
+          "session_path",
+          "calibration_path"
+        ],
+        "line": 172
+      },
+      {
+        "name": "inspect_project",
+        "args": [
+          "root_path"
+        ],
+        "line": 325
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 389
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "math",
+      "glob",
+      "pickle",
+      "argparse",
+      "datetime",
+      "numpy",
+      "time"
+    ],
+    "docstring": "session_manager.py \u2014 Project Inspector + Memory Manager\n\nResponsibilities:\n  1. Bootstrap project root (only creates what's missing)\n  2. Create new session folders\n  3. Load / save persistent knowledge (environment_knowledge.pkl)\n  4. Update knowledge from a completed session's fused_data.pkl\n  5. Inspect project status (how many sessions, reports, etc.)\n\nFIXED vs original:\n  - bootstrap no longer overwrites existing knowledge\n  - update_knowledge_from_session() actually exists now\n  - default run = inspect mode, not create mode"
+  },
+  "session_worthiness_analyzer.py": {
+    "lines": 209,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 4
+      },
+      {
+        "name": "load_pkl",
+        "args": [
+          "path"
+        ],
+        "line": 7
+      },
+      {
+        "name": "analyze_session_worthiness",
+        "args": [
+          "session_path",
+          "session_name"
+        ],
+        "line": 14
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 158
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "pickle",
+      "json",
+      "math",
+      "datetime"
+    ],
+    "docstring": null
+  },
+  "slam_auto_namer.py": {
+    "lines": 141,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 12
+      },
+      {
+        "name": "link_slam_to_entities",
+        "args": [
+          "root_path",
+          "session_path",
+          "distance_threshold_m"
+        ],
+        "line": 15
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 130
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "pickle",
+      "math",
+      "datetime",
+      "entity_registry",
+      "collections"
+    ],
+    "docstring": "slam_auto_namer.py - Automatic SLAM Cluster Naming (v1.0)\n\nPropagates entity names from Motive to SLAM clusters using spatial matching.\nUses cross_modal_aligner output and links to EntityRegistry."
+  },
+  "slam_map_annotator.py": {
+    "lines": 74,
+    "functions": [
+      {
+        "name": "annotate_slam_session",
+        "args": [
+          "session_dir"
+        ],
+        "line": 11
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "sys",
+      "pickle",
+      "json",
+      "os",
+      "pathlib",
+      "numpy"
+    ],
+    "docstring": "SLAM MAP ANNOTATOR - Industrial Production Grade\nFuses SLAM 2D Occupancy Grid with MoCap Rigid Body Ground Truth.\nOperator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | PoliTo"
+  },
+  "slam_to_bev.py": {
+    "lines": 95,
+    "functions": [
+      {
+        "name": "generate_bev_tokens",
+        "args": [
+          "session_dir"
+        ],
+        "line": 11
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "sys",
+      "pickle",
+      "json",
+      "os",
+      "pathlib",
+      "numpy"
+    ],
+    "docstring": "SLAM TO BEV (Bird's Eye View Tokenizer for VLA Models)\nConverts SLAM LiDAR Scans + Odometry into 2D Top-Down Spatial Tokens.\nOperator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | PoliTo"
+  },
+  "spatial_temporal_fusion.py": {
+    "lines": 523,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 53
+      },
+      {
+        "name": "load_calibration",
+        "args": [
+          "calibration_pkl_path"
+        ],
+        "line": 60
+      },
+      {
+        "name": "load_slam_session",
+        "args": [
+          "slam_pkl_path"
+        ],
+        "line": 71
+      },
+      {
+        "name": "load_motive_session",
+        "args": [
+          "motive_pkl_path"
+        ],
+        "line": 76
+      },
+      {
+        "name": "motive_to_mir_point",
+        "args": [
+          "x_mm",
+          "y_mm",
+          "motive_to_mir_matrix"
+        ],
+        "line": 87
+      },
+      {
+        "name": "robot_edge_distance_m",
+        "args": [
+          "robot_x",
+          "robot_y",
+          "robot_yaw_rad",
+          "obj_x",
+          "obj_y"
+        ],
+        "line": 96
+      },
+      {
+        "name": "safety_zone",
+        "args": [
+          "distance_m"
+        ],
+        "line": 115
+      },
+      {
+        "name": "is_zero_placeholder_mm",
+        "args": [
+          "x_mm",
+          "y_mm",
+          "z_mm",
+          "epsilon_m"
+        ],
+        "line": 126
+      },
+      {
+        "name": "is_near_zero_point_m",
+        "args": [
+          "x_m",
+          "y_m",
+          "epsilon_m"
+        ],
+        "line": 130
+      },
+      {
+        "name": "relative_angle_deg",
+        "args": [
+          "robot_x",
+          "robot_y",
+          "robot_yaw_rad",
+          "obj_x",
+          "obj_y"
+        ],
+        "line": 133
+      },
+      {
+        "name": "encounter_direction",
+        "args": [
+          "rel_angle_deg"
+        ],
+        "line": 151
+      },
+      {
+        "name": "robot_heading_toward",
+        "args": [
+          "robot_x",
+          "robot_y",
+          "robot_yaw_rad",
+          "robot_speed",
+          "obj_x",
+          "obj_y"
+        ],
+        "line": 164
+      },
+      {
+        "name": "find_nearest_robot_state",
+        "args": [
+          "robot_states",
+          "target_timestamp_utc"
+        ],
+        "line": 183
+      },
+      {
+        "name": "fuse_session",
+        "args": [
+          "session_path",
+          "calibration_pkl_path"
+        ],
+        "line": 200
+      },
+      {
+        "name": "save_fusion_result",
+        "args": [
+          "session_path",
+          "fusion_result"
+        ],
+        "line": 441
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "math",
+      "pickle",
+      "datetime",
+      "numpy"
+    ],
+    "docstring": "Agent 3: spatial_temporal_fusion.py (v2)\n\nUnifies SLAM (MiR) and Motive data into ONE common frame (MiR, meters).\n\nChanges in v2:\n  - NEW: relative_angle_deg (object angle relative to robot heading)\n  - NEW: encounter_direction (front/side/rear)\n  - NEW: safety_zone (critical/warning/safe)\n  - NEW: robot_heading_toward_object (bool)\n  - NEW: approach_speed_mps (negative = approaching)\n  - These features feed directly into knowledge_engine for learning\n\nSafety thresholds (confirmed):\n  - Critical : < 0.10 m\n  - Warning  : 0.10 \u2013 0.30 m\n  - Safe     : > 0.30 m\n\nRobot footprint (MiR100):\n  length = 0.78 m, width = 0.505 m, height = 0.88 m"
+  },
+  "training_curriculum_advisor.py": {
+    "lines": 80,
+    "functions": [
+      {
+        "name": "generate_curriculum",
+        "args": [],
+        "line": 16
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "pathlib"
+    ],
+    "docstring": "Training Curriculum Advisor (Next-Session Intelligent Tutor)\nAuthor: Kiarash Amiri (PoliTo / DIGEP)\nAudits current scenario coverage gaps and automatically generates a prioritized,\nstep-by-step recording prescription for Kiarash's upcoming 1-2 minute experimental sessions."
+  },
+  "video_event_extractor.py": {
+    "lines": 112,
+    "functions": [
+      {
+        "name": "analyze_video_file",
+        "args": [
+          "video_path",
+          "max_frames"
+        ],
+        "line": 19
+      },
+      {
+        "name": "process_all_sessions",
+        "args": [],
+        "line": 80
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "cv2",
+      "numpy",
+      "pathlib"
+    ],
+    "docstring": "Video Event Extractor Agent\nAuthor: Kiarash Amiri (PoliTo / DIGEP)\nExtracts visual motion cues, activity regions, and temporal events from raw Motive AVI videos\nusing OpenCV without heavy compute overhead. Caches results in session directories."
+  },
+  "video_learning_agent.py": {
+    "lines": 260,
+    "functions": [
+      {
+        "name": "compute_video_motion_profile",
+        "args": [
+          "video_path",
+          "sample_stride"
+        ],
+        "line": 32
+      },
+      {
+        "name": "analyze_mocap_dynamics",
+        "args": [
+          "motive_pkl_path"
+        ],
+        "line": 96
+      },
+      {
+        "name": "pair_and_analyze_all_sessions",
+        "args": [],
+        "line": 170
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "re",
+      "json",
+      "pickle",
+      "math",
+      "cv2",
+      "numpy",
+      "datetime"
+    ],
+    "docstring": "video_learning_agent.py (v1.0)\n====================================================================\nPolitecnico di Torino - Reactive Collaborative Robotics Thesis\nOperator: Kiarash Amiri (s322803) | Supervisor: Prof. Dario Antonelli\n\nPURPOSE:\n- Ingests dual-camera MJPEG AVI recordings (2048x1088 @ 30 FPS) from OptiTrack.\n- Computes Multi-View Optical Flow & Motion Energy.\n- Fuses video dynamics with MoCap 3D spatial trajectories (Hat, Wrists, Robot).\n- Automatically discovers and logs HRC Interaction Events across all sessions.\n- Generates persistent multimodal intelligence for Qwen-VL prompt enrichment.\n===================================================================="
+  },
+  "video_narrator.py": {
+    "lines": 100,
+    "functions": [
+      {
+        "name": "build_vla_narrative_and_dataset",
+        "args": [
+          "session_dir"
+        ],
+        "line": 11
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "sys",
+      "pickle",
+      "json",
+      "os",
+      "pathlib",
+      "numpy"
+    ],
+    "docstring": "VIDEO NARRATOR & QWEN-VLA DATASET GENERATOR\nSynthesizes MoCap, SLAM and Action trajectories into Qwen2-VL training pairs.\nOperator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | PoliTo"
+  },
+  "video_quality_agent.py": {
+    "lines": 700,
+    "functions": [
+      {
+        "name": "utc_now_iso",
+        "args": [],
+        "line": 39
+      },
+      {
+        "name": "find_project_root",
+        "args": [],
+        "line": 42
+      },
+      {
+        "name": "list_video_sessions",
+        "args": [
+          "motive_dir"
+        ],
+        "line": 46
+      },
+      {
+        "name": "count_csv_frames",
+        "args": [
+          "csv_path"
+        ],
+        "line": 67
+      },
+      {
+        "name": "detect_ghost_overlay",
+        "args": [
+          "gray"
+        ],
+        "line": 83
+      },
+      {
+        "name": "measure_motion_blur",
+        "args": [
+          "gray"
+        ],
+        "line": 103
+      },
+      {
+        "name": "measure_dynamic_range",
+        "args": [
+          "gray"
+        ],
+        "line": 108
+      },
+      {
+        "name": "compute_scene_diversity",
+        "args": [
+          "histograms"
+        ],
+        "line": 113
+      },
+      {
+        "name": "detect_text_overlay_regions",
+        "args": [
+          "gray"
+        ],
+        "line": 123
+      },
+      {
+        "name": "estimate_foreground_ratio",
+        "args": [
+          "gray"
+        ],
+        "line": 140
+      },
+      {
+        "name": "measure_temporal_jitter",
+        "args": [
+          "prev_gray",
+          "gray"
+        ],
+        "line": 149
+      },
+      {
+        "name": "analyze_video",
+        "args": [
+          "video_path",
+          "csv_frames",
+          "out_dir"
+        ],
+        "line": 156
+      },
+      {
+        "name": "write_report",
+        "args": [
+          "sessions_analyzed",
+          "out_txt",
+          "out_dir"
+        ],
+        "line": 487
+      },
+      {
+        "name": "main",
+        "args": [],
+        "line": 600
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "cv2",
+      "csv",
+      "glob",
+      "json",
+      "math",
+      "numpy",
+      "datetime",
+      "collections",
+      "traceback"
+    ],
+    "docstring": "video_quality_agent.py - Industry-Grade Video Quality Agent (v2.0)\n\nChecks 15 VLA-critical quality factors based on standards from:\n- Google DeepMind (RT-2, RT-X, Open X-Embodiment)\n- Physical Intelligence (pi-0, pi-0.5)\n- Tesla Optimus, Figure AI, 1X Technologies\n- NVIDIA GR00T, UC Berkeley DROID, Stanford ALOHA\n- Meta Ego4D, HuggingFace LeRobot\n\nOutput: VIDEO_QA_REPORT_FOR_AI.txt (Desktop)"
+  },
+  "vla_dataset_builder.py": {
+    "lines": 151,
+    "functions": [
+      {
+        "name": "find_bev_images",
+        "args": [
+          "session_dir"
+        ],
+        "line": 21
+      },
+      {
+        "name": "extract_kinematics",
+        "args": [
+          "session_dir",
+          "n_frames"
+        ],
+        "line": 36
+      },
+      {
+        "name": "build_qwen_training_pairs",
+        "args": [
+          "session_dir",
+          "output_file"
+        ],
+        "line": 92
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "glob",
+      "json",
+      "pickle",
+      "numpy",
+      "logging",
+      "robot_data_analyzer"
+    ],
+    "docstring": "vla_dataset_builder.py \u2014 Fully Adaptive Multi-Modal Dataset Builder\nRecursively finds BEV images and adapts to any slam_data format."
+  },
+  "vla_scenario_validator.py": {
+    "lines": 140,
+    "functions": [
+      {
+        "name": "analyze_session_physics",
+        "args": [
+          "session_dir"
+        ],
+        "line": 30
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "pickle",
+      "math",
+      "pathlib"
+    ],
+    "docstring": "VLA Physical Scenario Validator (v2.0 - Anti-Hallucination & Multi-Modal Grounding)\nAuthor: Kiarash Amiri (PoliTo / DIGEP)\nAnalyzes ground-truth physical telemetry (MoCap rigid bodies, SLAM poses, Odom actions)\nand validates 22 industrial collaborative robotics scenarios with exact confidence scores."
+  },
+  "vla_supervisor_agent.py": {
+    "lines": 91,
+    "functions": [
+      {
+        "name": "run_supervisor",
+        "args": [],
+        "line": 24
+      }
+    ],
+    "classes": [],
+    "imports": [
+      "os",
+      "sys",
+      "json",
+      "pathlib",
+      "vla_scenario_validator"
+    ],
+    "docstring": "VLA Master Supervisor Agent (Multi-Modal Grounded Intelligence)\nAuthor: Kiarash Amiri (PoliTo / DIGEP)\nFuses Physical Evidence + Visual Video Signals + Project Knowledge Memory to output\nthe Single Source of Truth VLA Behavior Matrix with multi-modal confidence verification."
+  }
+}

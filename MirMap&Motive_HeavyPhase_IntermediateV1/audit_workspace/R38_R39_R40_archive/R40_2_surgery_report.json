@@ -1,0 +1,22 @@
+{
+  "pre": "4414a155a0db4f1c2a1461f6de2728b1",
+  "post": "0f903341ae7cd670d88dc45a2ad789e5",
+  "backup": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\backups\\A18_deep_agent_verifier\\A18_pre_R40_20260903_200942.py",
+  "changes": [
+    "CC L105: 5s->2s",
+    "CC L139: 5s->2s",
+    "BW: +warmup_lmstudio"
+  ],
+  "compile": "PASS",
+  "import": "PASS",
+  "funcs": [
+    "Counter",
+    "analyze_agent",
+    "extract_json",
+    "main",
+    "query_gemini",
+    "query_lmstudio",
+    "query_openrouter",
+    "warmup_lmstudio"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "ts": "2026-09-03T20:07:36.593266",
+  "t": {
+    "A18_md5": "4414a155a0db4f1c2a1461f6de2728b1",
+    "A18_lines": 316,
+    "A18_bytes": 14192,
+    "A18_compile": "PASS",
+    "A18_import": "PASS",
+    "A18_funcs": [
+      "Counter",
+      "analyze_agent",
+      "extract_json",
+      "main",
+      "query_gemini",
+      "query_lmstudio",
+      "query_openrouter"
+    ],
+    "temp_count": 9,
+    "temp_files": [
+      "R38_1_systemic_impact_diagnostic.py",
+      "R38_1_systemic_impact_report.json",
+      "R38_2_a18_anatomy_deep_dump.py",
+      "R38_3_surgery_bug_bv.py",
+      "R38_4_post_surgery_100dim_test.py",
+      "R38_4_post_surgery_report.json",
+      "R38_5_fast_live_probe.py",
+      "R38_5_live_quorum_smoke_test.py",
+      "R40_1_diagnostic.py"
+    ],
+    "vault_total": 40,
+    "vault_deferred": 18,
+    "vault_sota_missing": 0,
+    "vault_phantom_refs": {
+      "qwen_inference_engine": 11,
+      "kiarash_gemeni_python_client": 6,
+      "qwen_dataset_builder": 1
+    },
+    "backup_count": 10,
+    "BUG_CC_sleeps": 4,
+    "BUG_CA_opens": 8,
+    "BUG_CA_encodings": 5,
+    "BUG_BV_has_cot_strip": true,
+    "BUG_BV_has_depth": true,
+    "provider_lmstudio": true,
+    "provider_gemini": true,
+    "provider_nemotron": true,
+    "provider_flash_ref": false,
+    "has_retry": true,
+    "has_warmup": false
+  }
+}

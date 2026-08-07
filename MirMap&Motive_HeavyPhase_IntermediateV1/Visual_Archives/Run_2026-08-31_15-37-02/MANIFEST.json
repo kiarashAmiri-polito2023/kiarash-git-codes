@@ -1,0 +1,17 @@
+{
+  "run_name": "Run_2026-08-31_15-37-02",
+  "run_path": "D:\\kiarash\\kiarash git codes\\MirMap&Motive_HeavyPhase_IntermediateV1\\Visual_Archives\\Run_2026-08-31_15-37-02",
+  "session": "session_2026-08-27_17-54-20",
+  "errors": 0,
+  "files": {
+    "bev": 20,
+    "yolo": 32,
+    "slam": 3,
+    "figures": 7,
+    "dashboards": 6
+  },
+  "metrics": {
+    "mae_v": 0.06004347826086955,
+    "mae_w": 0.07989855072463768
+  }
+}

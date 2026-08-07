@@ -1,0 +1,53 @@
+﻿{
+    "output_dir":  "C:\\Users\\Admin\\kiarash works\\kiarash git codes\\MirMap\u0026Motive_HeavyPhase_IntermediateV1\\audit_workspace\\R45_Tests",
+    "timestamp":  "2026-09-22T19:54:11",
+    "batch":  "R45_Batch1",
+    "total_tests":  10,
+    "model":  "qwen3.6-27b",
+    "results":  {
+                    "A_T2_grounding_dino.json":  {
+                                                     "verdict":  "PARSE_ERROR",
+                                                     "confidence":  0
+                                                 },
+                    "B_T3_cache.json":  {
+                                            "verdict":  "PARSE_ERROR",
+                                            "confidence":  0
+                                        },
+                    "B_T4_realtime.json":  {
+                                               "verdict":  "PARSE_ERROR",
+                                               "confidence":  0
+                                           },
+                    "A_T1_structural.json":  {
+                                                 "verdict":  "PARSE_ERROR",
+                                                 "confidence":  0
+                                             },
+                    "B_T5_pipeline.json":  {
+                                               "verdict":  "PARSE_ERROR",
+                                               "confidence":  0
+                                           },
+                    "B_T2_human.json":  {
+                                            "verdict":  "PARSE_ERROR",
+                                            "confidence":  0
+                                        },
+                    "A_T3_video_safety.json":  {
+                                                   "verdict":  "PARSE_ERROR",
+                                                   "confidence":  0
+                                               },
+                    "A_T4_xml_output.json":  {
+                                                 "verdict":  "PARSE_ERROR",
+                                                 "confidence":  0
+                                             },
+                    "A_T5_hitl.json":  {
+                                           "verdict":  "PARSE_ERROR",
+                                           "confidence":  0
+                                       },
+                    "B_T1_yolo.json":  {
+                                           "verdict":  "PARSE_ERROR",
+                                           "confidence":  0
+                                       }
+                },
+    "agents_tested":  [
+                          "auto_labeler",
+                          "scene_object_detector"
+                      ]
+}

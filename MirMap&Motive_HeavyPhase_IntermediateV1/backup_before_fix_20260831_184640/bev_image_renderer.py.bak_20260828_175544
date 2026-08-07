@@ -1,0 +1,225 @@
+﻿"""
+BEV Image Renderer for Vision-Language-Action (VLA) Pipeline
+Author: Kiarash Amiri (PoliTo / DIGEP)
+Converts raw SLAM occupancy grid, 2D LiDAR scans, MoCap human/robot rigid bodies,
+and Odometry into standardized 448x448 RGB PNG Bird's Eye View (BEV) images for Qwen-VL.
+"""
+
+import os
+import sys
+import json
+import pickle
+import math
+import numpy as np
+from pathlib import Path
+from PIL import Image, ImageDraw
+
+def render_bev_frame(map_grid, map_meta, robot_pose, lidar_scan, mocap_bodies, target_size=(448, 448), view_window_m=6.0):
+    W, H = target_size
+    img = Image.new("RGB", (W, H), color=(240, 240, 240))
+    draw = ImageDraw.Draw(img, "RGBA")
+
+    rx = robot_pose.get("x", 0.0)
+    ry = robot_pose.get("y", 0.0)
+    ryaw = robot_pose.get("yaw", 0.0)
+    scale = W / view_window_m
+
+    def world_to_pixel(wx, wy):
+        dx = wx - rx
+        dy = wy - ry
+        px = int(W / 2 + dx * scale)
+        py = int(H / 2 - dy * scale)
+        return px, py
+
+    # Layer 1: SLAM Occupancy Grid
+    if map_grid is not None and map_meta is not None:
+        try:
+            grid_np = np.array(map_grid)
+            if len(grid_np.shape) == 2:
+                res = map_meta.get("resolution", 0.05)
+                ox = map_meta.get("origin_x", 0.0)
+                oy = map_meta.get("origin_y", 0.0)
+                half_win = view_window_m / 2.0
+                x_min_idx = max(0, int((rx - half_win - ox) / res))
+                x_max_idx = min(grid_np.shape[1], int((rx + half_win - ox) / res))
+                y_min_idx = max(0, int((ry - half_win - oy) / res))
+                y_max_idx = min(grid_np.shape[0], int((ry + half_win - oy) / res))
+
+                if x_max_idx > x_min_idx and y_max_idx > y_min_idx:
+                    sub_grid = grid_np[y_min_idx:y_max_idx, x_min_idx:x_max_idx]
+                    occ_y, occ_x = np.where(sub_grid > 50)
+                    for oy_rel, ox_rel in zip(occ_y, occ_x):
+                        wx = ox + (x_min_idx + ox_rel) * res
+                        wy = oy + (y_min_idx + oy_rel) * res
+                        px, py = world_to_pixel(wx, wy)
+                        if 0 <= px < W and 0 <= py < H:
+                            draw.rectangle([px-1, py-1, px+1, py+1], fill=(50, 50, 50, 180))
+        except Exception:
+            pass
+
+    # Layer 2: Safety Zone Envelope (Orange Halo)
+    r_safety_px = int(1.2 * scale)
+    rcx, rcy = world_to_pixel(rx, ry)
+    draw.ellipse([rcx - r_safety_px, rcy - r_safety_px, rcx + r_safety_px, rcy + r_safety_px], 
+                 outline=(255, 140, 0, 200), width=2, fill=(255, 165, 0, 40))
+
+    # Layer 3: LiDAR Scan Obstacles (Red dots)
+    if lidar_scan:
+        for pt in lidar_scan:
+            if isinstance(pt, (list, tuple)) and len(pt) >= 2:
+                lx, ly = pt[0], pt[1]
+                px, py = world_to_pixel(lx, ly)
+                if 0 <= px < W and 0 <= py < H:
+                    draw.ellipse([px-2, py-2, px+2, py+2], fill=(220, 20, 60, 255))
+
+    # Layer 4: Robot Footprint (Blue Rectangle + Heading Arrow)
+    rob_len_px = int(0.9 * scale)
+    rob_wid_px = int(0.6 * scale)
+    hl, hw = rob_len_px / 2.0, rob_wid_px / 2.0
+    corners = [(-hl, -hw), (hl, -hw), (hl, hw), (-hl, hw)]
+    rot_corners = []
+    for cx, cy in corners:
+        rot_x = cx * math.cos(ryaw) - cy * math.sin(ryaw)
+        rot_y = cx * math.sin(ryaw) + cy * math.cos(ryaw)
+        rot_corners.append((rcx + rot_x, rcy - rot_y))
+    
+    draw.polygon(rot_corners, fill=(30, 144, 255, 220), outline=(0, 0, 139, 255))
+
+    arrow_len = rob_len_px * 0.9
+    head_x = rcx + arrow_len * math.cos(ryaw)
+    head_y = rcy - arrow_len * math.sin(ryaw)
+    draw.line([(rcx, rcy), (head_x, head_y)], fill=(255, 255, 255, 255), width=3)
+    draw.ellipse([head_x-3, head_y-3, head_x+3, head_y+3], fill=(255, 255, 0, 255))
+
+    # Layer 5: MoCap Human Bodies
+    if mocap_bodies:
+        for h_key in ["kia hat 002", "kia_hat", "human_head"]:
+            if h_key in mocap_bodies:
+                hb = mocap_bodies[h_key]
+                hx, hy = hb.get("x", 0.0), hb.get("y", 0.0)
+                h_px, h_py = world_to_pixel(hx, hy)
+                h_radius = int(0.25 * scale)
+                draw.ellipse([h_px - h_radius, h_py - h_radius, h_px + h_radius, h_py + h_radius],
+                             fill=(46, 139, 87, 230), outline=(0, 100, 0, 255), width=2)
+                draw.line([(h_px-4, h_py), (h_px+4, h_py)], fill=(255, 255, 255, 255), width=2)
+                draw.line([(h_px, h_py-4), (h_px, h_py+4)], fill=(255, 255, 255, 255), width=2)
+
+        for w_key in ["kiarash_RightWrist", "kiarash_leftwrist", "right_wrist", "left_wrist"]:
+            if w_key in mocap_bodies:
+                wb = mocap_bodies[w_key]
+                wx, wy = wb.get("x", 0.0), wb.get("y", 0.0)
+                w_px, w_py = world_to_pixel(wx, wy)
+                draw.ellipse([w_px - 4, w_py - 4, w_px + 4, w_py + 4],
+                             fill=(255, 215, 0, 255), outline=(184, 134, 11, 255), width=1)
+
+    return img
+
+def process_session(session_dir):
+    session_dir = Path(session_dir)
+    print(f"[BEV_RENDERER] Processing: {session_dir.name}")
+
+    slam_file = session_dir / "slam_data.pkl"
+    mocap_file = session_dir / "motive_data.pkl"
+    odom_file = session_dir / "mir_command_data.pkl"
+
+    if not slam_file.exists() or not odom_file.exists():
+        print(f"[SKIP] Missing critical SLAM or Odom in {session_dir.name}")
+        return 0
+
+    with open(slam_file, "rb") as f:
+        slam_data = pickle.load(f)
+    with open(odom_file, "rb") as f:
+        odom_data = pickle.load(f)
+
+    mocap_data = None
+    if mocap_file.exists():
+        with open(mocap_file, "rb") as f:
+            mocap_data = pickle.load(f)
+
+    map_grid = slam_data.get("map_grid")
+    map_meta = slam_data.get("map_metadata", {})
+    robot_states = slam_data.get("robot_states", [])
+    obstacle_scans = slam_data.get("obstacle_scans", [])
+    odom_log = odom_data.get("odom_log", [])
+
+    if not odom_log:
+        print("[ERROR] No odom log records found.")
+        return 0
+
+    out_dir = session_dir / "bev_images"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    mocap_rb = mocap_data.get("rigid_bodies", {}) if mocap_data else {}
+    rendered_count = 0
+    metadata_records = []
+
+    step = 10
+    total_odom = len(odom_log)
+
+    for idx in range(0, total_odom, step):
+        sample = odom_log[idx]
+        ts = sample.get("timestamp_rel_s", idx * 0.025)
+        
+        state_idx = min(int(idx * len(robot_states) / total_odom), len(robot_states) - 1) if robot_states else 0
+        state = robot_states[state_idx] if robot_states else {}
+        robot_pose = {
+            "x": state.get("x", sample.get("x", 0.0)),
+            "y": state.get("y", sample.get("y", 0.0)),
+            "yaw": state.get("yaw", sample.get("yaw", 0.0))
+        }
+
+        scan_idx = min(int(idx * len(obstacle_scans) / total_odom), len(obstacle_scans) - 1) if obstacle_scans else 0
+        scan = obstacle_scans[scan_idx].get("scan_points", []) if obstacle_scans else []
+
+        curr_mocap = {}
+        for rb_name, rb_val in mocap_rb.items():
+            s_list = rb_val.get("samples", []) if isinstance(rb_val, dict) else rb_val
+            if s_list:
+                s_idx = min(int(idx * len(s_list) / total_odom), len(s_list) - 1)
+                curr_sample = s_list[s_idx]
+                curr_mocap[rb_name] = {
+                    "x": curr_sample.get("x_mm", 0.0) / 1000.0,
+                    "y": curr_sample.get("y_mm", 0.0) / 1000.0,
+                    "z": curr_sample.get("z_mm", 0.0) / 1000.0
+                }
+
+        frame_name = f"frame_{rendered_count:05d}.png"
+        frame_path = out_dir / frame_name
+        img = render_bev_frame(map_grid, map_meta, robot_pose, scan, curr_mocap, target_size=(448, 448))
+        img.save(frame_path, "PNG", optimize=True)
+
+        meta = {
+            "frame_id": rendered_count,
+            "filename": frame_name,
+            "relative_path": f"bev_images/{frame_name}",
+            "timestamp_s": round(ts, 3),
+            "robot_pose": robot_pose,
+            "action": {
+                "linear_x": round(sample.get("linear_x", sample.get("vx", 0.0)), 4),
+                "angular_z": round(sample.get("angular_z", sample.get("vth", 0.0)), 4)
+            }
+        }
+        metadata_records.append(meta)
+        rendered_count += 1
+
+    manifest_path = session_dir / "bev_images_metadata.json"
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "total_frames": rendered_count,
+            "resolution": "448x448",
+            "channels": 3,
+            "format": "PNG",
+            "frames": metadata_records
+        }, f, indent=2)
+
+    print(f"[OK] Rendered {rendered_count} BEV PNG frames to: {out_dir}")
+    return rendered_count
+
+if __name__ == "__main__":
+    root_dir = Path(r"D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1")
+    s7_dir = root_dir / "sessions" / "session_2026-08-27_17-54-20"
+    if s7_dir.exists():
+        count = process_session(s7_dir)
+        print(f"[SUCCESS] Finished BEV image generation: {count} frames produced.")
+    else:
+        print(f"[FAIL] Target session directory not found: {s7_dir}")

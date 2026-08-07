@@ -1,0 +1,33 @@
+{
+  "agent": "scene_object_detector",
+  "file": "scene_object_detector.py",
+  "final_verdict": "PASS",
+  "confidence": 85,
+  "escalated": false,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "PASS",
+      "confidence": 85,
+      "elapsed": 53.9,
+      "finish": "stop",
+      "details": {
+        "agent": "scene_object_detector",
+        "verdict": "PASS",
+        "confidence": 85,
+        "critical_bugs": [],
+        "warnings": [
+          "Unbounded disk cache growth without eviction or size limits risks rapid disk exhaustion in continuous operation",
+          "Hardcoded confidence threshold (0.45) passed to cache functions reduces flexibility and may cause stale cache hits if inference parameters change",
+          "MD5 hashing of full frame bytes is computationally expensive for high-resolution video streams and may introduce latency"
+        ],
+        "recommendations": [
+          "Implement an LRU or max-file-count policy for CACHE_DIR to prevent unbounded disk usage",
+          "Replace MD5 with a perceptual hash (e.g., pHash) or xxhash for faster, resolution-invariant cache keys",
+          "Add defensive bounds checking: use results.names.get(int(cls_id), 'unknown') instead of direct indexing to prevent IndexError on unexpected class IDs",
+          "Parameterize conf_threshold in detect_objects_safe() to align inference and cache validation dynamically rather than hardcoding 0.45"
+        ]
+      }
+    }
+  ]
+}

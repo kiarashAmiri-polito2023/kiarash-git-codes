@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "classes": {
+    "human": {
+      "description": "Any person in the environment",
+      "motive_keywords": ["hat", "wrist", "hand", "head", "human"],
+      "color": "#FF0000",
+      "is_dynamic": true
+    },
+    "robot": {
+      "description": "The MiR mobile robot itself",
+      "motive_keywords": ["mir", "robot"],
+      "color": "#0000FF",
+      "is_dynamic": true
+    },
+    "static_furniture": {
+      "description": "Tables, shelves, walls, stations",
+      "motive_keywords": ["station", "table", "shelf", "wall"],
+      "color": "#00FF00",
+      "is_dynamic": false
+    },
+    "dynamic_obstacle": {
+      "description": "Moving objects that are not human or robot",
+      "motive_keywords": [],
+      "color": "#FFA500",
+      "is_dynamic": true
+    },
+    "goal_object": {
+      "description": "Target object for manipulation or navigation",
+      "motive_keywords": ["goal", "target", "kitting"],
+      "color": "#FF00FF",
+      "is_dynamic": false
+    },
+    "unknown": {
+      "description": "Unclassified object, needs human review",
+      "motive_keywords": [],
+      "color": "#808080",
+      "is_dynamic": false
+    }
+  }
+}

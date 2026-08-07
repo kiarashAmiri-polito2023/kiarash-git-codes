@@ -1,0 +1,40 @@
+﻿{
+    "schema_version":  "agent_registry_v1",
+    "last_updated_utc":  "2026-08-25T17:50:26Z",
+    "total_agents":  1,
+    "agents":  {
+                   "video_quality_agent":  {
+                                               "version":  "2.0",
+                                               "category":  "Quality Assurance",
+                                               "registered_at_utc":  "2026-08-25T17:50:26Z",
+                                               "standards_applied":  [
+                                                                         "Google DeepMind RT-X",
+                                                                         "Physical Intelligence pi-0",
+                                                                         "Tesla Optimus",
+                                                                         "Figure AI",
+                                                                         "NVIDIA GR00T",
+                                                                         "Berkeley DROID",
+                                                                         "Stanford ALOHA",
+                                                                         "Meta Ego4D",
+                                                                         "HuggingFace LeRobot"
+                                                                     ],
+                                               "dependencies":  [
+                                                                    "opencv-python",
+                                                                    "numpy"
+                                                                ],
+                                               "can_be_automated":  true,
+                                               "pipeline_stage":  "pre_labeling",
+                                               "name":  "video_quality_agent",
+                                               "purpose":  "Industry-grade 15-point VLA video quality audit",
+                                               "automation_trigger":  "after_motive_export",
+                                               "integration_notes":  "Ready to plug into launch_session.py Stage 0 (pre-processing) after user confirms first successful test.",
+                                               "output_files":  [
+                                                                    "VIDEO_QA_REPORT_FOR_AI.txt (Desktop)",
+                                                                    "reports/video_qa_TIMESTAMP/*.jpg (keyframes)"
+                                                                ],
+                                               "path":  "agents/video_quality_agent.py",
+                                               "ready_for_launch_session_integration":  false,
+                                               "integration_status":  "standalone"
+                                           }
+               }
+}

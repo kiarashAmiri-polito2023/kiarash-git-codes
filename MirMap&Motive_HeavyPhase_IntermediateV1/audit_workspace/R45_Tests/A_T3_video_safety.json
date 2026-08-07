@@ -1,0 +1,25 @@
+﻿{
+  "test": "video_safety",
+  "agent": "auto_labeler",
+  "verdict": "FAIL",
+  "confidence": 0.85,
+  "resource_leaks": [
+    "cv2.VideoCapture not guaranteed to release on unexpected exceptions due to missing try/finally block"
+  ],
+  "oom_risks": [
+    "Unbounded accumulation of all detections in 'all_ann' list for long videos",
+    "No incremental disk writing or memory management for annotation storage"
+  ],
+  "issues": [
+    {
+      "severity": "critical",
+      "location": "auto_label_video",
+      "description": "Missing try/finally block around frame processing loop; cap.release() may not execute if an exception occurs during inference or XML generation."
+    },
+    {
+      "severity": "warning",
+      "location": "auto_label_video",
+      "description": "all_ann list grows indefinitely in memory, risking OOM for long videos or high detection rates."
+    }
+  ]
+}

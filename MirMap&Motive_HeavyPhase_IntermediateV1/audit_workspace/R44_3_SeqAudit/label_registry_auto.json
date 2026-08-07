@@ -1,0 +1,27 @@
+{
+  "agent": "label_registry_auto",
+  "file": "label_registry_auto.py",
+  "final_verdict": "PARSE_FAIL",
+  "confidence": 0,
+  "escalated": true,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "UNCERTAIN",
+      "confidence": 0,
+      "elapsed": 3.7,
+      "finish": "error",
+      "details": {
+        "error": "HTTP Error 400: Bad Request"
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "elapsed": 22.9,
+      "finish": "length",
+      "details": null
+    }
+  ]
+}

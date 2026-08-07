@@ -1,0 +1,1175 @@
+﻿#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+launch_session.py — v7 (Full VLA Pipeline) (Extended Pipeline + New Agents)
+
+Features:
+  1. Auto-stop detection (Motive recording ends)
+  2. Manual stop (Ctrl+C)
+  3. Crash post-mortem (capture traceback)
+  4. User decision: keep session or delete
+  5. Full-auto pipeline (8 stages)
+  6. Label Registry auto-import
+  7. Cross-Modal Alignment (Motive <-> SLAM)
+  8. Auto-Labeler trigger for videos
+  9. AI Advisor trigger
+  10. Graceful failure handling
+"""
+
+import os
+import sys
+import time
+import math
+import pickle
+import glob
+import threading
+import subprocess
+import traceback
+try:
+    from mir_command_logger import MirCommandLogger
+except ImportError:
+    MirCommandLogger = None
+from datetime import datetime, timezone
+from io import StringIO
+
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+if THIS_DIR not in sys.path:
+    sys.path.insert(0, THIS_DIR)
+
+import numpy as np
+
+# ============================================================
+# Project configuration
+# ============================================================
+ROOT_FOLDER_NAME = "MirMap&Motive_HeavyPhase_IntermediateV1"
+ROBOT_IP = '192.168.12.20'
+ROS_PORT = 9090
+
+SLAM_SAVE_INTERVAL_SEC = 5.0
+MOTIVE_SAVE_INTERVAL_SEC = 5.0
+MOTIVE_POLL_INTERVAL_SEC = 0.05
+
+ACCEL_SMOOTHING_ALPHA = 0.3
+REFERENCE_BODY_NAMES = {"Global Coordinate", "ground"}
+ZERO_PLACEHOLDER_EPS_MM = 1.0
+CALIBRATION_PKL_FILENAME = "latest_calibration.pkl"
+
+MOTIVE_NO_FRAME_TIMEOUT_SEC = 10.0
+MOTIVE_CHECK_INTERVAL_SEC = 0.5
+
+
+# ============================================================
+# Crash Logging & Error Handling
+# ============================================================
+class CrashLogger:
+
+    def __init__(self, session_path):
+        self.session_path = session_path
+        self.crash_log_path = os.path.join(session_path, "crash_log.txt")
+        self.errors = []
+        self.start_time = time.time()
+
+    def log_error(self, stage, error_type, error_message, traceback_str=None):
+        error_entry = {
+            "timestamp_utc": datetime.now(tz=timezone.utc).isoformat(),
+            "stage": stage,
+            "error_type": error_type,
+            "error_message": error_message,
+            "traceback": traceback_str or "N/A",
+            "elapsed_seconds": time.time() - self.start_time
+        }
+        self.errors.append(error_entry)
+        return error_entry
+
+    def save_crash_log(self):
+        with open(self.crash_log_path, "w", encoding="utf-8") as f:
+            f.write("=" * 70 + "\n")
+            f.write("CRASH POST-MORTEM LOG\n")
+            f.write("=" * 70 + "\n\n")
+            f.write("Session: " + os.path.basename(self.session_path) + "\n")
+            f.write("Generated: " + datetime.now(tz=timezone.utc).isoformat() + "\n")
+            f.write("Total errors: " + str(len(self.errors)) + "\n\n")
+            for i, err in enumerate(self.errors, 1):
+                f.write("--- ERROR " + str(i) + " ---\n")
+                f.write("Timestamp: " + err["timestamp_utc"] + "\n")
+                f.write("Stage: " + err["stage"] + "\n")
+                f.write("Type: " + err["error_type"] + "\n")
+                f.write("Message: " + err["error_message"] + "\n")
+                f.write("Elapsed: " + str(round(err["elapsed_seconds"], 2)) + "s\n")
+                f.write("\nTraceback:\n" + err["traceback"] + "\n\n")
+        print("[CRASH LOG] Saved to: " + self.crash_log_path)
+
+
+def utc_now_iso():
+    return datetime.now(tz=timezone.utc).isoformat()
+
+
+def utc_now_epoch():
+    return time.time()
+
+
+def safe_pickle_dump(obj, path):
+    tmp = path + ".tmp"
+    with open(tmp, "wb") as f:
+        pickle.dump(obj, f, protocol=pickle.HIGHEST_PROTOCOL)
+    os.replace(tmp, path)
+
+
+def normalize_angle(a):
+    return (a + math.pi) % (2.0 * math.pi) - math.pi
+
+
+# ============================================================
+# Project bootstrap
+# ============================================================
+def find_project_root():
+    parent = os.path.dirname(THIS_DIR)
+    if os.path.basename(parent) == ROOT_FOLDER_NAME:
+        return parent
+    candidate = os.path.join(os.path.dirname(THIS_DIR), ROOT_FOLDER_NAME)
+    if os.path.exists(candidate):
+        return candidate
+    return os.path.dirname(THIS_DIR)
+
+
+def bootstrap_root(root_path):
+    for sub in ["sessions", "persistent_knowledge", "reports",
+                "agents", "calibration"]:
+        os.makedirs(os.path.join(root_path, sub), exist_ok=True)
+    return root_path
+
+
+def create_session(root_path):
+    tag = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    sp = os.path.join(root_path, "sessions", "session_" + tag)
+    for sub in ["video", "raw", "processed"]:
+        os.makedirs(os.path.join(sp, sub), exist_ok=True)
+    meta = os.path.join(sp, "session_metadata.txt")
+    with open(meta, "w", encoding="utf-8") as f:
+        f.write("Session Metadata\n")
+        f.write("=" * 50 + "\n")
+        f.write("Created at UTC     : " + utc_now_iso() + "\n")
+        f.write("Session path       : " + sp + "\n")
+        f.write("Robot IP           : " + ROBOT_IP + "\n")
+        f.write("ROS Port           : " + str(ROS_PORT) + "\n")
+        f.write("Stop modes enabled : Auto (Motive) + Manual (Ctrl+C)\n")
+        f.write("Safety critical    : <0.10m\n")
+        f.write("Safety warning     : 0.10-0.30m\n")
+    return sp
+
+
+def find_calibration(root_path):
+    path = os.path.join(root_path, "calibration", CALIBRATION_PKL_FILENAME)
+    if os.path.exists(path):
+        return path
+    alt = os.path.join(os.path.dirname(root_path),
+                       "calibration_results", CALIBRATION_PKL_FILENAME)
+    if os.path.exists(alt):
+        return alt
+    return None
+
+
+# ============================================================
+# MiR SLAM Logger
+# ============================================================
+class MirSlamLogger:
+    def __init__(self, session_path):
+        self.session_path = session_path
+        self.output_path = os.path.join(session_path, "slam_data.pkl")
+        self.client = None
+        self.connected = False
+        self.stop_flag = False
+        self.map_db = {
+            "units": {
+                "position": "meters",
+                "angle": "radians",
+                "linear_velocity": "meters/second",
+                "angular_velocity": "radians/second",
+                "timestamp_utc": "unix epoch seconds (UTC)",
+            },
+            "session_start_utc": utc_now_epoch(),
+            "map_metadata": {},
+            "map_grid": None,
+            "robot_states": [],
+            "obstacle_scans": [],
+            "path": [],
+            "latest_robot_state": {},
+        }
+        self.robot_pose = {'x': 0.0, 'y': 0.0, 'yaw': 0.0}
+        self.pose_received = False
+        self.scan_id_counter = 0
+        self.last_save_time = time.time()
+        self.prev_state = {
+            'time': None, 'x': 0.0, 'y': 0.0, 'yaw': 0.0,
+            'vx': 0.0, 'vy': 0.0, 'omega': 0.0,
+            'ax_smooth': 0.0, 'ay_smooth': 0.0,
+            'alpha_dot_smooth': 0.0,
+        }
+
+    def try_connect(self):
+        try:
+            import roslibpy
+            self.client = roslibpy.Ros(host=ROBOT_IP, port=ROS_PORT)
+            self.client.run()
+            if not self.client.is_connected:
+                print("[SLAM] WARNING: Could not connect to MiR at " + str(ROBOT_IP) + ":" + str(ROS_PORT))
+                self.connected = False
+                return False
+            print("[SLAM] Connected to MiR at " + str(ROBOT_IP) + ":" + str(ROS_PORT))
+            self.connected = True
+            return True
+        except ImportError:
+            print("[SLAM] WARNING: roslibpy not installed.")
+            self.connected = False
+            return False
+        except Exception as e:
+            print(f"[SLAM] WARNING: Connection error: {e}")
+            self.connected = False
+            return False
+        except Exception as e:
+            print("[SLAM] WARNING: MiR connection failed: " + str(e))
+            return False
+
+    def _robot_pose_callback(self, msg):
+        pos = msg.get('position', {})
+        ori = msg.get('orientation', {})
+        cx = pos.get('x', 0.0)
+        cy = pos.get('y', 0.0)
+        qx = ori.get('x', 0.0)
+        qy = ori.get('y', 0.0)
+        qz = ori.get('z', 0.0)
+        qw = ori.get('w', 1.0)
+        siny = 2.0 * (qw * qz + qx * qy)
+        cosy = 1.0 - 2.0 * (qy * qy + qz * qz)
+        yaw = math.atan2(siny, cosy)
+        self.robot_pose = {'x': cx, 'y': cy, 'yaw': yaw}
+        self.pose_received = True
+        now = utc_now_epoch()
+        iso = utc_now_iso()
+        if self.prev_state['time'] is None:
+            dt = None
+            vx = vy = speed = omega = 0.0
+            ax = ay = linear_accel = alpha_dot = 0.0
+        else:
+            dt = now - self.prev_state['time']
+            if dt <= 0:
+                dt = 1e-6
+            vx = (cx - self.prev_state['x']) / dt
+            vy = (cy - self.prev_state['y']) / dt
+            speed = math.hypot(vx, vy)
+            dyaw = normalize_angle(yaw - self.prev_state['yaw'])
+            omega = dyaw / dt
+            raw_ax = (vx - self.prev_state['vx']) / dt
+            raw_ay = (vy - self.prev_state['vy']) / dt
+            raw_alpha = (omega - self.prev_state['omega']) / dt
+            a = ACCEL_SMOOTHING_ALPHA
+            ax = a * raw_ax + (1 - a) * self.prev_state['ax_smooth']
+            ay = a * raw_ay + (1 - a) * self.prev_state['ay_smooth']
+            alpha_dot = (a * raw_alpha +
+                         (1 - a) * self.prev_state['alpha_dot_smooth'])
+            linear_accel = math.hypot(ax, ay)
+        robot_state = {
+            'timestamp_utc': now, 'timestamp_iso': iso,
+            'x': round(cx, 4), 'y': round(cy, 4),
+            'yaw': round(yaw, 4),
+            'orientation_quat': {'x': qx, 'y': qy, 'z': qz, 'w': qw},
+            'speed': round(speed if self.prev_state['time'] else 0.0, 4),
+            'angular_velocity': round(
+                omega if self.prev_state['time'] else 0.0, 4),
+            'linear_acceleration': round(
+                linear_accel if self.prev_state['time'] else 0.0, 4),
+            'angular_acceleration': round(
+                alpha_dot if self.prev_state['time'] else 0.0, 4),
+        }
+        self.map_db['robot_states'].append(robot_state)
+        self.map_db['latest_robot_state'] = robot_state
+        if (len(self.map_db['path']) == 0 or
+                math.dist((cx, cy),
+                           (self.map_db['path'][-1]['x'],
+                            self.map_db['path'][-1]['y'])) > 0.4):
+            self.map_db['path'].append(robot_state)
+        self.prev_state.update({
+            'time': now, 'x': cx, 'y': cy, 'yaw': yaw,
+            'vx': vx if self.prev_state['time'] else 0.0,
+            'vy': vy if self.prev_state['time'] else 0.0,
+            'omega': omega if self.prev_state['time'] else 0.0,
+            'ax_smooth': ax if self.prev_state['time'] else 0.0,
+            'ay_smooth': ay if self.prev_state['time'] else 0.0,
+            'alpha_dot_smooth': (
+                alpha_dot if self.prev_state['time'] else 0.0),
+        })
+
+    def _laser_callback(self, msg, sensor_name, offset_x, offset_y,
+                        offset_yaw):
+        if not self.pose_received:
+            return
+        ranges = msg.get('ranges', [])
+        angle_min = msg.get('angle_min', 0.0)
+        angle_inc = msg.get('angle_increment', 0.0)
+        if not ranges:
+            return
+        ranges = np.array(ranges, dtype=np.float32)
+        valid = np.where((ranges > 0.05) & (ranges < 15.0))[0]
+        if len(valid) == 0:
+            return
+        r = ranges[valid]
+        angles = (angle_min + valid * angle_inc).astype(np.float32)
+        xl = r * np.cos(angles)
+        yl = r * np.sin(angles)
+        cs, ss = np.cos(offset_yaw), np.sin(offset_yaw)
+        xr = xl * cs - yl * ss + offset_x
+        yr = xl * ss + yl * cs + offset_y
+        cr = np.cos(self.robot_pose['yaw'])
+        sr = np.sin(self.robot_pose['yaw'])
+        xg = self.robot_pose['x'] + xr * cr - yr * sr
+        yg = self.robot_pose['y'] + xr * sr + yr * cr
+        now = utc_now_epoch()
+        iso = utc_now_iso()
+        self.scan_id_counter += 1
+        scan_event = {
+            'scan_id': self.scan_id_counter,
+            'sensor': sensor_name,
+            'timestamp_utc': now,
+            'timestamp_iso': iso,
+            'robot_state_snapshot': dict(
+                self.map_db.get('latest_robot_state', {})),
+            'points_global_frame': np.column_stack(
+                (xg, yg)).astype(np.float32),
+            'num_points': int(len(r)),
+        }
+        self.map_db['obstacle_scans'].append(scan_event)
+
+    def _f_scan_cb(self, msg):
+        self._laser_callback(msg, 'front', 0.429, 0.236, math.pi / 4)
+
+    def _b_scan_cb(self, msg):
+        self._laser_callback(msg, 'back', -0.429, -0.236, -3 * math.pi / 4)
+
+    def subscribe_and_run(self):
+        if not self.connected:
+            return
+        import roslibpy
+        map_listener = roslibpy.Topic(self.client, '/map',
+                                      'nav_msgs/OccupancyGrid')
+        map_received = [False]
+
+        def map_cb(msg):
+            info = msg.get('info', {})
+            data = msg.get('data', [])
+            if data and info:
+                w = info.get('width', 0)
+                h = info.get('height', 0)
+                res = info.get('resolution', 0.05)
+                ox = (info.get('origin', {}).get('position', {})
+                      .get('x', 0.0))
+                oy = (info.get('origin', {}).get('position', {})
+                      .get('y', 0.0))
+                self.map_db["map_metadata"] = {
+                    "width": w, "height": h, "resolution": res,
+                    "origin_x": ox, "origin_y": oy
+                }
+                arr = np.array(data, dtype=float).reshape((h, w))
+                arr = np.where(arr == -1, np.nan, arr)
+                self.map_db["map_grid"] = arr
+                map_received[0] = True
+
+        map_listener.subscribe(map_cb)
+        print("[SLAM] Waiting for map (up to 30s)...",
+              end="", flush=True)
+        timeout = 300
+        while not map_received[0] and timeout > 0:
+            time.sleep(0.1)
+            timeout -= 1
+            if timeout % 50 == 0:
+                print(".", end="", flush=True)
+        print("")
+        if map_received[0]:
+            print("[SLAM] Map received!")
+            map_listener.unsubscribe()
+        else:
+            print("[SLAM] WARNING: Map download timed out.")
+        roslibpy.Topic(
+            self.client, '/robot_pose',
+            'geometry_msgs/Pose').subscribe(self._robot_pose_callback)
+        roslibpy.Topic(
+            self.client, '/f_scan',
+            'sensor_msgs/LaserScan').subscribe(self._f_scan_cb)
+        roslibpy.Topic(
+            self.client, '/b_scan',
+            'sensor_msgs/LaserScan').subscribe(self._b_scan_cb)
+        print("[SLAM] Subscribed to robot_pose, f_scan, b_scan.")
+        while not self.stop_flag:
+            now = time.time()
+            if now - self.last_save_time >= SLAM_SAVE_INTERVAL_SEC:
+                safe_pickle_dump(self.map_db, self.output_path)
+                self.last_save_time = now
+            time.sleep(0.2)
+
+    def save_final(self):
+        safe_pickle_dump(self.map_db, self.output_path)
+        print("[SLAM] Final save: " + self.output_path)
+        print("[SLAM] robot_states="
+              + str(len(self.map_db['robot_states']))
+              + ", obstacle_scans="
+              + str(len(self.map_db['obstacle_scans'])))
+
+    def stop(self):
+        self.stop_flag = True
+        if self.client:
+            try:
+                self.client.terminate()
+            except Exception:
+                pass
+
+
+# ============================================================
+# Motive Tracker
+# ============================================================
+class MotiveTrackerThread:
+    def __init__(self, session_path):
+        self.session_path = session_path
+        self.output_path = os.path.join(session_path, "motive_data.pkl")
+        self.autosave_path = os.path.join(session_path,
+                                          "motive_data_autosave.pkl")
+        self.summary_path = os.path.join(session_path,
+                                         "motive_data_summary.txt")
+        self.motive = None
+        self.connected = False
+        self.stop_flag = False
+        self.selected_names = []
+        self.robot_name = None
+        self.session_data = None
+        self.was_recording = False
+        self.recording_ended = False
+        self.recording_ended_callback = None
+        self.last_frame_received_time = time.time()
+        self.recording_start_confirmed = False
+        self.consecutive_not_recording = 0
+        self.REQUIRED_NOT_RECORDING_COUNT = 5
+
+    def try_connect(self):
+        try:
+            from motive_connector import MotiveConnector
+            self.motive = MotiveConnector()
+            if not self.motive.connect():
+                print("[MOTIVE] WARNING: Could not connect.")
+                return False
+            if not self.motive.request_model_definitions():
+                print("[MOTIVE] WARNING: Could not get model defs.")
+                self.motive.shutdown()
+                return False
+            self.connected = True
+            return True
+        except Exception as e:
+            print("[MOTIVE] WARNING: Connection failed: " + str(e))
+            return False
+
+    def select_bodies(self):
+        if not self.connected:
+            return
+        all_names = self.motive.list_rigid_bodies()
+        self.robot_name = self.motive.auto_detect_robot_name()
+        self.selected_names = []
+        if self.robot_name and self.robot_name in all_names:
+            self.selected_names.append(self.robot_name)
+        candidates = [n for n in all_names
+                       if n != self.robot_name
+                       and n not in REFERENCE_BODY_NAMES]
+        print("\n--- Select Motive rigid bodies to record ---")
+        print("Robot '" + str(self.robot_name) + "' is auto-included.")
+        print("Reference bodies " + str(REFERENCE_BODY_NAMES)
+              + " are excluded.\n")
+        for name in candidates:
+            ans = input("Record '" + name + "'? (y/n) [n]: "
+                        ).strip().lower()
+            if ans.startswith("y"):
+                self.selected_names.append(name)
+        print("\nSelected: " + str(self.selected_names) + "\n")
+        cameras = self.motive.get_camera_descriptions()
+        self.session_data = {
+            "schema_version": "motive_session_v1",
+            "created_at_utc": utc_now_iso(),
+            "session_start_utc": utc_now_epoch(),
+            "session_path": self.session_path,
+            "axis_convention": {
+                "ground_axes": ["x", "y"],
+                "vertical_axis": "z",
+                "units": "mm",
+            },
+            "robot_rigid_body_name": self.robot_name,
+            "selected_rigid_bodies": self.selected_names,
+            "camera_descriptions": cameras,
+            "recording_control": {
+                "remote_recording_requested": False,
+                "take_name": None,
+            },
+            "rigid_bodies": {
+                name: {"samples": []}
+                for name in self.selected_names
+            },
+            "stats": {"total_polls": 0, "autosaves": 0},
+        }
+
+    def ask_remote_recording(self):
+        if not self.connected:
+            return
+        ans = input("Start Motive recording remotely? (y/n) [n]: "
+                    ).strip().lower()
+        if ans.startswith("y"):
+            take_name = os.path.basename(self.session_path)
+            self.motive.start_recording(take_name=take_name)
+            self.session_data["recording_control"][
+                "remote_recording_requested"] = True
+            self.session_data["recording_control"]["take_name"] = take_name
+            time.sleep(1.0)
+            print("[MOTIVE] Recording started: "
+                  + str(self.motive.is_motive_recording()))
+
+    def _check_recording_ended(self):
+        frame = self.motive.get_latest_frame()
+        is_recording = frame.get("is_recording", False)
+        frame_number = frame.get("frame_number")
+        received_at = frame.get("received_at")
+        now = time.time()
+        if received_at is not None:
+            self.last_frame_received_time = received_at
+        else:
+            self.last_frame_received_time = now
+        if is_recording:
+            self.was_recording = True
+            self.recording_start_confirmed = True
+            self.consecutive_not_recording = 0
+        elif self.was_recording:
+            self.consecutive_not_recording += 1
+            if (self.consecutive_not_recording >=
+                    self.REQUIRED_NOT_RECORDING_COUNT):
+                self.recording_ended = True
+                print("\n[MOTIVE AUTO-STOP] is_recording=False confirmed "
+                      + str(self.consecutive_not_recording)
+                      + " times (frame " + str(frame_number) + ")")
+                return True
+        time_since_frame = now - self.last_frame_received_time
+        if (self.recording_start_confirmed and
+                time_since_frame > MOTIVE_NO_FRAME_TIMEOUT_SEC):
+            self.recording_ended = True
+            print("\n[MOTIVE AUTO-STOP] No frames for "
+                  + str(round(time_since_frame, 1)) + "s")
+            return True
+        return False
+
+    def run_collection(self):
+        if not self.connected or not self.selected_names:
+            return
+        last_save = time.time()
+        last_check = time.time()
+        print("[MOTIVE] Collection started. Auto-stop monitoring active...")
+        while not self.stop_flag:
+            if time.time() - last_check >= MOTIVE_CHECK_INTERVAL_SEC:
+                if self._check_recording_ended():
+                    self.stop_flag = True
+                    if self.recording_ended_callback:
+                        self.recording_ended_callback()
+                    break
+                last_check = time.time()
+            now_utc = utc_now_epoch()
+            now_iso = utc_now_iso()
+            frame = self.motive.get_latest_frame()
+            self.session_data["stats"]["total_polls"] += 1
+            for name in self.selected_names:
+                state = self.motive.get_full_state(name)
+                if state is None:
+                    sample = {
+                        "timestamp_utc": now_utc,
+                        "timestamp_iso": now_iso,
+                        "frame_number": frame.get("frame_number"),
+                        "motive_timestamp": frame.get("timestamp"),
+                        "motive_is_recording": frame.get("is_recording"),
+                        "x_mm": None, "y_mm": None, "z_mm": None,
+                        "roll_deg": None, "pitch_deg": None,
+                        "yaw_deg": None,
+                        "tracked": False, "fresh": False,
+                        "looks_like_zero_placeholder": False,
+                    }
+                else:
+                    x = state["x_mm"]
+                    y = state["y_mm"]
+                    z = state["z_mm"]
+                    tracked = bool(state["tracked"])
+                    fresh = self.motive.is_fresh(name)
+                    zero_flag = (
+                        tracked and x is not None
+                        and y is not None and z is not None
+                        and abs(x) < ZERO_PLACEHOLDER_EPS_MM
+                        and abs(y) < ZERO_PLACEHOLDER_EPS_MM
+                        and abs(z) < ZERO_PLACEHOLDER_EPS_MM
+                    )
+                    sample = {
+                        "timestamp_utc": now_utc,
+                        "timestamp_iso": now_iso,
+                        "frame_number": frame.get("frame_number"),
+                        "motive_timestamp": frame.get("timestamp"),
+                        "motive_is_recording": frame.get("is_recording"),
+                        "x_mm": x, "y_mm": y, "z_mm": z,
+                        "roll_deg": state["roll_deg"],
+                        "pitch_deg": state["pitch_deg"],
+                        "yaw_deg": state["yaw_deg"],
+                        "tracked": tracked, "fresh": fresh,
+                        "looks_like_zero_placeholder": zero_flag,
+                    }
+                self.session_data["rigid_bodies"][name][
+                    "samples"].append(sample)
+            if time.time() - last_save >= MOTIVE_SAVE_INTERVAL_SEC:
+                safe_pickle_dump(self.session_data, self.autosave_path)
+                self.session_data["stats"]["autosaves"] += 1
+                last_save = time.time()
+            time.sleep(MOTIVE_POLL_INTERVAL_SEC)
+
+    def save_final(self):
+        if not self.session_data:
+            return
+        self.session_data["session_end_utc"] = utc_now_epoch()
+        self.session_data["session_end_iso"] = utc_now_iso()
+        self.session_data["auto_stopped"] = self.recording_ended
+        if (self.session_data["recording_control"][
+                "remote_recording_requested"] and self.motive):
+            try:
+                self.motive.stop_recording()
+            except Exception:
+                pass
+        safe_pickle_dump(self.session_data, self.output_path)
+        safe_pickle_dump(self.session_data, self.autosave_path)
+        with open(self.summary_path, "w", encoding="utf-8") as f:
+            f.write("Motive Session Summary\n")
+            f.write("=" * 30 + "\n")
+            f.write("Robot: " + str(self.robot_name) + "\n")
+            f.write("Bodies: " + str(self.selected_names) + "\n")
+            f.write("Total polls: "
+                    + str(self.session_data['stats']['total_polls']) + "\n")
+            f.write("Auto-stopped: " + str(self.recording_ended) + "\n")
+            for name, body in self.session_data["rigid_bodies"].items():
+                n = len(body["samples"])
+                tracked = sum(1 for s in body["samples"] if s["tracked"])
+                f.write("  " + name + ": " + str(n) + " samples, "
+                        + str(tracked) + " tracked\n")
+        print("[MOTIVE] Final save: " + self.output_path)
+
+    def stop(self):
+        self.stop_flag = True
+        if self.motive:
+            try:
+                self.motive.shutdown()
+            except Exception:
+                pass
+
+
+# ============================================================
+# Full Pipeline v6 (8 stages)
+# ============================================================
+def run_full_pipeline(root_path, session_path, calib_path,
+                      slam_ok, motive_ok, crash_logger):
+    # v7: Extended pipeline with entity registry, SLAM auto-naming, CVAT prepop, robot analysis
+    try:
+        import subprocess, sys as _sys
+        _agents = os.path.dirname(os.path.abspath(__file__))
+        print("\n[pipeline] Stage: Entity Registry rebuild...")
+        subprocess.run([_sys.executable, os.path.join(_agents, "entity_registry.py"), "--rebuild"], check=False)
+        print("\n[pipeline] Stage: SLAM Auto-Naming...")
+        subprocess.run([_sys.executable, os.path.join(_agents, "slam_auto_namer.py"), session_path], check=False)
+        print("\n[pipeline] Stage: CVAT Pre-Populator...")
+        subprocess.run([_sys.executable, os.path.join(_agents, "cvat_prepopulator.py"), session_path], check=False)
+        print("\n[pipeline] Stage: Robot Data Analyzer...")
+        subprocess.run([_sys.executable, os.path.join(_agents, "robot_data_analyzer.py"), session_path], check=False)
+    except Exception as e:
+        print(f"[pipeline] Extended stages error: {e}")
+    
+
+    print("\n" + "=" * 70)
+    print(" FULL AUTOMATED PIPELINE (v6 — 8 Stages)")
+    print("=" * 70)
+
+    results = {
+        "fusion": False,
+        "knowledge_engine": False,
+        "rebuild_deep_memory": False,
+        "knowledge_update": False,
+        "label_registry": False,
+        "cross_modal": False,
+        "copilot": False,
+        "report_path": None,
+        "crashed": False,
+        "crash_stage": None,
+    }
+
+    # Stage 1: Fusion
+    print("\n[1/8] FUSION — spatial-temporal data merging...")
+    try:
+        if calib_path:
+            import spatial_temporal_fusion as agent3
+            fusion_result = agent3.fuse_session(session_path, calib_path)
+            agent3.save_fusion_result(session_path, fusion_result)
+            n_fused = len(fusion_result.get('fused_objects', []))
+            print("      OK: Fused " + str(n_fused) + " observations")
+            results["fusion"] = True
+        else:
+            print("      SKIP: No calibration")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("fusion", type(e).__name__, str(e), err_trace)
+        print("      ERROR: " + str(e))
+        results["crashed"] = True
+        results["crash_stage"] = "fusion"
+
+    # Stage 2: Knowledge Engine
+    print("\n[2/8] KNOWLEDGE ENGINE — analyzing this session...")
+    try:
+        if results["fusion"]:
+            import knowledge_engine
+            report = knowledge_engine.analyze_session(root_path, session_path)
+            if report:
+                print("      OK: Session analyzed")
+                results["knowledge_engine"] = True
+        else:
+            print("      SKIP: Fusion failed")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("knowledge_engine", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+        results["crashed"] = True
+        results["crash_stage"] = "knowledge_engine"
+
+    # Stage 3: Rebuild deep memory
+    print("\n[3/8] REBUILD DEEP MEMORY — from all sessions...")
+    try:
+        if results["fusion"]:
+            import knowledge_engine
+            knowledge_engine.rebuild_all_sessions(root_path)
+            print("      OK: Deep memory rebuilt")
+            results["rebuild_deep_memory"] = True
+        else:
+            print("      SKIP: Fusion failed")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("rebuild_memory", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+        results["crashed"] = True
+        results["crash_stage"] = "rebuild_memory"
+
+    # Stage 4: Environment Knowledge
+    print("\n[4/8] ENVIRONMENT KNOWLEDGE — updating persistent...")
+    try:
+        if results["fusion"]:
+            import session_manager as sm
+            sm.ROOT_FOLDER_NAME = ROOT_FOLDER_NAME
+            sm.update_knowledge_from_session(
+                root_path, session_path, calib_path)
+            print("      OK: Environment knowledge updated")
+            results["knowledge_update"] = True
+        else:
+            print("      SKIP: Fusion failed")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("knowledge_update", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+        results["crashed"] = True
+        results["crash_stage"] = "knowledge_update"
+
+    # Stage 5: Label Registry Auto (NEW)
+    print("\n[5/8] LABEL REGISTRY — checking for new objects...")
+    try:
+        if results["fusion"]:
+            from label_registry_auto import run_auto_registry
+            reg_result = run_auto_registry(
+                root_path, session_path, auto_yes=False)
+            if reg_result.get("activated"):
+                print("      OK: " + str(reg_result["new_labels"])
+                      + " new labels imported")
+            else:
+                print("      OK: No new objects or skipped")
+            results["label_registry"] = True
+        else:
+            print("      SKIP: Fusion failed")
+    except ImportError:
+        print("      SKIP: label_registry_auto.py not found")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("label_registry", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+
+    # Stage 6: Cross-Modal Aligner (NEW)
+    print("\n[6/8] CROSS-MODAL ALIGNER — matching Motive to SLAM...")
+    try:
+        if results["fusion"]:
+            from cross_modal_aligner import run_alignment
+            matches = run_alignment(session_path, root_path)
+            if matches:
+                print("      OK: " + str(len(matches)) + " matches found")
+            else:
+                print("      OK: No matches or nothing to align")
+            results["cross_modal"] = True
+        else:
+            print("      SKIP: Fusion failed")
+    except ImportError:
+        print("      SKIP: cross_modal_aligner.py not found")
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("cross_modal", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+
+    # Stage 7: Co-Pilot
+    print("\n[7/8] CO-PILOT — generating final report...")
+    try:
+        import co_pilot_agent
+        report_path = co_pilot_agent.generate_report(
+            root_path, session_path, calib_path or "NOT_FOUND")
+        print("      OK: Report generated")
+        results["copilot"] = True
+        results["report_path"] = report_path
+    except Exception as e:
+        err_trace = traceback.format_exc()
+        crash_logger.log_error("copilot", type(e).__name__,
+                               str(e), err_trace)
+        print("      ERROR: " + str(e))
+        results["crashed"] = True
+        results["crash_stage"] = "copilot"
+
+    # Stage 8: Auto-Labeler prompt (NEW)
+    print("\n[8/8] AUTO-LABELER — video annotation...")
+    try:
+        if results["fusion"]:
+            motive_dir = os.path.join(
+                os.path.dirname(root_path), "motive sessions")
+            if not os.path.isdir(motive_dir):
+                motive_dir = os.path.join(root_path, "motive sessions")
+            sess_name = os.path.basename(session_path)
+            videos = glob.glob(os.path.join(motive_dir, sess_name + "*.avi"))
+            if videos:
+                print("      Found " + str(len(videos)) + " video(s):")
+                for i, v in enumerate(videos, 1):
+                    print("        [" + str(i) + "] " + os.path.basename(v))
+                print("        [0] Skip auto-labeling")
+                ans = input("      Run auto-labeler on which video? [0]: "
+                            ).strip()
+                if ans and ans != "0":
+                    try:
+                        v_idx = int(ans) - 1
+                        if 0 <= v_idx < len(videos):
+                            out_xml = os.path.join(
+                                session_path, "auto_labels.xml")
+                            py = sys.executable
+                            auto_labeler = os.path.join(
+                                THIS_DIR, "auto_labeler.py")
+                            subprocess.run(
+                                [py, auto_labeler,
+                                 "--video", videos[v_idx],
+                                 "--output", out_xml],
+                                cwd=THIS_DIR)
+                            print("      OK: Auto-labeling complete")
+                    except (ValueError, Exception) as e:
+                        print("      WARN: " + str(e))
+                else:
+                    print("      SKIP: Auto-labeling skipped")
+            else:
+                print("      SKIP: No videos found for this session")
+        else:
+            print("      SKIP: Fusion failed")
+    except Exception as e:
+        print("      WARN: " + str(e))
+
+    # Save crash log if any error occurred
+    if results["crashed"]:
+        crash_logger.save_crash_log()
+
+    # Summary
+    print("\n" + "=" * 70)
+    print(" PIPELINE SUMMARY")
+    print("=" * 70)
+    stages = [
+        ("Fusion", results["fusion"]),
+        ("Knowledge Engine", results["knowledge_engine"]),
+        ("Rebuild Deep Memory", results["rebuild_deep_memory"]),
+        ("Environment Knowledge", results["knowledge_update"]),
+        ("Label Registry", results["label_registry"]),
+        ("Cross-Modal Aligner", results["cross_modal"]),
+        ("Co-Pilot Report", results["copilot"]),
+    ]
+    for name, ok in stages:
+        status = "OK" if ok else "SKIP"
+        print("  [" + status + "] " + name)
+
+    if results["crashed"]:
+        print("\n  CRASH DETECTED IN: "
+              + results['crash_stage'].upper())
+        print("  See: " + crash_logger.crash_log_path)
+
+    if results["report_path"]:
+        print("\n  FINAL REPORT: " + results["report_path"])
+
+    print("=" * 70)
+    return results
+
+
+# ============================================================
+# AI Advisor Trigger
+# ============================================================
+def ask_run_ai_advisor():
+    print("\n" + "=" * 70)
+    print(" POST-PIPELINE ANALYSIS OPTIONS")
+    print("=" * 70)
+    print("\n  Session data collection completed.")
+    print("  All agents ran successfully.")
+    print("  Co-Pilot report generated.\n")
+    print("Do you want to run AI Advisor for improvement suggestions?")
+    print("  [1] No — close session")
+    print("  [2] Yes — run AI Advisor (3-layer analysis)")
+    print("  [3] Help — what does AI Advisor do?\n")
+    while True:
+        choice = input("Your choice [1/2/3]: ").strip()
+        if choice in ["1", "2", "3"]:
+            return choice
+        print("Invalid choice. Please enter 1, 2, or 3.")
+
+
+def run_ai_advisor_mock(session_path, root_path, crash_logger):
+    print("\n" + "=" * 70)
+    print(" AI ADVISOR — PRELIMINARY VERSION")
+    print("=" * 70)
+    print("\n  Initializing AI Advisor...\n")
+    api_key = os.getenv('OPENROUTER_API_KEY')
+    if not api_key:
+        config_path = os.path.join(THIS_DIR, "ai_advisor_config.txt")
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, "r") as f:
+                    for line in f:
+                        if "openrouter_api_key" in line.lower():
+                            parts = line.split("=")
+                            if len(parts) > 1:
+                                api_key = parts[1].strip()
+                                break
+            except Exception:
+                pass
+    if not api_key or api_key == "PLACEHOLDER" or api_key == "":
+        print("  API Key not configured yet.\n")
+        print("  Status: AI Advisor API Key Missing")
+        print("  - Environment variable OPENROUTER_API_KEY: NOT SET")
+        print("  - Config file: NOT FOUND or EMPTY\n")
+        print("  Next steps:")
+        print("    1. Get your API key from arena.ai/api")
+        print("    2. Add to agents/ai_advisor_config.txt:")
+        print("       openrouter_api_key = <your-key-here>")
+        print("    3. Or set environment variable:\n")
+        crash_logger.log_error(
+            "ai_advisor", "ConfigurationError",
+            "API Key not found. AI Advisor skipped.",
+            "Expected if API key not configured yet.")
+        print("  AI Advisor will be skipped.\n")
+        return False
+    print("  API Key found.")
+    print("  Gathering session data...")
+    print("  Preparing analysis package...\n")
+    print("  AI Advisor will perform 3-layer analysis:")
+    print("    Layer 1/3: Initial recommendations")
+    print("    Layer 2/3: Self-critique and validation")
+    print("    Layer 3/3: Final refinement\n")
+    print("  Note: Full API integration coming soon.\n")
+    return False
+
+
+# ============================================================
+# Main
+# ============================================================
+def main():
+    print("=" * 70)
+    print("  LAUNCH SESSION v6 — EXTENDED PIPELINE")
+    print("  8 stages: Fusion, Knowledge, Memory, Environment,")
+    print("  Label Registry, Cross-Modal, Co-Pilot, Auto-Labeler")
+    print("  Stops when EITHER:")
+    print("    - Motive recording ends (auto)")
+    print("    - You press Ctrl+C (manual)")
+    print("=" * 70)
+
+    root_path = find_project_root()
+    bootstrap_root(root_path)
+    session_path = create_session(root_path)
+    crash_logger = CrashLogger(session_path)
+
+    print("\n[INFO] Root    : " + root_path)
+    print("[INFO] Session : " + session_path + "\n")
+
+    calib_path = find_calibration(root_path)
+    if calib_path:
+        print("[INFO] Calibration found: " + calib_path)
+    else:
+        print("[WARNING] No calibration file found.")
+
+    slam_logger = MirSlamLogger(session_path)
+    cmd_logger = MirCommandLogger(session_path, robot_ip=ROBOT_IP, ros_port=ROS_PORT) if MirCommandLogger else None
+    motive_tracker = MotiveTrackerThread(session_path)
+
+    slam_ok = slam_logger.try_connect()
+    cmd_ok = cmd_logger.try_connect() if cmd_logger else False
+    motive_ok = motive_tracker.try_connect()
+
+    if not slam_ok and not motive_ok:
+        print("\n[CRITICAL] No data sources available.")
+        return
+
+    if motive_ok:
+        motive_tracker.select_bodies()
+        motive_tracker.ask_remote_recording()
+
+    threads = []
+    stop_event = threading.Event()
+
+    def on_motive_recording_ended():
+        print("\n[TRIGGER] Auto-stop from Motive recording end")
+        stop_event.set()
+
+    motive_tracker.recording_ended_callback = on_motive_recording_ended
+
+    if slam_ok:
+        t_slam = threading.Thread(
+            target=slam_logger.subscribe_and_run, daemon=True)
+        t_slam.start()
+        threads.append(("SLAM", t_slam))
+        print("[SLAM] Collection thread started.")
+
+    if motive_ok and motive_tracker.selected_names:
+        t_motive = threading.Thread(
+            target=motive_tracker.run_collection, daemon=True)
+        t_motive.start()
+        threads.append(("MOTIVE", t_motive))
+        print("[MOTIVE] Collection thread started.")
+
+    print("\n" + "=" * 70)
+    print(" DATA COLLECTION RUNNING")
+    print(" Will stop when EITHER happens:")
+    print("   - Motive recording ends automatically")
+    print("   - You press Ctrl+C manually")
+    print("=" * 70 + "\n")
+
+    stop_reason = "unknown"
+
+    try:
+        while not stop_event.is_set():
+            status_parts = []
+            if slam_ok:
+                n_states = len(slam_logger.map_db['robot_states'])
+                n_scans = len(slam_logger.map_db['obstacle_scans'])
+                status_parts.append(
+                    "SLAM: " + str(n_states) + "s, "
+                    + str(n_scans) + "sc")
+            if motive_ok and motive_tracker.session_data:
+                n_polls = motive_tracker.session_data[
+                    "stats"]["total_polls"]
+                rec = "REC" if motive_tracker.was_recording else "..."
+                status_parts.append(
+                    "MOTIVE: " + str(n_polls) + "p [" + rec + "]")
+            print("[LIVE] " + " | ".join(status_parts) + "    ",
+                  end="\r", flush=True)
+            time.sleep(0.5)
+        stop_reason = "auto"
+        print("\n\n[STOP] Auto-stop triggered by Motive.\n")
+    except KeyboardInterrupt:
+        stop_reason = "manual"
+        print("\n\n[STOP] Ctrl+C received. Manual stop.\n")
+
+    print("[INFO] Stopping data collection threads...")
+    slam_logger.stop()
+    if cmd_logger and cmd_ok:
+        cmd_logger.stop()
+    motive_tracker.stop()
+    for name, t in threads:
+        t.join(timeout=5.0)
+        print("[INFO] " + name + " thread stopped.")
+
+    print("\n[INFO] Saving final data files...")
+    if slam_ok:
+        if cmd_logger is not None:
+            try:
+                cmd_logger.stop()
+                cmd_logger.save_final()
+            except Exception as e:
+                print(f"[launch_session] cmd save error: {e}")
+        slam_logger.save_final()
+    if motive_ok:
+        motive_tracker.save_final()
+
+    results = run_full_pipeline(
+        root_path, session_path, calib_path,
+        slam_ok, motive_ok, crash_logger)
+
+    if results["crashed"]:
+        print("\n" + "=" * 70)
+        print(" SESSION CRASHED DURING PIPELINE")
+        print("=" * 70)
+        print("\nCrash in stage: " + results['crash_stage'].upper())
+        print("Crash log: " + crash_logger.crash_log_path + "\n")
+        print("Data collected so far:")
+        if slam_ok:
+            n = len(slam_logger.map_db['robot_states'])
+            print("  SLAM: " + str(n) + " robot states")
+        if motive_ok:
+            total = sum(
+                len(body["samples"])
+                for body in motive_tracker.session_data.get(
+                    "rigid_bodies", {}).values())
+            print("  Motive: " + str(total) + " samples")
+        print("\nYour options:")
+        print("  [1] Keep this session")
+        print("  [2] Delete this session")
+        while True:
+            choice = input("\nYour choice [1/2]: ").strip()
+            if choice in ["1", "2"]:
+                break
+            print("Invalid choice.")
+        if choice == "2":
+            import shutil
+            try:
+                shutil.rmtree(session_path)
+                print("\n  Session deleted: " + session_path)
+            except Exception as e:
+                print("\n  Could not delete: " + str(e))
+        else:
+            print("\n  Session kept at: " + session_path)
+        print("=" * 70)
+        return
+
+    print("\n")
+    advisor_choice = ask_run_ai_advisor()
+    if advisor_choice == "3":
+        print("\nWhat does AI Advisor do?")
+        print("  - Analyzes session data and deep learning memory")
+        print("  - Makes 3 prioritized improvement suggestions")
+        print("  - Uses 3-layer self-critique for accuracy")
+        print("  - Requires: OpenRouter API key")
+        print("  - Updates agents only with your approval\n")
+        advisor_choice = ask_run_ai_advisor()
+    if advisor_choice == "2":
+        success = run_ai_advisor_mock(
+            session_path, root_path, crash_logger)
+        if not success:
+            print("  Skipping AI Advisor for this session.")
+    else:
+        print("\n  Session closing without AI Advisor.\n")
+
+    print("\n" + "=" * 70)
+    print(" SESSION COMPLETE")
+    print("=" * 70)
+    print("Stop reason : " + stop_reason)
+    print("Session     : " + session_path)
+    if results.get("report_path"):
+        print("Report      : " + str(results.get('report_path')))
+    print("=" * 70)
+    print("\n  All systems complete.")
+    print("  You can now close this window or start another session.\n")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    main()

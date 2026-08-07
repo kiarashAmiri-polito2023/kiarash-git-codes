@@ -1,0 +1,30 @@
+MiR <-> Motive Calibration Report
+==================================
+Timestamp (UTC)      : 2026-08-18T14:21:40.497894+00:00
+MiR IP               : 192.168.12.20
+Target rigid body    : kia MIR100 002
+Num points used      : 10
+Ground-plane axes    : Motive (X, Y)   [CONFIRMED Z-up project]
+Vertical axis        : Motive Z
+
+--- Fit result ---
+scale                : 0.9984  (expect close to 1.0)
+rotation (deg)       : -0.29
+translation (mm)     : [-31539.63475008881, -20121.31138413003]
+lever_arm local (mm) : [-84.71103363875167, 31.816717911453765]
+mean error (mm)      : 36.58
+max error (mm)       : 61.06
+
+--- Validation ---
+verdict              : PASS
+mean error (mm)      : 41.151655578386524
+movement span (mm)   : 5127.867688133265
+
+--- Matrices ---
+mir_to_motive (2x3, apply to MiR-frame points to get Motive-frame):
+[[ 9.98355621e-01  5.03286952e-03 -3.15396348e+04]
+ [-5.03286952e-03  9.98355621e-01 -2.01213114e+04]]
+
+motive_to_mir (2x3, inverse):
+[[ 1.00162163e+00 -5.04933401e-03  3.14891813e+04]
+ [ 5.04933401e-03  1.00162163e+00  2.03131949e+04]]

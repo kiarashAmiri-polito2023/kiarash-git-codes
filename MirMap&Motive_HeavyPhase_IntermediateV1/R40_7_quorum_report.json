@@ -1,0 +1,22 @@
+{
+  "R": {
+    "lmstudio": {
+      "ok": false,
+      "err": "query_lmstudio() missing 1 required positional argument: 'prompt'"
+    },
+    "gemini": {
+      "ok": false,
+      "err": "query_gemini() missing 1 required positional argument: 'api_key'"
+    },
+    "nemotron": {
+      "ok": false,
+      "err": "query_openrouter() missing 1 required positional argument: 'api_key'"
+    },
+    "e2e": {
+      "ok": false,
+      "err": "analyze_agent() missing 1 required positional argument: 'or_key'"
+    }
+  },
+  "verdict": "BUG-AR OPEN: insufficient providers",
+  "ts": "2026-09-03T20:19:49.663074"
+}

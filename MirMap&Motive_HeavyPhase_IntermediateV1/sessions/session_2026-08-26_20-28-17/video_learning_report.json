@@ -1,0 +1,45 @@
+{
+  "session_name": "session_2026-08-26_20-28-17",
+  "cameras_recorded": [
+    "Camera_1",
+    "Camera_7_8"
+  ],
+  "video_metrics": {
+    "Camera_1": {
+      "resolution": "2048x1088",
+      "fps": 30.0,
+      "duration_s": 60.03,
+      "avg_motion_energy": 0.0097,
+      "peak_motion_energy": 0.0695,
+      "active_motion_ratio": 0.1278
+    },
+    "Camera_7_8": {
+      "resolution": "2048x1088",
+      "fps": 30.0,
+      "duration_s": 60.03,
+      "avg_motion_energy": 0.008,
+      "peak_motion_energy": 0.0329,
+      "active_motion_ratio": 0.0611
+    }
+  },
+  "mocap_spatial_metrics": {
+    "samples_analyzed": 1044,
+    "min_human_robot_distance_m": 0.792,
+    "avg_human_robot_distance_m": 1.853,
+    "max_wrist_elevation_m": 0.985,
+    "events": [
+      {
+        "type": "SAFETY_ZONE_BREACH",
+        "min_distance_m": 0.79,
+        "confidence": 0.95
+      }
+    ]
+  },
+  "synthesized_events": [
+    {
+      "type": "SAFETY_ZONE_BREACH",
+      "min_distance_m": 0.79,
+      "confidence": 0.95
+    }
+  ]
+}

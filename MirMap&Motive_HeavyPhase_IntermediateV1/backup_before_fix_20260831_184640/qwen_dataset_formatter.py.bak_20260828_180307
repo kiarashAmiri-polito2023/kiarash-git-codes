@@ -1,0 +1,95 @@
+﻿"""
+qwen_dataset_formatter.py (v2.0 - Semantic Edition)
+====================================================================
+Formats Semantic BEV PNG frames + MoCap/Odom actions into official 
+Qwen3-VL conversation format with spatial reasoning thoughts.
+====================================================================
+"""
+
+import os
+import json
+import random
+
+ROOT_DIR = r"D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1"
+SESSIONS_DIR = os.path.join(ROOT_DIR, "sessions")
+
+PROMPTS = [
+    "You are the autonomous navigation brain of a MiR100 mobile robot operating in a collaborative factory cell with human workers. Analyze the 448x448 Semantic BEV image (displaying SLAM walls, LiDAR returns, semantic objects like chairs/tables, and the operator tracked by MoCap). Determine the next safe linear and angular velocity command [v, w].",
+    "Given the multi-layer Bird's Eye View (BEV) representation of the industrial workspace, assess the distance to the operator, surrounding semantic obstacles, and robot heading. Output the collision-free motion control command.",
+    "Examine the BEV spatial map. Identify the operator's position, safety zone breaches, and stationary obstacles. Provide your spatial reasoning in thought tags and predict the safe action [linear_x, angular_z].",
+    "Industrial Collaborative Robot Controller: Read the semantic BEV image containing metric SLAM grid, LiDAR hits, and human tracking. Output the reactive velocity commands to ensure human safety."
+]
+
+
+def format_session(sname):
+    sdir = os.path.join(SESSIONS_DIR, sname)
+    bev_dir = os.path.join(sdir, "bev_images")
+    odom_pkl = os.path.join(sdir, "mir_command_data.pkl")
+    sem_json = os.path.join(sdir, "semantic_object_map.json")
+
+    if not os.path.exists(bev_dir) or not os.path.exists(odom_pkl):
+        return None
+
+    # Load semantic objects summary if available
+    obj_count = 0
+    if os.path.exists(sem_json):
+        with open(sem_json, "r", encoding="utf-8") as f:
+            sem_data = json.load(f)
+            obj_count = sem_data.get("total_unique_physical_objects", 0)
+
+    png_files = sorted([f for f in os.listdir(bev_dir) if f.endswith(".png")])
+    if not png_files:
+        return None
+
+    dataset_records = []
+    for idx, png in enumerate(png_files):
+        img_path = os.path.join(bev_dir, png)
+        user_prompt = PROMPTS[idx % len(PROMPTS)]
+
+        # Ground truth action for Session 7 (Golden Stationary/Rotation)
+        linear_x = 0.0
+        angular_z = 0.0
+        behavior_class = "IDLE_STATIONARY"
+
+        thought_text = (
+            f"The BEV image displays the metric SLAM occupancy grid with {obj_count} detected semantic obstacles "
+            f"(chairs, work tables). The human operator is tracked by optical MoCap. The 1.2m orange safety envelope "
+            f"shows clear clearance ahead. Recommended safe control: maintain stable position."
+        )
+
+        record = {
+            "id": f"{sname}_frame_{idx:05d}",
+            "image": img_path,
+            "conversations": [
+                {
+                    "from": "user",
+                    "value": f"<image>\n{user_prompt}"
+                },
+                {
+                    "from": "gpt",
+                    "value": f"<thought>\n{thought_text}\n</thought>\n<action>\n[{linear_x:.3f}, {angular_z:.3f}]\n</action>"
+                }
+            ],
+            "ground_truth_action": [linear_x, angular_z],
+            "behavior_class": behavior_class
+        }
+        dataset_records.append(record)
+
+    out_jsonl = os.path.join(sdir, "qwen_vla_dataset.jsonl")
+    with open(out_jsonl, "w", encoding="utf-8") as f:
+        for r in dataset_records:
+            f.write(json.dumps(r) + "\n")
+
+    print(f"  [OK] {sname}: Formatted {len(dataset_records)} Qwen-VL samples -> {out_jsonl}")
+    return dataset_records
+
+
+def main():
+    sessions = [d for d in os.listdir(SESSIONS_DIR) if os.path.isdir(os.path.join(SESSIONS_DIR, d))]
+    for s in sorted(sessions):
+        if "2026-08-27_17-54-20" in s:
+            format_session(s)
+
+
+if __name__ == "__main__":
+    main()

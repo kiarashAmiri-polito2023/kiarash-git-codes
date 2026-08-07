@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\train_v21_masked.py", line 325, in <module>
+    train()
+  File "D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\train_v21_masked.py", line 207, in train
+    out = model(**batch)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Python310\lib\site-packages\peft\peft_model.py", line 2101, in forward
+    return self.base_model(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Python310\lib\site-packages\peft\tuners\tuners_utils.py", line 333, in forward
+    return self.model.forward(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 843, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1522, in forward
+    outputs = self.model(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 843, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1300, in forward
+    image_outputs: BaseModelOutputWithDeepstackFeatures = self.get_image_features(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 843, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1173, in get_image_features
+    vision_output: BaseModelOutputWithDeepstackFeatures = self.visual(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 917, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\output_capturing.py", line 253, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 780, in forward
+    pos_embeds = self.fast_pos_embed_interpolate(grid_thw)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 702, in fast_pos_embed_interpolate
+    grid_ts = [row[0] for row in grid_thw_list]
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 702, in <listcomp>
+    grid_ts = [row[0] for row in grid_thw_list]
+TypeError: 'int' object is not subscriptable

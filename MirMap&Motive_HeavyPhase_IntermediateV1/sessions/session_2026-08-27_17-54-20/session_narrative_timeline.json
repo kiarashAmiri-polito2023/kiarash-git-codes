@@ -1,0 +1,415 @@
+{
+  "session": "session_2026-08-27_17-54-20",
+  "total_actions": 3437,
+  "vla_training_samples": 344,
+  "timeline_events": [
+    {
+      "time_s": 0.0,
+      "state": "IDLE_STATIONARY",
+      "linear_v": 0.0,
+      "angular_w": 0.0
+    },
+    {
+      "time_s": 26.13,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.0,
+      "angular_w": -0.043
+    },
+    {
+      "time_s": 26.37,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.005,
+      "angular_w": -0.284
+    },
+    {
+      "time_s": 27.34,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.083,
+      "angular_w": 0.02
+    },
+    {
+      "time_s": 27.58,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.126,
+      "angular_w": -0.054
+    },
+    {
+      "time_s": 27.82,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.195,
+      "angular_w": -0.128
+    },
+    {
+      "time_s": 28.06,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.175,
+      "angular_w": -0.077
+    },
+    {
+      "time_s": 28.3,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.195,
+      "angular_w": -0.118
+    },
+    {
+      "time_s": 28.55,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.203,
+      "angular_w": -0.049
+    },
+    {
+      "time_s": 29.52,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.434,
+      "angular_w": -0.145
+    },
+    {
+      "time_s": 33.39,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.48,
+      "angular_w": -0.061
+    },
+    {
+      "time_s": 34.11,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.42,
+      "angular_w": -0.114
+    },
+    {
+      "time_s": 34.6,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.255,
+      "angular_w": -0.066
+    },
+    {
+      "time_s": 35.08,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.112,
+      "angular_w": 0.181
+    },
+    {
+      "time_s": 35.56,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.097,
+      "angular_w": 0.089
+    },
+    {
+      "time_s": 35.81,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.152,
+      "angular_w": 0.148
+    },
+    {
+      "time_s": 36.78,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.143,
+      "angular_w": 0.006
+    },
+    {
+      "time_s": 37.02,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.072,
+      "angular_w": 0.027
+    },
+    {
+      "time_s": 37.26,
+      "state": "IDLE_STATIONARY",
+      "linear_v": -0.007,
+      "angular_w": 0.017
+    },
+    {
+      "time_s": 37.5,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.005,
+      "angular_w": 0.114
+    },
+    {
+      "time_s": 37.99,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": -0.082,
+      "angular_w": -0.067
+    },
+    {
+      "time_s": 38.23,
+      "state": "FORWARD_CRUISING",
+      "linear_v": -0.122,
+      "angular_w": 0.021
+    },
+    {
+      "time_s": 39.45,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": -0.01,
+      "angular_w": -0.061
+    },
+    {
+      "time_s": 39.68,
+      "state": "IDLE_STATIONARY",
+      "linear_v": 0.0,
+      "angular_w": -0.018
+    },
+    {
+      "time_s": 40.16,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.005,
+      "angular_w": 0.053
+    },
+    {
+      "time_s": 40.41,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.014,
+      "angular_w": 0.253
+    },
+    {
+      "time_s": 40.89,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.083,
+      "angular_w": -0.073
+    },
+    {
+      "time_s": 41.13,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.135,
+      "angular_w": 0.028
+    },
+    {
+      "time_s": 41.37,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.138,
+      "angular_w": 0.118
+    },
+    {
+      "time_s": 41.61,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.131,
+      "angular_w": 0.041
+    },
+    {
+      "time_s": 43.31,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.449,
+      "angular_w": -0.141
+    },
+    {
+      "time_s": 47.18,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.007,
+      "angular_w": -0.031
+    },
+    {
+      "time_s": 47.43,
+      "state": "IDLE_STATIONARY",
+      "linear_v": 0.0,
+      "angular_w": -0.013
+    },
+    {
+      "time_s": 52.99,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.007,
+      "angular_w": 0.069
+    },
+    {
+      "time_s": 53.23,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.002,
+      "angular_w": 0.288
+    },
+    {
+      "time_s": 53.98,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.126,
+      "angular_w": 0.0
+    },
+    {
+      "time_s": 56.38,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.296,
+      "angular_w": 0.128
+    },
+    {
+      "time_s": 59.52,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.11,
+      "angular_w": 0.094
+    },
+    {
+      "time_s": 59.76,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.099,
+      "angular_w": -0.052
+    },
+    {
+      "time_s": 60.49,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.005,
+      "angular_w": -0.109
+    },
+    {
+      "time_s": 61.76,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": -0.002,
+      "angular_w": 0.048
+    },
+    {
+      "time_s": 61.94,
+      "state": "IDLE_STATIONARY",
+      "linear_v": 0.0,
+      "angular_w": 0.003
+    },
+    {
+      "time_s": 62.43,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.002,
+      "angular_w": -0.124
+    },
+    {
+      "time_s": 64.12,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.047,
+      "angular_w": 0.025
+    },
+    {
+      "time_s": 64.36,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.086,
+      "angular_w": 0.126
+    },
+    {
+      "time_s": 64.85,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.109,
+      "angular_w": -0.072
+    },
+    {
+      "time_s": 65.09,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.091,
+      "angular_w": 0.035
+    },
+    {
+      "time_s": 65.33,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.131,
+      "angular_w": 0.054
+    },
+    {
+      "time_s": 66.54,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.0,
+      "angular_w": -0.084
+    },
+    {
+      "time_s": 66.78,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.003,
+      "angular_w": -0.135
+    },
+    {
+      "time_s": 71.38,
+      "state": "IDLE_STATIONARY",
+      "linear_v": -0.003,
+      "angular_w": 0.011
+    },
+    {
+      "time_s": 71.62,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.003,
+      "angular_w": -0.211
+    },
+    {
+      "time_s": 72.11,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": -0.009,
+      "angular_w": -0.069
+    },
+    {
+      "time_s": 72.35,
+      "state": "IDLE_STATIONARY",
+      "linear_v": -0.002,
+      "angular_w": 0.003
+    },
+    {
+      "time_s": 73.08,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.026,
+      "angular_w": -0.032
+    },
+    {
+      "time_s": 73.32,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.102,
+      "angular_w": -0.086
+    },
+    {
+      "time_s": 73.56,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.187,
+      "angular_w": -0.118
+    },
+    {
+      "time_s": 77.92,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.49,
+      "angular_w": -0.081
+    },
+    {
+      "time_s": 78.16,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.48,
+      "angular_w": -0.105
+    },
+    {
+      "time_s": 78.4,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.489,
+      "angular_w": -0.075
+    },
+    {
+      "time_s": 78.64,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.366,
+      "angular_w": -0.103
+    },
+    {
+      "time_s": 80.09,
+      "state": "FORWARD_CRUISING",
+      "linear_v": 0.169,
+      "angular_w": -0.013
+    },
+    {
+      "time_s": 80.34,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": 0.109,
+      "angular_w": -0.107
+    },
+    {
+      "time_s": 80.58,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.096,
+      "angular_w": -0.059
+    },
+    {
+      "time_s": 82.27,
+      "state": "IDLE_STATIONARY",
+      "linear_v": 0.0,
+      "angular_w": 0.014
+    },
+    {
+      "time_s": 82.75,
+      "state": "LOW_SPEED_NAVIGATION",
+      "linear_v": 0.005,
+      "angular_w": 0.07
+    },
+    {
+      "time_s": 83.0,
+      "state": "ROTATIONAL_MANEUVER",
+      "linear_v": -0.002,
+      "angular_w": 0.24
+    }
+  ],
+  "detected_behaviors": [
+    "IDLE_STATIONARY",
+    "FORWARD_CRUISING",
+    "LOW_SPEED_NAVIGATION",
+    "ROTATIONAL_MANEUVER"
+  ]
+}

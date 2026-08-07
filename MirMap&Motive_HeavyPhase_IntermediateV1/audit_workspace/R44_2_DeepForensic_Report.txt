@@ -1,0 +1,237 @@
+﻿##############################################################################
+#  R44.2 DEEP FORENSIC  |  2026-09-22 17:43:09
+#  Target: RTX 5090 (WSR95090A)  |  MODE: READ-ONLY
+##############################################################################
+
+==============================================================================
+  [A] ASEAE ARTIFACT DEEP SCAN (BUG-DB)
+==============================================================================
+Target dir: C:\Users\Admin\kiarash works\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\audit_workspace\ASEAE
+EXISTS  | Total files (recursive): 1
+-- Extension breakdown --
+   ext='.json'  count=1
+-- Full inventory (name | bytes | modified) --
+   Stage_1_launch_session.json | 8188B | 2026-09-22 16:30:22
+
+-- RAW HEAD (first 1200 chars) of: Stage_1_launch_session.json --
+{
+    "sota_repo":  "octo-models/octo",
+    "time":  "2026-09-22 16:30:22",
+    "reflection":  {
+                       "self_critique":  "The initial audit treated symptoms rather than systemic architecture failures. I missed that the lack of ROS lifecycle management guarantees zombie processes and memory leaks during long deployments, turning a \u0027FAIL\u0027 into an inevitable system crash after hours of operation. I was too lenient on dependency pinning by framing unpinned scipy as a \u0027risk\u0027 instead of an immediate runtime blocker in modern Python environments. I overlooked network security entirely; broadcasting control commands over unencrypted ROS topics is a critical attack vector. Regarding YOLO, I failed to address motion-blur degradation at high speeds and ignored class-imbalance bias that systematically suppresses low-confidence detections for rare hazards. Octo-models/octo handles these superiorly by employing learned safety priors through action chunking, built-in uncertainty quantification for perception fallbacks, standardized data versioning pipelines, and a modular policy architecture that decouples perception from control loops, enabling graceful d ...[TRUNCATED]
+
+-- audit_workspace top-level inventory --
+   Items: 19
+   [DIR ] ASEAE  (1 files)
+   [DIR ] cache  (0 files)
+   [DIR ] R38_R39_R40_archive  (16 files)
+   [DIR ] run_2026-08-31_17-42-41  (0 files)
+   [DIR ] run_2026-08-31_17-44-37  (1 files)
+   [DIR ] run_2026-08-31_17-47-56  (1 files)
+   [DIR ] run_2026-08-31_18-07-44  (10 files)
+   [DIR ] run_2026-08-31_19-43-51  (10 files)
+   [DIR ] run_2026-08-31_20-26-19  (0 files)
+   [DIR ] run_2026-09-01_15-29-51  (11 files)
+   [FILE] r32_0_impact_analysis.json  (83985B)
+   [FILE] r32_preflight_v2.json  (52661B)
+   [FILE] R43_10_e2e_report.json  (2920B)
+   [FILE] R43_10_e2e_test.py  (3020B)
+   [FILE] R43_3_a18_audit_report.json  (551B)
+   [FILE] R43_4_a18_audit_complete.json  (329B)
+   [FILE] R43_4_qwen_raw_output.txt  (3B)
+   [FILE] R43_6_test_local.py  (3848B)
+   [FILE] R44_1_Diagnostic_Report.txt  (3465B)
+
+-- Global hunt: any ASEAE/stage artifacts elsewhere in project --
+   Matches: 8
+   <ROOT>\audit_workspace\ASEAE\Stage_1_launch_session.json | 8188B | 09-22 16:30
+   <ROOT>\audit_workspace\run_2026-08-31_17-44-37\FINAL_REFEREE_VERDICT.md | 73B | 08-31 17:45
+   <ROOT>\audit_workspace\run_2026-08-31_17-47-56\FINAL_REFEREE_VERDICT.md | 73B | 08-31 17:48
+   <ROOT>\audit_workspace\run_2026-08-31_18-07-44\FINAL_REFEREE_VERDICT.md | 103464B | 08-31 18:15
+   <ROOT>\audit_workspace\run_2026-08-31_19-43-51\FINAL_REFEREE_VERDICT.md | 55992B | 08-31 19:56
+   <ROOT>\audit_workspace\run_2026-09-01_15-29-51\FINAL_REFEREE_VERDICT.md | 98552B | 09-01 15:57
+   <ROOT>\deep_agent_verification\FINAL_VERDICT.md | 1033B | 09-01 15:58
+   <ROOT>\docs\history\FINAL_REFEREE_VERDICT.md | 98552B | 09-01 15:57
+
+==============================================================================
+  [B] GPU DRIVER TDR FORENSICS (BUG-DA root cause)
+==============================================================================
+-- Event ID 4101 / Source Display (nvlddmkm TDR recovery) --
+   Count: 0
+
+-- WHEA-Logger events (rule out PCIe / hardware errors) --
+   Count: 0  -> NO hardware/PCIe errors detected (PSU hypothesis weakened)
+
+-- nvlddmkm / NVIDIA provider events --
+   Count: 0
+
+-- Application-level crashes near 15:47 / 16:25 on 2026-09-22 --
+   Count: 0
+
+==============================================================================
+  [C] TDR REGISTRY CONFIGURATION (read-only)
+==============================================================================
+   TdrDelay = <NOT SET (default)>
+   TdrDdiDelay = <NOT SET (default)>
+   TdrLevel = <NOT SET (default)>
+   TdrLimitCount = <NOT SET (default)>
+   TdrLimitTime = <NOT SET (default)>
+   HwSchMode = <NOT SET (default)>
+   [Defaults] TdrDelay=2s | TdrDdiDelay=5s | TdrLevel=3(recover)
+
+==============================================================================
+  [D] CRASH DUMP INVENTORY
+==============================================================================
+   Minidumps found: 3
+   - 092226-12265-01.dmp | 4197.3 KB | 2026-09-22 16:31:48
+   - 092226-12687-01.dmp | 7286.2 KB | 2026-09-22 16:24:59
+   - 052826-8859-01.dmp | 4320.3 KB | 2026-05-28 13:12:11
+   MEMORY.DMP: not present
+   Debugger (kd.exe): NOT INSTALLED -> dump analysis needs WinDbg
+
+==============================================================================
+  [E] LM STUDIO REAL STATE (loaded vs available)
+==============================================================================
+-- nvidia-smi compute apps holding VRAM right now --
+   2376, C:\Windows\System32\dwm.exe, [N/A]
+   9208, C:\Windows\System32\ShellHost.exe, [N/A]
+   5156, C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\CrossDeviceResume.exe, [N/A]
+   7096, C:\Windows\explorer.exe, [N/A]
+   11420, C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe, [N/A]
+   11444, C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe, [N/A]
+   12884, C:\Program Files (x86)\Microsoft\EdgeWebView\Application\153.0.4234.48\msedgewebview2.exe, [N/A]
+   15500, C:\Program Files\WindowsApps\AdvancedMicroDevicesInc-2.AMDRadeonSoftware_10.25.10326.0_x64__0a9344xs7nr4m\radeonsoftware\AMDRSSrcExt.exe, [N/A]
+   16080, C:\Program Files\LM Studio\LM Studio.exe, [N/A]
+   17112, C:\Program Files\WindowsApps\DropboxInc.Dropbox_270.4.3246.0_x64__xbfy0k16fey96\Dropbox.exe, [N/A]
+   16888, C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\TextInputHost.exe, [N/A]
+   13220, C:\Windows\System32\ApplicationFrameHost.exe, [N/A]
+   8200, C:\Windows\ImmersiveControlPanel\SystemSettings.exe, [N/A]
+   14204, C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\ShellExperienceHost.exe, [N/A]
+   15356, C:\Program Files\WindowsApps\AdvancedMicroDevicesInc-2.AMDRadeonSoftware_10.25.10326.0_x64__0a9344xs7nr4m\radeonsoftware\RadeonSoftware.exe, [N/A]
+   19572, C:\Program Files\WindowsApps\Microsoft.WindowsNotepad_11.2607.14.0_x64__8wekyb3d8bbwe\Notepad\Notepad.exe, [N/A]
+   19180, C:\Users\Admin\.lmstudio\extensions\backends\llama.cpp-win-x86_64-nvidia-cuda12-avx2-2.42.0\llama-server.exe, [N/A]
+
+-- nvidia-smi full snapshot --
+   35, 18.12 W, 575.00 W, 575.00 W, 18554 MiB, 32607 MiB, 0 %, 0 %, 225 MHz, P8
+
+-- LM Studio CLI (lms ps = actually loaded models) --
+   lms.exe: C:\Users\Admin\.lmstudio\bin\lms.exe
+   
+   IDENTIFIER     MODEL          STATUS    SIZE        CONTEXT    PARALLEL    DEVICE    TTL
+   qwen3.6-27b    qwen3.6-27b    IDLE      17.48 GB    8192       4           Local        
+   
+   Server: ON (port: 1234)
+   
+   Loaded Models
+     ┬À qwen3.6-27b - 17.48 GB
+
+-- LM Studio processes + RAM footprint --
+   Count: 7
+   - PID=19180 | llama-server | WS=16289 MB
+   - PID=14644 | LM Studio | WS=436 MB
+   - PID=15072 | LM Studio | WS=301 MB
+   - PID=15680 | LM Studio | WS=13 MB
+   - PID=16080 | LM Studio | WS=126 MB
+   - PID=16088 | LM Studio | WS=23 MB
+   - PID=16228 | LM Studio | WS=64 MB
+
+-- LM Studio config files (JIT / TTL settings) --
+   ROOT EXISTS: C:\Users\Admin\.lmstudio
+   -- ~\.lmstudio\.internal\backend-preferences-v1.json --
+      [
+  {
+    "model_format": "gguf",
+    "name": "llama.cpp-win-x86_64-nvidia-cuda12-avx2",
+    "version": "2.42.0"
+  }
+]
+   -- ~\.lmstudio\.internal\conversation-config.json --
+      {
+  "globalPredictionConfig": {
+    "fields": []
+  },
+  "selectedConversation": "kiarash/1790069379013.conversation.json",
+  "newChatConversationIdentifier": null,
+  "selectedConversationHistory": [
+    "",
+    "1782728776282.conversation.json",
+    "1782728776282.conversation.json",
+    "",
+    "1782728776282.conversation.json",
+    "kiarash/1790069379013.conversation.json",
+    "1782728776282.conversation.json",
+    "kiarash/1790069379013.conversation.json",
+    "kiarash/1790069379013.conversation.json"
+  ],
+  "selectedConversationHistoryIndex": 8,
+  "selectedPredictionProcessorIdentifier": "lmstudio:simplePredictionProcessor",
+  "viewMode": "markdown",
+  "fontSize": "medium",
+  "fontWeight": "normal",
+  "conversationFontSizeIndex": 6,
+  "messageStyle": "bubble",
+  "selectedDirectory": "kiarash",
+  "expandedDirectories": [
+    "",
+    "1780575417027.conversation.json",
+    "17839480824 ...[TRUNCATED]
+   -- ~\.lmstudio\.internal\http-server-config.json --
+      {
+  "autoStartOnLaunch": true,
+  "port": 1234,
+  "cors": false,
+  "logSensitiveData": true,
+  "logIncomingTokens": false,
+  "verbose": true,
+  "logLinesLimit": 500,
+  "networkInterface": "0.0.0.0",
+  "justInTimeModelLoading": true,
+  "fileLoggingMode": "succinct"
+}
+   -- ~\.lmstudio\.internal\http-server.json --
+      {
+  "host": "127.0.0.1",
+  "pid": 15072,
+  "port": 41343
+}
+
+   -- ~\.lmstudio\.internal\lm-link-config.json --
+      {"json":{"forceDisabled":false,"allowLoadingModelsOnThisMachine":true,"allowRemoteBionicSessions":false,"deviceIdentifier":"0e6df820421b116caf4d21a6c5105fbd","deviceName":"WSR95090A"}}
+   -- ~\.lmstudio\.internal\server-logs-state.json --
+      {"lastWrittenFile":{"filePathBase":"2026-09/2026-09-22.","index":1},"lastWrittenFileSizeBytes":19588}
+   -- ~\.lmstudio\extensions\backends\llama.cpp-win-x86_64-avx2-2.17.0\engine-protocol-server-artifacts.json --
+      {   "schema_version": 1,   "runtime_kind": "llama-server",   "executable_relative_path": "llama-server.exe",   "files": [     { "relative_path": "ggml-base.dll", "executable": false },     { "relative_path": "ggml-cpu.dll", "executable": false },     { "relative_path": "ggml_llamacpp.dll", "executable": false },     { "relative_path": "llama-common.dll", "executable": false },     { "relative_path": "llama-server-impl.dll", "executable": false },     { "relative_path": "llama-server.exe", "executable": true },     { "relative_path": "llama.dll", "executable": false },     { "relative_path": "mtmd.dll", "executable": false }   ] } 
+   -- ~\.lmstudio\extensions\backends\llama.cpp-win-x86_64-nvidia-cuda-avx2-2.17.0\engine-protocol-server-artifacts.json --
+      {   "schema_version": 1,   "runtime_kind": "llama-server",   "executable_relative_path": "llama-server.exe",   "files": [     { "relative_path": "ggml-base.dll", "executable": false },     { "relative_path": "ggml-cpu.dll", "executable": false },     { "relative_path": "ggml-cuda.dll", "executable": false },     { "relative_path": "ggml_llamacpp.dll", "executable": false },     { "relative_path": "llama-common.dll", "executable": false },     { "relative_path": "llama-server-impl.dll", "executable": false },     { "relative_path": "llama-server.exe", "executable": true },     { "relative_path": "llama.dll", "executable": false },     { "relative_path": "mtmd.dll", "executable": false }   ] } 
+
+==============================================================================
+  [F] SYSTEM MEMORY / PAGEFILE / DRIVER
+==============================================================================
+   RAM Total : 125.6 GB
+   RAM Free  : 100.5 GB
+   Uptime    : 01:11:31.7148493
+   PageFile: C:\pagefile.sys | Alloc=51200 MB | Peak=0 MB
+   AutomaticManagedPagefile: True
+   GPU: AMD Radeon(TM) Graphics | Driver=32.0.21042.62 | Date=04/17/2026 02:00:00 | Status=Error
+   GPU: NVIDIA GeForce RTX 5090 | Driver=32.0.15.9186 | Date=01/20/2026 01:00:00 | Status=OK
+
+==============================================================================
+  [G] POWER / PCIe LINK STATE
+==============================================================================
+   Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)
+   Power Setting GUID: ee12f906-d277-404b-b6da-e5fa1a576df5  (Link State Power Management)
+   Possible Setting Index: 000
+   Possible Setting Friendly Name: Off
+   Possible Setting Index: 001
+   Possible Setting Friendly Name: Moderate power savings
+   Possible Setting Index: 002
+   Possible Setting Friendly Name: Maximum power savings
+   Current AC Power Setting Index: 0x00000001
+   Current DC Power Setting Index: 0x00000002
+
+==============================================================================
+  [H] SUMMARY
+==============================================================================
+   BugCheck observed : 0x116 VIDEO_TDR_ERROR (param3=0xC000009A INSUFFICIENT_RESOURCES)
+   Crash timestamps  : 2026-09-22 15:47:47 and 16:25:02 (both during ASEAE runs)
+   Verify above      : WHEA count, TDR registry, loaded models, pagefile, ASEAE artifacts

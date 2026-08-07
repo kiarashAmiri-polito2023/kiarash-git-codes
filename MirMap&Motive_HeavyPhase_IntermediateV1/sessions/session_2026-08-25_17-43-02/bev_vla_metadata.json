@@ -1,0 +1,11 @@
+{
+  "session": "session_2026-08-25_17-43-02",
+  "status": "COMPLETED",
+  "canvas_size": [
+    512,
+    512
+  ],
+  "resolution_m_per_px": 0.02,
+  "bev_frames": 619,
+  "average_lidar_points_per_frame": 455.4
+}

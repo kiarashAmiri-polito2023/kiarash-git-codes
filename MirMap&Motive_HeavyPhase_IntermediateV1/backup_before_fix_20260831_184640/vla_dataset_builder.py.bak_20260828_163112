@@ -1,0 +1,196 @@
+﻿#!/usr/bin/env python3
+"""
+VLA DATASET BUILDER (Qwen2-VL Multi-Session Aggregator & Splitter)
+Industrial Grade Multi-Modal VLA Dataset Assembler for MiR100 Robot.
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | Politecnico di Torino
+"""
+
+import os
+import sys
+import json
+import random
+import argparse
+from pathlib import Path
+from collections import Counter
+
+
+def build_aggregated_dataset(
+    project_root=None,
+    output_dir=None,
+    split_ratio=0.8,
+    seed=42
+):
+    """
+    Scans all sessions, aggregates qwen_vla_dataset.jsonl files,
+    performs stratified/deterministic train-val split, and generates dataset_stats.json.
+    """
+    if project_root is None:
+        project_root = Path(__file__).resolve().parent.parent
+    else:
+        project_root = Path(project_root)
+
+    sessions_dir = project_root / "sessions"
+    if output_dir is None:
+        output_dir = project_root / "dataset"
+    else:
+        output_dir = Path(output_dir)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print("=" * 70)
+    print(" VLA DATASET BUILDER (Multi-Session Aggregator)")
+    print("=" * 70)
+    print(f"  Sessions Directory: {sessions_dir}")
+    print(f"  Output Directory:   {output_dir}")
+    print(f"  Train/Val Split:    {int(split_ratio*100)}% / {int((1-split_ratio)*100)}%")
+    print(f"  Random Seed:        {seed}")
+    print("-" * 70)
+
+    # 1. Discover all session dataset files
+    dataset_files = sorted(list(sessions_dir.glob("*/qwen_vla_dataset.jsonl")))
+    if not dataset_files:
+        print("[FAIL] No 'qwen_vla_dataset.jsonl' files found across sessions!")
+        return {"status": "EMPTY", "total_samples": 0}
+
+    print(f"  Discovered {len(dataset_files)} session dataset file(s):")
+
+    all_samples = []
+    session_sample_counts = {}
+    behavior_counter = Counter()
+
+    # 2. Ingest and validate samples
+    for df_path in dataset_files:
+        session_name = df_path.parent.name
+        session_count = 0
+        try:
+            with open(df_path, "r", encoding="utf-8") as f:
+                for line_idx, line in enumerate(f):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        record = json.loads(line)
+                        # Tag with origin metadata
+                        record["_session_origin"] = session_name
+                        record["_sample_id"] = f"{session_name}_s{line_idx:05d}"
+
+                        # Smart behavior class tracking with rule-based heuristics fallback
+                        meta = record.get("metadata", {})
+                        b_class = meta.get("behavior_class", "UNKNOWN")
+                        
+                        if b_class == "UNKNOWN":
+                            prompt_text = record.get("conversations", [{}])[0].get("value", "").lower()
+                            gt = record.get("ground_truth_action", [0.0, 0.0])
+                            
+                            if "maintain zero" in prompt_text or (abs(gt[0]) < 0.01 and abs(gt[1]) < 0.01):
+                                b_class = "IDLE_STATIONARY"
+                            elif "cruise forward" in prompt_text or gt[0] > 0.15:
+                                b_class = "FORWARD_CRUISING"
+                            elif "rotational" in prompt_text or abs(gt[1]) > 0.15:
+                                b_class = "ROTATIONAL_MANEUVER"
+                            elif "low speed" in prompt_text or (0.01 < gt[0] <= 0.15):
+                                b_class = "LOW_SPEED_NAVIGATION"
+                        
+                        behavior_counter[b_class] += 1
+
+                        all_samples.append(record)
+                        session_count += 1
+                    except json.JSONDecodeError:
+                        continue
+
+            session_sample_counts[session_name] = session_count
+            print(f"    [OK] {session_name}: {session_count} samples")
+        except Exception as e:
+            print(f"    [ERROR] Reading {session_name}: {e}")
+
+    total_samples = len(all_samples)
+    print("-" * 70)
+    print(f"  Total Valid Samples Loaded: {total_samples}")
+
+    if total_samples == 0:
+        print("[FAIL] No valid samples could be extracted.")
+        return {"status": "ZERO_SAMPLES", "total_samples": 0}
+
+    # 3. Deterministic Shuffle and Split
+    random.seed(seed)
+    indices = list(range(total_samples))
+    random.shuffle(indices)
+
+    split_point = int(total_samples * split_ratio)
+    train_indices = indices[:split_point]
+    val_indices = indices[split_point:]
+
+    train_samples = [all_samples[i] for i in train_indices]
+    val_samples = [all_samples[i] for i in val_indices]
+
+    train_file = output_dir / "train.jsonl"
+    val_file = output_dir / "val.jsonl"
+    stats_file = output_dir / "dataset_stats.json"
+
+    # 4. Save Train/Val JSONL files
+    with open(train_file, "w", encoding="utf-8") as f:
+        for sample in train_samples:
+            f.write(json.dumps(sample) + "\n")
+
+    with open(val_file, "w", encoding="utf-8") as f:
+        for sample in val_samples:
+            f.write(json.dumps(sample) + "\n")
+
+    # 5. Compile Comprehensive Metadata Stats
+    train_behaviors = Counter([s.get("metadata", {}).get("behavior_class", "UNKNOWN") for s in train_samples])
+    val_behaviors = Counter([s.get("metadata", {}).get("behavior_class", "UNKNOWN") for s in val_samples])
+
+    stats = {
+        "dataset_name": "MiR100_VLA_MultiModal_PoliTo",
+        "generated_by": "vla_dataset_builder.py",
+        "operator": "Kiarash Amiri",
+        "supervisor": "Prof. Dario Antonelli",
+        "total_samples": total_samples,
+        "train_samples": len(train_samples),
+        "val_samples": len(val_samples),
+        "split_ratio": split_ratio,
+        "seed": seed,
+        "sessions_included": list(session_sample_counts.keys()),
+        "samples_per_session": session_sample_counts,
+        "behavior_distribution_total": dict(behavior_counter),
+        "behavior_distribution_train": dict(train_behaviors),
+        "behavior_distribution_val": dict(val_behaviors),
+        "files": {
+            "train": str(train_file.name),
+            "val": str(val_file.name)
+        }
+    }
+
+    with open(stats_file, "w", encoding="utf-8") as f:
+        json.dump(stats, f, indent=2)
+
+    # 6. Summary Display
+    print("\n" + "=" * 70)
+    print(" DATASET AGGREGATION & SPLIT SUMMARY")
+    print("=" * 70)
+    print(f"  [SAVED] Train Set:      {train_file} ({len(train_samples)} samples)")
+    print(f"  [SAVED] Val Set:        {val_file} ({len(val_samples)} samples)")
+    print(f"  [SAVED] Stats Metadata: {stats_file}")
+    print("\n  Behavior Distribution:")
+    for b_class, count in behavior_counter.most_common():
+        pct = (count / total_samples) * 100
+        print(f"    - {b_class:<25}: {count:5d} ({pct:5.1f}%) [Train: {train_behaviors.get(b_class, 0)}, Val: {val_behaviors.get(b_class, 0)}]")
+    print("=" * 70)
+
+    return stats
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Aggregate and Split Multi-Modal VLA Dataset")
+    parser.add_argument("--root", type=str, default=None, help="Project root directory")
+    parser.add_argument("--out", type=str, default=None, help="Output dataset directory")
+    parser.add_argument("--split", type=float, default=0.8, help="Train split ratio (default: 0.8)")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for deterministic split")
+    args = parser.parse_args()
+
+    build_aggregated_dataset(
+        project_root=args.root,
+        output_dir=args.out,
+        split_ratio=args.split,
+        seed=args.seed
+    )

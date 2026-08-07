@@ -1,0 +1,1976 @@
+{
+  "bom": {
+    "A15_referee_ai_loop.py": {
+      "bom": false,
+      "md5": "5b3728c7f56a2ff873438ce2068f1dbd",
+      "size": 17868,
+      "lines": 404,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "A16_agent_deep_analyzer.py": {
+      "bom": true,
+      "md5": "72854b8fc7a86651da4a65e937f73191",
+      "size": 23193,
+      "lines": 593,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "A18_deep_agent_verifier.py": {
+      "bom": false,
+      "md5": "3ab6bb270e5b0ec9409b706c302112e3",
+      "size": 6781,
+      "lines": 165,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23202d"
+    },
+    "apply_merge.py": {
+      "bom": false,
+      "md5": "b1492b6b9ed21471613cf3f689eeee77",
+      "size": 13859,
+      "lines": 399,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "auto_labeler.py": {
+      "bom": true,
+      "md5": "d07f643253074ffa8688f58de3c70dce",
+      "size": 3341,
+      "lines": 98,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "bev_image_renderer.py": {
+      "bom": true,
+      "md5": "bba1d8154ca109568908a89b6857e3b8",
+      "size": 9014,
+      "lines": 217,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "co_pilot_agent.py": {
+      "bom": true,
+      "md5": "b87c457489516a849eb088f1390618e3",
+      "size": 24572,
+      "lines": 647,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "cross_modal_aligner.py": {
+      "bom": true,
+      "md5": "848ca9008faa69b91ea36068cd7c70c5",
+      "size": 5945,
+      "lines": 157,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "cvat_converter.py": {
+      "bom": true,
+      "md5": "9b1b9ddd6c5aa64767b141e932be80cd",
+      "size": 3273,
+      "lines": 85,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "DataDescriptions.py": {
+      "bom": false,
+      "md5": "a13a994f0918783208674987ff01727b",
+      "size": 29247,
+      "lines": 736,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23436f"
+    },
+    "entity_registry.py": {
+      "bom": true,
+      "md5": "afa1a3a6fab10b5703c0d06477d645f6",
+      "size": 10987,
+      "lines": 282,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "knowledge_engine.py": {
+      "bom": false,
+      "md5": "cdb79291bd34f578f00848ef4bfd19b3",
+      "size": 32214,
+      "lines": 455,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "label_registry.py": {
+      "bom": true,
+      "md5": "4cda652ef1b2f1e810cc53a932ba68d4",
+      "size": 12404,
+      "lines": 299,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "label_registry_auto.py": {
+      "bom": true,
+      "md5": "cb9ff3dbb800e814c014897d13c1c3fd",
+      "size": 4172,
+      "lines": 126,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "launch_session.py": {
+      "bom": true,
+      "md5": "7aae51f747f50acb9b54693231ecca6b",
+      "size": 49771,
+      "lines": 1217,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "mir_command_logger.py": {
+      "bom": true,
+      "md5": "d353b9d0115b0ef2bfda6200b5e32180",
+      "size": 10143,
+      "lines": 257,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "MoCapData.py": {
+      "bom": false,
+      "md5": "455d62bc43407ef97cb78ec1d69882e4",
+      "size": 32013,
+      "lines": 872,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23436f"
+    },
+    "motive_connector.py": {
+      "bom": false,
+      "md5": "eed7d0f053db06f5bf97207c011ad566",
+      "size": 18478,
+      "lines": 491,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "NatNetClient.py": {
+      "bom": true,
+      "md5": "940f219921af72c6ef10e5936f38649f",
+      "size": 37980,
+      "lines": 842,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "offline_processor.py": {
+      "bom": true,
+      "md5": "a0c8b166a20e34dda72043a04b12e1ad",
+      "size": 5038,
+      "lines": 155,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "project_snapshot.py": {
+      "bom": false,
+      "md5": "ba48a8828a52e6bbf79464174a3e0808",
+      "size": 30455,
+      "lines": 651,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "quality_gate.py": {
+      "bom": true,
+      "md5": "19aaa01aff79e373f54fdc7a46ae6331",
+      "size": 19712,
+      "lines": 508,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "qwen_dataset_formatter.py": {
+      "bom": true,
+      "md5": "2c52af606ab5cc12b7c35f2c30d0295b",
+      "size": 6814,
+      "lines": 156,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "robot_data_analyzer.py": {
+      "bom": true,
+      "md5": "d2614721daa73ec079c87ffa6af6eb07",
+      "size": 8640,
+      "lines": 219,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "run_session_analysis.py": {
+      "bom": false,
+      "md5": "48d81b48cd699c55f4bf0e67cb598c54",
+      "size": 14154,
+      "lines": 337,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "scene_object_detector.py": {
+      "bom": false,
+      "md5": "bbd0dc924dc347307d7883c5347786f1",
+      "size": 8431,
+      "lines": 241,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "semantic_slam_fusion.py": {
+      "bom": true,
+      "md5": "aeab3cc6e63ec253004a92b2a3f4d6f9",
+      "size": 6404,
+      "lines": 171,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "session_manager.py": {
+      "bom": false,
+      "md5": "baa8d97197581b86c84787086e47d143",
+      "size": 16091,
+      "lines": 419,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "session_worthiness_analyzer.py": {
+      "bom": true,
+      "md5": "dc11cd9049dd10de4d0b77c5b60dc495",
+      "size": 7930,
+      "lines": 209,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "slam_auto_namer.py": {
+      "bom": true,
+      "md5": "1c02c3205661a36dfac26a75ca105acf",
+      "size": 5288,
+      "lines": 140,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "slam_map_annotator.py": {
+      "bom": true,
+      "md5": "3ca2981505d61acfa338aa5b66ccba2e",
+      "size": 2738,
+      "lines": 73,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "slam_to_bev.py": {
+      "bom": true,
+      "md5": "0d2cd37dee995d9a02a8fee03cce8875",
+      "size": 2747,
+      "lines": 73,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "spatial_temporal_fusion.py": {
+      "bom": false,
+      "md5": "4196a17c186077701440453c6391e9bd",
+      "size": 18227,
+      "lines": 523,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "23212f"
+    },
+    "training_curriculum_advisor.py": {
+      "bom": true,
+      "md5": "0fcdf2c61651600a116e4dd88ce67b2e",
+      "size": 3570,
+      "lines": 79,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "video_event_extractor.py": {
+      "bom": true,
+      "md5": "f272311e70dbb27472b5d34a8bd4119d",
+      "size": 3518,
+      "lines": 111,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "video_learning_agent.py": {
+      "bom": true,
+      "md5": "58e417aedfaa8796f1465fef023e4696",
+      "size": 9824,
+      "lines": 259,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "video_narrator.py": {
+      "bom": true,
+      "md5": "31f84a73cd31901ee63dd8bd87fc205b",
+      "size": 4201,
+      "lines": 99,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "video_quality_agent.py": {
+      "bom": true,
+      "md5": "869d2fd95a8d6a38613b6d8bbafef5e6",
+      "size": 30049,
+      "lines": 699,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "vla_dataset_builder.py": {
+      "bom": true,
+      "md5": "c4553f5b963135b29d1408318f57b418",
+      "size": 5601,
+      "lines": 151,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "vla_scenario_validator.py": {
+      "bom": true,
+      "md5": "2a7f54b6e23796095f32deee92499c83",
+      "size": 6183,
+      "lines": 139,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    },
+    "vla_supervisor_agent.py": {
+      "bom": true,
+      "md5": "0308cc5579c60bd6290f26641b989b91",
+      "size": 3196,
+      "lines": 90,
+      "ast": true,
+      "ast_msg": "OK",
+      "head": "efbbbf"
+    }
+  },
+  "encoding": {
+    "agents/project_snapshot.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 650,
+      "lf": 0,
+      "cr": 0
+    },
+    "agents/scene_object_detector.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 241,
+      "lf": 0,
+      "cr": 0
+    },
+    "agents/video_learning_agent.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 1,
+      "lf": 258,
+      "cr": 0
+    },
+    "agents/slam_to_bev.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 1,
+      "lf": 72,
+      "cr": 0
+    },
+    "agents/A15_referee_ai_loop.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 404,
+      "lf": 0,
+      "cr": 0
+    },
+    "agents/A18_deep_agent_verifier.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 165,
+      "lf": 0,
+      "cr": 0
+    },
+    "agents/launch_session.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 1217,
+      "lf": 0,
+      "cr": 0
+    },
+    "agents/cross_modal_aligner.py": {
+      "utf8": true,
+      "nulls": 0,
+      "crlf": 1,
+      "lf": 156,
+      "cr": 0
+    }
+  },
+  "duplicates": {
+    "MASTER_REPORT.md_vs_master_report.md": {
+      "up": true,
+      "lo": true,
+      "u_md5": "5ee63c64d277bde9d372a4be0d941aaa",
+      "u_sz": 7889,
+      "l_md5": "5ee63c64d277bde9d372a4be0d941aaa",
+      "l_sz": 7889,
+      "byte_identical": true
+    },
+    "MASTER_REPORT.json_vs_master_report.json": {
+      "up": true,
+      "lo": true,
+      "u_md5": "ee1a2d29800fa6ce974cd962fbe4cadc",
+      "u_sz": 2467,
+      "l_md5": "ee1a2d29800fa6ce974cd962fbe4cadc",
+      "l_sz": 2467,
+      "byte_identical": true
+    },
+    "refs_MASTER_REPORT.md": [
+      {
+        "file": "diag_r32_v2.py",
+        "line": 161,
+        "ctx": "for up, lo in [(\"MASTER_REPORT.md\",\"master_report.md\"),(\"MASTER_REPORT.json\",\"master_report.json\")]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 180,
+        "ctx": "for tgt in [\"MASTER_REPORT.md\",\"master_report.md\",\"MASTER_REPORT.json\",\"master_report.json\"]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 255,
+        "ctx": "allowed = {\"README.md\",\".gitignore\",\"requirements.txt\",\"MASTER_REPORT.md\","
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 473,
+        "ctx": "if (R/\"MASTER_REPORT.md\").exists() and (R/\"MASTER_REPORT.json\").exists():"
+      },
+      {
+        "file": "diag_round16.py",
+        "line": 54,
+        "ctx": "print(\"Writes MASTER_REPORT.md:\", \"MASTER_REPORT.md\" in snap_src)"
+      },
+      {
+        "file": "execute_surgery.py",
+        "line": 399,
+        "ctx": "mr = find_files(\"MASTER_REPORT.md\") + find_files(\"Visual_Archives/Run_*/MASTER_REPORT.md\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 159,
+        "ctx": "out_md = os.path.join(ROOT_DIR, \"MASTER_REPORT.md\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 175,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md generated.\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 339,
+        "ctx": "out_md = os.path.join(ROOT_DIR, \"MASTER_REPORT.md\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 355,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md generated.\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 389,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 1342,
+        "ctx": "## 10. CURRENT MASTER_REPORT.md"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 1640,
+        "ctx": "# Generate Clean MASTER_REPORT.md"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 1641,
+        "ctx": "report_path = os.path.join(PROJECT, \"MASTER_REPORT.md\")"
+      },
+      {
+        "file": "generate_publication_report_v5.py",
+        "line": 91,
+        "ctx": "# Generate Clean MASTER_REPORT.md"
+      },
+      {
+        "file": "generate_publication_report_v5.py",
+        "line": 92,
+        "ctx": "report_path = os.path.join(PROJECT, \"MASTER_REPORT.md\")"
+      },
+      {
+        "file": "agents\\A15_referee_ai_loop.py",
+        "line": 192,
+        "ctx": "mr = find_files(\"MASTER_REPORT.md\") + find_files(\"Visual_Archives/Run_*/MASTER_REPORT.md\")"
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 37,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 643,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.1 generated.\")"
+      },
+      {
+        "file": "backups\\A15_referee_ai_loop\\A15_referee_ai_loop_20260901_191703_pre_hybrid_persona_upgrade.py",
+        "line": 195,
+        "ctx": "mr = find_files(\"MASTER_REPORT.md\") + find_files(\"Visual_Archives/Run_*/MASTER_REPORT.md\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201102_pre_detector_video_slam_integration.py",
+        "line": 13,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201102_pre_detector_video_slam_integration.py",
+        "line": 32,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201102_pre_detector_video_slam_integration.py",
+        "line": 515,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201200_pre_deep_vla_hook_hotfix.py",
+        "line": 13,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201200_pre_deep_vla_hook_hotfix.py",
+        "line": 32,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201200_pre_deep_vla_hook_hotfix.py",
+        "line": 595,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201442_pre_report_rendering_patch.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201442_pre_report_rendering_patch.py",
+        "line": 33,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201442_pre_report_rendering_patch.py",
+        "line": 596,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201802_pre_final_rendering_patch.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201802_pre_final_rendering_patch.py",
+        "line": 33,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201802_pre_final_rendering_patch.py",
+        "line": 596,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202305_pre_r30_rendering.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202305_pre_r30_rendering.py",
+        "line": 33,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202305_pre_r30_rendering.py",
+        "line": 627,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202336_pre_wire_md_json_reports.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202336_pre_wire_md_json_reports.py",
+        "line": 33,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202336_pre_wire_md_json_reports.py",
+        "line": 627,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.0 generated.\")"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_204344_pre_r31_x1_ad_bev.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_204344_pre_r31_x1_ad_bev.py",
+        "line": 33,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_204344_pre_r31_x1_ad_bev.py",
+        "line": 633,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.1 generated.\")"
+      },
+      {
+        "file": "backup_before_fix_20260831_184640\\A15_referee_ai_loop.py",
+        "line": 195,
+        "ctx": "mr = find_files(\"MASTER_REPORT.md\") + find_files(\"Visual_Archives/Run_*/MASTER_REPORT.md\")"
+      },
+      {
+        "file": "backup_before_fix_20260831_184640\\project_snapshot.py",
+        "line": 154,
+        "ctx": "out_md = os.path.join(ROOT_DIR, \"MASTER_REPORT.md\")"
+      },
+      {
+        "file": "backup_before_fix_20260831_184640\\project_snapshot.py",
+        "line": 170,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md generated.\")"
+      },
+      {
+        "file": "project_history\\CHANGELOG.md",
+        "line": 127,
+        "ctx": "- OUTPUTS: MASTER_REPORT.md (root), reports/latest_snapshot_for_ai.md (compatibility)"
+      },
+      {
+        "file": "agents\\A15_referee_ai_loop.py",
+        "line": 192,
+        "ctx": "mr = find_files(\"MASTER_REPORT.md\") + find_files(\"Visual_Archives/Run_*/MASTER_REPORT.md\")"
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 14,
+        "ctx": "-> Generates MASTER_REPORT.md in project root"
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 37,
+        "ctx": "RPT_MD = WS / \"MASTER_REPORT.md\""
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 643,
+        "ctx": "print(f\"[SUCCESS] MASTER_REPORT.md v10.1 generated.\")"
+      }
+    ],
+    "refs_master_report.md": [
+      {
+        "file": "diag_r32_v2.py",
+        "line": 161,
+        "ctx": "for up, lo in [(\"MASTER_REPORT.md\",\"master_report.md\"),(\"MASTER_REPORT.json\",\"master_report.json\")]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 180,
+        "ctx": "for tgt in [\"MASTER_REPORT.md\",\"master_report.md\",\"MASTER_REPORT.json\",\"master_report.json\"]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 256,
+        "ctx": "\"MASTER_REPORT.json\",\"master_report.md\",\"master_report.json\"}"
+      }
+    ],
+    "refs_MASTER_REPORT.json": [
+      {
+        "file": "diag_r32_v2.py",
+        "line": 161,
+        "ctx": "for up, lo in [(\"MASTER_REPORT.md\",\"master_report.md\"),(\"MASTER_REPORT.json\",\"master_report.json\")]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 180,
+        "ctx": "for tgt in [\"MASTER_REPORT.md\",\"master_report.md\",\"MASTER_REPORT.json\",\"master_report.json\"]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 256,
+        "ctx": "\"MASTER_REPORT.json\",\"master_report.md\",\"master_report.json\"}"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 473,
+        "ctx": "if (R/\"MASTER_REPORT.md\").exists() and (R/\"MASTER_REPORT.json\").exists():"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 163,
+        "ctx": "out_json = os.path.join(ROOT_DIR, \"MASTER_REPORT.json\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 343,
+        "ctx": "out_json = os.path.join(ROOT_DIR, \"MASTER_REPORT.json\")"
+      },
+      {
+        "file": "FULL_DIAGNOSTIC_AUDIT.md",
+        "line": 390,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 38,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201102_pre_detector_video_slam_integration.py",
+        "line": 33,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201200_pre_deep_vla_hook_hotfix.py",
+        "line": 33,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201442_pre_report_rendering_patch.py",
+        "line": 34,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_201802_pre_final_rendering_patch.py",
+        "line": 34,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202305_pre_r30_rendering.py",
+        "line": 34,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_202336_pre_wire_md_json_reports.py",
+        "line": 34,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backups\\project_snapshot\\project_snapshot_20260901_204344_pre_r31_x1_ad_bev.py",
+        "line": 34,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      },
+      {
+        "file": "backup_before_fix_20260831_184640\\project_snapshot.py",
+        "line": 158,
+        "ctx": "out_json = os.path.join(ROOT_DIR, \"MASTER_REPORT.json\")"
+      },
+      {
+        "file": "agents\\project_snapshot.py",
+        "line": 38,
+        "ctx": "RPT_JSON = WS / \"MASTER_REPORT.json\""
+      }
+    ],
+    "refs_master_report.json": [
+      {
+        "file": "diag_r32_v2.py",
+        "line": 161,
+        "ctx": "for up, lo in [(\"MASTER_REPORT.md\",\"master_report.md\"),(\"MASTER_REPORT.json\",\"master_report.json\")]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 180,
+        "ctx": "for tgt in [\"MASTER_REPORT.md\",\"master_report.md\",\"MASTER_REPORT.json\",\"master_report.json\"]:"
+      },
+      {
+        "file": "diag_r32_v2.py",
+        "line": 256,
+        "ctx": "\"MASTER_REPORT.json\",\"master_report.md\",\"master_report.json\"}"
+      }
+    ]
+  },
+  "backup": {
+    "exists": true,
+    "master_log": true,
+    "ml_lines": 13,
+    "ml_size": 937,
+    "subdirs": {
+      "A15_referee_ai_loop": {
+        "count": 2,
+        "op_log": true,
+        "files": [
+          {
+            "name": "A15_referee_ai_loop_20260901_191703_pre_hybrid_persona_upgrade.py",
+            "sz": 14894,
+            "md5": "b57dff63c71c4ac2a617412663ca9b52",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "operation_log.md",
+            "sz": 147,
+            "md5": "238a658fcda93b38dd0036701aafc01f",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "A18_deep_agent_verifier": {
+        "count": 4,
+        "op_log": true,
+        "files": [
+          {
+            "name": "A18_deep_agent_verifier_20260901_191703_pre_BUG-O_BUG-P_BUG-R_fix.py",
+            "sz": 5432,
+            "md5": "ac88356801f787346ed936752293400d",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "A18_deep_agent_verifier_20260901_192153_pre_nonetype_startswith_fix.py",
+            "sz": 6376,
+            "md5": "2c8031a32966db35267d6238445b14c6",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "A18_deep_agent_verifier_20260901_200313_pre_quorum_startswith_apikey.py",
+            "sz": 6662,
+            "md5": "de91150725c8be60b10e2f7e49de1b46",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "operation_log.md",
+            "sz": 399,
+            "md5": "d034c192db96b1e4b3c659515cae0c12",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "backup_20260825_184149": {
+        "count": 5,
+        "op_log": false,
+        "files": [
+          {
+            "name": "co_pilot_agent.py.bak",
+            "sz": 24241,
+            "md5": "5e058b0b7f58d33835252e070d5f0c34",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "knowledge_engine.py.bak",
+            "sz": 32214,
+            "md5": "cdb79291bd34f578f00848ef4bfd19b3",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "label_registry.py.bak",
+            "sz": 12404,
+            "md5": "4cda652ef1b2f1e810cc53a932ba68d4",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "launch_session.py.bak",
+            "sz": 46031,
+            "md5": "646e07347f8f4a7848b1ac9f297e8174",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "spatial_temporal_fusion.py.bak",
+            "sz": 18227,
+            "md5": "4196a17c186077701440453c6391e9bd",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "bugfix_20260825_190052": {
+        "count": 2,
+        "op_log": false,
+        "files": [
+          {
+            "name": "co_pilot_agent.py.bak",
+            "sz": 24533,
+            "md5": "5455c7a616d65ac50ab1d935fa6f19a5",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "launch_session.py.bak",
+            "sz": 47407,
+            "md5": "f582261eed476796e31f40832b899bd3",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "bugfix_20260825_190158": {
+        "count": 2,
+        "op_log": false,
+        "files": [
+          {
+            "name": "co_pilot_agent.py.bak",
+            "sz": 24572,
+            "md5": "b87c457489516a849eb088f1390618e3",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "launch_session.py.bak",
+            "sz": 47428,
+            "md5": "68109f076a3191c2e3eca2178a8e4aab",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "bugfix_20260825_190620": {
+        "count": 2,
+        "op_log": false,
+        "files": [
+          {
+            "name": "co_pilot_agent.py.bak",
+            "sz": 24572,
+            "md5": "b87c457489516a849eb088f1390618e3",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "launch_session.py.bak",
+            "sz": 47428,
+            "md5": "68109f076a3191c2e3eca2178a8e4aab",
+            "readable": true,
+            "naming": false
+          }
+        ]
+      },
+      "project_snapshot": {
+        "count": 8,
+        "op_log": true,
+        "files": [
+          {
+            "name": "operation_log.md",
+            "sz": 674,
+            "md5": "7aa51faaf0984167aff1026d10873da6",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "project_snapshot_20260901_201102_pre_detector_video_slam_integration.py",
+            "sz": 24506,
+            "md5": "8f8fc4ba3ed0fb56715725ef560f80c6",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_201200_pre_deep_vla_hook_hotfix.py",
+            "sz": 27768,
+            "md5": "b7960a3438d39305f3b0d39b62f9c15e",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_201442_pre_report_rendering_patch.py",
+            "sz": 27788,
+            "md5": "288dc1a672c833e612034dea5ae45173",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_201802_pre_final_rendering_patch.py",
+            "sz": 27788,
+            "md5": "288dc1a672c833e612034dea5ae45173",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_202305_pre_r30_rendering.py",
+            "sz": 29606,
+            "md5": "701181a48de310f341d7c417911d1151",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_202336_pre_wire_md_json_reports.py",
+            "sz": 29606,
+            "md5": "701181a48de310f341d7c417911d1151",
+            "readable": true,
+            "naming": true
+          },
+          {
+            "name": "project_snapshot_20260901_204344_pre_r31_x1_ad_bev.py",
+            "sz": 29850,
+            "md5": "a9049eee08e76e3e764b68e6357a6cf6",
+            "readable": true,
+            "naming": true
+          }
+        ]
+      },
+      "scene_object_detector": {
+        "count": 2,
+        "op_log": true,
+        "files": [
+          {
+            "name": "operation_log.md",
+            "sz": 105,
+            "md5": "5151cc8b2570c792643d764e6cf212cc",
+            "readable": true,
+            "naming": false
+          },
+          {
+            "name": "scene_object_detector_20260901_200823_pre_cache_bom_fix.py",
+            "sz": 6085,
+            "md5": "514346b20e5eaf786a4bc6a1a14a2f74",
+            "readable": true,
+            "naming": true
+          }
+        ]
+      }
+    }
+  },
+  "folders": {
+    "dirs": [
+      {
+        "name": ".secrets",
+        "children": 1
+      },
+      {
+        "name": "__pycache__",
+        "children": 2
+      },
+      {
+        "name": "agents",
+        "children": 69
+      },
+      {
+        "name": "archive",
+        "children": 12
+      },
+      {
+        "name": "audit_workspace",
+        "children": 8
+      },
+      {
+        "name": "backup_before_fix_20260831_184640",
+        "children": 67
+      },
+      {
+        "name": "backups",
+        "children": 9
+      },
+      {
+        "name": "backups_20260825_161101",
+        "children": 1
+      },
+      {
+        "name": "calibration",
+        "children": 7
+      },
+      {
+        "name": "dataset",
+        "children": 3
+      },
+      {
+        "name": "dataset_qwen_vla",
+        "children": 1
+      },
+      {
+        "name": "deep_agent_verification",
+        "children": 1
+      },
+      {
+        "name": "models",
+        "children": 2
+      },
+      {
+        "name": "motive sessions",
+        "children": 8
+      },
+      {
+        "name": "persistent_knowledge",
+        "children": 16
+      },
+      {
+        "name": "project_history",
+        "children": 7
+      },
+      {
+        "name": "reports",
+        "children": 18
+      },
+      {
+        "name": "sessions",
+        "children": 9
+      },
+      {
+        "name": "Visual_Archives",
+        "children": 10
+      }
+    ],
+    "files": [
+      {
+        "name": "apply_hotfix.py",
+        "size": 3229
+      },
+      {
+        "name": "diag_r32_v2.py",
+        "size": 18305
+      },
+      {
+        "name": "diag_round12.py",
+        "size": 1950
+      },
+      {
+        "name": "diag_round13.py",
+        "size": 1076
+      },
+      {
+        "name": "diag_round13b.py",
+        "size": 1513
+      },
+      {
+        "name": "diag_round14.py",
+        "size": 768
+      },
+      {
+        "name": "diag_round15.py",
+        "size": 2048
+      },
+      {
+        "name": "diag_round16.py",
+        "size": 2474
+      },
+      {
+        "name": "env_probe.py",
+        "size": 1410
+      },
+      {
+        "name": "eval_results_v3.json",
+        "size": 26574
+      },
+      {
+        "name": "eval_smoke_test.py",
+        "size": 3874
+      },
+      {
+        "name": "evaluate_qwen_vla.py",
+        "size": 3149
+      },
+      {
+        "name": "execute_surgery.py",
+        "size": 27601
+      },
+      {
+        "name": "export_visuals_v2.py",
+        "size": 8561
+      },
+      {
+        "name": "FINAL_REFEREE_VERDICT.md",
+        "size": 98552
+      },
+      {
+        "name": "FULL_DIAGNOSTIC_AUDIT.md",
+        "size": 65560
+      },
+      {
+        "name": "generate_publication_report_v5.py",
+        "size": 5985
+      },
+      {
+        "name": "generate_publication_report_v5.py.bak",
+        "size": 38171
+      },
+      {
+        "name": "generate_visual_dashboard.py",
+        "size": 14512
+      },
+      {
+        "name": "generate_visual_dashboard_v4.py",
+        "size": 20987
+      },
+      {
+        "name": "inspect_and_verify_dataset.py",
+        "size": 1813
+      },
+      {
+        "name": "MASTER_REPORT.json",
+        "size": 2467
+      },
+      {
+        "name": "MASTER_REPORT.md",
+        "size": 7889
+      },
+      {
+        "name": "probe_eval_schema.py",
+        "size": 2889
+      },
+      {
+        "name": "probe_pkl_structure.py",
+        "size": 891
+      },
+      {
+        "name": "RUN_VIDEO_QA.bat",
+        "size": 169
+      },
+      {
+        "name": "RUN_VISUAL_REPORT.bat",
+        "size": 151
+      },
+      {
+        "name": "test_alignment_v2.py",
+        "size": 2416
+      },
+      {
+        "name": "test_bug_fixes.py",
+        "size": 3667
+      },
+      {
+        "name": "test_forward_pass.py",
+        "size": 3462
+      },
+      {
+        "name": "test_label_masking.py",
+        "size": 3431
+      },
+      {
+        "name": "test_style_v5.py",
+        "size": 1880
+      },
+      {
+        "name": "test_vla_readiness.py",
+        "size": 2716
+      },
+      {
+        "name": "train_and_eval_vla.py",
+        "size": 9725
+      },
+      {
+        "name": "train_qwen_vla.py",
+        "size": 5271
+      },
+      {
+        "name": "train_v21_error.log",
+        "size": 4093
+      },
+      {
+        "name": "train_v21_masked.py",
+        "size": 15221
+      },
+      {
+        "name": "train_v2_error.log",
+        "size": 2869
+      },
+      {
+        "name": "train_v2_masked.py",
+        "size": 14009
+      },
+      {
+        "name": "train_v3_fixed.py",
+        "size": 12874
+      },
+      {
+        "name": "yolov8s.pt",
+        "size": 22588772
+      }
+    ],
+    "orphans": [
+      "apply_hotfix.py",
+      "diag_r32_v2.py",
+      "diag_round12.py",
+      "diag_round13.py",
+      "diag_round13b.py",
+      "diag_round14.py",
+      "diag_round15.py",
+      "diag_round16.py",
+      "env_probe.py",
+      "eval_results_v3.json",
+      "eval_smoke_test.py",
+      "evaluate_qwen_vla.py",
+      "execute_surgery.py",
+      "export_visuals_v2.py",
+      "FINAL_REFEREE_VERDICT.md",
+      "FULL_DIAGNOSTIC_AUDIT.md",
+      "generate_publication_report_v5.py",
+      "generate_publication_report_v5.py.bak",
+      "generate_visual_dashboard.py",
+      "generate_visual_dashboard_v4.py",
+      "inspect_and_verify_dataset.py",
+      "probe_eval_schema.py",
+      "probe_pkl_structure.py",
+      "RUN_VIDEO_QA.bat",
+      "RUN_VISUAL_REPORT.bat",
+      "test_alignment_v2.py",
+      "test_bug_fixes.py",
+      "test_forward_pass.py",
+      "test_label_masking.py",
+      "test_style_v5.py",
+      "test_vla_readiness.py",
+      "train_and_eval_vla.py",
+      "train_qwen_vla.py",
+      "train_v21_error.log",
+      "train_v21_masked.py",
+      "train_v2_error.log",
+      "train_v2_masked.py",
+      "train_v3_fixed.py",
+      "yolov8s.pt"
+    ]
+  },
+  "agents": {
+    "agents/project_snapshot.py": {
+      "md5": "ba48a8828a52e6bbf79464174a3e0808",
+      "lines": 651,
+      "size": 30455,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "audit_agents",
+        "audit_persistent_knowledge",
+        "deep_vla_audit",
+        "audit_multimodal_dataset",
+        "audit_sessions",
+        "audit_model",
+        "verify_bug_fixes",
+        "audit_backup",
+        "audit_detector",
+        "audit_video_learning",
+        "audit_slam_to_bev",
+        "audit_videos",
+        "generate_master_report"
+      ],
+      "classes": [],
+      "imports": [
+        "numpy",
+        "json",
+        "pickle",
+        "os",
+        "re",
+        "hashlib",
+        "sys",
+        "subprocess",
+        "glob",
+        "datetime.datetime",
+        "datetime.timezone",
+        "pathlib.Path",
+        "scene_object_detector.detect_objects_safe",
+        "scene_object_detector._frame_hash",
+        "scene_object_detector._cache_path",
+        "video_learning_agent.compute_video_motion_profile",
+        "video_learning_agent.analyze_mocap_dynamics",
+        "video_learning_agent.pair_and_analyze_all_sessions",
+        "slam_to_bev.generate_bev_tokens"
+      ],
+      "expected": "ba48a8828a52e6bbf79464174a3e0808",
+      "match": true
+    },
+    "agents/scene_object_detector.py": {
+      "md5": "bbd0dc924dc347307d7883c5347786f1",
+      "lines": 241,
+      "size": 8431,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "_frame_hash",
+        "_cache_path",
+        "_load_cache",
+        "_save_cache",
+        "detect_objects_safe",
+        "extract_industrial_objects"
+      ],
+      "classes": [],
+      "imports": [
+        "os",
+        "json",
+        "hashlib",
+        "numpy",
+        "logging",
+        "typing.List",
+        "typing.Dict",
+        "typing.Optional",
+        "typing.Tuple"
+      ],
+      "expected": "bbd0dc924dc3",
+      "match": true
+    },
+    "agents/video_learning_agent.py": {
+      "md5": "58e417aedfaa8796f1465fef023e4696",
+      "lines": 259,
+      "size": 9824,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "compute_video_motion_profile",
+        "analyze_mocap_dynamics",
+        "pair_and_analyze_all_sessions"
+      ],
+      "classes": [],
+      "imports": [
+        "os",
+        "sys",
+        "re",
+        "json",
+        "pickle",
+        "math",
+        "cv2",
+        "numpy",
+        "datetime.datetime"
+      ],
+      "expected": "58e417aedfaa",
+      "match": true
+    },
+    "agents/slam_to_bev.py": {
+      "md5": "0d2cd37dee995d9a02a8fee03cce8875",
+      "lines": 73,
+      "size": 2747,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "generate_bev_tokens"
+      ],
+      "classes": [],
+      "imports": [
+        "sys",
+        "pickle",
+        "json",
+        "os",
+        "pathlib.Path",
+        "numpy"
+      ],
+      "expected": "0d2cd37dee99",
+      "match": true
+    },
+    "agents/A15_referee_ai_loop.py": {
+      "md5": "5b3728c7f56a2ff873438ce2068f1dbd",
+      "lines": 404,
+      "size": 17868,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "load_key",
+        "discover_free_models",
+        "read_safe",
+        "find_files",
+        "encode_image_b64",
+        "scan_agent_code",
+        "get_dashboard_images",
+        "gather_data",
+        "call_ai",
+        "generate_dynamic_focus",
+        "main"
+      ],
+      "classes": [],
+      "imports": [
+        "os",
+        "sys",
+        "json",
+        "glob",
+        "time",
+        "base64",
+        "ast",
+        "traceback",
+        "pathlib.Path",
+        "datetime.datetime",
+        "requests",
+        "requests",
+        "requests",
+        "PIL.Image",
+        "io"
+      ],
+      "expected": null,
+      "match": "N/A"
+    },
+    "agents/A18_deep_agent_verifier.py": {
+      "md5": "3ab6bb270e5b0ec9409b706c302112e3",
+      "lines": 165,
+      "size": 6781,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "extract_json",
+        "query_openrouter",
+        "analyze_agent",
+        "main"
+      ],
+      "classes": [],
+      "imports": [
+        "os",
+        "sys",
+        "json",
+        "time",
+        "ssl",
+        "urllib.request",
+        "urllib.error",
+        "re",
+        "collections.Counter"
+      ],
+      "expected": null,
+      "match": "N/A"
+    },
+    "agents/launch_session.py": {
+      "md5": "7aae51f747f50acb9b54693231ecca6b",
+      "lines": 1217,
+      "size": 49771,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "utc_now_iso",
+        "utc_now_epoch",
+        "safe_pickle_dump",
+        "normalize_angle",
+        "find_project_root",
+        "bootstrap_root",
+        "create_session",
+        "find_calibration",
+        "run_full_pipeline",
+        "ask_run_ai_advisor",
+        "run_ai_advisor_mock",
+        "main",
+        "__init__",
+        "log_error",
+        "save_crash_log",
+        "__init__",
+        "try_connect",
+        "_robot_pose_callback",
+        "_laser_callback",
+        "_f_scan_cb",
+        "_b_scan_cb",
+        "subscribe_and_run",
+        "save_final",
+        "stop",
+        "__init__",
+        "try_connect",
+        "select_bodies",
+        "ask_remote_recording",
+        "_check_recording_ended",
+        "run_collection",
+        "save_final",
+        "stop",
+        "on_motive_recording_ended",
+        "map_cb"
+      ],
+      "classes": [
+        "CrashLogger",
+        "MirSlamLogger",
+        "MotiveTrackerThread"
+      ],
+      "imports": [
+        "os",
+        "sys",
+        "time",
+        "math",
+        "pickle",
+        "glob",
+        "threading",
+        "subprocess",
+        "traceback",
+        "datetime.datetime",
+        "datetime.timezone",
+        "io.StringIO",
+        "numpy",
+        "mir_command_logger.MirCommandLogger",
+        "roslibpy",
+        "subprocess",
+        "sys",
+        "co_pilot_agent",
+        "roslibpy",
+        "motive_connector.MotiveConnector"
+      ],
+      "expected": null,
+      "match": "N/A"
+    },
+    "agents/cross_modal_aligner.py": {
+      "md5": "848ca9008faa69b91ea36068cd7c70c5",
+      "lines": 157,
+      "size": 5945,
+      "ast": true,
+      "ast_msg": "OK",
+      "funcs": [
+        "match_slam_to_mocap_interpolated",
+        "compute_sync_quality",
+        "match_slam_to_mocap"
+      ],
+      "classes": [],
+      "imports": [
+        "numpy",
+        "scipy.interpolate.interp1d",
+        "logging"
+      ],
+      "expected": null,
+      "match": "N/A"
+    }
+  },
+  "sessions": {
+    "session_2026-08-24_13-16-03": {
+      "items": 12,
+      "bev": 0,
+      "exts": {
+        ".pkl": 4,
+        ".txt": 5,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0
+      },
+      "complete": false
+    },
+    "session_2026-08-24_13-57-33": {
+      "items": 15,
+      "bev": 0,
+      "exts": {
+        ".txt": 7,
+        ".pkl": 5,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0
+      },
+      "complete": false
+    },
+    "session_2026-08-25_17-32-01": {
+      "items": 14,
+      "bev": 0,
+      "exts": {
+        ".jsonl": 1,
+        ".pkl": 5,
+        ".txt": 5,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0
+      },
+      "complete": false
+    },
+    "session_2026-08-25_17-43-02": {
+      "items": 18,
+      "bev": 0,
+      "exts": {
+        ".jsonl": 1,
+        ".pkl": 5,
+        ".txt": 5,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        ".json": 4,
+        "[dir:video]": 0
+      },
+      "complete": false
+    },
+    "session_2026-08-25_20-14-09": {
+      "items": 16,
+      "bev": 0,
+      "exts": {
+        "[dir:cvat_prepopulated]": 0,
+        ".pkl": 4,
+        ".txt": 5,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0,
+        ".json": 3
+      },
+      "complete": false
+    },
+    "session_2026-08-26_20-28-17": {
+      "items": 17,
+      "bev": 0,
+      "exts": {
+        "[dir:cvat_prepopulated]": 0,
+        ".pkl": 4,
+        ".txt": 6,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0,
+        ".json": 3
+      },
+      "complete": false
+    },
+    "session_2026-08-27_17-54-20": {
+      "items": 31,
+      "bev": 344,
+      "exts": {
+        "[dir:bev_images]": 344,
+        ".json": 8,
+        ".jsonl": 3,
+        "[dir:cvat_prepopulated]": 0,
+        ".pkl": 7,
+        ".txt": 8,
+        "[dir:processed]": 0,
+        "[dir:raw]": 0,
+        "[dir:video]": 0
+      },
+      "complete": true
+    },
+    "_summary": {
+      "total": 7,
+      "complete": 1,
+      "gap": 4
+    }
+  },
+  "orchestrator": {
+    "scripts": [],
+    "FINAL_REFEREE_VERDICT.md": true,
+    "deep_agent_verification/": true,
+    "FINAL_VERDICT.md": false,
+    "avi": 8
+  },
+  "dataset": {
+    "dataset/train.jsonl": {
+      "valid": 275,
+      "invalid": 0,
+      "keys": [
+        "behavior_class",
+        "conversations",
+        "ground_truth_action",
+        "id",
+        "image"
+      ],
+      "size": 239919
+    },
+    "dataset/val.jsonl": {
+      "valid": 69,
+      "invalid": 0,
+      "keys": [
+        "behavior_class",
+        "conversations",
+        "ground_truth_action",
+        "id",
+        "image"
+      ],
+      "size": 60199
+    },
+    "dataset_qwen_vla/train.jsonl": {
+      "valid": 344,
+      "invalid": 0,
+      "keys": [
+        "conversations",
+        "frame_id",
+        "image",
+        "metadata",
+        "session"
+      ],
+      "size": 216610
+    },
+    "models": [
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\chat_template.jinja",
+        "sz": 5412
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\processor_config.json",
+        "sz": 1363
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\tokenizer.json",
+        "sz": 11422818
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora\\tokenizer_config.json",
+        "sz": 736
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\chat_template.jinja",
+        "sz": 5412
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\processor_config.json",
+        "sz": 1363
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\tokenizer.json",
+        "sz": 11422650
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\tokenizer_config.json",
+        "sz": 736
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\training_history.json",
+        "sz": 2823
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_1\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_1\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_1\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_2\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_2\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_2\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_3\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_3\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_3\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_4\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_4\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_4\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_5\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_5\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_5\\README.md",
+        "sz": 5204
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_6\\adapter_config.json",
+        "sz": 1207
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_6\\adapter_model.safetensors",
+        "sz": 69788264
+      },
+      {
+        "p": "models\\qwen3_vla_mir100_lora_v2\\epoch_6\\README.md",
+        "sz": 5204
+      }
+    ]
+  },
+  "score": {
+    "total": 53,
+    "max": 100,
+    "checks": [
+      {
+        "n": "Snapshot",
+        "s": 15,
+        "m": 15
+      },
+      {
+        "n": "BOM(29)",
+        "s": 0,
+        "m": 10
+      },
+      {
+        "n": "Data>=200",
+        "s": 5,
+        "m": 15
+      },
+      {
+        "n": "Sess<3",
+        "s": 3,
+        "m": 15
+      },
+      {
+        "n": "Backup",
+        "s": 10,
+        "m": 10
+      },
+      {
+        "n": "Model",
+        "s": 10,
+        "m": 10
+      },
+      {
+        "n": "Reports",
+        "s": 10,
+        "m": 10
+      },
+      {
+        "n": "Dup!",
+        "s": 0,
+        "m": 5
+      },
+      {
+        "n": "Folders",
+        "s": 0,
+        "m": 5
+      },
+      {
+        "n": "Orch",
+        "s": 0,
+        "m": 5
+      }
+    ]
+  }
+}

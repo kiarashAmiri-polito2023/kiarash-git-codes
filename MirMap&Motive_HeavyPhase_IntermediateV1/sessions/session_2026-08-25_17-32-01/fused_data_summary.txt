@@ -1,0 +1,23 @@
+Spatial-Temporal Fusion Summary (v2)
+========================================
+Fused at (UTC) : 2026-08-25T15:33:23.859283+00:00
+Common frame   : mir_meters
+Safety critical: <0.1m
+Safety warning : <0.3m
+
+Stats:
+  motive_samples_matched: 3042
+  motive_samples_skipped_time_gap: 111
+  motive_samples_skipped_untracked: 0
+  motive_samples_skipped_zero_placeholder: 0
+  slam_points_included: 724761
+  slam_points_near_zero_suspicious: 0
+  total_fused_observations: 727803
+
+Safety Zone Breakdown (Motive objects):
+  Critical (<10cm) : 0
+  Warning (10-30cm): 1
+  Safe (>30cm)     : 3041
+
+Robot heading toward object: 455/3042
+Encounter directions: front=904, side=1307, rear=831

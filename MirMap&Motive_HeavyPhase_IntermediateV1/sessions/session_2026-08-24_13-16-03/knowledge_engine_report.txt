@@ -1,0 +1,78 @@
+============================================================
+ KNOWLEDGE ENGINE - Cumulative Brain Report
+ Sessions: 1
+ Updated : 2026-08-24T11:17:35.364827+00:00
+ Schema  : deep_memory_v2
+============================================================
+
+--- OBJECT KNOWLEDGE ---
+
+  [kia hat 002]
+    Class    : human_marker
+    Conf     : 1.00
+    Sessions : 1
+    Obs      : 1005
+    Position : (30.65, 20.03) m
+    Speed    : 0.379 m/s
+    Height   : 1.52m
+    Min dist : 0.5792820929269873
+    Crit time: 0.0s
+    Encounters: F=56 S=521 R=428
+
+  [kiarash_leftwrist]
+    Class    : human_marker
+    Conf     : 1.00
+    Sessions : 1
+    Obs      : 1005
+    Position : (30.23, 20.38) m
+    Speed    : 0.308 m/s
+    Height   : 0.99m
+    Min dist : 0.29032716784014206
+    Crit time: 1.8s
+    Encounters: F=290 S=404 R=311
+
+  [kiarash_RightWrist]
+    Class    : human_marker
+    Conf     : 0.90
+    Sessions : 1
+    Obs      : 1005
+    Position : (32.02, 19.17) m
+    Speed    : 0.208 m/s
+    Height   : 0.76m
+    Min dist : 0.618931953369233
+    Crit time: 0.0s
+    Encounters: F=416 S=358 R=231
+
+--- SAFETY ---
+  Critical total : 30
+  Warning total  : 86
+  Closest ever   : 0.8cm
+
+--- LIDAR LEARNING ---
+  Labeled patterns : 289
+  Label transfers  : 289
+
+--- SPATIAL KNOWLEDGE ---
+  Human zones  : 3
+  Risk zones   : 1
+
+--- ANOMALIES (3) ---
+  [high] 'kia hat 002' showed sudden movement (jerk=134.7) - possible collision or fast human gesture
+  [high] 'kiarash_leftwrist' showed sudden movement (jerk=239.9) - possible collision or fast human gesture
+  [high] 'kiarash_RightWrist' showed sudden movement (jerk=125.4) - possible collision or fast human gesture
+
+--- INSIGHTS (last 15 of 10) ---
+  - [session_2026-08-24_13-16-03] NEW object: 'kia hat 002' - class='human_marker' (conf=1.00), pos=(30.7, 20.0)m, speed=0.38m/s
+  - [session_2026-08-24_13-16-03] NEW object: 'kiarash_leftwrist' - class='human_marker' (conf=1.00), pos=(30.2, 20.4)m, speed=0.31m/s
+  - [session_2026-08-24_13-16-03] NEW object: 'kiarash_RightWrist' - class='human_marker' (conf=0.90), pos=(32.0, 19.2)m, speed=0.21m/s
+  - [session_2026-08-24_13-16-03] SAFETY: 30 CRITICAL events (<10cm)!
+  - [session_2026-08-24_13-16-03] SAFETY: 86 WARNING events (10-30cm)
+  - [session_2026-08-24_13-16-03] LIDAR: 289 clusters matched to Motive objects (label transfer)
+  - [session_2026-08-24_13-16-03] LIDAR: 28929 clusters remain unlabeled
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kia hat 002' showed sudden movement (jerk=134.7) - possible collision or fast human gesture
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kiarash_leftwrist' showed sudden movement (jerk=239.9) - possible collision or fast human gesture
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kiarash_RightWrist' showed sudden movement (jerk=125.4) - possible collision or fast human gesture
+
+--- QUESTIONS (0) ---
+
+============================================================

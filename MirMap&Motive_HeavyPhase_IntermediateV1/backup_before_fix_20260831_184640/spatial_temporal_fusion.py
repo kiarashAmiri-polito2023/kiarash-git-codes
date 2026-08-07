@@ -1,0 +1,523 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Agent 3: spatial_temporal_fusion.py (v2)
+
+Unifies SLAM (MiR) and Motive data into ONE common frame (MiR, meters).
+
+Changes in v2:
+  - NEW: relative_angle_deg (object angle relative to robot heading)
+  - NEW: encounter_direction (front/side/rear)
+  - NEW: safety_zone (critical/warning/safe)
+  - NEW: robot_heading_toward_object (bool)
+  - NEW: approach_speed_mps (negative = approaching)
+  - These features feed directly into knowledge_engine for learning
+
+Safety thresholds (confirmed):
+  - Critical : < 0.10 m
+  - Warning  : 0.10 – 0.30 m
+  - Safe     : > 0.30 m
+
+Robot footprint (MiR100):
+  length = 0.78 m, width = 0.505 m, height = 0.88 m
+"""
+
+import os
+import sys
+import math
+import pickle
+from datetime import datetime, timezone
+
+import numpy as np
+
+# ============================================================
+# Constants
+# ============================================================
+ROBOT_LENGTH_M = 0.78
+ROBOT_WIDTH_M = 0.505
+ROBOT_HEIGHT_M = 0.88
+HALF_LENGTH_M = ROBOT_LENGTH_M / 2.0
+HALF_WIDTH_M = ROBOT_WIDTH_M / 2.0
+
+ROBOT_NAME_KEYWORDS = ("mir", "robot")
+
+MAX_TIME_MATCH_GAP_SEC = 0.5
+
+SAFETY_CRITICAL_M = 0.10
+SAFETY_WARNING_M = 0.30
+
+# Bug #7 fix
+ZERO_PLACEHOLDER_EPSILON_M = 0.05
+
+
+def utc_now_iso():
+    return datetime.now(tz=timezone.utc).isoformat()
+
+
+# ============================================================
+# Loaders
+# ============================================================
+def load_calibration(calibration_pkl_path):
+    with open(calibration_pkl_path, "rb") as f:
+        calib = pickle.load(f)
+    required = ["similarity_matrix_motive_to_mir",
+                "similarity_matrix_mir_to_motive"]
+    for key in required:
+        if key not in calib:
+            raise ValueError(f"Calibration missing key: {key}")
+    return calib
+
+
+def load_slam_session(slam_pkl_path):
+    with open(slam_pkl_path, "rb") as f:
+        return pickle.load(f)
+
+
+def load_motive_session(motive_pkl_path):
+    with open(motive_pkl_path, "rb") as f:
+        motive_data = pickle.load(f)
+    if "rigid_bodies" not in motive_data:
+        raise ValueError("motive_data.pkl missing 'rigid_bodies'")
+    return motive_data
+
+
+# ============================================================
+# Coordinate transform
+# ============================================================
+def motive_to_mir_point(x_mm, y_mm, motive_to_mir_matrix):
+    vec = np.array([x_mm, y_mm, 1.0])
+    out_mm = motive_to_mir_matrix @ vec
+    return out_mm[0] / 1000.0, out_mm[1] / 1000.0
+
+
+# ============================================================
+# Geometry helpers
+# ============================================================
+def robot_edge_distance_m(robot_x, robot_y, robot_yaw_rad,
+                          obj_x, obj_y):
+    dx = obj_x - robot_x
+    dy = obj_y - robot_y
+
+    cos_y = math.cos(robot_yaw_rad)
+    sin_y = math.sin(robot_yaw_rad)
+    local_x = dx * cos_y + dy * sin_y
+    local_y = -dx * sin_y + dy * cos_y
+
+    qx = max(abs(local_x) - HALF_LENGTH_M, 0.0)
+    qy = max(abs(local_y) - HALF_WIDTH_M, 0.0)
+    edge_distance = math.hypot(qx, qy)
+
+    is_inside = (abs(local_x) <= HALF_LENGTH_M and
+                 abs(local_y) <= HALF_WIDTH_M)
+    return edge_distance, is_inside
+
+
+def safety_zone(distance_m):
+    """Returns safety zone label based on distance."""
+    if distance_m < SAFETY_CRITICAL_M:
+        return "critical"
+    elif distance_m < SAFETY_WARNING_M:
+        return "warning"
+    else:
+        return "safe"
+
+
+
+def is_zero_placeholder_mm(x_mm, y_mm, z_mm, epsilon_m=ZERO_PLACEHOLDER_EPSILON_M):
+    epsilon_mm = epsilon_m * 1000.0
+    return (abs(x_mm) < epsilon_mm and abs(y_mm) < epsilon_mm and abs(z_mm) < epsilon_mm)
+
+def is_near_zero_point_m(x_m, y_m, epsilon_m=ZERO_PLACEHOLDER_EPSILON_M):
+    return abs(x_m) < epsilon_m and abs(y_m) < epsilon_m
+
+def relative_angle_deg(robot_x, robot_y, robot_yaw_rad,
+                       obj_x, obj_y):
+    """
+    Angle from robot heading to object, in degrees.
+    0 = directly ahead
+    +90 = left
+    -90 = right
+    ±180 = behind
+    """
+    dx = obj_x - robot_x
+    dy = obj_y - robot_y
+    angle_to_obj = math.atan2(dy, dx)
+    rel_angle = angle_to_obj - robot_yaw_rad
+    # Normalize to [-pi, pi]
+    rel_angle = (rel_angle + math.pi) % (2 * math.pi) - math.pi
+    return math.degrees(rel_angle)
+
+
+def encounter_direction(rel_angle_deg):
+    """
+    Classify encounter as front/side/rear based on relative angle.
+    """
+    abs_angle = abs(rel_angle_deg)
+    if abs_angle <= 45:
+        return "front"
+    elif abs_angle <= 135:
+        return "side"
+    else:
+        return "rear"
+
+
+def robot_heading_toward(robot_x, robot_y, robot_yaw_rad,
+                         robot_speed, obj_x, obj_y):
+    """
+    Returns True if robot is heading toward the object.
+    Considers both heading direction and whether robot is moving.
+    """
+    if robot_speed < 0.01:
+        return False  # Robot is essentially stationary
+
+    dx = obj_x - robot_x
+    dy = obj_y - robot_y
+    angle_to_obj = math.atan2(dy, dx)
+    heading_diff = abs(
+        (angle_to_obj - robot_yaw_rad + math.pi) %
+        (2 * math.pi) - math.pi
+    )
+    return heading_diff < math.radians(45)
+
+
+def find_nearest_robot_state(robot_states, target_timestamp_utc):
+    if not robot_states:
+        return None, None
+
+    best = None
+    best_gap = None
+    for state in robot_states:
+        gap = abs(state["timestamp_utc"] - target_timestamp_utc)
+        if best_gap is None or gap < best_gap:
+            best_gap = gap
+            best = state
+    return best, best_gap
+
+
+# ============================================================
+# Main fusion
+# ============================================================
+def fuse_session(session_path, calibration_pkl_path):
+    slam_path = os.path.join(session_path, "slam_data.pkl")
+    motive_path = os.path.join(session_path, "motive_data.pkl")
+
+    result = {
+        "schema_version": "fusion_v2",
+        "fused_at_utc": utc_now_iso(),
+        "session_path": session_path,
+        "common_frame": "mir_meters",
+        "robot_footprint_m": {
+            "length": ROBOT_LENGTH_M,
+            "width": ROBOT_WIDTH_M,
+            "height": ROBOT_HEIGHT_M,
+        },
+        "safety_thresholds_m": {
+            "critical": SAFETY_CRITICAL_M,
+            "warning": SAFETY_WARNING_M,
+        },
+        "warnings": [],
+        "fused_objects": [],
+        "stats": {},
+    }
+
+    if not os.path.exists(slam_path):
+        result["warnings"].append("slam_data.pkl not found.")
+        return result
+    if not os.path.exists(motive_path):
+        result["warnings"].append("motive_data.pkl not found.")
+        return result
+    if not os.path.exists(calibration_pkl_path):
+        result["warnings"].append("Calibration file not found.")
+        return result
+
+    calib = load_calibration(calibration_pkl_path)
+    motive_to_mir_matrix = calib["similarity_matrix_motive_to_mir"]
+
+    map_db = load_slam_session(slam_path)
+    robot_states = map_db.get("robot_states", [])
+    if not robot_states:
+        result["warnings"].append("No robot_states in SLAM data.")
+        return result
+
+    motive_data = load_motive_session(motive_path)
+    rigid_bodies = motive_data.get("rigid_bodies", {})
+
+    robot_body_name = None
+    for name in rigid_bodies.keys():
+        if any(k in name.lower() for k in ROBOT_NAME_KEYWORDS):
+            robot_body_name = name
+            break
+
+    n_matched = 0
+    n_skipped_gap = 0
+    n_skipped_untracked = 0
+    n_skipped_zero_placeholder = 0
+
+    # Track previous observations for approach speed calculation
+    prev_observations = {}
+
+    for name, body in rigid_bodies.items():
+        if name == robot_body_name:
+            continue
+
+        for sample in body.get("samples", []):
+            if not sample.get("tracked", False):
+                n_skipped_untracked += 1
+                continue
+
+            if is_zero_placeholder_mm(sample["x_mm"], sample["y_mm"], sample["z_mm"]):
+                n_skipped_zero_placeholder += 1
+                continue
+
+            robot_state, gap = find_nearest_robot_state(
+                robot_states, sample["timestamp_utc"])
+            if (robot_state is None or gap is None or
+                    gap > MAX_TIME_MATCH_GAP_SEC):
+                n_skipped_gap += 1
+                continue
+
+            # Convert Motive → MiR frame
+            obj_x_m, obj_y_m = motive_to_mir_point(
+                sample["x_mm"], sample["y_mm"],
+                motive_to_mir_matrix)
+            height_m = sample["z_mm"] / 1000.0
+
+            robot_x = robot_state["x"]
+            robot_y = robot_state["y"]
+            robot_yaw = robot_state["yaw"]
+            robot_speed = robot_state.get("speed", 0.0)
+
+            # Basic geometry
+            delta_x = obj_x_m - robot_x
+            delta_y = obj_y_m - robot_y
+            horizontal_distance_m = math.hypot(delta_x, delta_y)
+
+            edge_distance_m, is_inside = robot_edge_distance_m(
+                robot_x, robot_y, robot_yaw, obj_x_m, obj_y_m)
+
+            safety_dist = min(horizontal_distance_m,
+                              edge_distance_m)
+
+            # NEW: Relative angle
+            rel_angle = relative_angle_deg(
+                robot_x, robot_y, robot_yaw, obj_x_m, obj_y_m)
+
+            # NEW: Encounter direction
+            enc_dir = encounter_direction(rel_angle)
+
+            # NEW: Safety zone
+            zone = safety_zone(edge_distance_m)
+
+            # NEW: Robot heading toward object
+            heading_toward = robot_heading_toward(
+                robot_x, robot_y, robot_yaw, robot_speed,
+                obj_x_m, obj_y_m)
+
+            # NEW: Approach speed
+            approach_speed = 0.0
+            prev_key = name
+            if prev_key in prev_observations:
+                prev = prev_observations[prev_key]
+                dt = sample["timestamp_utc"] - prev["timestamp_utc"]
+                if dt > 0.001:
+                    prev_dist = prev["edge_distance_m"]
+                    d_dist = edge_distance_m - prev_dist
+                    approach_speed = d_dist / dt
+                    # negative = getting closer
+
+            prev_observations[prev_key] = {
+                "timestamp_utc": sample["timestamp_utc"],
+                "edge_distance_m": edge_distance_m,
+            }
+
+            fused_obs = {
+                "source": "motive",
+                "object_name": name,
+                "timestamp_utc": sample["timestamp_utc"],
+                "time_match_gap_sec": gap,
+
+                # Position
+                "position_mir_frame_m": [obj_x_m, obj_y_m],
+                "height_m": height_m,
+                "robot_position_m": [robot_x, robot_y],
+                "robot_yaw_rad": robot_yaw,
+                "robot_speed_mps": robot_speed,
+
+                # Distance
+                "delta_vector_m": [delta_x, delta_y],
+                "horizontal_distance_m": horizontal_distance_m,
+                "distance_to_robot_edge_m": edge_distance_m,
+                "is_inside_robot_footprint": is_inside,
+                "safety_distance_m": safety_dist,
+
+                # NEW fields
+                "relative_angle_deg": rel_angle,
+                "encounter_direction": enc_dir,
+                "safety_zone": zone,
+                "robot_heading_toward_object": heading_toward,
+                "approach_speed_mps": approach_speed,
+            }
+
+            result["fused_objects"].append(fused_obs)
+            n_matched += 1
+
+    # SLAM obstacle scans
+    obstacle_scans = map_db.get("obstacle_scans", [])
+    n_slam_points = 0
+    n_slam_zero_suspicious = 0
+
+    for scan in obstacle_scans:
+        robot_snap = scan.get("robot_state_snapshot", {})
+        robot_x = robot_snap.get("x")
+        robot_y = robot_snap.get("y")
+        robot_yaw = robot_snap.get("yaw")
+        robot_speed = robot_snap.get("speed", 0.0)
+        if robot_x is None:
+            continue
+
+        for gx, gy in scan.get("points_global_frame", []):
+            gx_f = float(gx)
+            gy_f = float(gy)
+
+            if is_near_zero_point_m(gx_f, gy_f):
+                n_slam_zero_suspicious += 1
+
+            delta_x = gx_f - robot_x
+            delta_y = gy_f - robot_y
+            horizontal_distance_m = math.hypot(delta_x, delta_y)
+
+            edge_distance_m, is_inside = robot_edge_distance_m(
+                robot_x, robot_y, robot_yaw, gx_f, gy_f)
+
+            rel_angle = relative_angle_deg(
+                robot_x, robot_y, robot_yaw, gx_f, gy_f)
+            enc_dir = encounter_direction(rel_angle)
+            zone = safety_zone(edge_distance_m)
+            heading_toward = robot_heading_toward(
+                robot_x, robot_y, robot_yaw, robot_speed,
+                gx_f, gy_f)
+
+            result["fused_objects"].append({
+                "source": "slam_lidar",
+                "object_name": (f"{scan['sensor']}_scan_"
+                                f"{scan['scan_id']}"),
+                "timestamp_utc": scan["timestamp_utc"],
+                "time_match_gap_sec": 0.0,
+
+                "position_mir_frame_m": [gx_f, gy_f],
+                "height_m": None,
+                "robot_position_m": [robot_x, robot_y],
+                "robot_yaw_rad": robot_yaw,
+                "robot_speed_mps": robot_speed,
+
+                "delta_vector_m": [delta_x, delta_y],
+                "horizontal_distance_m": horizontal_distance_m,
+                "distance_to_robot_edge_m": edge_distance_m,
+                "is_inside_robot_footprint": is_inside,
+                "safety_distance_m": min(horizontal_distance_m,
+                                         edge_distance_m),
+
+                "relative_angle_deg": rel_angle,
+                "encounter_direction": enc_dir,
+                "safety_zone": zone,
+                "robot_heading_toward_object": heading_toward,
+                "approach_speed_mps": 0.0,
+            })
+            n_slam_points += 1
+
+    result["stats"] = {
+        "motive_samples_matched": n_matched,
+        "motive_samples_skipped_time_gap": n_skipped_gap,
+        "motive_samples_skipped_untracked": n_skipped_untracked,
+        "motive_samples_skipped_zero_placeholder": n_skipped_zero_placeholder,
+        "slam_points_included": n_slam_points,
+        "slam_points_near_zero_suspicious": n_slam_zero_suspicious,
+        "total_fused_observations": len(result["fused_objects"]),
+    }
+
+    return result
+
+
+def save_fusion_result(session_path, fusion_result):
+    pkl_path = os.path.join(session_path, "fused_data.pkl")
+    txt_path = os.path.join(session_path, "fused_data_summary.txt")
+
+    with open(pkl_path, "wb") as f:
+        pickle.dump(fusion_result, f,
+                    protocol=pickle.HIGHEST_PROTOCOL)
+
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write("Spatial-Temporal Fusion Summary (v2)\n")
+        f.write("=" * 40 + "\n")
+        f.write(f"Fused at (UTC) : "
+                f"{fusion_result['fused_at_utc']}\n")
+        f.write(f"Common frame   : "
+                f"{fusion_result['common_frame']}\n")
+        f.write(f"Safety critical: "
+                f"<{fusion_result['safety_thresholds_m']['critical']}m\n")
+        f.write(f"Safety warning : "
+                f"<{fusion_result['safety_thresholds_m']['warning']}m\n")
+
+        if fusion_result["warnings"]:
+            f.write("\nWARNINGS:\n")
+            for w in fusion_result["warnings"]:
+                f.write(f"  - {w}\n")
+
+        stats = fusion_result.get("stats", {})
+        f.write("\nStats:\n")
+        for k, v in stats.items():
+            f.write(f"  {k}: {v}\n")
+
+        # NEW: Safety zone breakdown
+        fused = fusion_result.get("fused_objects", [])
+        motive_only = [o for o in fused if o["source"] == "motive"]
+        if motive_only:
+            critical = sum(1 for o in motive_only
+                           if o["safety_zone"] == "critical")
+            warning = sum(1 for o in motive_only
+                          if o["safety_zone"] == "warning")
+            safe = sum(1 for o in motive_only
+                       if o["safety_zone"] == "safe")
+            f.write(f"\nSafety Zone Breakdown (Motive objects):\n")
+            f.write(f"  Critical (<10cm) : {critical}\n")
+            f.write(f"  Warning (10-30cm): {warning}\n")
+            f.write(f"  Safe (>30cm)     : {safe}\n")
+
+            heading = sum(1 for o in motive_only
+                          if o["robot_heading_toward_object"])
+            f.write(f"\nRobot heading toward object: "
+                    f"{heading}/{len(motive_only)}\n")
+
+            front = sum(1 for o in motive_only
+                        if o["encounter_direction"] == "front")
+            side = sum(1 for o in motive_only
+                       if o["encounter_direction"] == "side")
+            rear = sum(1 for o in motive_only
+                       if o["encounter_direction"] == "rear")
+            f.write(f"Encounter directions: "
+                    f"front={front}, side={side}, rear={rear}\n")
+
+    return pkl_path, txt_path
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        print("Usage: python spatial_temporal_fusion.py "
+              "<session_path> <calibration_pkl_path>")
+        sys.exit(1)
+
+    session_path_arg = sys.argv[1]
+    calibration_path_arg = sys.argv[2]
+
+    fusion_result = fuse_session(session_path_arg,
+                                 calibration_path_arg)
+    save_fusion_result(session_path_arg, fusion_result)
+
+    print("[SUCCESS] Fusion v2 complete.")
+    if fusion_result["warnings"]:
+        for w in fusion_result["warnings"]:
+            print(f"  WARNING: {w}")
+
+    stats = fusion_result.get("stats", {})
+    for k, v in stats.items():
+        print(f"  {k}: {v}")

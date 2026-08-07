@@ -1,0 +1,62 @@
+{
+  "agent": "offline_processor",
+  "file": "offline_processor.py",
+  "final_verdict": "FAIL",
+  "confidence": 95,
+  "escalated": true,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "FAIL",
+      "confidence": 85,
+      "elapsed": 43.3,
+      "finish": "stop",
+      "details": {
+        "agent": "offline_processor",
+        "verdict": "FAIL",
+        "confidence": 85,
+        "critical_bugs": [
+          "subprocess.run calls lack a timeout parameter, which can cause the entire pipeline to hang indefinitely if a stage script deadlocks or waits for input.",
+          "Pipeline execution continues regardless of stage failures; run_stage returns a boolean success flag that is never checked, risking downstream stages processing incomplete or corrupted data.",
+          "Interactive input() calls will raise unhandled EOFError when stdin is closed or piped, causing abrupt crashes in automated/CI environments."
+        ],
+        "warnings": [
+          "Modifying sys.path at runtime can cause import shadowing and conflicts with standard Python packaging practices.",
+          "Subprocess stdout and stderr are not captured or logged, making it difficult to diagnose why a stage failed.",
+          "Fallback calibration path uses os.path.dirname(root), which may resolve to an unexpected parent directory depending on how the project is mounted or invoked."
+        ],
+        "recommendations": [
+          "Add timeout=300 (or appropriate duration) to all subprocess.run calls and handle subprocess.TimeoutExpired explicitly.",
+          "Replace interactive input() prompts with argparse CLI arguments to enable non-interactive execution, scheduling, and CI/CD integration.",
+          "Implement the logging module instead of print(), and capture subprocess output using capture_output=True, text=True for audit trails.",
+          "Add conditional checks after run_stage calls to halt or gracefully skip downstream stages if critical upstream steps fail.",
+          "Remove sys.path.insert(0, THIS_DIR); refactor into a proper Python package structure or use PYTHONPATH/environment variables."
+        ]
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "FAIL",
+      "confidence": 95,
+      "elapsed": 22.9,
+      "finish": "stop",
+      "details": {
+        "agent": "offline_processor",
+        "verdict": "FAIL",
+        "confidence": 95,
+        "critical_bugs": [
+          "Path traversal vulnerability via symlink attack in session directory handling"
+        ],
+        "warnings": [
+          "Pipeline continues processing after stage failure (no early termination)",
+          "Calibration file resolution may fail silently if both paths are invalid"
+        ],
+        "recommendations": [
+          "Add path validation to ensure session_path is within project root before processing",
+          "Implement immediate pipeline termination on any stage failure",
+          "Verify calibration file existence after resolution and exit with clear error message"
+        ]
+      }
+    }
+  ]
+}

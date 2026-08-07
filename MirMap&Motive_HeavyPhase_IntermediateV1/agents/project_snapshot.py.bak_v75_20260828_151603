@@ -1,0 +1,468 @@
+import json
+#!/usr/bin/env python3
+"""
+PROJECT SNAPSHOT v7.3 - Master Brain Ultimate Edition
+Re-integrates detailed VLA analysis, cumulative knowledge engine and clean tracking.
+Operator: Kiarash Amiri | Supervisor: Prof. Dario Antonelli | Politecnico di Torino
+"""
+import json, pickle, os, re, hashlib, sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+# Force UTF-8 safe stdout for Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    try: sys.stdout.reconfigure(encoding='utf-8', errors='backslashreplace')
+    except: pass
+
+WS = Path(__file__).resolve().parent.parent
+AGENTS = WS / "agents"
+SESSIONS = WS / "sessions"
+MOTIVE_SESS = WS / "motive sessions"
+PK_DIR = WS / "persistent_knowledge"
+REPORTS_DIR = WS / "reports"
+ARCHIVE = WS / "archive"
+RPT_MD = WS / "MASTER_REPORT.md"
+RPT_JSON = WS / "MASTER_REPORT.json"
+
+ROADMAP_STEPS = [
+    {"id":1,"name":"Zero Placeholder Filter","evidence":[("contains","agents/spatial_temporal_fusion.py","zero_placeholder")]},
+    {"id":2,"name":"Human-in-Loop Merge","evidence":[("path","agents/apply_merge.py"),("contains","agents/knowledge_engine.py","SAFE")]},
+    {"id":3,"name":"Persistent Label Registry","evidence":[("path","persistent_knowledge/label_registry.pkl")]},
+    {"id":4,"name":"SLAM Map Annotator","evidence":[("path","agents/slam_map_annotator.py")]},
+    {"id":5,"name":"CVAT Video Annotation","evidence":[("path","agents/cvat_converter.py"),("path","agents/auto_labeler.py")]},
+    {"id":6,"name":"Cross-Modal Aligner","evidence":[("path","agents/cross_modal_aligner.py")]},
+    {"id":7,"name":"Unified Session Report","evidence":[("contains","agents/run_session_analysis.py","session_comprehensive_report")]},
+    {"id":8,"name":"Robot Action / Odom Logger","evidence":[("path","agents/mir_command_logger.py")]},
+    {"id":9,"name":"SLAM-to-BEV Renderer","evidence":[("path","agents/slam_to_bev.py")]},
+    {"id":10,"name":"VLA Video Narrator","evidence":[("path","agents/video_narrator.py")]},
+]
+
+BIG_TECH_PRACTICES = {
+    "Human-in-loop (Figure AI)": ("agents/apply_merge.py", "CRITICAL"),
+    "SAFE mode (never auto-merge)": ("agents/knowledge_engine.py", "CRITICAL"),
+    "Atomic saves": ("agents/knowledge_engine.py", "HIGH"),
+    "External annotation (CVAT)": ("agents/cvat_converter.py", "HIGH"),
+    "Cross-modal alignment": ("agents/cross_modal_aligner.py", "MEDIUM"),
+    "Persistent label registry": ("persistent_knowledge/label_registry.pkl", "HIGH"),
+    "BEV Vision Tokenizer (Tesla/Waymo)": ("agents/slam_to_bev.py", "HIGH"),
+    "Language-Action Grounding (RT-2/Qwen)": ("agents/video_narrator.py", "HIGH"),
+}
+
+class SnapshotV75:
+    def __init__(self):
+        self.ts = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        self.prior = self._load_prior()
+
+    def _load_prior(self):
+        if RPT_JSON.exists():
+            try: return json.load(open(RPT_JSON, encoding="utf-8"))
+            except: pass
+        return None
+
+    def audit_agents(self):
+        active = {}
+        if AGENTS.exists():
+            for f in AGENTS.glob("*.py"):
+                try:
+                    src = open(f, encoding="utf-8", errors="ignore").read()
+                    lines = len(src.splitlines())
+                    sha = hashlib.sha256(src.encode()).hexdigest()[:16]
+                    funcs = len(re.findall(r"^\s*def\s+", src, re.MULTILINE))
+                    classes = len(re.findall(r"^\s*class\s+", src, re.MULTILINE))
+                    tools = []
+                    for t, p in [("ROS","roslibpy"),("OpenCV","cv2"),("NumPy","numpy"),("PyTorch","torch"),("SciPy","scipy"),("SKLearn","sklearn")]:
+                        if re.search(p, src, re.IGNORECASE): tools.append(t)
+                    active[f.name] = {"lines":lines,"kb":round(f.stat().st_size/1024,2),"sha":sha,"funcs":funcs,"classes":classes,"tools":tools}
+                except: pass
+        archived = len(list(ARCHIVE.glob("*.py"))) if ARCHIVE.exists() else 0
+        return {"active_count":len(active),"archived_count":archived,"active":active}
+
+    def audit_persistent_knowledge(self):
+        pk = {"env":None,"deep_mem":None,"labels":None,"taxonomy":None}
+        if not PK_DIR.exists(): return pk
+        # Environment
+        p = PK_DIR / "environment_knowledge.pkl"
+        if p.exists():
+            try:
+                d = pickle.load(open(p,"rb"))
+                objs = d.get("objects",[])
+                pk["env"] = {"sessions":d.get("total_sessions_processed",0),"objects":len(objs),
+                    "names":sorted([o.get("names_seen",["?"])[0] for o in objs])}
+            except: pass
+        # Deep memory
+        p = PK_DIR / "deep_learning_memory.pkl"
+        if p.exists():
+            try:
+                d = pickle.load(open(p,"rb"))
+                tracks = d.get("object_tracks",{})
+                pk["deep_mem"] = {"sessions":d.get("total_sessions_analyzed",0),
+                    "tracks":len(tracks),"safety_events":len(d.get("safety_events",[]))}
+            except: pass
+        # Label Registry
+        p = PK_DIR / "label_registry.pkl"
+        if p.exists():
+            try:
+                d = pickle.load(open(p,"rb"))
+                labels = d.get("labels",{})
+                confirmed = sum(1 for e in labels.values() if e.get("is_confirmed"))
+                pk["labels"] = {"total":len(labels),"confirmed":confirmed,"pending":len(labels)-confirmed}
+            except: pass
+        # Taxonomy
+        p = PK_DIR / "taxonomy.json"
+        if p.exists():
+            try:
+                d = json.load(open(p, encoding="utf-8"))
+                pk["taxonomy"] = {"version":d.get("version","?"),"classes":len(d.get("classes",{}))}
+            except: pass
+        return pk
+
+    def deep_vla_audit(self, sd):
+        vla = {"has_cmds":False,"action_source":"none","total":0,"nonzero":0,"density":0.0,"freq_hz":0.0,
+               "duration_s":0.0,"max_linear":0.0,"max_angular":0.0,"braking_events":0,
+               "safety_events":0,"start":"?","end":"?"}
+        cmd_file = sd / "mir_command_data.pkl"
+        if not cmd_file.exists(): return vla
+        try:
+            data = pickle.load(open(cmd_file,"rb"))
+            if not isinstance(data, dict): return vla
+            vla["start"] = str(data.get("start_time_utc","?"))[:19]
+            vla["end"] = str(data.get("end_time_utc","?"))[:19]
+            vla["safety_events"] = len(data.get("safety_events",[]))
+            
+            try:
+                from datetime import datetime as dt
+                t0 = dt.fromisoformat(str(data.get("start_time_utc","")).replace("Z","+00:00"))
+                t1 = dt.fromisoformat(str(data.get("end_time_utc","")).replace("Z","+00:00"))
+                vla["duration_s"] = round((t1-t0).total_seconds(),1)
+            except: pass
+
+            cmd_log = data.get("cmd_vel_log", [])
+            odom_log = data.get("odom_log", [])
+            
+            action_stream = []
+            if isinstance(cmd_log, list) and len(cmd_log) > 0:
+                vla["action_source"] = "cmd_vel"
+                for entry in cmd_log:
+                    lx, az = 0.0, 0.0
+                    if isinstance(entry, dict):
+                        lx = float(entry.get("linear_x",0) or 0)
+                        az = float(entry.get("angular_z",0) or 0)
+                    elif isinstance(entry, (list,tuple)) and len(entry)>=2:
+                        lx, az = float(entry[0] or 0), float(entry[1] or 0)
+                    action_stream.append((lx, az))
+            elif isinstance(odom_log, list) and len(odom_log) > 0:
+                vla["action_source"] = "odom_actual"
+                for entry in odom_log:
+                    lx, az = 0.0, 0.0
+                    if isinstance(entry, dict):
+                        lx = float(entry.get("actual_linear_x_mps",0) or 0)
+                        az = float(entry.get("actual_angular_z_rps",0) or 0)
+                    action_stream.append((lx, az))
+
+            if action_stream:
+                vla["has_cmds"] = True
+                vla["total"] = len(action_stream)
+                prev_lx = 0.0
+                for lx_raw, az_raw in action_stream:
+                    lx, az = abs(lx_raw), abs(az_raw)
+                    if lx > 0.005 or az > 0.005:
+                        vla["nonzero"] += 1
+                    if lx > vla["max_linear"]: vla["max_linear"] = round(lx, 3)
+                    if az > vla["max_angular"]: vla["max_angular"] = round(az, 3)
+                    if prev_lx > 0.1 and lx < 0.01:
+                        vla["braking_events"] += 1
+                    prev_lx = lx
+                
+                vla["density"] = round(vla["nonzero"] / vla["total"] * 100, 1)
+                if vla["duration_s"] > 0:
+                    vla["freq_hz"] = round(vla["total"] / vla["duration_s"], 1)
+
+        except Exception:
+            pass
+        return vla
+
+    def parse_knowledge_report(self, sd):
+        kr = {"objects":0,"critical":0,"warning":0,"anomalies":[],"has_report":False}
+        rpt = sd / "session_comprehensive_report.txt"
+        if not rpt.exists(): return kr
+        kr["has_report"] = True
+        try:
+            txt = open(rpt, encoding="utf-8", errors="ignore").read()
+            m = re.search(r"(\d+)\s+CRITICAL", txt, re.IGNORECASE)
+            if m: kr["critical"] = int(m.group(1))
+            m = re.search(r"(\d+)\s+WARNING", txt, re.IGNORECASE)
+            if m: kr["warning"] = int(m.group(1))
+            for line in txt.splitlines():
+                if "[critical]" in line.lower() or "[high]" in line.lower():
+                    kr["anomalies"].append(line.strip()[:100])
+            kr["objects"] = len(re.findall(r"\[.*?\]\s*\n\s*Class\s*:", txt))
+        except: pass
+        return kr
+
+    def audit_sessions(self):
+        sessions, actions, vla_data, ke_data = {}, {}, {}, {}
+        if not SESSIONS.exists(): return sessions, actions, vla_data, ke_data
+        for sd in sorted(SESSIONS.iterdir()):
+            if not sd.is_dir() or not sd.name.startswith("session_"): continue
+            n = sd.name
+            has_mocap = (sd/"motive_data.pkl").exists()
+            has_slam = (sd/"slam_data.pkl").exists()
+            
+            vla_info = self.deep_vla_audit(sd)
+            vla_data[n] = vla_info
+            has_cmd = vla_info["has_cmds"]
+            
+            has_fusion = (sd/"fused_data.pkl").exists() and (sd/"fused_data.pkl").stat().st_size > 1000
+            vid_sub = list((sd/"video").glob("*")) if (sd/"video").exists() else []
+            vid_mot = list(MOTIVE_SESS.glob(f"{n}*")) if MOTIVE_SESS.exists() else []
+            has_video = len(vid_sub)>0 or len(vid_mot)>0
+            has_report = (sd/"session_comprehensive_report.txt").exists()
+            has_cross = (sd/"cross_modal_matches.jsonl").exists()
+            
+            score = int(sum([has_mocap, has_slam, has_cmd, has_video, has_fusion]) / 5 * 100)
+            sessions[n] = {"mocap":has_mocap,"slam":has_slam,"cmd":has_cmd,"video":has_video,
+                "fusion":has_fusion,"report":has_report,"cross":has_cross,
+                "vids":len(vid_sub)+len(vid_mot),"score":score}
+            ke_data[n] = self.parse_knowledge_report(sd)
+            actions[n] = {"total":vla_info["total"],"nonzero":vla_info["nonzero"],"density":vla_info["density"]}
+        return sessions, actions, vla_data, ke_data
+
+    def compute_changes(self, agents, sessions):
+        if not self.prior: return {"status":"BASELINE","deltas":["Initial v7.3 unified baseline."]}
+        deltas = []
+        pa = self.prior.get("agent_registry",{}).get("active",{})
+        ps = self.prior.get("sessions_analysis",{})
+        
+        for a, m in agents.get("active",{}).items():
+            if a not in pa:
+                deltas.append(f"NEW: {a} ({m['lines']}L)")
+            else:
+                line_diff = m['lines'] - pa[a].get('lines', 0)
+                if abs(line_diff) > 2 or (pa[a].get("sha") != m.get("sha") and abs(line_diff) > 1):
+                    deltas.append(f"MOD: {a} ({line_diff:+d}L)")
+                    
+        for a in pa:
+            if a not in agents.get("active",{}):
+                deltas.append(f"DEL / ARCHIVED: {a}")
+                
+        for s in sessions:
+            if s not in ps:
+                deltas.append(f"NEW SESSION: {s} (Score: {sessions[s]['score']}%)")
+                
+        return {"status":"CHANGES" if deltas else "NO_CHANGE","deltas":deltas}
+
+    def evaluate_roadmap(self):
+        results = []
+        for step in ROADMAP_STEPS:
+            passed = 0
+            for kind, path, *args in step["evidence"]:
+                fp = WS / path
+                if kind == "path" and fp.exists(): passed += 1
+                elif kind == "contains" and fp.exists():
+                    try:
+                        if args[0] in open(fp, encoding="utf-8", errors="ignore").read(): passed += 1
+                    except: pass
+            total = len(step["evidence"])
+            status = "DONE" if passed==total else ("PARTIAL" if passed>0 else "PENDING")
+            results.append({"id":step["id"],"name":step["name"],"status":status,"evidence":f"{passed}/{total}"})
+        return results
+
+    def big_tech_check(self):
+        results = {}
+        for name, (path, imp) in BIG_TECH_PRACTICES.items():
+            fp = WS / path
+            results[name] = {"status":"PRESENT" if fp.exists() else "MISSING","importance":imp}
+        present = sum(1 for r in results.values() if r["status"]=="PRESENT")
+        return results, present, len(results)
+
+    def gen_vla_card(self, sessions, vla_data, ke_data):
+        latest = None
+        for n in sorted(vla_data.keys(), reverse=True):
+            if vla_data[n]["has_cmds"]:
+                latest = n; break
+        if not latest: return None
+        v = vla_data[latest]
+        k = ke_data[latest]
+        s = sessions[latest]
+        card = {
+            "session": latest,
+            "action_source": v["action_source"],
+            "duration": f"{v['duration_s']}s",
+            "action_freq": f"{v['freq_hz']} Hz",
+            "action_samples": v["total"],
+            "active_pct": f"{v['density']}%",
+            "max_linear": f"{v['max_linear']} m/s",
+            "max_angular": f"{v['max_angular']} rad/s",
+            "braking_events": v["braking_events"],
+            "safety_events": v["safety_events"],
+            "modalities": f"MoCap:{'Y' if s['mocap'] else 'N'} SLAM:{'Y' if s['slam'] else 'N'} Cmd/Odom:{'Y' if s['cmd'] else 'N'} Vid:{'Y' if s['video'] else 'N'} Fusion:{'Y' if s['fusion'] else 'N'}",
+            "knowledge_critical": k["critical"],
+            "knowledge_warnings": k["warning"],
+            "key_anomalies": k["anomalies"][:3],
+            "vla_score": s["score"],
+        }
+        return card
+
+    def gen_prompt(self, score, grade, roadmap, changes, vla_card):
+        nxt = next((r for r in roadmap if r["status"]!="DONE"), roadmap[-1])
+        d = "\n".join(f"  - {x}" for x in changes.get("deltas",[])) if changes.get("deltas") else "  - No major file alterations."
+        vla_info = ""
+        if vla_card:
+            vla_info = f"\nVLA Status: {vla_card['session']} | Action Source: {vla_card['action_source']} | Samples: {vla_card['action_samples']} @ {vla_card['action_freq']} | {vla_card['active_pct']} active motion"
+        return (
+            f"# AI HANDOFF PROMPT (v7.3 Auto-Generated)\n"
+            f"Operator: Kiarash Amiri (s322803@studenti.polito.it) | Supervisor: Prof. Dario Antonelli (PoliTo)\n"
+            f"Paper Readiness: {score}/100 ({grade}){vla_info}\n"
+            f"Recent Changes:\n{d}\n"
+            f"Next Target: Step {nxt['id']} - {nxt['name']} ({nxt['status']})\n"
+            f"Immediate Action: Run launch_session.py to record Session 8 with full VLA sensor alignment."
+        )
+
+    def run(self):
+        print(f"[{self.ts}] Snapshot v7.5 Running...")
+        # Auto-rebuild the VLA Global Dataset first
+        try:
+            import vla_dataset_builder
+            print("  [Auto-Action] Rebuilding unified VLA Dataset...")
+            vla_dataset_builder.build_aggregated_dataset()
+        except Exception as e:
+            print("  [WARN] Failed to auto-rebuild dataset: " + str(e))
+            
+        # Run compliance matrix scenario validator
+        try:
+            import vla_scenario_validator
+            print("  [Auto-Action] Calculating VLA behavioral scenario compliance matrix...")
+            vla_scenario_validator.build_compliance_matrix()
+        except Exception as e:
+            print("  [WARN] Failed to run scenario validator: " + str(e))
+        agents = self.audit_agents()
+        pk = self.audit_persistent_knowledge()
+        sessions, actions, vla_data, ke_data = self.audit_sessions()
+        changes = self.compute_changes(agents, sessions)
+        roadmap = self.evaluate_roadmap()
+        bt, bt_present, bt_total = self.big_tech_check()
+        vla_card = self.gen_vla_card(sessions, vla_data, ke_data)
+
+        # Paper Readiness
+        n = len(sessions)
+        if n > 0:
+            sc_mod = sum(s["score"] for s in sessions.values()) / n / 100 * 25
+            sc_act = sum(1 for a in actions.values() if a["total"] > 0) / n * 20
+            sc_moc = sum(1 for s in sessions.values() if s["mocap"]) / n * 15
+            sc_fus = sum(1 for s in sessions.values() if s["fusion"]) / n * 15
+            sc_vid = sum(1 for s in sessions.values() if s["video"]) / n * 10
+            sc_bt = (bt_present / bt_total if bt_total else 0) * 15
+            score = round(sc_mod + sc_act + sc_moc + sc_fus + sc_vid + sc_bt, 1)
+        else: score = 0.0
+        
+        grade = "A" if score>=85 else "B" if score>=70 else "C" if score>=50 else "D" if score>=35 else "F"
+        prompt = self.gen_prompt(score, grade, roadmap, changes, vla_card)
+
+        total_cmds = sum(v["total"] for v in vla_data.values())
+        total_duration = sum(v["duration_s"] for v in vla_data.values())
+        full_sessions = sum(1 for s in sessions.values() if s["score"]>=80)
+
+        state = {
+            "version":"7.5",
+            "generated":self.ts,
+            "agent_registry":agents,
+            "persistent_knowledge":pk,
+            "sessions_analysis":sessions,
+            "action_density":actions,
+            "vla_audit":vla_data,
+            "knowledge_engine":ke_data,
+            "change_tracker":changes,
+            "roadmap":roadmap,
+            "big_tech":{"practices":bt,"alignment":f"{bt_present}/{bt_total}"},
+            "paper_readiness":{"score":score,"grade":grade},
+            "deep_learner_stats":{"total_action_samples":total_cmds,"total_duration_s":round(total_duration,1),
+                "full_vla_sessions":full_sessions,"total_sessions":n},
+            "ai_prompt":prompt
+        }
+        with open(RPT_JSON,"w",encoding="utf-8") as f: json.dump(state,f,indent=2)
+
+        # Markdown Report Generation
+        md = [f"# MASTER REPORT v7.5 (Master Brain Ultimate)", f"**Generated:** {self.ts} | **Operator:** Kiarash Amiri | **PoliTo**\n"]
+        md.append(f"## 1. PAPER READINESS: {score}/100 ({grade})")
+        md.append(f"Sessions: {n} | Full VLA: {full_sessions} | Action Samples: {total_cmds} | Duration: {round(total_duration,1)}s | Big Tech Alignment: {bt_present}/{bt_total}\n")
+
+        md.append("## 2. CHANGE TRACKER")
+        if changes.get("deltas"):
+            for d in changes["deltas"]: md.append(f"- {d}")
+        else:
+            md.append("- No file alterations since last baseline.")
+        md.append("")
+
+        md.append("## 3. VLA SESSION AUDIT")
+        md.append("| Session | MoCap | SLAM | Action | Vid | Fus | Duration | Source | Samples | Active% | Score |")
+        md.append("|---|---|---|---|---|---|---|---|---|---|---|")
+        for sn in sorted(sessions.keys()):
+            s = sessions[sn]; v = vla_data[sn]
+            md.append(f"| {sn[-14:]} | {'Y' if s['mocap'] else '-'} | {'Y' if s['slam'] else '-'} | {'Y' if s['cmd'] else '-'} | {'Y' if s['video'] else '-'} | {'Y' if s['fusion'] else '-'} | {v['duration_s']}s | {v['action_source']} | {v['total']} | {v['density']}% | **{s['score']}%** |")
+        md.append("")
+
+        if vla_card:
+            md.append(f"## 4. VLA READINESS CARD: {vla_card['session']}")
+            md.append(f"- **Action Source:** {vla_card['action_source']} | **Samples:** {vla_card['action_samples']} @ {vla_card['action_freq']}")
+            md.append(f"- **Duration:** {vla_card['duration']} | **Active Motion:** {vla_card['active_pct']}")
+            md.append(f"- **Velocities:** linear max {vla_card['max_linear']}, angular max {vla_card['max_angular']}")
+            md.append(f"- **Events:** {vla_card['braking_events']} braking, {vla_card['safety_events']} safety, {vla_card['knowledge_critical']} critical")
+            md.append(f"- **Modalities:** {vla_card['modalities']}")
+            if vla_card["key_anomalies"]:
+                md.append("- **Key Anomalies:**")
+                for a in vla_card["key_anomalies"]: md.append(f"  - {a}")
+            md.append("")
+
+        md.append("## 5. KNOWLEDGE ENGINE SUMMARY")
+        if pk["env"]: md.append(f"- Environment: {pk['env']['objects']} objects across {pk['env']['sessions']} sessions: {', '.join(pk['env']['names'][:5])}")
+        if pk["deep_mem"]: md.append(f"- Deep Memory: {pk['deep_mem']['tracks']} tracks, {pk['deep_mem']['safety_events']} safety events")
+        if pk["labels"]: md.append(f"- Labels: {pk['labels']['confirmed']} confirmed, {pk['labels']['pending']} pending")
+        if pk["taxonomy"]: md.append(f"- Taxonomy: v{pk['taxonomy']['version']}, {pk['taxonomy']['classes']} classes")
+        md.append("")
+
+        md.append(f"## 6. BIG TECH ALIGNMENT ({bt_present}/{bt_total} = {round(bt_present/bt_total*100) if bt_total else 0}%)")
+        md.append("| Practice | Status | Importance |")
+        md.append("|---|---|---|")
+        for name, r in bt.items(): md.append(f"| {name} | {r['status']} | {r['importance']} |")
+        md.append("")
+
+        md.append("## 7. ROADMAP (100% Evidence-Based)")
+        for r in roadmap:
+            ck = "x" if r["status"]=="DONE" else ("~" if r["status"]=="PARTIAL" else " ")
+            md.append(f"- [{ck}] **Step {r['id']}:** {r['name']} ({r['evidence']}) [{r['status']}]")
+        md.append("")
+
+        md.append("## 8. DEEP LEARNER DATA READINESS")
+        md.append(f"- Total Action samples recorded: {total_cmds}")
+        md.append(f"- Total recording duration: {round(total_duration,1)}s")
+        md.append(f"- Full VLA sessions (score>=80%): {full_sessions}/{n}")
+        # Read dataset_stats if possible
+        stats_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "dataset", "dataset_stats.json")
+        if os.path.exists(stats_path):
+            try:
+                with open(stats_path, "r", encoding="utf-8") as sf:
+                    ds_stats = json.load(sf)
+                md.append(f"- **Aggregated Dataset Status:** READY")
+                md.append(f"  - Train Split (`train.jsonl`): {ds_stats.get('train_samples', 0)} samples")
+                md.append(f"  - Validation Split (`val.jsonl`): {ds_stats.get('val_samples', 0)} samples")
+                md.append("  - **Behavior Distribution (Global Dataset):**")
+                for b, count in ds_stats.get("behavior_distribution_total", {}).items():
+                    pct = (count / ds_stats.get("total_samples", 1)) * 100
+                    md.append(f"    - {b:<20}: {count:5d} samples ({pct:5.1f}%)")
+            except Exception as ex:
+                md.append(f"- Aggregated Dataset Status: ERROR loading stats (" + str(ex) + ")")
+        else:
+            md.append(f"- Aggregated Dataset Status: NOT_FOUND (Run dataset builder)")
+        md.append("")
+
+        md.append(f"## 9. AI HANDOFF PROMPT\n```\n{prompt}\n```")
+
+        report_text = "\n".join(md)
+        with open(RPT_MD,"w",encoding="utf-8") as f: f.write(report_text)
+        REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+        with open(REPORTS_DIR/"latest_snapshot_for_ai.md","w",encoding="utf-8") as f: f.write(report_text)
+
+        print(f"[OK] Snapshot v7.3 Finished | Readiness: {score}/100 ({grade}) | Total Action Samples: {total_cmds}")
+
+if __name__ == "__main__":
+    SnapshotV75().run()

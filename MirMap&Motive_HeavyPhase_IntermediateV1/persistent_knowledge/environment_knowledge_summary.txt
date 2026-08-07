@@ -1,0 +1,10 @@
+Persistent Environment Knowledge — Summary
+==================================================
+Last updated (UTC)      : 2026-08-27T15:56:54.476846+00:00
+Total sessions processed: 5
+Total known objects     : 4
+
+  [obj_0000] pos=(30.73, 20.16) m | seen=9817x | static_conf=0.00 | class=moving | sources=['motive']
+  [obj_0001] pos=(30.07, 20.37) m | seen=1999x | static_conf=0.10 | class=human_marker | sources=['motive']
+  [obj_0002] pos=(32.02, 19.17) m | seen=1005x | static_conf=0.10 | class=human_marker | sources=['motive']
+  [obj_0003] pos=(32.07, 20.20) m | seen=999x | static_conf=0.70 | class=static | sources=['motive']

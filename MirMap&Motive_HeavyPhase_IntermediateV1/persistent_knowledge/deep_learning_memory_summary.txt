@@ -1,0 +1,96 @@
+======================================================================
+ DEEP LEARNING MEMORY - Comprehensive Summary
+ Schema    : deep_memory_v2
+ Created   : 2026-08-24T11:17:35.671246+00:00
+ Updated   : 2026-08-24T11:17:43.481610+00:00
+ Sessions  : 1
+======================================================================
+
+--- KNOWN OBJECTS ---
+
+  [kia hat 002]
+    Class       : human_marker
+    Confidence  : 1.00
+    Sessions    : 1
+    Total obs   : 1005
+    Position    : (30.65, 20.03) m
+    Variance    : 0.3681 m2
+    Height      : 1.52 m
+    Speed       : mean=0.379, max=41.412 m/s
+    Path total  : 23.4 m
+    Min dist    : 0.5792820929269873
+    Time crit   : 0.0s
+    Time warn   : 0.0s
+    Encounters  : F=56 S=521 R=428
+
+  [kiarash_leftwrist]
+    Class       : human_marker
+    Confidence  : 1.00
+    Sessions    : 1
+    Total obs   : 1005
+    Position    : (30.23, 20.38) m
+    Variance    : 0.1447 m2
+    Height      : 0.99 m
+    Speed       : mean=0.308, max=35.978 m/s
+    Path total  : 19.0 m
+    Min dist    : 0.29032716784014206
+    Time crit   : 1.8s
+    Time warn   : 2.2s
+    Encounters  : F=290 S=404 R=311
+
+  [kiarash_RightWrist]
+    Class       : human_marker
+    Confidence  : 0.90
+    Sessions    : 1
+    Total obs   : 1005
+    Position    : (32.02, 19.17) m
+    Variance    : 0.0771 m2
+    Height      : 0.76 m
+    Speed       : mean=0.208, max=49.484 m/s
+    Path total  : 12.9 m
+    Min dist    : 0.618931953369233
+    Time crit   : 0.0s
+    Time warn   : 3.2s
+    Encounters  : F=416 S=358 R=231
+
+--- LIDAR KNOWLEDGE ---
+  Labeled patterns   : 289
+  Unlabeled patterns : 1
+  Label transfers    : 289
+
+--- SAFETY STATISTICS ---
+  Total critical events : 30
+  Total warning events  : 86
+  Closest approach ever : 0.8cm
+
+--- SPATIAL KNOWLEDGE ---
+  Human presence cells  : 3
+  Static object cells   : 0
+  High risk cells       : 1
+  Dynamic obstacle cells: 0
+
+--- TRAJECTORY PATTERNS ---
+  Human trajectories    : 3
+  Repeated paths        : 0
+
+--- ANOMALIES DETECTED ---
+  Total anomalies: 3
+  - 'kia hat 002' showed sudden movement (jerk=134.7) - possible collision or fast human gesture
+  - 'kiarash_leftwrist' showed sudden movement (jerk=239.9) - possible collision or fast human gesture
+  - 'kiarash_RightWrist' showed sudden movement (jerk=125.4) - possible collision or fast human gesture
+
+--- LEARNED INSIGHTS (last 20 of 10) ---
+  - [session_2026-08-24_13-16-03] NEW object: 'kia hat 002' - class='human_marker' (conf=1.00), pos=(30.7, 20.0)m, speed=0.38m/s
+  - [session_2026-08-24_13-16-03] NEW object: 'kiarash_leftwrist' - class='human_marker' (conf=1.00), pos=(30.2, 20.4)m, speed=0.31m/s
+  - [session_2026-08-24_13-16-03] NEW object: 'kiarash_RightWrist' - class='human_marker' (conf=0.90), pos=(32.0, 19.2)m, speed=0.21m/s
+  - [session_2026-08-24_13-16-03] SAFETY: 30 CRITICAL events (<10cm)!
+  - [session_2026-08-24_13-16-03] SAFETY: 86 WARNING events (10-30cm)
+  - [session_2026-08-24_13-16-03] LIDAR: 289 clusters matched to Motive objects (label transfer)
+  - [session_2026-08-24_13-16-03] LIDAR: 28929 clusters remain unlabeled
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kia hat 002' showed sudden movement (jerk=134.7) - possible collision or fast human gesture
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kiarash_leftwrist' showed sudden movement (jerk=239.9) - possible collision or fast human gesture
+  - [session_2026-08-24_13-16-03] ANOMALY [high]: 'kiarash_RightWrist' showed sudden movement (jerk=125.4) - possible collision or fast human gesture
+
+--- UNRESOLVED QUESTIONS (0) ---
+
+======================================================================

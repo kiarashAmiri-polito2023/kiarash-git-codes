@@ -1,0 +1,46 @@
+{
+  "agent": "label_registry",
+  "file": "label_registry.py",
+  "final_verdict": "UNCERTAIN",
+  "confidence": 0,
+  "escalated": true,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "FAIL",
+      "confidence": 90,
+      "elapsed": 55.2,
+      "finish": "stop",
+      "details": {
+        "agent": "label_registry",
+        "verdict": "FAIL",
+        "confidence": 90,
+        "critical_bugs": [
+          "Position averaging logic in update_label resets historical mean when new_observations=0 (default), because n = max(0, 1) = 1. This breaks persistent position tracking over time.",
+          "Pickle deserialization in _load() lacks validation or safe unpickling guards, creating an arbitrary code execution risk if the registry file is corrupted or tampered with."
+        ],
+        "warnings": [
+          "Broad except Exception block in _load() swallows specific errors (e.g., EOFError, UnpicklingError), making it difficult to diagnose data corruption.",
+          "No file locking or concurrency controls; simultaneous access from multiple robot processes could cause race conditions during read/write cycles.",
+          "Running average calculation assumes total_observations accurately tracks position updates, which may drift if observation counts differ from actual position measurements."
+        ],
+        "recommendations": [
+          "Replace pickle with JSON or a lightweight database (e.g., SQLite) to eliminate security risks, improve data integrity, and enable cross-language compatibility.",
+          "Fix update_label to only recalculate mean_position_m when new_observations > 0, or maintain a dedicated position_update_count field separate from general observations.",
+          "Validate root_path using os.path.abspath() and restrict traversal outside the intended workspace directory to prevent unintended path access.",
+          "Implement explicit schema version checking during _load() with migration logic to gracefully handle future format changes."
+        ]
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "UNCERTAIN",
+      "confidence": 0,
+      "elapsed": 19.3,
+      "finish": "error",
+      "details": {
+        "error": "HTTP Error 400: Bad Request"
+      }
+    }
+  ]
+}

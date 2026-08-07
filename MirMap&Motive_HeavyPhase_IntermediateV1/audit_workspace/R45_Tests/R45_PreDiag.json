@@ -1,0 +1,42 @@
+﻿{
+    "timestamp":  "2026-09-22T19:46:47.4227945+02:00",
+    "file_status":  {
+                        "auto_labeler.py":  {
+                                                "size_bytes":  3338,
+                                                "exists":  true
+                                            },
+                        "NatNetClient.py":  {
+                                                "size_bytes":  37977,
+                                                "exists":  true
+                                            },
+                        "launch_session.py":  {
+                                                  "size_bytes":  49768,
+                                                  "exists":  true
+                                              },
+                        "quality_gate.py":  {
+                                                "size_bytes":  19709,
+                                                "exists":  true
+                                            },
+                        "knowledge_engine.py":  {
+                                                    "size_bytes":  32214,
+                                                    "exists":  true
+                                                },
+                        "scene_object_detector.py":  {
+                                                         "size_bytes":  8431,
+                                                         "exists":  true
+                                                     },
+                        "MoCapData.py":  {
+                                             "size_bytes":  32013,
+                                             "exists":  true
+                                         },
+                        "mir_command_logger.py":  {
+                                                      "size_bytes":  10140,
+                                                      "exists":  true
+                                                  },
+                        "DataDescriptions.py":  {
+                                                    "size_bytes":  29247,
+                                                    "exists":  true
+                                                }
+                    },
+    "note":  "R45 pre-diagnostic"
+}

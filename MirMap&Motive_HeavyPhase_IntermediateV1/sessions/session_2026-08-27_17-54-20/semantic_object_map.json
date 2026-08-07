@@ -1,0 +1,211 @@
+{
+  "session": "session_2026-08-27_17-54-20",
+  "map_resolution_m": 0.05000000074505806,
+  "map_dimensions": [
+    1988,
+    1056
+  ],
+  "total_unique_physical_objects": 25,
+  "fused_objects": [
+    {
+      "id": "chair_1",
+      "class": "chair",
+      "map_x_m": 21.457,
+      "map_y_m": 25.481,
+      "confidence_score": 1.0,
+      "observations_count": 61
+    },
+    {
+      "id": "chair_2",
+      "class": "chair",
+      "map_x_m": 25.774,
+      "map_y_m": 22.961,
+      "confidence_score": 1.0,
+      "observations_count": 61
+    },
+    {
+      "id": "chair_3",
+      "class": "chair",
+      "map_x_m": 41.31,
+      "map_y_m": 22.098,
+      "confidence_score": 0.12,
+      "observations_count": 5
+    },
+    {
+      "id": "chair_4",
+      "class": "chair",
+      "map_x_m": 42.666,
+      "map_y_m": 23.487,
+      "confidence_score": 1.0,
+      "observations_count": 53
+    },
+    {
+      "id": "chair_5",
+      "class": "chair",
+      "map_x_m": 46.078,
+      "map_y_m": 25.836,
+      "confidence_score": 0.1,
+      "observations_count": 4
+    },
+    {
+      "id": "chair_6",
+      "class": "chair",
+      "map_x_m": 19.765,
+      "map_y_m": 13.426,
+      "confidence_score": 1.0,
+      "observations_count": 86
+    },
+    {
+      "id": "chair_7",
+      "class": "chair",
+      "map_x_m": 21.406,
+      "map_y_m": 14.312,
+      "confidence_score": 1.0,
+      "observations_count": 44
+    },
+    {
+      "id": "chair_8",
+      "class": "chair",
+      "map_x_m": 15.687,
+      "map_y_m": 12.974,
+      "confidence_score": 1.0,
+      "observations_count": 69
+    },
+    {
+      "id": "chair_9",
+      "class": "chair",
+      "map_x_m": 13.254,
+      "map_y_m": 13.653,
+      "confidence_score": 1.0,
+      "observations_count": 131
+    },
+    {
+      "id": "laptop_1",
+      "class": "laptop",
+      "map_x_m": 36.978,
+      "map_y_m": 24.546,
+      "confidence_score": 0.35,
+      "observations_count": 14
+    },
+    {
+      "id": "person_1",
+      "class": "person",
+      "map_x_m": 31.493,
+      "map_y_m": 26.636,
+      "confidence_score": 0.07,
+      "observations_count": 3
+    },
+    {
+      "id": "person_2",
+      "class": "person",
+      "map_x_m": 34.742,
+      "map_y_m": 22.987,
+      "confidence_score": 0.1,
+      "observations_count": 4
+    },
+    {
+      "id": "person_3",
+      "class": "person",
+      "map_x_m": 29.706,
+      "map_y_m": 22.053,
+      "confidence_score": 0.33,
+      "observations_count": 13
+    },
+    {
+      "id": "person_4",
+      "class": "person",
+      "map_x_m": 31.778,
+      "map_y_m": 20.852,
+      "confidence_score": 0.33,
+      "observations_count": 13
+    },
+    {
+      "id": "person_5",
+      "class": "person",
+      "map_x_m": 33.958,
+      "map_y_m": 19.908,
+      "confidence_score": 0.17,
+      "observations_count": 7
+    },
+    {
+      "id": "person_6",
+      "class": "person",
+      "map_x_m": 35.713,
+      "map_y_m": 21.107,
+      "confidence_score": 0.07,
+      "observations_count": 3
+    },
+    {
+      "id": "person_7",
+      "class": "person",
+      "map_x_m": 37.841,
+      "map_y_m": 21.132,
+      "confidence_score": 0.2,
+      "observations_count": 8
+    },
+    {
+      "id": "person_8",
+      "class": "person",
+      "map_x_m": 33.155,
+      "map_y_m": 21.312,
+      "confidence_score": 0.12,
+      "observations_count": 5
+    },
+    {
+      "id": "person_9",
+      "class": "person",
+      "map_x_m": 13.2,
+      "map_y_m": 13.01,
+      "confidence_score": 0.35,
+      "observations_count": 14
+    },
+    {
+      "id": "person_10",
+      "class": "person",
+      "map_x_m": 17.618,
+      "map_y_m": 16.115,
+      "confidence_score": 1.0,
+      "observations_count": 61
+    },
+    {
+      "id": "person_11",
+      "class": "person",
+      "map_x_m": 16.762,
+      "map_y_m": 13.859,
+      "confidence_score": 0.1,
+      "observations_count": 4
+    },
+    {
+      "id": "person_12",
+      "class": "person",
+      "map_x_m": 19.423,
+      "map_y_m": 14.042,
+      "confidence_score": 0.47,
+      "observations_count": 19
+    },
+    {
+      "id": "person_13",
+      "class": "person",
+      "map_x_m": 21.361,
+      "map_y_m": 14.767,
+      "confidence_score": 0.2,
+      "observations_count": 8
+    },
+    {
+      "id": "person_14",
+      "class": "person",
+      "map_x_m": 23.437,
+      "map_y_m": 15.683,
+      "confidence_score": 0.2,
+      "observations_count": 8
+    },
+    {
+      "id": "person_15",
+      "class": "person",
+      "map_x_m": 25.443,
+      "map_y_m": 16.791,
+      "confidence_score": 0.15,
+      "observations_count": 6
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "agent": "session_manager",
+  "file": "session_manager.py",
+  "final_verdict": "PARSE_FAIL",
+  "confidence": 0,
+  "escalated": true,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "FAIL",
+      "confidence": 85,
+      "elapsed": 52.8,
+      "finish": "stop",
+      "details": {
+        "agent": "session_manager",
+        "verdict": "FAIL",
+        "confidence": 85,
+        "critical_bugs": [
+          "Unhandled exceptions in update_knowledge_from_session() and inspect_project() when deserializing .pkl files; corrupted or malformed session/calibration data will crash the agent without graceful degradation.",
+          "Potential KeyError/AttributeError during knowledge merging due to schema drift: loaded objects may lack keys like position_variance_m2, sources_seen, or have incompatible types (e.g., list instead of set), causing crashes on .add() or arithmetic operations."
+        ],
+        "warnings": [
+          "Insecure deserialization via pickle.load(); if session directories are exposed to external inputs or untrusted data, malicious payloads could execute arbitrary code.",
+          "No input validation for root_path and session_path parameters; relative paths or symlinks could lead to unexpected file system traversal or permission errors."
+        ],
+        "recommendations": [
+          "Wrap all pickle.load() calls in try-except blocks catching specific exceptions (pickle.UnpicklingError, EOFError, KeyError) and implement safe fallbacks or logging.",
+          "Normalize data structures after loading: e.g., obj['sources_seen'] = set(obj.get('sources_seen', [])) to prevent type mismatches.",
+          "Replace pickle with a safer serialization format like JSON or MessagePack for persistent knowledge, as the schema contains only primitive types and nested dicts/lists.",
+          "Add lightweight schema validation (e.g., using pydantic or explicit key checks) when loading external .pkl files to ensure compatibility before processing."
+        ]
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "elapsed": 25.4,
+      "finish": "length",
+      "details": null
+    }
+  ]
+}

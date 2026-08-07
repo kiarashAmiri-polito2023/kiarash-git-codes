@@ -1,0 +1,105 @@
+{
+  "pass": 187,
+  "fail": 23,
+  "fails": [
+    "A03_has_dockerfile",
+    "A04_has_ci",
+    "A05_has_tests",
+    "A07_has_license",
+    "A08_has_readme",
+    "A09_has_requirements",
+    "A12_has_config_yaml",
+    "A14_has_ros_launch",
+    "A17_has_inference",
+    "A21_has_localization",
+    "A23_has_perception",
+    "A25_has_camera",
+    "A26_has_imu",
+    "A27_has_odometry",
+    "A29_has_cmake",
+    "A30_has_ros_package",
+    "E16_temp_clean",
+    "G16_hashlib",
+    "H05_threshold",
+    "H15_status_code",
+    "I20_integrity",
+    "J03_dossier",
+    "J07_root_clean"
+  ],
+  "groups": {
+    "A": {
+      "p": 14,
+      "f": 16
+    },
+    "B": {
+      "p": 20,
+      "f": 0
+    },
+    "C": {
+      "p": 20,
+      "f": 0
+    },
+    "D": {
+      "p": 20,
+      "f": 0
+    },
+    "E": {
+      "p": 19,
+      "f": 1
+    },
+    "F": {
+      "p": 20,
+      "f": 0
+    },
+    "G": {
+      "p": 19,
+      "f": 1
+    },
+    "H": {
+      "p": 18,
+      "f": 2
+    },
+    "I": {
+      "p": 19,
+      "f": 1
+    },
+    "J": {
+      "p": 18,
+      "f": 2
+    }
+  },
+  "md5": "f44ddd719b1f62d695e16b464a15d48e",
+  "sota_dims": [
+    "d01_stars_gt_1k",
+    "d02_stars_gt_10k",
+    "d03_python",
+    "d04_cpp",
+    "d05_dockerfile",
+    "d06_ci_github",
+    "d08_docs_dir",
+    "d09_license",
+    "d10_readme",
+    "d11_requirements",
+    "d14_models_dir",
+    "d15_data_dir",
+    "d16_config_yaml",
+    "d17_config_json",
+    "d18_ros_launch",
+    "d19_ros_urdf",
+    "d20_ros_msg",
+    "d21_cmake",
+    "d22_ros_package",
+    "d23_training_script",
+    "d24_eval_script",
+    "d25_inference",
+    "d26_pretrained",
+    "d30_collision",
+    "d31_planning",
+    "d32_localization",
+    "d33_mapping",
+    "d38_camera",
+    "d39_imu",
+    "d40_odometry"
+  ],
+  "ts": "2026-09-03T20:41:23.087940"
+}

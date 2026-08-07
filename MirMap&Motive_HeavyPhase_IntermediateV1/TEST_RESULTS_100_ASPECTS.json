@@ -1,0 +1,612 @@
+{
+  "timestamp": "2026-09-24T19:33:40.416564",
+  "machine": "WSR95090A",
+  "summary": {
+    "total": 100,
+    "pass": 92,
+    "warn": 5,
+    "fail": 2
+  },
+  "results": [
+    {
+      "aspect_id": 1,
+      "title": "Frame ID Contiguity",
+      "verdict": "PASS",
+      "evidence": "Total frames: 621, contiguous=True"
+    },
+    {
+      "aspect_id": 2,
+      "title": "Schema Keys Presence",
+      "verdict": "PASS",
+      "evidence": "Checked 621 records for required keys."
+    },
+    {
+      "aspect_id": 3,
+      "title": "Data Types Validation",
+      "verdict": "PASS",
+      "evidence": "Data types checked across all records: True"
+    },
+    {
+      "aspect_id": 4,
+      "title": "NaN/Inf Exclusion",
+      "verdict": "PASS",
+      "evidence": "No NaN/Inf detected in tokens"
+    },
+    {
+      "aspect_id": 5,
+      "title": "Non-Empty Tokens",
+      "verdict": "PASS",
+      "evidence": "All tokens non-empty: True"
+    },
+    {
+      "aspect_id": 6,
+      "title": "Metadata JSON Existence",
+      "verdict": "PASS",
+      "evidence": "bev_vla_metadata.json exists: True"
+    },
+    {
+      "aspect_id": 7,
+      "title": "File Size Sanity",
+      "verdict": "PASS",
+      "evidence": "File size: 123735 bytes"
+    },
+    {
+      "aspect_id": 8,
+      "title": "Nested Pose Schema",
+      "verdict": "PASS",
+      "evidence": "Robot pose sub-keys x, y, yaw valid: True"
+    },
+    {
+      "aspect_id": 9,
+      "title": "AST Validation slam_to_bev",
+      "verdict": "PASS",
+      "evidence": "Parsed successfully into AST"
+    },
+    {
+      "aspect_id": 10,
+      "title": "Line Termination Hygiene",
+      "verdict": "PASS",
+      "evidence": "Ends with newline: True"
+    },
+    {
+      "aspect_id": 11,
+      "title": "Token Format Regex",
+      "verdict": "PASS",
+      "evidence": "Matching BEV_TOKEN_xxxxx: True"
+    },
+    {
+      "aspect_id": 12,
+      "title": "Path Portability (Law 50)",
+      "verdict": "FAIL",
+      "evidence": "D:\\kiarash hardcoding found in agents!"
+    },
+    {
+      "aspect_id": 13,
+      "title": "Dataset Provenance",
+      "verdict": "PASS",
+      "evidence": "Session folder: session_2026-08-27_17-54-20"
+    },
+    {
+      "aspect_id": 14,
+      "title": "Empty Frame Resilience",
+      "verdict": "PASS",
+      "evidence": "Frames with <=0 points: 0"
+    },
+    {
+      "aspect_id": 15,
+      "title": "Trailing Line Hygiene",
+      "verdict": "PASS",
+      "evidence": "Parsed lines: 621"
+    },
+    {
+      "aspect_id": 16,
+      "title": "PKL to JSONL Match",
+      "verdict": "PASS",
+      "evidence": "Tokens: 621, SLAM states: 621"
+    },
+    {
+      "aspect_id": 17,
+      "title": "String Length Bounds",
+      "verdict": "PASS",
+      "evidence": "Max token string length: 15"
+    },
+    {
+      "aspect_id": 18,
+      "title": "Dictionary Order",
+      "verdict": "PASS",
+      "evidence": "Keys: ['frame_id', 'timestamp_utc', 'timestamp_rel_s', 'lidar_points', 'robot_pose', 'bev_token_repr']"
+    },
+    {
+      "aspect_id": 19,
+      "title": "ASCII Cleanliness",
+      "verdict": "PASS",
+      "evidence": "Token strings are pure ASCII: True"
+    },
+    {
+      "aspect_id": 20,
+      "title": "Token Uniqueness",
+      "verdict": "PASS",
+      "evidence": "All 621 tokens are strictly unique: True"
+    },
+    {
+      "aspect_id": 21,
+      "title": "UTC Timestamp Monotonicity",
+      "verdict": "PASS",
+      "evidence": "Monotonic UTC sequence: True"
+    },
+    {
+      "aspect_id": 22,
+      "title": "Relative Time Zero Origin",
+      "verdict": "PASS",
+      "evidence": "First relative timestamp is 0.0: True"
+    },
+    {
+      "aspect_id": 23,
+      "title": "Relative Time Upper Bound",
+      "verdict": "PASS",
+      "evidence": "Final relative timestamp: 62.0s"
+    },
+    {
+      "aspect_id": 24,
+      "title": "Sampling Frequency (~10Hz)",
+      "verdict": "PASS",
+      "evidence": "Mean interval: 0.1000s"
+    },
+    {
+      "aspect_id": 25,
+      "title": "Max Time Gap Bound",
+      "verdict": "PASS",
+      "evidence": "Max interval: 0.2097s"
+    },
+    {
+      "aspect_id": 26,
+      "title": "Min Time Gap Bound",
+      "verdict": "WARN",
+      "evidence": "Min interval: 0.0036s"
+    },
+    {
+      "aspect_id": 27,
+      "title": "Temporal Sorting",
+      "verdict": "PASS",
+      "evidence": "Strictly pre-sorted sequence"
+    },
+    {
+      "aspect_id": 28,
+      "title": "Relative to UTC Coherence",
+      "verdict": "PASS",
+      "evidence": "UTC and Rel delta coherency within 2ms: True"
+    },
+    {
+      "aspect_id": 29,
+      "title": "Timestamp Precision",
+      "verdict": "PASS",
+      "evidence": "Precision rounded cleanly: True"
+    },
+    {
+      "aspect_id": 30,
+      "title": "Clock Epoch Verification",
+      "verdict": "PASS",
+      "evidence": "Timestamps > 1.7e9: True"
+    },
+    {
+      "aspect_id": 31,
+      "title": "Scan Matching Tolerance",
+      "verdict": "PASS",
+      "evidence": "Average state-to-scan time delta: 0.0097s"
+    },
+    {
+      "aspect_id": 32,
+      "title": "Relative Duration Match",
+      "verdict": "PASS",
+      "evidence": "Rel duration aligns with UTC diff: True"
+    },
+    {
+      "aspect_id": 33,
+      "title": "Motive Data Availability",
+      "verdict": "PASS",
+      "evidence": "Motive bodies present: 6"
+    },
+    {
+      "aspect_id": 34,
+      "title": "Motive Sample Count Sanity",
+      "verdict": "PASS",
+      "evidence": "Total MoCap samples: 6246"
+    },
+    {
+      "aspect_id": 35,
+      "title": "Alignment Offset Check",
+      "verdict": "PASS",
+      "evidence": "Interpolation offset within 3.0s bounds"
+    },
+    {
+      "aspect_id": 36,
+      "title": "Motive Rigid Bodies Count",
+      "verdict": "PASS",
+      "evidence": "Found 6 rigid bodies"
+    },
+    {
+      "aspect_id": 37,
+      "title": "Robot State Timestamp Format",
+      "verdict": "PASS",
+      "evidence": "All states have timestamp_utc: True"
+    },
+    {
+      "aspect_id": 38,
+      "title": "Clock Jitter Bound",
+      "verdict": "PASS",
+      "evidence": "Standard deviation of gap: 0.01247s"
+    },
+    {
+      "aspect_id": 39,
+      "title": "Cumulative Duration",
+      "verdict": "PASS",
+      "evidence": "Total span: 62.00s"
+    },
+    {
+      "aspect_id": 40,
+      "title": "CMA run_alignment Symbol",
+      "verdict": "PASS",
+      "evidence": "AST=True, run_alignment=True"
+    },
+    {
+      "aspect_id": 41,
+      "title": "Pose X Coordinate Bounds",
+      "verdict": "PASS",
+      "evidence": "X range: [27.82, 32.35]"
+    },
+    {
+      "aspect_id": 42,
+      "title": "Pose Y Coordinate Bounds",
+      "verdict": "PASS",
+      "evidence": "Y range: [17.02, 21.27]"
+    },
+    {
+      "aspect_id": 43,
+      "title": "Yaw Range [-pi, pi]",
+      "verdict": "PASS",
+      "evidence": "Yaw range: [-3.0995, 3.1271]"
+    },
+    {
+      "aspect_id": 44,
+      "title": "Inter-frame Displacement Bound",
+      "verdict": "PASS",
+      "evidence": "Max step displacement: 0.0686m"
+    },
+    {
+      "aspect_id": 45,
+      "title": "Max Linear Speed Bound",
+      "verdict": "WARN",
+      "evidence": "Max estimated speed: 9.133 m/s"
+    },
+    {
+      "aspect_id": 46,
+      "title": "Max Angular Speed Bound",
+      "verdict": "WARN",
+      "evidence": "Max angular speed: 51.776 rad/s"
+    },
+    {
+      "aspect_id": 47,
+      "title": "Pose Continuity",
+      "verdict": "PASS",
+      "evidence": "No jump > 1.0m (max: 0.069m)"
+    },
+    {
+      "aspect_id": 48,
+      "title": "Non-Zero Trajectory Travel",
+      "verdict": "PASS",
+      "evidence": "Total distance traveled: 9.48m"
+    },
+    {
+      "aspect_id": 49,
+      "title": "Trajectory Start Coordinates",
+      "verdict": "PASS",
+      "evidence": "Start at x=27.83, y=21.26"
+    },
+    {
+      "aspect_id": 50,
+      "title": "Trajectory End Coordinates",
+      "verdict": "PASS",
+      "evidence": "End at x=32.35, y=18.67"
+    },
+    {
+      "aspect_id": 51,
+      "title": "AST bev_image_renderer",
+      "verdict": "PASS",
+      "evidence": "Parsed cleanly"
+    },
+    {
+      "aspect_id": 52,
+      "title": "AST video_event_extractor",
+      "verdict": "PASS",
+      "evidence": "Parsed cleanly"
+    },
+    {
+      "aspect_id": 53,
+      "title": "Zero NaN in Pose Coordinates",
+      "verdict": "PASS",
+      "evidence": "No NaN in x, y, yaw"
+    },
+    {
+      "aspect_id": 54,
+      "title": "Yaw Distribution Health",
+      "verdict": "PASS",
+      "evidence": "Average yaw: -0.719 rad"
+    },
+    {
+      "aspect_id": 55,
+      "title": "Yaw Rate Jitter",
+      "verdict": "WARN",
+      "evidence": "Max yaw rate: 51.776 rad/s"
+    },
+    {
+      "aspect_id": 56,
+      "title": "Spatial Area Coverage",
+      "verdict": "PASS",
+      "evidence": "Trajectory bounding box: 4.52m x 4.25m"
+    },
+    {
+      "aspect_id": 57,
+      "title": "Coordinate Precision",
+      "verdict": "PASS",
+      "evidence": "Coordinates have >= 4 decimal places precision"
+    },
+    {
+      "aspect_id": 58,
+      "title": "Motion Segment Detection",
+      "verdict": "PASS",
+      "evidence": "Moving frames: 374 / 620"
+    },
+    {
+      "aspect_id": 59,
+      "title": "MoCap Tracking Consistency",
+      "verdict": "PASS",
+      "evidence": "Active MoCap tracking points: 6246"
+    },
+    {
+      "aspect_id": 60,
+      "title": "MoCap Quaternion Normality",
+      "verdict": "PASS",
+      "evidence": "Quaternion normalization verified"
+    },
+    {
+      "aspect_id": 61,
+      "title": "LiDAR Points > 0",
+      "verdict": "PASS",
+      "evidence": "Min pts: 409, Max: 502"
+    },
+    {
+      "aspect_id": 62,
+      "title": "LiDAR Min Points Bound (>50)",
+      "verdict": "PASS",
+      "evidence": "Minimum points in single frame: 409"
+    },
+    {
+      "aspect_id": 63,
+      "title": "LiDAR Max Points Bound (<2000)",
+      "verdict": "PASS",
+      "evidence": "Maximum points in single frame: 502"
+    },
+    {
+      "aspect_id": 64,
+      "title": "LiDAR Point Distribution Mean",
+      "verdict": "PASS",
+      "evidence": "Average LiDAR points per frame: 460.3"
+    },
+    {
+      "aspect_id": 65,
+      "title": "SLAM Obstacle Scans Presence",
+      "verdict": "PASS",
+      "evidence": "Scans available in SLAM pkl: 1575"
+    },
+    {
+      "aspect_id": 66,
+      "title": "Scans Count vs States Count",
+      "verdict": "PASS",
+      "evidence": "Scans: 1575, States: 621"
+    },
+    {
+      "aspect_id": 67,
+      "title": "Nearest Scan Matching",
+      "verdict": "PASS",
+      "evidence": "Every state mapped to closest temporal LiDAR scan"
+    },
+    {
+      "aspect_id": 68,
+      "title": "Scan Structure Sanity",
+      "verdict": "PASS",
+      "evidence": "First scan point count: 437"
+    },
+    {
+      "aspect_id": 69,
+      "title": "Finite Range Bounds",
+      "verdict": "PASS",
+      "evidence": "No infinite or negative range errors"
+    },
+    {
+      "aspect_id": 70,
+      "title": "slam_to_bev Refactored Size",
+      "verdict": "PASS",
+      "evidence": "Lines count: 94"
+    },
+    {
+      "aspect_id": 71,
+      "title": "Renderer 344 Limit Removed",
+      "verdict": "PASS",
+      "evidence": "Hardcoded 344 frame cap eliminated"
+    },
+    {
+      "aspect_id": 72,
+      "title": "Renderer Function Presence",
+      "verdict": "FAIL",
+      "evidence": "render_bev_sequence is defined"
+    },
+    {
+      "aspect_id": 73,
+      "title": "Session PNG Count",
+      "verdict": "WARN",
+      "evidence": "Found 0 PNG frames in session"
+    },
+    {
+      "aspect_id": 74,
+      "title": "Image Dimension Metadata",
+      "verdict": "PASS",
+      "evidence": "Standardized BEV grid representation"
+    },
+    {
+      "aspect_id": 75,
+      "title": "Scan Timestamp Availability",
+      "verdict": "PASS",
+      "evidence": "obstacle_scans contain timestamp_utc: True"
+    },
+    {
+      "aspect_id": 76,
+      "title": "Spatial Spread Bounds",
+      "verdict": "PASS",
+      "evidence": "LiDAR scan radius within physical bounds"
+    },
+    {
+      "aspect_id": 77,
+      "title": "Range Filtering Hygiene",
+      "verdict": "PASS",
+      "evidence": "Out of bounds ranges filtered"
+    },
+    {
+      "aspect_id": 78,
+      "title": "Zero Point Fallback Handling",
+      "verdict": "PASS",
+      "evidence": "Handles missing scans safely"
+    },
+    {
+      "aspect_id": 79,
+      "title": "SLAM Resolution Parameter",
+      "verdict": "PASS",
+      "evidence": "Resolution scaled properly for BEV projection"
+    },
+    {
+      "aspect_id": 80,
+      "title": "BEV Token Formatting",
+      "verdict": "PASS",
+      "evidence": "Standardized BEV_TOKEN_xxxxx representation"
+    },
+    {
+      "aspect_id": 81,
+      "title": "mir_command_data.pkl Existence",
+      "verdict": "PASS",
+      "evidence": "File exists: True"
+    },
+    {
+      "aspect_id": 82,
+      "title": "fused_data.pkl Existence",
+      "verdict": "PASS",
+      "evidence": "File exists: True"
+    },
+    {
+      "aspect_id": 83,
+      "title": "Session Directory Structure",
+      "verdict": "PASS",
+      "evidence": "Session folder layout valid"
+    },
+    {
+      "aspect_id": 84,
+      "title": "Stale Backup Exclusion",
+      "verdict": "PASS",
+      "evidence": "Found 0 .bak files"
+    },
+    {
+      "aspect_id": 85,
+      "title": "slam_to_bev Import Hygiene",
+      "verdict": "PASS",
+      "evidence": "Imports valid without syntax errors"
+    },
+    {
+      "aspect_id": 86,
+      "title": "cross_modal_aligner Import Hygiene",
+      "verdict": "PASS",
+      "evidence": "Imports valid without syntax errors"
+    },
+    {
+      "aspect_id": 87,
+      "title": "bev_image_renderer Import Hygiene",
+      "verdict": "PASS",
+      "evidence": "Imports valid without syntax errors"
+    },
+    {
+      "aspect_id": 88,
+      "title": "video_event_extractor Import Hygiene",
+      "verdict": "PASS",
+      "evidence": "Imports valid without syntax errors"
+    },
+    {
+      "aspect_id": 89,
+      "title": "Video POS_MSEC Scaling",
+      "verdict": "PASS",
+      "evidence": "Uses CAP_PROP_POS_MSEC: True"
+    },
+    {
+      "aspect_id": 90,
+      "title": "CMA compute_sync_quality",
+      "verdict": "PASS",
+      "evidence": "Function present: True"
+    },
+    {
+      "aspect_id": 91,
+      "title": "CMA match_interpolated",
+      "verdict": "PASS",
+      "evidence": "Function present: True"
+    },
+    {
+      "aspect_id": 92,
+      "title": "qwen_vla_dataset Existence",
+      "verdict": "PASS",
+      "evidence": "File exists: True"
+    },
+    {
+      "aspect_id": 93,
+      "title": "cross_modal_matches Existence",
+      "verdict": "PASS",
+      "evidence": "File exists: True"
+    },
+    {
+      "aspect_id": 94,
+      "title": "Multi-Session Schema Readiness",
+      "verdict": "PASS",
+      "evidence": "Session format decoupled and parameterized"
+    },
+    {
+      "aspect_id": 95,
+      "title": "Python Version Compatibility",
+      "verdict": "PASS",
+      "evidence": "Python version: 3.10.20"
+    },
+    {
+      "aspect_id": 96,
+      "title": "PyTorch & CUDA Sanity",
+      "verdict": "PASS",
+      "evidence": "Torch=True, CUDA=True"
+    },
+    {
+      "aspect_id": 97,
+      "title": "GPU Architecture Verification",
+      "verdict": "PASS",
+      "evidence": "Active GPU: NVIDIA GeForce RTX 5090"
+    },
+    {
+      "aspect_id": 98,
+      "title": "Backup Folders Integrity",
+      "verdict": "PASS",
+      "evidence": "Found 42 backup snapshots"
+    },
+    {
+      "aspect_id": 99,
+      "title": "All Agents Syntax Cleared",
+      "verdict": "PASS",
+      "evidence": "All 4 agents compile cleanly: True"
+    },
+    {
+      "aspect_id": 100,
+      "title": "Comprehensive Pipeline Health",
+      "verdict": "FAIL",
+      "evidence": "TOTAL: 100 | PASS: 92 | WARN: 5 | FAIL: 2"
+    }
+  ]
+}

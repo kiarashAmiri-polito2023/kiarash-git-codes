@@ -1,0 +1,883 @@
+{
+  "timestamp": "2026-09-03T19:16:41.133063",
+  "a18_md5": "4414a155a0db4f1c2a1461f6de2728b1",
+  "total_passed": 99,
+  "total_failed": 1,
+  "baseline_passed": 69,
+  "delta": 30,
+  "by_category": {
+    "A": {
+      "pass": 10,
+      "fail": 0
+    },
+    "B": {
+      "pass": 15,
+      "fail": 0
+    },
+    "C": {
+      "pass": 15,
+      "fail": 0
+    },
+    "D": {
+      "pass": 15,
+      "fail": 0
+    },
+    "E": {
+      "pass": 10,
+      "fail": 0
+    },
+    "F": {
+      "pass": 9,
+      "fail": 1
+    },
+    "G": {
+      "pass": 15,
+      "fail": 0
+    },
+    "H": {
+      "pass": 10,
+      "fail": 0
+    }
+  },
+  "critical_bug_bv_fixed": 8,
+  "critical_bug_bv_total": 8,
+  "critical_status": {
+    "D16": true,
+    "D17": true,
+    "D26": true,
+    "D27": true,
+    "D31": true,
+    "D92": true,
+    "D93": true,
+    "D96": true
+  },
+  "fixed_from_baseline": [
+    "D07",
+    "D14",
+    "D16",
+    "D17",
+    "D19",
+    "D26",
+    "D27",
+    "D31",
+    "D43",
+    "D46",
+    "D48",
+    "D51",
+    "D53",
+    "D63",
+    "D64",
+    "D74",
+    "D75",
+    "D76",
+    "D92",
+    "D93",
+    "D96"
+  ],
+  "still_failing_from_baseline": [
+    "D70"
+  ],
+  "new_regressions": [],
+  "all_results": [
+    {
+      "dim": "D01",
+      "cat": "A",
+      "name": "File exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D02",
+      "cat": "A",
+      "name": "File readable",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D03",
+      "cat": "A",
+      "name": "No BOM in file",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D04",
+      "cat": "A",
+      "name": "utf-8 decodable",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D05",
+      "cat": "A",
+      "name": "Has def main()",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D06",
+      "cat": "A",
+      "name": "Has if __name__",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D07",
+      "cat": "A",
+      "name": "All open() have encoding",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D08",
+      "cat": "A",
+      "name": "No tabs mixed",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D09",
+      "cat": "A",
+      "name": "Import json",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D10",
+      "cat": "A",
+      "name": "Import re",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D11",
+      "cat": "B",
+      "name": "Has extract_json function",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D12",
+      "cat": "B",
+      "name": "extract_json handles None",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D13",
+      "cat": "B",
+      "name": "extract_json handles non-str",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D14",
+      "cat": "B",
+      "name": "json.loads has try/except",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D15",
+      "cat": "B",
+      "name": "Uses re.DOTALL flag",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D16",
+      "cat": "B",
+      "name": "Has find('{') defensive",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D17",
+      "cat": "B",
+      "name": "Has rfind('}') defensive",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D18",
+      "cat": "B",
+      "name": "Has fenced code regex",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D19",
+      "cat": "B",
+      "name": "Nested brace depth balancing",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D20",
+      "cat": "B",
+      "name": "Multiple regex fallbacks",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D21",
+      "cat": "B",
+      "name": "Returns None on failure",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D22",
+      "cat": "B",
+      "name": "Handles empty string",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D23",
+      "cat": "B",
+      "name": "Strips whitespace",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D24",
+      "cat": "B",
+      "name": "Verdict regex fallback",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D25",
+      "cat": "B",
+      "name": "Group(1) extraction",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D26",
+      "cat": "C",
+      "name": "Detects 'Thinking Process'",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D27",
+      "cat": "C",
+      "name": "Strips CoT before parse",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D28",
+      "cat": "C",
+      "name": "Removes <think> tags",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D29",
+      "cat": "C",
+      "name": "Uses re.sub for cleaning",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D30",
+      "cat": "C",
+      "name": "IGNORECASE flag",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D31",
+      "cat": "C",
+      "name": "System prompt forbids thinking",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D32",
+      "cat": "C",
+      "name": "System prompt says JSON only",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D33",
+      "cat": "C",
+      "name": "Anti-CoT in user prompt (Gemini)",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D34",
+      "cat": "C",
+      "name": "channel/message pattern strip",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D35",
+      "cat": "C",
+      "name": "Cleaned var used",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D36",
+      "cat": "C",
+      "name": "Multiple CoT patterns handled",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D37",
+      "cat": "C",
+      "name": "reasoning keyword mentioned",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D38",
+      "cat": "C",
+      "name": "chain-of-thought aware",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D39",
+      "cat": "C",
+      "name": "Explanation forbidden in prompt",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D40",
+      "cat": "C",
+      "name": "Single JSON object mandate",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D41",
+      "cat": "D",
+      "name": "OpenRouter URL present",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D42",
+      "cat": "D",
+      "name": "Gemini URL present",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D43",
+      "cat": "D",
+      "name": "LMStudio URL present",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D44",
+      "cat": "D",
+      "name": "temperature setting",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D45",
+      "cat": "D",
+      "name": "max_tokens setting",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D46",
+      "cat": "D",
+      "name": "Flash model REMOVED from slots",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D47",
+      "cat": "D",
+      "name": "Robotics-ER present",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D48",
+      "cat": "D",
+      "name": "LMStudio model name qwen3.5",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D49",
+      "cat": "D",
+      "name": "Nemotron present",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D50",
+      "cat": "D",
+      "name": "SSL context used",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D51",
+      "cat": "D",
+      "name": "LMStudio in slots tuple",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D52",
+      "cat": "D",
+      "name": "3 model slots defined",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D53",
+      "cat": "D",
+      "name": "lmstudio dispatch branch",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D54",
+      "cat": "D",
+      "name": "Retry mechanism",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D55",
+      "cat": "D",
+      "name": "Timeout on urlopen",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D56",
+      "cat": "E",
+      "name": "Has ref_prompt or prompt var",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D57",
+      "cat": "E",
+      "name": "Instructs valid JSON",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D58",
+      "cat": "E",
+      "name": "Role-based messages",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D59",
+      "cat": "E",
+      "name": "System role used",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D60",
+      "cat": "E",
+      "name": "User role used",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D61",
+      "cat": "E",
+      "name": "Referee persona",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D62",
+      "cat": "E",
+      "name": "Robotics context",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D63",
+      "cat": "E",
+      "name": "Anti-CoT instruction present",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D64",
+      "cat": "E",
+      "name": "JSON-only mandate explicit",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D65",
+      "cat": "E",
+      "name": "No thinking tags instruction",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D66",
+      "cat": "F",
+      "name": "urlopen timeout <=90s",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D67",
+      "cat": "F",
+      "name": "Response streaming ready",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D68",
+      "cat": "F",
+      "name": "No infinite loops",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D69",
+      "cat": "F",
+      "name": "Retry with backoff",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D70",
+      "cat": "F",
+      "name": "time.sleep with short delay",
+      "pass": false,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D71",
+      "cat": "F",
+      "name": "MAX_CONTENT_CHARS defined",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D72",
+      "cat": "F",
+      "name": "Truncates large input",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D73",
+      "cat": "F",
+      "name": "Counter used for verdict",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D74",
+      "cat": "F",
+      "name": "async NOT required for A18",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D75",
+      "cat": "F",
+      "name": "batch NOT required",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D76",
+      "cat": "G",
+      "name": "File imports cleanly",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D77",
+      "cat": "G",
+      "name": "Total lines >= 250",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D78",
+      "cat": "G",
+      "name": "Function count >= 5",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D79",
+      "cat": "G",
+      "name": "No syntax errors (compile check)",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D80",
+      "cat": "G",
+      "name": "extract_json called from analyze_agent",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D81",
+      "cat": "G",
+      "name": "analyze_agent exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D82",
+      "cat": "G",
+      "name": "query_openrouter exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D83",
+      "cat": "G",
+      "name": "query_gemini exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D84",
+      "cat": "G",
+      "name": "query_lmstudio exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D85",
+      "cat": "G",
+      "name": "main() exists",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D86",
+      "cat": "G",
+      "name": "Reads .secrets",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D87",
+      "cat": "G",
+      "name": "Writes verdict JSON",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D88",
+      "cat": "G",
+      "name": "Writes markdown report",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D89",
+      "cat": "G",
+      "name": "CANDIDATES list defined",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D90",
+      "cat": "G",
+      "name": "No hardcoded API keys",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D91",
+      "cat": "H",
+      "name": "extract_json rewritten",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D92",
+      "cat": "H",
+      "name": "Defensive parser (find/rfind)",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D93",
+      "cat": "H",
+      "name": "System message: JSON only + no thinking",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D94",
+      "cat": "H",
+      "name": "LMStudio slot in model list",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D95",
+      "cat": "H",
+      "name": "Fallback chain updated",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D96",
+      "cat": "H",
+      "name": "LMStudio-specific handling exists",
+      "pass": true,
+      "was_baseline_fail": true,
+      "source": ""
+    },
+    {
+      "dim": "D97",
+      "cat": "H",
+      "name": "Flash removed from active slots",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D98",
+      "cat": "H",
+      "name": "Panel name updated",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D99",
+      "cat": "H",
+      "name": "3 active auditor slots",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    },
+    {
+      "dim": "D100",
+      "cat": "H",
+      "name": "Backup exists in backups/",
+      "pass": true,
+      "was_baseline_fail": false,
+      "source": ""
+    }
+  ]
+}

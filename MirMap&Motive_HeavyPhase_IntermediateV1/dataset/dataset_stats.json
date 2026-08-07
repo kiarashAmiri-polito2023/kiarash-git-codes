@@ -1,0 +1,39 @@
+{
+  "dataset_name": "MiR100_VLA_MultiModal_PoliTo",
+  "generated_by": "vla_dataset_builder.py v2.0",
+  "operator": "Kiarash Amiri",
+  "supervisor": "Prof. Dario Antonelli",
+  "total_samples": 344,
+  "train_samples": 275,
+  "val_samples": 69,
+  "split_ratio": 0.8,
+  "seed": 42,
+  "sessions_included": [
+    "session_2026-08-27_17-54-20"
+  ],
+  "samples_per_session": {
+    "session_2026-08-27_17-54-20": 344
+  },
+  "behavior_distribution_total": {
+    "IDLE_STATIONARY": 118,
+    "LOW_SPEED_NAVIGATION": 60,
+    "ROTATIONAL_MANEUVER": 35,
+    "FORWARD_CRUISING": 131
+  },
+  "behavior_distribution_train": {
+    "IDLE_STATIONARY": 92,
+    "LOW_SPEED_NAVIGATION": 49,
+    "ROTATIONAL_MANEUVER": 32,
+    "FORWARD_CRUISING": 102
+  },
+  "behavior_distribution_val": {
+    "FORWARD_CRUISING": 29,
+    "LOW_SPEED_NAVIGATION": 11,
+    "IDLE_STATIONARY": 26,
+    "ROTATIONAL_MANEUVER": 3
+  },
+  "files": {
+    "train": "train.jsonl",
+    "val": "val.jsonl"
+  }
+}

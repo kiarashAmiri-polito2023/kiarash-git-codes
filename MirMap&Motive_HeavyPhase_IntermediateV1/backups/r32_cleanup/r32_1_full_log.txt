@@ -1,0 +1,70 @@
+﻿[13:27:53] ================================================================
+[13:27:53] ROUND 32.1 - CLEANUP & ORGANIZE
+[13:27:53] Timestamp: 20260902_132752
+[13:27:53] ================================================================
+[13:27:53] 
+--- PHASE 1: DELETE duplicate reports ---
+[13:27:53] [SKIP] master_report.md - not found
+[13:27:54] [SKIP] master_report.json - not found
+[13:27:54] 
+--- PHASE 2: ARCHIVE diag scripts -> archive/legacy_diag/ ---
+[13:27:54] [SKIP] diag_round12.py - not found
+[13:27:54] [SKIP] diag_round13.py - not found
+[13:27:54] [SKIP] diag_round13b.py - not found
+[13:27:54] [SKIP] diag_round14.py - not found
+[13:27:54] [SKIP] diag_round15.py - not found
+[13:27:54] [SKIP] diag_round16.py - not found
+[13:27:54] [SKIP] apply_hotfix.py - not found
+[13:27:54] [SKIP] env_probe.py - not found
+[13:27:55] 
+--- PHASE 3: ARCHIVE test scripts -> archive/legacy_tests/ ---
+[13:27:55] [SKIP] test_alignment_v2.py - not found
+[13:27:55] [SKIP] test_bug_fixes.py - not found
+[13:27:55] [SKIP] test_forward_pass.py - not found
+[13:27:55] [SKIP] test_label_masking.py - not found
+[13:27:55] [SKIP] test_style_v5.py - not found
+[13:27:55] [SKIP] test_vla_readiness.py - not found
+[13:27:55] 
+--- PHASE 4: ARCHIVE training -> archive/training/ ---
+[13:27:55] [SKIP] train_and_eval_vla.py - not found
+[13:27:55] [SKIP] train_v21_masked.py - not found
+[13:27:55] [SKIP] train_v2_masked.py - not found
+[13:27:55] [SKIP] train_v3_fixed.py - not found
+[13:27:55] [SKIP] train_v21_error.log - not found
+[13:27:55] [SKIP] train_v2_error.log - not found
+[13:27:56] 
+--- PHASE 5: ARCHIVE eval -> archive/eval/ ---
+[13:27:56] [SKIP] eval_smoke_test.py - not found
+[13:27:56] [SKIP] evaluate_qwen_vla.py - not found
+[13:27:56] [SKIP] probe_eval_schema.py - not found
+[13:27:56] [SKIP] probe_pkl_structure.py - not found
+[13:27:56] 
+--- PHASE 6: ARCHIVE report gens -> archive/reports/ ---
+[13:27:56] [SKIP] generate_visual_dashboard.py - not found
+[13:27:56] [SKIP] generate_visual_dashboard_v4.py - not found
+[13:27:56] [SKIP] export_visuals_v2.py - not found
+[13:27:56] [SKIP] generate_publication_report_v5.py.bak - not found
+[13:27:56] [SKIP] execute_surgery.py - not found
+[13:27:57] 
+--- PHASE 7: MOVE special files ---
+[13:27:57] [SKIP] inspect_and_verify_dataset.py - not found
+[13:27:57] [SKIP] yolov8s.pt - not found
+[13:27:57] 
+--- PHASE 8: ARCHIVE legacy reports -> docs/history/ ---
+[13:27:58] [SKIP] FINAL_REFEREE_VERDICT.md - not found
+[13:27:58] [SKIP] FULL_DIAGNOSTIC_AUDIT.md - not found
+[13:27:58] 
+--- PHASE 9: VERIFICATION ---
+[13:27:58] Verified: 11 / 11 files removed from root
+[13:27:58] [OK] archive\legacy_diag/ : 8 file(s)
+[13:27:58] [OK] archive\legacy_tests/ : 6 file(s)
+[13:27:58] [OK] archive\training/ : 6 file(s)
+[13:27:58] [OK] archive\eval/ : 4 file(s)
+[13:27:58] [OK] archive\reports/ : 5 file(s)
+[13:27:58] [OK] docs\history/ : 2 file(s)
+[13:27:58] [OK] tools/ : 1 file(s)
+[13:27:58] [OK] models/ : 1 file(s)
+[13:27:59] 
+--- PHASE 10: UPDATE LOGS ---
+[13:27:59] [OK] operation_log.md written
+[13:27:59] [OK] _MASTER_LOG.md updated

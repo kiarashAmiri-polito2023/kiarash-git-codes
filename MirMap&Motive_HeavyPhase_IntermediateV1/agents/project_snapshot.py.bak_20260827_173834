@@ -1,0 +1,528 @@
+﻿# -*- coding: utf-8 -*-
+"""
+Project Snapshot v5.1 - Master Intelligence Agent
+================================================
+Unified agent replacing structural snapshot, scoring, and co-pilot.
+Uses smart video caching to skip redundant video checks.
+"""
+
+import os
+import sys
+import json
+import hashlib
+import subprocess
+import time
+from datetime import datetime
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+SESSIONS_DIR = PROJECT_ROOT / "sessions"
+AGENTS_DIR = PROJECT_ROOT / "agents"
+MEMORY_DIR = PROJECT_ROOT / "memory"
+REPORTS_DIR = PROJECT_ROOT / "reports"
+
+BIG_TECH = {
+    "Tesla Autopilot": {
+        "cameras": 8, "resolution": "1280x960", "fps": 36,
+        "modalities": 8, "sessions": "10M+",
+        "safety": "auto", "cross_modal": "100%",
+        "action": "100%", "annotation": "auto+manual"
+    },
+    "Google RT-X": {
+        "cameras": 1, "resolution": "varies", "fps": "5-30",
+        "modalities": 22, "sessions": "1M+",
+        "safety": "auto", "cross_modal": "100%",
+        "action": "100%", "annotation": "auto"
+    },
+    "Berkeley DROID": {
+        "cameras": 3, "resolution": "1080p", "fps": 15,
+        "modalities": 5, "sessions": "350K",
+        "safety": "manual", "cross_modal": "100%",
+        "action": "100%", "annotation": "auto+manual"
+    }
+}
+
+
+def find_latest_session():
+    dirs = [d for d in SESSIONS_DIR.iterdir() if d.is_dir() and d.name.startswith("session_")]
+    if not dirs:
+        return None
+    return max(dirs, key=lambda x: x.stat().st_mtime)
+
+
+def file_size_mb(p):
+    try:
+        return os.path.getsize(p) / (1024 * 1024)
+    except Exception:
+        return 0.0
+
+
+def md5_of_file(p):
+    try:
+        h = hashlib.md5()
+        with open(p, "rb") as f:
+            for chunk in iter(lambda: f.read(8192), b""):
+                h.update(chunk)
+        return h.hexdigest()[:12]
+    except Exception:
+        return "N/A"
+
+
+def count_agents():
+    agents = []
+    for f in AGENTS_DIR.glob("*.py"):
+        if f.name.startswith("_") or f.name == "__init__.py":
+            continue
+        agents.append({"name": f.name, "lines": sum(1 for _ in open(f, "r", encoding="utf-8", errors="ignore")), "md5": md5_of_file(f)})
+    return sorted(agents, key=lambda x: x["lines"], reverse=True)
+
+
+def read_memory_status():
+    mem = {}
+    for f in MEMORY_DIR.glob("*"):
+        if f.is_file():
+            mem[f.name] = {"size_mb": round(file_size_mb(f), 3), "modified": datetime.fromtimestamp(f.stat().st_mtime).strftime("%Y-%m-%d %H:%M")}
+    return mem
+
+
+def check_modalities(session_dir):
+    mods = {"motive": False, "slam": False, "robot_cmd": False, "robot_odom": False, "video": False, "cross_modal": False, "entity": False, "safety": False}
+    for f in session_dir.rglob("*"):
+        n = f.name.lower()
+        if f.suffix == ".pkl":
+            if "motive" in n: mods["motive"] = True
+            if "slam" in n: mods["slam"] = True
+            if "command" in n or "cmd" in n: mods["robot_cmd"] = True
+        if f.suffix == ".csv":
+            if "motive" in n or "natnet" in n: mods["motive"] = True
+            if "slam" in n or "lidar" in n: mods["slam"] = True
+            if "cmd" in n or "command" in n: mods["robot_cmd"] = True
+            if "odom" in n: mods["robot_odom"] = True
+        if f.suffix in [".json", ".jsonl"]:
+            if "cross_modal" in n or "alignment" in n: mods["cross_modal"] = True
+            if "entity" in n or "registry" in n: mods["entity"] = True
+            if "safety" in n: mods["safety"] = True
+        if f.suffix in [".mp4", ".avi", ".mkv"]:
+            mods["video"] = True
+    return mods
+
+
+def analyze_videos(session_dir):
+    videos = []
+    for ext in [".mp4", ".avi", ".mkv"]:
+        videos.extend(session_dir.rglob("*" + ext))
+    results = []
+    for v in videos:
+        info = {"name": v.name, "size_mb": round(file_size_mb(v), 1)}
+        try:
+            import cv2
+            cap = cv2.VideoCapture(str(v))
+            if cap.isOpened():
+                info["resolution"] = "%dx%d" % (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+                info["fps"] = round(cap.get(cv2.CAP_PROP_FPS), 1)
+                info["frames"] = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                info["duration_s"] = round(info["frames"] / max(info["fps"], 1), 1)
+                brightness = []
+                for frac in [0.25, 0.5, 0.75]:
+                    cap.set(cv2.CAP_PROP_POS_FRAMES, int(frac * info["frames"]))
+                    ret, frame = cap.read()
+                    if ret:
+                        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                        brightness.append(float(gray.mean()))
+                if brightness:
+                    info["avg_brightness"] = round(sum(brightness) / len(brightness), 1)
+                cap.release()
+        except ImportError:
+            info["note"] = "OpenCV unavailable"
+        results.append(info)
+    return results
+
+
+def run_sub_agent(agent_name, session_name):
+    agent_path = AGENTS_DIR / agent_name
+    if not agent_path.exists():
+        return {"agent": agent_name, "status": "NOT_FOUND", "output": ""}
+    try:
+        cmd = [sys.executable, str(agent_path)]
+        if session_name:
+            if agent_name == "run_session_analysis.py":
+                cmd.append(os.path.join("sessions", session_name))
+            else:
+                cmd.append(session_name)
+        proc = subprocess.run(cmd, input="all\n", capture_output=True, text=True, timeout=180, cwd=str(PROJECT_ROOT), encoding="utf-8", errors="replace")
+        return {"agent": agent_name, "status": "OK" if proc.returncode == 0 else "ERROR", "output": proc.stdout[-2000:] if proc.stdout else "", "errors": proc.stderr[-500:] if proc.stderr else ""}
+    except subprocess.TimeoutExpired:
+        return {"agent": agent_name, "status": "TIMEOUT", "output": ""}
+    except Exception as e:
+        return {"agent": agent_name, "status": "EXCEPTION", "output": str(e)}
+
+
+def score_session(mods, videos, session_dir):
+    score = 0
+    issues = []
+    strengths = []
+    if mods["motive"]:
+        score += 20
+        strengths.append("Motive data present")
+    else:
+        issues.append("CRITICAL: No Motive data")
+    if mods["robot_cmd"]:
+        score += 20
+        strengths.append("Robot commands (Action col) present")
+    else:
+        issues.append("CRITICAL: No robot commands")
+    if mods["video"]:
+        score += 15
+        strengths.append("Video recorded")
+        dark = [v for v in videos if v.get("avg_brightness", 100) < 40]
+        if dark:
+            issues.append("WARNING: %d dark video(s)" % len(dark))
+        else:
+            score += 5
+            strengths.append("Video brightness OK")
+    else:
+        issues.append("CRITICAL: No video")
+    if mods["slam"]:
+        score += 10
+        strengths.append("SLAM data present")
+    else:
+        issues.append("MINOR: No SLAM data")
+    if mods["safety"]:
+        score += 10
+        strengths.append("Safety events logged")
+    else:
+        issues.append("WARNING: No safety events")
+    if mods["cross_modal"]:
+        score += 10
+        strengths.append("Cross-modal aligned")
+    else:
+        issues.append("MINOR: No cross-modal alignment")
+    if mods["entity"]:
+        score += 5
+        strengths.append("Entity registry active")
+    if mods["robot_odom"]:
+        score += 5
+        strengths.append("Odometry logged")
+
+    has_critical = any("CRITICAL" in i for i in issues)
+    paper_ready = score >= 65 and not has_critical
+    grade = "A" if score >= 80 else "B" if score >= 65 else "C" if score >= 50 else "D" if score >= 30 else "F"
+    return {"score": score, "grade": grade, "paper_ready": paper_ready, "issues": issues, "strengths": strengths}
+
+
+def compare_with_big_tech(mods, videos):
+    my_cameras = len(videos) if videos else 0
+    my_res = videos[0].get("resolution", "N/A") if videos else "N/A"
+    my_fps = videos[0].get("fps", 0) if videos else 0
+    my_mods = sum(1 for v in mods.values() if v)
+    my_sessions = len([d for d in SESSIONS_DIR.iterdir() if d.is_dir() and d.name.startswith("session_")])
+
+    rows = []
+    rows.append("| Dimension | You | Tesla | Google RT-X | Berkeley DROID |")
+    rows.append("|---|---|---|---|---|")
+    rows.append("| Cameras | %d | 8 | 1 | 3 |" % my_cameras)
+    rows.append("| Resolution | %s | 1280x960 | varies | 1080p |" % my_res)
+    rows.append("| FPS | %s | 36 | 5-30 | 15 |" % my_fps)
+    rows.append("| Modalities | %d/8 | 8 | 22 | 5 |" % my_mods)
+    rows.append("| Sessions | %d | 10M+ | 1M+ | 350K |" % my_sessions)
+    rows.append("| Cross-Modal | %s | 100%% | 100%% | 100%% |" % ("YES" if mods["cross_modal"] else "NO"))
+    rows.append("| Action Col | %s | 100%% | 100%% | 100%% |" % ("YES" if mods["robot_cmd"] else "NO"))
+    rows.append("| Safety | %s | auto | auto | manual |" % ("YES" if mods["safety"] else "NO"))
+    return "\n".join(rows)
+
+
+def self_analysis(agents, mem_status, assessment):
+    lines = []
+    lines.append("### Agent Count: %d" % len(agents))
+    active = len([a for a in agents if a["lines"] > 50])
+    lines.append("  Active (>50 lines): %d" % active)
+    lines.append("")
+    lines.append("### Memory Health:")
+    for name, info in mem_status.items():
+        lines.append("  %s: %.3f MB (updated %s)" % (name, info["size_mb"], info["modified"]))
+    lines.append("")
+    lines.append("### Gap Analysis:")
+    if assessment["score"] < 65:
+        lines.append("  - Score %d/100 is below Paper-Ready threshold (65)" % assessment["score"])
+    if not assessment["paper_ready"]:
+        lines.append("  - NOT Paper-Ready yet")
+    for issue in assessment["issues"]:
+        if "CRITICAL" in issue:
+            lines.append("  - %s" % issue)
+    return "\n".join(lines)
+
+
+def recommend_next_steps(mods, assessment, session_name):
+    steps = []
+    priority = 1
+    if not mods["robot_cmd"]:
+        steps.append("%d. [CRITICAL] Verify MirCommandLogger is active in launch_session.py" % priority)
+        steps.append("   Run: python agents/launch_session.py and check for [MirCmdLogger] output")
+        priority += 1
+    if not mods["video"]:
+        steps.append("%d. [CRITICAL] Export video from Motive to session folder" % priority)
+        priority += 1
+    if not mods["cross_modal"]:
+        steps.append("%d. [HIGH] Run cross-modal alignment" % priority)
+        steps.append("   Run: python agents/cross_modal_aligner.py %s" % session_name)
+        priority += 1
+    if not mods["safety"]:
+        steps.append("%d. [HIGH] Record safety interaction scenarios" % priority)
+        steps.append("   Walk in front of robot, place obstacles, do close passes")
+        priority += 1
+    if not mods["slam"]:
+        steps.append("%d. [MEDIUM] Enable SLAM logging" % priority)
+        priority += 1
+    if assessment["score"] >= 65:
+        steps.append("%d. [MEDIUM] Start VLA dataset formatting" % priority)
+        steps.append("   Build vla_dataset_builder.py for QwenVLA input")
+        priority += 1
+    steps.append("%d. [LOW] Archive obsolete agents" % priority)
+    steps.append("   entity_surgery.py, merge_entities.py, fix_all.py, fix_syntax_surgical.py")
+    return "\n".join(steps)
+
+
+def generate_roadmap(assessment):
+    lines = []
+    lines.append("### Roadmap to First Paper-Ready Session")
+    lines.append("")
+    if assessment["score"] < 30:
+        lines.append("Phase 1: Foundation (Current)")
+        lines.append("  [ ] Fix all CRITICAL modality gaps")
+        lines.append("  [ ] Record 3+ sessions with full VLA columns")
+        lines.append("  [ ] Target score: 50+")
+    elif assessment["score"] < 65:
+        lines.append("Phase 2: Quality (Current)")
+        lines.append("  [ ] Fix remaining modality gaps")
+        lines.append("  [ ] Run cross-modal alignment on all sessions")
+        lines.append("  [ ] Add safety event scenarios")
+        lines.append("  [ ] Target score: 65+")
+    elif assessment["score"] < 80:
+        lines.append("Phase 3: Paper Preparation (Current)")
+        lines.append("  [ ] Annotate videos (CVAT)")
+        lines.append("  [ ] Build VLA dataset")
+        lines.append("  [ ] Run QwenVLA fine-tuning")
+        lines.append("  [ ] Target score: 80+")
+    else:
+        lines.append("Phase 4: Publication (Current)")
+        lines.append("  [x] Paper-Ready achieved!")
+        lines.append("  [ ] Write paper draft")
+        lines.append("  [ ] Submit to conference")
+    return "\n".join(lines)
+
+
+def main():
+    print("=" * 65)
+    print("  PROJECT SNAPSHOT v5.1 - Master Intelligence Agent")
+    print("  Smart Video Caching Enabled")
+    print("=" * 65)
+    print("")
+
+    REPORTS_DIR.mkdir(exist_ok=True)
+
+    # Determine session
+    if len(sys.argv) > 1:
+        session_name = sys.argv[1]
+        session_dir = SESSIONS_DIR / session_name
+    else:
+        session_dir = find_latest_session()
+        session_name = session_dir.name if session_dir else "NONE"
+
+    if not session_dir or not session_dir.exists():
+        print("[ERROR] No session found.")
+        sys.exit(1)
+
+    print("  Session: %s" % session_name)
+    print("  Time: %s" % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    print("")
+
+    # 1. Structural Analysis
+    agents = count_agents()
+    mem_status = read_memory_status()
+    all_sessions = [d.name for d in SESSIONS_DIR.iterdir() if d.is_dir() and d.name.startswith("session_")]
+
+    # 2. Session Data Analysis
+    mods = check_modalities(session_dir)
+    videos = analyze_videos(session_dir)
+    all_files = [f for f in session_dir.rglob("*") if f.is_file()]
+    total_size = sum(file_size_mb(f) for f in all_files)
+
+    # 3. Run Sub-Agents with Smart Video Caching
+    print("[3/8] Running sub-agents...")
+    sub_results = {}
+    cached_report_path = session_dir / "video_quality_report.json"
+    agents_to_run = ["run_session_analysis.py"]
+    
+    if mods["video"]:
+        if cached_report_path.exists():
+            print("  [CACHE] Found verified video analysis history. Skipping heavy processing.")
+            try:
+                with open(cached_report_path, "r", encoding="utf-8") as rf:
+                    cache_data = json.load(rf)
+                sub_results["video_quality_agent.py"] = {
+                    "agent": "video_quality_agent.py",
+                    "status": "VERIFIED (From Cache)",
+                    "output": f"Loaded cached verified metrics: Score {cache_data.get('vla_score', 'N/A')}/100",
+                    "errors": ""
+                }
+            except Exception:
+                agents_to_run.append("video_quality_agent.py")
+        else:
+            agents_to_run.append("video_quality_agent.py")
+    else:
+        sub_results["video_quality_agent.py"] = {
+            "agent": "video_quality_agent.py",
+            "status": "SKIPPED (No videos)",
+            "output": "No video files found in session. Analysis skipped safely.",
+            "errors": ""
+        }
+
+    for agent_name in agents_to_run:
+        print("  Calling %s..." % agent_name)
+        res = run_sub_agent(agent_name, session_name)
+        sub_results[agent_name] = res
+        print("  %s: %s" % (agent_name, res["status"]))
+
+    # 4. Scoring
+    print("[4/8] Scoring Paper-Readiness...")
+    assessment = score_session(mods, videos, session_dir)
+    print("  Score: %d/100 | Grade: %s | Paper-Ready: %s" % (assessment["score"], assessment["grade"], "YES" if assessment["paper_ready"] else "NO"))
+
+    # 5. Big Tech Comparison
+    print("[5/8] Comparing with Big Tech...")
+    comparison = compare_with_big_tech(mods, videos)
+
+    # 6. Self-Analysis
+    print("[6/8] Self-analysis...")
+    self_anal = self_analysis(agents, mem_status, assessment)
+
+    # 7. Recommendations
+    print("[7/8] Generating recommendations...")
+    next_steps = recommend_next_steps(mods, assessment, session_name)
+
+    # 8. Roadmap
+    print("[8/8] Building roadmap...")
+    roadmap = generate_roadmap(assessment)
+
+    # === GENERATE REPORT ===
+    report_lines = []
+    report_lines.append("# MASTER INTELLIGENCE REPORT")
+    report_lines.append("")
+    report_lines.append("**Generated:** %s" % datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    report_lines.append("**Session:** %s" % session_name)
+    report_lines.append("**Agent:** project_snapshot.py v5.1")
+    report_lines.append("")
+    report_lines.append("---")
+    report_lines.append("")
+    report_lines.append("## 1. PROJECT STRUCTURE")
+    report_lines.append("")
+    report_lines.append("- Total agents: %d" % len(agents))
+    report_lines.append("- Total sessions: %d" % len(all_sessions))
+    report_lines.append("- Session files: %d (%.1f MB)" % (len(all_files), total_size))
+    report_lines.append("")
+    report_lines.append("### Active Agents (top 10 by size):")
+    report_lines.append("")
+    report_lines.append("| Agent | Lines | MD5 |")
+    report_lines.append("|---|---|---|")
+    for a in agents[:10]:
+        report_lines.append("| %s | %d | %s |" % (a["name"], a["lines"], a["md5"]))
+    report_lines.append("")
+
+    report_lines.append("## 2. MODALITY COMPLETENESS")
+    report_lines.append("")
+    for mod, present in mods.items():
+        mark = "[+]" if present else "[X]"
+        report_lines.append("- %s %s" % (mark, mod))
+    report_lines.append("")
+
+    report_lines.append("## 3. VIDEO ANALYSIS")
+    report_lines.append("")
+    if videos:
+        for v in videos:
+            report_lines.append("- %s: %s MB, %s, %s fps, %ss" % (v["name"], v["size_mb"], v.get("resolution", "?"), v.get("fps", "?"), v.get("duration_s", "?")))
+            if "avg_brightness" in v:
+                report_lines.append("  Brightness: %.1f %s" % (v["avg_brightness"], "(DARK!)" if v["avg_brightness"] < 40 else "(OK)"))
+    else:
+        report_lines.append("No videos found.")
+    report_lines.append("")
+
+    report_lines.append("## 4. PAPER-READINESS ASSESSMENT")
+    report_lines.append("")
+    report_lines.append("**Score: %d / 100**" % assessment["score"])
+    report_lines.append("**Grade: %s**" % assessment["grade"])
+    report_lines.append("**Paper-Ready: %s**" % ("YES" if assessment["paper_ready"] else "NO"))
+    report_lines.append("")
+    report_lines.append("### Strengths:")
+    for s in assessment["strengths"]:
+        report_lines.append("- [+] %s" % s)
+    report_lines.append("")
+    report_lines.append("### Issues:")
+    for i in assessment["issues"]:
+        report_lines.append("- [-] %s" % i)
+    report_lines.append("")
+
+    report_lines.append("## 5. BIG TECH COMPARISON")
+    report_lines.append("")
+    report_lines.append(comparison)
+    report_lines.append("")
+
+    report_lines.append("## 6. SELF-ANALYSIS")
+    report_lines.append("")
+    report_lines.append(self_anal)
+    report_lines.append("")
+
+    report_lines.append("## 7. SUB-AGENT RESULTS")
+    report_lines.append("")
+    for name, result in sub_results.items():
+        report_lines.append("### %s: %s" % (name, result["status"]))
+        if result.get("output"):
+            for line in result["output"].split("\n")[-10:]:
+                if line.strip():
+                    report_lines.append("  %s" % line)
+        report_lines.append("")
+
+    report_lines.append("## 8. RECOMMENDED NEXT STEPS")
+    report_lines.append("")
+    report_lines.append(next_steps)
+    report_lines.append("")
+
+    report_lines.append("## 9. ROADMAP")
+    report_lines.append("")
+    report_lines.append(roadmap)
+    report_lines.append("")
+    report_lines.append("---")
+    report_lines.append("*End of Master Intelligence Report*")
+
+    report_text = "\n".join(report_lines)
+
+    # Save MD
+    md_path = REPORTS_DIR / "MASTER_REPORT.md"
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(report_text)
+
+    # Save JSON
+    report_json = {
+        "generated_at": datetime.now().isoformat(),
+        "session": session_name,
+        "modalities": mods,
+        "assessment": assessment,
+        "videos": videos,
+        "agents_count": len(agents),
+        "sessions_count": len(all_sessions),
+        "sub_agents": {k: {"status": v["status"]} for k, v in sub_results.items()},
+    }
+    json_path = REPORTS_DIR / "MASTER_REPORT.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(report_json, f, indent=2, ensure_ascii=False, default=str)
+
+    print("")
+    print(report_text)
+    print("")
+    print("=" * 65)
+    print("  Report saved: %s" % md_path)
+    print("  JSON saved:   %s" % json_path)
+    print("=" * 65)
+
+
+if __name__ == "__main__":
+    main()

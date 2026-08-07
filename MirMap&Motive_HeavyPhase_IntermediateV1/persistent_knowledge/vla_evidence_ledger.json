@@ -1,0 +1,74 @@
+[
+  {
+    "session": "session_2026-08-24_13-16-03",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "PHYSICAL_ONLY",
+    "has_video": false,
+    "reason": "Human breached 1.0m safety zone (min: 0.46m)"
+  },
+  {
+    "session": "session_2026-08-24_13-57-33",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "PHYSICAL_ONLY",
+    "has_video": false,
+    "reason": "Human breached 1.0m safety zone (min: 0.48m)"
+  },
+  {
+    "session": "session_2026-08-25_17-32-01",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "PHYSICAL_ONLY",
+    "has_video": false,
+    "reason": "Human breached 1.0m safety zone (min: 0.99m)"
+  },
+  {
+    "session": "session_2026-08-25_17-43-02",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "Human breached 1.0m safety zone (min: 0.00m)"
+  },
+  {
+    "session": "session_2026-08-25_20-14-09",
+    "scenario": "HUMAN_APPROACH",
+    "confidence": 0.85,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "Human worker closed distance by >1.5m"
+  },
+  {
+    "session": "session_2026-08-25_20-14-09",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "Human breached 1.0m safety zone (min: 0.55m)"
+  },
+  {
+    "session": "session_2026-08-26_20-28-17",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "Human breached 1.0m safety zone (min: 0.79m)"
+  },
+  {
+    "session": "session_2026-08-27_17-54-20",
+    "scenario": "IDLE_STATIONARY",
+    "confidence": 1.0,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "3437 stationary samples observed"
+  },
+  {
+    "session": "session_2026-08-27_17-54-20",
+    "scenario": "SAFETY_ZONE_BREACH",
+    "confidence": 0.95,
+    "verdict": "CONFIRMED",
+    "has_video": true,
+    "reason": "Human breached 1.0m safety zone (min: 0.11m)"
+  }
+]

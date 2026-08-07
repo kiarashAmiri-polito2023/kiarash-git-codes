@@ -1,0 +1,2 @@
+{"session": "session_2026-08-25_17-43-02", "motive_name": "kia hat 002", "slam_id": "back_scan_1282", "distance_m": 0.163, "confidence": 0.891, "method": "hungarian", "human_confirmed": false, "timestamp_utc": "2026-08-25T15:45:16.908408+00:00"}
+{"session": "session_2026-08-25_17-43-02", "motive_name": "kiarash_RightWrist", "slam_id": "front_scan_989", "distance_m": 0.561, "confidence": 0.626, "method": "hungarian", "human_confirmed": false, "timestamp_utc": "2026-08-25T15:45:16.908408+00:00"}

@@ -1,0 +1,29 @@
+﻿{
+  "test": "xml_output",
+  "agent": "auto_labeler",
+  "verdict": "FAIL",
+  "confidence": 0.95,
+  "xml_issues": [
+    "Generates a new <image> element for every annotation instead of grouping multiple boxes under a single frame tag",
+    "Duplicate image IDs and names will cause CVAT import validation errors due to non-unique frame identifiers",
+    "video_name parameter is passed to create_cvat_xml but never utilized in the generated structure"
+  ],
+  "memory_concerns": [
+    "Accumulates all annotations in an unbounded Python list before serialization, risking OOM on long videos or high detection rates",
+    "Uses minidom.parseString() to pretty-print the entire XML document in memory simultaneously with ElementTree, doubling peak RAM usage during export"
+  ],
+  "issues": [
+    {
+      "severity": "critical",
+      "description": "XML structure violates CVAT schema by creating multiple <image> nodes per frame instead of nesting boxes within a single image node per frame"
+    },
+    {
+      "severity": "warning",
+      "description": "In-memory accumulation of annotations lacks streaming or chunked writing support for large datasets"
+    },
+    {
+      "severity": "warning",
+      "description": "File write operation uses direct overwrite without temporary file or atomic commit, risking data corruption on process interruption"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+============================================================
+ KNOWLEDGE ENGINE - Cumulative Brain Report
+ Sessions: 7
+ Updated : 2026-08-27T15:56:51.158245+00:00
+============================================================
+
+--- OBJECT KNOWLEDGE ---
+
+  [kia hat 002]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 5
+    Obs      : 4706
+    Position : (30.50, 19.98) m
+    Speed    : 0.254 m/s
+    Height   : 1.76m
+    Min dist : 0.1500541621588429
+    Crit time: 5.9s
+    Encounters: F=1359 S=1665 R=1682
+
+  [kiarash_leftwrist]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 4
+    Obs      : 3392
+    Position : (30.06, 20.39) m
+    Speed    : 0.103 m/s
+    Height   : 1.01m
+    Min dist : 0.007549789392044617
+    Crit time: 3.7s
+    Encounters: F=812 S=1529 R=1051
+
+  [kiarash_RightWrist]
+    Class    : confirmed_human
+    Conf     : 1.00
+    Sessions : 5
+    Obs      : 4254
+    Position : (32.16, 18.88) m
+    Speed    : 0.166 m/s
+    Height   : 0.95m
+    Min dist : 0.24341124704332842
+    Crit time: 2.2s
+    Encounters: F=1388 S=1834 R=1032
+
+  [kiarash quality control]
+    Class    : likely_static
+    Conf     : 0.80
+    Sessions : 1
+    Obs      : 999
+    Position : (32.07, 20.20) m
+    Speed    : 0.003 m/s
+    Height   : 0.96m
+    Min dist : 1.5323612945028415
+    Crit time: 0.0s
+    Encounters: F=295 S=371 R=333
+
+--- SAFETY ---
+  Critical total : 191
+  Warning total  : 357
+  Closest ever   : 0.0cm
+
+--- LIDAR LEARNING ---
+  Labeled patterns : 1093
+  Label transfers  : 1093
+
+--- SPATIAL KNOWLEDGE ---
+  Human zones  : 9
+  Risk zones   : 0
+
+--- ANOMALIES (15) ---
+  [high] 'kia hat 002' sudden movement (jerk=35.5)
+  [high] 'kiarash_RightWrist' sudden movement (jerk=21.5)
+  [high] 'kia hat 002' sudden movement (jerk=17.0)
+  [critical] 'kia hat 002' INSIDE robot footprint
+  [high] 'kiarash_RightWrist' sudden movement (jerk=28.0)
+
+--- INSIGHTS (last 15 of 39) ---
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=32.6)
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_leftwrist' sudden movement (jerk=27.7)
+  - [session_2026-08-25_17-32-01] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=23.7)
+  - [session_2026-08-25_17-43-02] LIDAR: 203 label transfers
+  - [session_2026-08-25_17-43-02] LIDAR: 29722 unlabeled clusters
+  - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=35.5)
+  - [session_2026-08-25_17-43-02] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=21.5)
+  - [session_2026-08-27_17-54-20] NEW: 'kiarash quality control' class='likely_static' conf=0.80
+  - [session_2026-08-27_17-54-20] SAFETY: 95 CRITICAL events
+  - [session_2026-08-27_17-54-20] SAFETY: 200 WARNING events
+  - [session_2026-08-27_17-54-20] LIDAR: 230 label transfers
+  - [session_2026-08-27_17-54-20] LIDAR: 31538 unlabeled clusters
+  - [session_2026-08-27_17-54-20] ANOMALY [high]: 'kia hat 002' sudden movement (jerk=17.0)
+  - [session_2026-08-27_17-54-20] ANOMALY [critical]: 'kia hat 002' INSIDE robot footprint
+  - [session_2026-08-27_17-54-20] ANOMALY [high]: 'kiarash_RightWrist' sudden movement (jerk=28.0)
+
+--- QUESTIONS (0) ---
+
+============================================================
+
+SAFE MODE: Merge candidate pending review. See pending_merge_candidate_summary.txt

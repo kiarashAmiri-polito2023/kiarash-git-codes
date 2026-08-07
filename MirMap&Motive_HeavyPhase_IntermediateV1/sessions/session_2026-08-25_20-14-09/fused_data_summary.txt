@@ -1,0 +1,11 @@
+Spatial-Temporal Fusion Summary (v2)
+========================================
+Fused at (UTC) : 2026-08-25T18:15:27.783094+00:00
+Common frame   : mir_meters
+Safety critical: <0.1m
+Safety warning : <0.3m
+
+WARNINGS:
+  - slam_data.pkl not found.
+
+Stats:

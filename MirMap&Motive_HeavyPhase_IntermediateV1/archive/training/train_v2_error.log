@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\train_v2_masked.py", line 300, in <module>
+    train()
+  File "D:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\train_v2_masked.py", line 181, in train
+    out = model(**batch)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Python310\lib\site-packages\peft\peft_model.py", line 2101, in forward
+    return self.base_model(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Python310\lib\site-packages\peft\tuners\tuners_utils.py", line 333, in forward
+    return self.model.forward(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 843, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1522, in forward
+    outputs = self.model(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\utils\generic.py", line 843, in wrapper
+    output = func(self, *args, **kwargs)
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1348, in forward
+    position_ids = self.compute_3d_position_ids(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1242, in compute_3d_position_ids
+    position_ids, rope_deltas = self.get_rope_index(
+  File "C:\Users\COLLAB\AppData\Roaming\Python\Python310\site-packages\transformers\models\qwen3_vl\modeling_qwen3_vl.py", line 1105, in get_rope_index
+    input_token_type = input_token_type[attention_mask[batch_idx].bool()]
+IndexError: The shape of the mask [337] at index 0 does not match the shape of the indexed tensor [247] at index 0

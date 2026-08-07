@@ -1,0 +1,9 @@
+Session Metadata
+==================================================
+Created at UTC     : 2026-08-26T18:28:17.994651+00:00
+Session path       : d:\kiarash\kiarash git codes\MirMap&Motive_HeavyPhase_IntermediateV1\sessions\session_2026-08-26_20-28-17
+Robot IP           : 192.168.12.20
+ROS Port           : 9090
+Stop modes enabled : Auto (Motive) + Manual (Ctrl+C)
+Safety critical    : <0.10m
+Safety warning     : 0.10-0.30m

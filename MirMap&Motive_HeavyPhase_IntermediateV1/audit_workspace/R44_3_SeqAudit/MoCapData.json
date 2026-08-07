@@ -1,0 +1,78 @@
+{
+  "agent": "MoCapData",
+  "file": "MoCapData.py",
+  "final_verdict": "FAIL",
+  "confidence": 59.0,
+  "votes": [
+    {
+      "model": "qwen3.6-27b",
+      "verdict": "FAIL",
+      "confidence": 92,
+      "elapsed": 49.7,
+      "finish": "stop",
+      "details": {
+        "agent": "MoCapData",
+        "verdict": "FAIL",
+        "confidence": 92,
+        "critical_bugs": [
+          "RigidBody.get_as_string() defines default argument tab_str=0 (integer). When called with defaults, get_tab_str() attempts string concatenation ('' + 0), causing an immediate TypeError crash.",
+          "test_hash2() calls test_object.get_as_string() without verifying the method exists or catching AttributeError/TypeError. Passing incompatible objects will cause unhandled runtime exceptions."
+        ],
+        "warnings": [
+          "Plain Python lists are used for marker, rigid body, and skeleton data buffers. In a multi-threaded MoCap pipeline (typical for 120Hz+ UDP streams), concurrent append operations without locks will cause race conditions and list corruption.",
+          "Excessive use of copy.deepcopy() on every frame addition introduces significant CPU overhead and memory fragmentation at high update rates, potentially causing dropped frames or latency spikes on the MiR100.",
+          "Type checking relies on str(type(obj)) comparisons instead of isinstance(), which is fragile and breaks with subclasses or custom types."
+        ],
+        "recommendations": [
+          "Change RigidBody.get_as_string(self, tab_str=0, level=0) to tab_str='  ' to match other class signatures and prevent TypeError.",
+          "Implement thread-safe data handling using threading.Lock around list mutations, or adopt a producer-consumer pattern with queue.Queue for frame buffering between the NatNet callback thread and robot control loop.",
+          "Add try/except blocks around external method calls (e.g., test_object.get_as_string()) and network/NatNet client initialization to gracefully handle connection drops or malformed packets.",
+          "Replace str(type()) checks with isinstance() for robust type validation, and consider using dataclasses or TypedDicts to reduce boilerplate and improve serialization performance."
+        ]
+      }
+    },
+    {
+      "model": "qwen/qwen3-vl-30b",
+      "verdict": "FAIL",
+      "confidence": 85,
+      "elapsed": 24.7,
+      "finish": "stop",
+      "details": {
+        "agent": "MoCapData",
+        "verdict": "FAIL",
+        "confidence": 85,
+        "critical_bugs": [
+          "Infinite loop in `get_as_string` due to missing `level` parameter in `get_tab_str` call",
+          "Truncated code in `ForcePlateChannelData.get_as_string` causes syntax error",
+          "Uninitialized variable `fr` in `ForcePlateChannelData.get_as_string` leads to runtime crash"
+        ],
+        "warnings": [
+          "Missing error handling for network/API calls in the code",
+          "No resource cleanup for network sockets or connections",
+          "Potential security issue: hardcoded license text and lack of input validation",
+          "Thread/process safety issues: no synchronization for shared data structures",
+          "Missing error handling in `test_hash2` for `test_object` type checks"
+        ],
+        "recommendations": [
+          "Fix syntax error in `ForcePlateChannelData.get_as_string` by completing the truncated line",
+          "Add proper error handling for network and file operations",
+          "Implement resource cleanup for network connections and sockets",
+          "Use context managers for file and socket operations to prevent leaks",
+          "Add thread-safe locking mechanisms for shared data structures",
+          "Validate all inputs to prevent injection or path traversal attacks",
+          "Ensure all functions properly handle `None` values and edge cases"
+        ]
+      }
+    },
+    {
+      "model": "qwen3-30b-a3b-thinking-2507",
+      "verdict": "PARSE_FAIL",
+      "confidence": 0,
+      "elapsed": 160.6,
+      "finish": "length",
+      "details": {
+        "raw": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+﻿{
+    "status":  "NEW",
+    "goal_id":  "TEST_G01_BRIDGE_VERIFICATION",
+    "command":  "Write-Output \u0027ORCHESTRATOR_PIPE_ACTIVE\u0027; \u0027HERMES_INTELLIGENCE_ONLINE\u0027 | Out-File -FilePath \u0027C:\\Users\\Admin\\kiarash works\\kiarash git codes\\MirMap\u0026Motive_HeavyPhase_IntermediateV1\\AUTO_GOAL_ORCHESTRATOR\\state\\test_proof.txt\u0027 -Encoding utf8",
+    "success_criteria":  {
+                             "exit_code":  0,
+                             "stderr_empty":  true,
+                             "stdout_contains":  [
+                                                     "ORCHESTRATOR_PIPE_ACTIVE"
+                                                 ],
+                             "file_exists":  [
+                                                 "C:\\Users\\Admin\\kiarash works\\kiarash git codes\\MirMap\u0026Motive_HeavyPhase_IntermediateV1\\AUTO_GOAL_ORCHESTRATOR\\state\\test_proof.txt"
+                                             ],
+                             "content_contains":  [
+                                                      {
+                                                          "file":  "C:\\Users\\Admin\\kiarash works\\kiarash git codes\\MirMap\u0026Motive_HeavyPhase_IntermediateV1\\AUTO_GOAL_ORCHESTRATOR\\state\\test_proof.txt",
+                                                          "text":  "HERMES_INTELLIGENCE_ONLINE"
+                                                      }
+                                                  ]
+                         },
+    "timestamp":  "2026-09-26 15:52:46"
+}
